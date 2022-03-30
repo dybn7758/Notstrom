@@ -1,5 +1,4 @@
 /******/ (function() { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./client/src/App.jsx":
@@ -8,6 +7,7 @@
   \****************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function() { return /* binding */ App; }
@@ -65,17 +65,57 @@ var App = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
+/***/ "./client/src/Components/Related Products/Card.jsx":
+/*!*********************************************************!*\
+  !*** ./client/src/Components/Related Products/Card.jsx ***!
+  \*********************************************************/
+/***/ (function() {
+
+// will be used to assemble individual product cards
+// should include
+// Should be clickable
+// Should pass off to product detail page
+// Modal?  Jump to top of page?
+// Image
+// primary image of the product from overview
+// upon hover a sub-carousel should load on the bottom of the image
+// there should be 4 sub-images in the sub-carousel
+// they should be able to be left/right scrolled with buttons
+// clicking a thumbnail should change preview image
+// selected image should persist after hover off
+// list should disappear on hover-off
+// Favorite 'Star'
+// Footer with
+// Category
+// Product Name
+// Price
+// pricing by style?
+// if on sale, should strikethrough OG price, list new price after
+// Star Rating System
+// total rating out of 5
+// should be reflected by 5 partially filled stars
+// rating should be rounded to nearest quarter rating point
+// if there are no reviews, no stars shoul appear
+// When a carousel item is 'favorited' it should be added to 'outfit'
+// same design as the carousel
+// rendered dynamically by click
+
+/***/ }),
+
 /***/ "./client/src/Components/Related Products/RelatedProducts.jsx":
 /*!********************************************************************!*\
   !*** ./client/src/Components/Related Products/RelatedProducts.jsx ***!
   \********************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function() { return /* binding */ RelatedProducts; }
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Card_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Card.jsx */ "./client/src/Components/Related Products/Card.jsx");
+/* harmony import */ var _Card_jsx__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Card_jsx__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -100,6 +140,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var RelatedProducts = /*#__PURE__*/function (_React$Component) {
   _inherits(RelatedProducts, _React$Component);
 
@@ -114,7 +155,7 @@ var RelatedProducts = /*#__PURE__*/function (_React$Component) {
   _createClass(RelatedProducts, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "STUFF");
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Test Card", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement((_Card_jsx__WEBPACK_IMPORTED_MODULE_1___default()), null));
     }
   }]);
 
@@ -131,6 +172,7 @@ var RelatedProducts = /*#__PURE__*/function (_React$Component) {
   \*********************************************/
 /***/ (function(module) {
 
+"use strict";
 /*
 object-assign
 (c) Sindre Sorhus
@@ -235,6 +277,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
   \*************************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
+"use strict";
 /** @license React v17.0.2
  * react-dom.development.js
  *
@@ -4529,6 +4572,7 @@ console.info('%cDownload the React DevTools '+'for a better development experien
   \*****************************************/
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
+"use strict";
 
 
 function checkDCE() {
@@ -4570,6 +4614,7 @@ if (false) {} else {
   \*****************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
+"use strict";
 /** @license React v17.0.2
  * react.development.js
  *
@@ -6862,6 +6907,7 @@ if (true) {
   \*************************************/
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
+"use strict";
 
 
 if (false) {} else {
@@ -6876,6 +6922,7 @@ if (false) {} else {
   \*********************************************************************/
 /***/ (function(__unused_webpack_module, exports) {
 
+"use strict";
 /** @license React v0.20.2
  * scheduler-tracing.development.js
  *
@@ -7232,6 +7279,7 @@ if (true) {
   \*************************************************************/
 /***/ (function(__unused_webpack_module, exports) {
 
+"use strict";
 /** @license React v0.20.2
  * scheduler.development.js
  *
@@ -7877,6 +7925,7 @@ if (true) {
   \*****************************************/
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
+"use strict";
 
 
 if (false) {} else {
@@ -7891,6 +7940,7 @@ if (false) {} else {
   \*******************************************/
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
+"use strict";
 
 
 if (false) {} else {
@@ -7926,6 +7976,18 @@ if (false) {} else {
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	!function() {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = function(module) {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				function() { return module['default']; } :
+/******/ 				function() { return module; };
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	}();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	!function() {
 /******/ 		// define getter functions for harmony exports
@@ -7956,8 +8018,9 @@ if (false) {} else {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 !function() {
+"use strict";
 /*!******************************!*\
   !*** ./client/src/index.jsx ***!
   \******************************/
