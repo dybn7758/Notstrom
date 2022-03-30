@@ -1,4 +1,5 @@
 import React from 'react';
+import RelatedProducts from './Components/Related Products/RelatedProducts.jsx';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ export default class App extends React.Component {
   render () {
     return(
       <div> Himalayas For The Win
+        <RelatedProducts/>
       </div>
     )
   }
