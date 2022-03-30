@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchQA from './searchQA.jsx';
 
 export default class QA extends React.Component {
   constructor(props) {
@@ -7,7 +8,9 @@ export default class QA extends React.Component {
 
   render() {
     return (
-      <div>Questions and Answers</div>
+      <div>Questions & Answers
+        <SearchQA/>
+      </div>
     )
   }
 };
