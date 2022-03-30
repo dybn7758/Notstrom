@@ -169,7 +169,7 @@ var Reviews = /*#__PURE__*/function (_React$Component) {
   _createClass(Reviews, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Hi, I am review component");
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Hi, I am review component with server");
     }
   }]);
 

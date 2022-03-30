@@ -6,7 +6,7 @@ class Reviews extends React.Component {
   }
 
   render() {
-    return <h1>Hi, I am review component</h1>;
+    return <h1>Hi, I am review component with server</h1>;
   }
 }
 
