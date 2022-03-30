@@ -1,6 +1,6 @@
 import React from 'react';
 
-class RelatedProducts extends React.Component {
+export default class RelatedProducts extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -12,4 +12,3 @@ class RelatedProducts extends React.Component {
   }
 }
 
-export default RelatedProducts;
