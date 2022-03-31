@@ -10,28 +10,29 @@ export default class Card extends React.Component {
       product: 'product name',
       price: 100,
       image: 'skyblue',
-      show: false,
+      show: 'none',
     }
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
 
   }
 
-  showModal = () => {
-    this.setState({show: true});
+  showModal() {
+    this.setState({show: 'block'});
+    console.log(this.state.show);
   }
 
-  hideModal = () => {
-    this.setState({show: false});
+  hideModal() {
+    this.setState({show: 'none'});
   }
 
   render() {
     return (
       <div>
         <div style={{ position: 'relative', backgroundColor: this.state.image, width: 200, height: 225}} onClick={() => {
-          console.log('clicked');
+          console.log('clicked picture');
         }}>
-        <Star style={{ position: 'absolute', top: 10, right: 10}} onClick={() => {this.showModal}}/>
+        <Star style={{ position: 'absolute', top: 10, right: 10}} onClick={this.showModal}/>
         </div>
           <div style={{ position: 'relative', bottom: 0, backgroundColor: 'gray', width: 200, height: 100, alignItems: 'bottom'}}>
             <h1 style={{ position: 'absolute', top: 0, left: 10, fontSize: 14}}>{this.state.category}</h1>

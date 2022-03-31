@@ -5,13 +5,16 @@
       // values to compare should be
 
 import React from 'react';
-import '../../App.css';
+import RelatedCard from './RelatedCard.jsx';
 
 const RelatedModal = (props) => {
-  const showHideClassName = props.show ? 'modal display-block' : 'modal display-none';
+  const showState = props.state;
+  console.log(showState);
 
   return (
-    <div className={showHideClassName}>
+    <div style={{
+      display: showState,
+    }}>
       <section className='modal-main'>
         <button onClick={props.handleClose}>Close</button>
         </section>
