@@ -2,6 +2,8 @@ import React from "react";
 import RelatedProducts from "./Components/Related Products/RelatedProducts.jsx";
 import Reviews from "./Components/Reviews/Reviews.jsx";
 
+import QA from "./Components/Question_Answers/qa.jsx";
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -13,6 +15,7 @@ export default class App extends React.Component {
         {" "}
         Himalayas For The Win
         <RelatedProducts />
+        <QA />
         <Reviews />
       </div>
     );
