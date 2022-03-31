@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './Card.jsx';
+import Card from './RelatedCard.jsx';
 
 export default class RelatedProducts extends React.Component {
   constructor(props) {
@@ -8,7 +8,7 @@ export default class RelatedProducts extends React.Component {
 
   render() {
   return (
-      <div>Test Card
+      <div>
         <Card/>
       </div>
     )
