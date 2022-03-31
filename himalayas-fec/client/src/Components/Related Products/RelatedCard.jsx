@@ -7,8 +7,10 @@ export default class Card extends React.Component {
     super(props)
     this.state = {
       category: 'Category',
+      product: 'product name',
       price: 100,
       image: 'skyblue',
+      show: false,
     }
   }
 
@@ -34,9 +36,10 @@ export default class Card extends React.Component {
         right: 10,
       }}
       onClick={() => {
-        console.log('star clicked')
+        this.setState({show: true})
+        console.log(this.state.show);
         }}/>
-something
+
       </div>
         <div style={{
         position: 'relative',
@@ -46,19 +49,37 @@ something
         height: 100,
         alignItems: 'bottom',
       }}>
+
       <h1 style={{
         position: 'absolute',
+        top: 0,
         left: 10,
         fontSize: 14,
       }}>{this.state.category}</h1>
+
       <h1 style={{
         position: 'absolute',
-        right: 10,
-        bottom: 10,
+        left: 10,
+        top: 30,
         fontSize: 14,
-      }}>{this.state.price}</h1>
+      }}>${this.state.price}.00</h1>
+
+      <h1 style={{
+        position: 'absolute',
+        left: 10,
+        top: 15,
+        fontSize: 14,
+      }}>{this.state.product}</h1>
+      <div style={{
+        height: 20,
+        width: 100,
+        background: 'yellow',
+        position: 'absolute',
+        bottom: 10,
+        left: 10,
+      }}>Stars</div>
       </div>
-      <RelatedModal/>
+      <RelatedModal state={this.state.show}/>
       </div>
     )
   }

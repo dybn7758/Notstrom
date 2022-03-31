@@ -5,25 +5,43 @@
       // values to compare should be
 import React from 'react';
 
-export default class Modal extends React.Component {
-  constructor(props) {
-    super(props)
+const RelatedModal = props => {
+
+  if (!props.show) {
+    return null;
   }
 
-  render() {
   return (
-    <div className='modal'>
-      <div className='modal-content'>
-        <div className='modal-header'>
-          <h4 className='modal-title'>Modal Title</h4>
+    <div className='modal' style={{
+      position: 'fixed',
+      left: 0,
+      top: 0,
+      right: 0,
+      bottom: 0,
+      background: 'white',
+      display: 'flex',
+      alignItems: 'center',
+    }}>
+      <div className='modal-content' style={{
+        width: 200,
+        background: 'gray',
+      }}>
+        <div className='modal-header' style={{
+          padding: 10,
+        }}>
+          <h4 className='modal-title' style={{
+            margin: 0,
+          }}>Modal Title</h4>
         </div>
-        <div className='modal-body'>
+        <div className='modal-body' style={{
+          padding: 10,
+        }}>
           This is Modal Content
         </div>
         <button className='button'>Close</button>
       </div>
     </div>
   )
+}
 
-}
-}
+export default RelatedModal;
