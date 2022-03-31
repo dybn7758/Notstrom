@@ -1,0 +1,65 @@
+1. Overview will be the topmost module
+  a. Functionality contains following pieces:
+   -Image Gallery
+   -Product Information
+   -Style Selector
+   -Add to Cart
+
+  1.1. component 1: Overview
+    a. Component guides customer thru adding specific size and style to cart
+      -based on specific SKU as opposed to over-arching product
+
+  1.1.1 component 2: Product Information
+    a. displays general information about the product to be displayed at top of Overview which will include:
+      1. Star Rating: average rating based on its reviews
+         a. represented by an array of solid or outlined stars. 5 stars to appear, with the number filled in representing the average score.
+         b. Visual rating will show up to a quarter of a review point. i.e., if avreage is 3.8 will display as 3&3/4 solid stars and 1&1/4 outlined stars
+       2. Product Category
+       3. Product Title
+       4. Price derived from style not product itself based on user selections, and sale price if SKU is on sale
+        5. Product Overview - freeform text feild only displayed if available
+        6. Share on Social Media - share product on the following:
+          a. Facebook
+          b. Twitter
+          c. Pintrest
+
+  1.1.2 component 3: Style Selector
+    a. Below Product Info, displays thumbnail of available styles which can be toggled thru by user
+      1. Always displays from current product
+      2. Indicate current style select with checkmark overlay with title fully typed out above thumbnail list
+      3. Change style on thumbnail click
+      4. Default to selected style as first in list
+      5. Each product has atleast one style
+      6. Only one (and atleast one) style selected at a time
+
+  1.1.3 component 4: Add to Cart
+    a. Below Style Select, contains 2 dropdowns - one for size one for quantity, options therein vary based on style selected
+      1. Size Selector
+        a. display all available sizes for selected style
+        b. only styles in stock should be displayed
+        c. if all optins out of stock, inactivate list nad display OUT OF STOCK
+      2. Quantity Selector
+        a. dropdown sequence of integers ranging from 1 to max
+          1. either capped by quantity in stock of limit of 15
+        b. if no size selected, display '-' and be disabled
+      3. Add To Cart Button
+        a. below size and quantity dd's
+        b. Will place style, size, and quantity into user's cart
+        c. See BRD for in-depth functinality
+
+      4. Image Gallery
+        a. display images of current product specific to selected style
+        b. Update when new style is chosen
+        c. Allow browsing and zooming in/out
+        d. viewable in two states
+          1. Default collapsed view
+          2. Expanded view
+          3. See BRD for in-depth functionality
+
+
+
+
+
+
+
+
