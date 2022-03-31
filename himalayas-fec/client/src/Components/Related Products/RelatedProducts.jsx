@@ -10,7 +10,6 @@ export default class RelatedProducts extends React.Component {
   return (
       <div>Test Card
         <Card/>
-
       </div>
     )
   }

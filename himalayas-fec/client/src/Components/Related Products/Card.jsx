@@ -1,4 +1,61 @@
+import React from 'react';
+
+export default class Card extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      category: 'Category',
+      price: 100,
+      image: 'green',
+    }
+  }
+
+  render() {
+
+    const background = this.state.image;
+
+    return (
+      <div>
+      <div style={{
+        position: 'relative',
+        backgroundColor: background,
+        width: 200,
+        height: 225,
+        border: 5,
+        borderColor: 'black',
+      }} onClick={() => {
+        console.log('clicked');
+      }}>
+      </div>
+        <div style={{
+        position: 'relative',
+        bottom: 0,
+        backgroundColor: 'yellow',
+        width: 200,
+        height: 100,
+        alignItems: 'bottom',
+      }}>
+        <h1 style={{
+          position: 'absolute',
+          left: 10,
+          fontSize: 14,
+        }}>{this.state.category}</h1>
+        <h1 style={{
+          position: 'absolute',
+          right: 10,
+          bottom: 10,
+          fontSize: 14,
+        }}>{this.state.price}</h1>
+        </div>
+      </div>
+    )
+  }
+}
+
+
 // will be used to assemble individual product cards
+
+
 // should include
 
   // Should be clickable
