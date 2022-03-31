@@ -1,7 +1,6 @@
 import React from "react";
 import RelatedProducts from "./Components/Related Products/RelatedProducts.jsx";
 import Reviews from "./Components/Reviews/Reviews.jsx";
-
 import QA from "./Components/Question_Answers/qa.jsx";
 
 export default class App extends React.Component {
