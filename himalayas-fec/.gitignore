@@ -24,3 +24,9 @@ yarn-error.log*
 
 client/dist/bundle.js
 client/dist/bundle.js.map
+
+#API KEY
+client/src/config/config.js
+
+/package-lock.json
+/package.json
