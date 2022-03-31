@@ -12,74 +12,34 @@ export default class Card extends React.Component {
       image: 'skyblue',
       show: false,
     }
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
+
+  }
+
+  showModal = () => {
+    this.setState({show: true});
+  }
+
+  hideModal = () => {
+    this.setState({show: false});
   }
 
   render() {
-
-    const background = this.state.image;
-
     return (
       <div>
-
-      <div style={{
-        position: 'relative',
-        backgroundColor: background,
-        width: 200,
-        height: 225,
-      }} onClick={() => {
-        console.log('clicked');
-      }}>
-
-      <Star style={{
-        position: 'absolute',
-        top: 10,
-        right: 10,
-      }}
-      onClick={() => {
-        this.setState({show: true})
-        console.log(this.state.show);
-        }}/>
-
-      </div>
-        <div style={{
-        position: 'relative',
-        bottom: 0,
-        backgroundColor: 'gray',
-        width: 200,
-        height: 100,
-        alignItems: 'bottom',
-      }}>
-
-      <h1 style={{
-        position: 'absolute',
-        top: 0,
-        left: 10,
-        fontSize: 14,
-      }}>{this.state.category}</h1>
-
-      <h1 style={{
-        position: 'absolute',
-        left: 10,
-        top: 30,
-        fontSize: 14,
-      }}>${this.state.price}.00</h1>
-
-      <h1 style={{
-        position: 'absolute',
-        left: 10,
-        top: 15,
-        fontSize: 14,
-      }}>{this.state.product}</h1>
-      <div style={{
-        height: 20,
-        width: 100,
-        background: 'yellow',
-        position: 'absolute',
-        bottom: 10,
-        left: 10,
-      }}>Stars</div>
-      </div>
-      <RelatedModal state={this.state.show}/>
+        <div style={{ position: 'relative', backgroundColor: this.state.image, width: 200, height: 225}} onClick={() => {
+          console.log('clicked');
+        }}>
+        <Star style={{ position: 'absolute', top: 10, right: 10}} onClick={() => {this.showModal}}/>
+        </div>
+          <div style={{ position: 'relative', bottom: 0, backgroundColor: 'gray', width: 200, height: 100, alignItems: 'bottom'}}>
+            <h1 style={{ position: 'absolute', top: 0, left: 10, fontSize: 14}}>{this.state.category}</h1>
+            <h1 style={{ position: 'absolute', left: 10, top: 30, fontSize: 14}}>${this.state.price}.00</h1>
+            <h1 style={{ position: 'absolute', left: 10, top: 15, fontSize: 14, }}>{this.state.product}</h1>
+        <div style={{ height: 20, width: 100, background: 'yellow', position: 'absolute', bottom: 10, left: 10}}>Stars</div>
+        <RelatedModal state={this.state.show} handleClose={this.hideModal}/>
+        </div>
       </div>
     )
   }
