@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const axios = require("axios");
 
 const app = express();
 
@@ -11,7 +12,7 @@ app.use(express.json());
 //===helper functions===//
 
 //Overview
-const { Product } = require('./Database/db.js');
+const { Product } = require('../Database/db.js');
 
 const getProducts = function() {
   return Product.find();
@@ -35,5 +36,5 @@ app.get('/productDetails', function(req, res) {
 
 
 
-app.listen(3000);
-console.log('listening at http://localhost:3000');
+app.listen(3001)
+console.log('listening at http://localhost:3001');
