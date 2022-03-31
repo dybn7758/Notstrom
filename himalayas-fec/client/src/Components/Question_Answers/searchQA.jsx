@@ -31,6 +31,7 @@ export default class SearchQA extends React.Component {
             return <SearchList key={i} entries={entry}/>}
           )}
         </div>
+        <button id='more-ans'>More Answered Questions</button><button id='add-ques'>Add a Question +</button>
       </div>
     )
   }
