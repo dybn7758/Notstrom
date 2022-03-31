@@ -36,7 +36,7 @@ export default class Card extends React.Component {
       onClick={() => {
         console.log('star clicked')
         }}/>
-
+something
       </div>
         <div style={{
         position: 'relative',
