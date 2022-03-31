@@ -12,7 +12,11 @@ app.use(morgan("dev"));
 //===helper functions===//
 
 //Overview
-// const { Product } = require('./Database/db.js');
+const { Product } = require("../Database/db.js");
+
+const getProducts = function () {
+  return Product.find();
+};
 
 // const getProducts = function() {
 //   return Product.find();
