@@ -1,6 +1,8 @@
 import React from 'react';
 import RelatedModal from './RelatedModal.jsx';
 import {Star} from 'react-ionicons';
+import RelatedThumbs from './RelatedThumbs.jsx';
+
 
 export default class Card extends React.Component {
   constructor(props) {
@@ -13,6 +15,7 @@ export default class Card extends React.Component {
       show: 'none',
     }
     this.showHideModal = this.showHideModal.bind(this);
+    this.showThumbs = this.showThumbs.bind(this);
   }
 
   showHideModal() {
@@ -23,12 +26,21 @@ export default class Card extends React.Component {
     }
   }
 
+  showThumbs() {
+    console.log('hovering');
+    return (
+    <div><RelatedThumbs/></div>
+    )
+  }
+
 
   render() {
+
     return (
       <div>
-        <div onMouseEnter={() => {this.setState({image: 'green'})}} onMouseLeave={() => {this.setState({image: 'skyblue'})}}style={{ position: 'relative', backgroundColor: this.state.image, width: 200, height: 225, zIndex: 1}} onClick={() => {
-          console.log('clicked picture');}}>
+        <div onMouseEnter={() => {this.showThumbs()}} onMouseLeave={() => {this.setState({image: 'skyblue'})}}
+        style={{ position: 'relative', backgroundColor: 'blue', width: 200, height: 225, zIndex: 1}} onClick={() => {
+        console.log('clicked picture')}}>
         <Star style={{ position: 'absolute', top: 10, right: 10, zIndex: 2}} onClick={this.showHideModal}/>
         </div>
           <div style={{ position: 'relative', bottom: 0, backgroundColor: 'gray', width: 200, height: 100, alignItems: 'bottom'}}>

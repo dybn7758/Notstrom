@@ -6,6 +6,7 @@
 
 import React from 'react';
 import RelatedCard from './RelatedCard.jsx';
+import RelatedTable from './RelatedTable.jsx';
 
 const RelatedModal = (props) => {
   const showState = props.state;
@@ -13,19 +14,17 @@ const RelatedModal = (props) => {
   return (
     <div style={{
       display: showState,
+      background: 'gray',
+      height: 300,
+      width: 300,
       position: 'fixed', left: '50%', top: '50%'
     }}>
-      <table>
-        <thead>
-        <tr>
-          <th>Item 1</th>
-          <th>Comparing</th>
-          <th>Item 2</th>
-        </tr>
-        </thead>
-
-      </table>
-      <button onClick={props.handleClose}>Close</button>
+    <RelatedTable/>
+      <button style={{
+        position: 'absolute',
+        bottom: 0,
+        left: '50%',
+      }}onClick={props.handleClose}>Close</button>
     </div>
   )
 }

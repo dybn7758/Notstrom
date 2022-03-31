@@ -1,3 +1,25 @@
+import React from 'react';
+import RelatedCard from './RelatedCard.jsx';
+import {ArrowBackCircle, ArrowForwardCircle} from 'react-ionicons';
+
+export default class RelatedCarousel extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+
+  render() {
+    return (
+      <div style={{ position: 'relative'}}>
+        <ArrowBackCircle onClick={()=>{console.log('lefty clicked')}}/>
+        <RelatedCard/>
+        <ArrowForwardCircle onClick={()=>{console.log('righty clicked')}}/>
+      </div>
+    )
+  }
+}
+
+
 // Any number of related cards should be in the carousel
 
 // upon load should list all related products
@@ -9,3 +31,4 @@
   // when the left most card is in it's starting position
     // the left arrow should disappear
     // likewise for right-most image
+

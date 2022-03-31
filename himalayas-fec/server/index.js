@@ -13,7 +13,7 @@ app.use(express.json());
 
 
 //Overview
-const { Product } = require('./Database/db.js');
+const { Product } = require('../Database/db.js');
 
 const getProducts = function() {
   return Product.find();
