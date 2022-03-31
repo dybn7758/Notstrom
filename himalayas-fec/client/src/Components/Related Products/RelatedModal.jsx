@@ -9,15 +9,23 @@ import RelatedCard from './RelatedCard.jsx';
 
 const RelatedModal = (props) => {
   const showState = props.state;
-  console.log(showState);
 
   return (
     <div style={{
       display: showState,
+      position: 'fixed', left: '50%', top: '50%'
     }}>
-      <section className='modal-main'>
-        <button onClick={props.handleClose}>Close</button>
-        </section>
+      <table>
+        <thead>
+        <tr>
+          <th>Item 1</th>
+          <th>Comparing</th>
+          <th>Item 2</th>
+        </tr>
+        </thead>
+
+      </table>
+      <button onClick={props.handleClose}>Close</button>
     </div>
   )
 }
