@@ -1,15 +1,17 @@
 import React from 'react';
+import Card from './Card.jsx';
 
-class RelatedProducts extends React.Component {
+export default class RelatedProducts extends React.Component {
   constructor(props) {
     super(props)
   }
 
   render() {
   return (
-      <div>STUFF</div>
+      <div>Test Card
+        <Card/>
+      </div>
     )
   }
 }
 
-export default RelatedProducts;
