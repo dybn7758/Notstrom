@@ -161,9 +161,13 @@ var Reviews = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(Reviews);
 
   function Reviews(props) {
+    var _this;
+
     _classCallCheck(this, Reviews);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {};
+    return _this;
   }
 
   _createClass(Reviews, [{
