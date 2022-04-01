@@ -9,4 +9,11 @@ import {
   userRecoilValue,
 } from 'recoil';
 
-ReactDOM.render(<RecoilRoot><App /></RecoilRoot>, document.getElementById('root'));
+ReactDOM.render(
+  <RecoilRoot>
+    {/* <React.Suspense> */}
+      <App />
+    {/* </React.Suspense> */}
+  </RecoilRoot>,
+  document.getElementById('root')
+);

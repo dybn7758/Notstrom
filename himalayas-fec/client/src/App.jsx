@@ -5,28 +5,28 @@ import axios from 'axios';
 import {listQuestions, listProducts, listReviews} from './lib/searchAPI.js';
 import sampleQa from './Components/Question_Answers/sampleQA.js';
 import {
-  RecoilRoot,
   atom,
   selector,
   useRecoilState,
-  userRecoilValue,
+  useRecoilValue,
 } from 'recoil';
+
+export const productQ = atom({
+  key: 'productQ',
+  default: sampleQa.results,
+});
 
 var App = () => {
 
-  var productQ = atom({
-    key: 'productQ',
-    default: sampleQa.results,
-  });
-  let [prod, setProd] = useRecoilState(productQ);
-
   //do out API calls to retrieve data using useEffect(callback, [])
     //pass the second argument so it doesnt create an infinite loop everytime this component renders
+  let [prod, setProd] = useRecoilState(productQ);
+
   useEffect(() => {
-    listProducts().then((data) => {setProd(data)})
+    listProducts()
+      .then((data) => {setProd(data)})
+      .catch((err) => {console.log('err', err)})
   }, []);
-
-
 
   return (
       <div> Himalayas For The Win
@@ -36,4 +36,4 @@ var App = () => {
   )
 };
 
-export default App;
+export default App ;
