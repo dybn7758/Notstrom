@@ -24,8 +24,6 @@
 
 // //Related Products
 
-
-
 // //make a model using your schema
 
 // //Overview
@@ -37,8 +35,6 @@
 
 // //Related Products
 
-
-
 // //export your model
 
 // //Product Detail
@@ -49,7 +45,6 @@
 // //Q & A
 
 // //Related Products
-
 
 // //make a model using your schema
 
@@ -61,7 +56,7 @@
 // //Q&A
 
 // //Related Products
-=======
+// =======
 // //Reviews
 
 // //Q&A
@@ -72,7 +67,7 @@
 
 // //Product Detail
 // module.exports.Product = Product;
->>>>>>> master
+// >>>>>>> master
 
 // //Reviews
 
@@ -90,5 +85,3 @@
 // //Related Products
 
 // //Related Products
-
-
