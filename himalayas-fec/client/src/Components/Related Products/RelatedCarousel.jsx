@@ -2,23 +2,18 @@ import React from 'react';
 import RelatedCard from './RelatedCard.jsx';
 import {ArrowBackCircle, ArrowForwardCircle} from 'react-ionicons';
 
-export default class RelatedCarousel extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+const RelatedCarousel = () => {
 
-
-  render() {
-    return (
-      <div style={{ position: 'relative'}}>
-        <ArrowBackCircle onClick={()=>{console.log('lefty clicked')}}/>
-        <RelatedCard/>
-        <ArrowForwardCircle onClick={()=>{console.log('righty clicked')}}/>
-      </div>
-    )
-  }
+  return (
+    <div style={{ position: 'relative'}}>
+      <ArrowBackCircle onClick={()=>{console.log('this')}}/>
+      <RelatedCard/>
+      <ArrowForwardCircle onClick={()=>{console.log('that')}}/>
+    </div>
+  )
 }
 
+export default RelatedCarousel;
 
 // Any number of related cards should be in the carousel
 
