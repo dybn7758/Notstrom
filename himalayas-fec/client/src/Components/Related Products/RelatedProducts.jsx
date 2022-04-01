@@ -1,17 +1,22 @@
 import React from 'react';
-import Card from './RelatedCard.jsx';
+import RelatedCarousel from './RelatedCarousel.jsx';
+import RelatedOutfits from './RelatedOutfits.jsx';
+import axios from 'axios';
+import colorString from '../../App.jsx';
 
-export default class RelatedProducts extends React.Component {
-  constructor(props) {
-    super(props)
-  }
 
-  render() {
+
+const RelatedProducts = () => {
+
+
+    // const [color, setString] = useRecoilState(colorString);
+    // this.getData = this.getData.bind(this);
   return (
-      <div>
-        <Card/>
-      </div>
-    )
+        <div>
+          <RelatedCarousel/>
+          <RelatedOutfits/>
+        </div>
+      )
   }
-}
 
+  export default RelatedProducts;
