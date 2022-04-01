@@ -17,7 +17,7 @@ const RelatedCarousel = () => {
 }
 
 export default RelatedCarousel;
-
+// testing
 // Any number of related cards should be in the carousel
 
 // upon load should list all related products
