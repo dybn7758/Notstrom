@@ -1,5 +1,6 @@
 import React from 'react';
 import RelatedCarousel from './RelatedCarousel.jsx';
+import RelatedOutfits from './RelatedOutfits.jsx';
 import axios from 'axios';
 import colorString from '../../App.jsx';
 
@@ -12,8 +13,8 @@ const RelatedProducts = () => {
     // this.getData = this.getData.bind(this);
   return (
         <div>
-          <button ></button>
           <RelatedCarousel/>
+          <RelatedOutfits/>
         </div>
       )
   }
