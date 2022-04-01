@@ -13,6 +13,10 @@ app.use(morgan("dev"));
 //===helper functions===//
 
 //Overview
+<<<<<<< HEAD
+=======
+const { Product } = require('../Database/db.js');
+>>>>>>> master
 
 const { Product } = require("../Database/db.js");
 

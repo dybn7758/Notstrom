@@ -25,12 +25,19 @@ yarn-error.log*
 client/dist/bundle.js
 client/dist/bundle.js.map
 
+<<<<<<< HEAD
 client/src/config/config.js
 
 
 client/src/config/config.js
+=======
+>>>>>>> master
 #API KEY
 client/src/config/config.js
 
 /package-lock.json
+<<<<<<< HEAD
 /package.json
+=======
+/package.json
+>>>>>>> master
