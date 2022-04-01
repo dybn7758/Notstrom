@@ -1,15 +1,12 @@
-import React from 'react';
+// import React from 'react';
 
-const RelatedThumbs = () => {
+// const RelatedThumbs = () => {
 
+//   return (
+//     <div>
+//       <h1>Thumbnail</h1>>
+//     </div>
+//   )
+// }
 
-
-  return (
-    <div>
-      <h1>Thumbnail</h1>>
-    </div>
-  )
-}
-
-
-export default RelatedThumbs;
+// export default RelatedThumbs;

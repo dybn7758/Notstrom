@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import RelatedProducts from "./Components/Related Products/RelatedProducts.jsx";
 
 import Overview from "./Components/Overview/Overview.jsx";
+import Reviews from "./Components/Reviews/Reviews.jsx";
 
 import QA from "./Components/Question_Answers/qa.jsx";
 
@@ -33,8 +34,9 @@ var App = () => {
         {" "}
         Himalayas For The Win
         <Overview />
-        <RelatedProducts />
+        {/* <RelatedProducts /> */}
         <QA />
+        <Reviews />
       </div>
     </RecoilRoot>
   );

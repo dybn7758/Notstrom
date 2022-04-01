@@ -1,22 +1,21 @@
-import React from 'react';
-import {Checkmark} from 'react-ionicons';
+// import React from 'react';
+// import {Checkmark} from 'react-ionicons';
 
-const RelatedTable = () => {
+// const RelatedTable = () => {
 
+//   return (
+//     <div>Comparing
+//       <table>
+//       <thead>
+//       <tr>
+//         <th>Product 1</th>
+//         <th>Category</th>
+//         <th>Product 2</th>
+//       </tr>
+//       </thead>
+//     </table>
+//     </div>
+//   )
+// }
 
-  return (
-    <div>Comparing
-      <table>
-      <thead>
-      <tr>
-        <th>Product 1</th>
-        <th>Category</th>
-        <th>Product 2</th>
-      </tr>
-      </thead>
-    </table>
-    </div>
-  )
-}
-
-export default RelatedTable;
+// export default RelatedTable;
