@@ -5,9 +5,9 @@ import {ArrowBackCircle, ArrowForwardCircle} from 'react-ionicons';
 const RelatedCarousel = () => {
 
   return (
-    <div style={{width: '100%', height: 350, background: 'lightgray', padding: 20, overflow: 'hidden'}}>
+    <div style={{width: '100%', height: 300, background: 'lightgray', padding: 5, overflow: 'hidden'}}>
       <ArrowBackCircle style={{position: 'fixed', top: '50%', left: 10}}onClick={()=>{console.log('this')}}/>
-        <div style={{float: 'left', position: 'relative', height: 300, width: 200, background: 'black', margin: 10}}></div>
+        <div style={{float: 'left', position: 'relative', height: 300, width: 200, background: 'black', margin: 10}}><RelatedCard/></div>
         <div style={{float: 'left', position: 'relative', height: 300, width: 200, background: 'black', margin: 10}}></div>
         <div style={{float: 'left', position: 'relative', height: 300, width: 200, background: 'black', margin: 10}}></div>
         <div style={{float: 'left', position: 'relative', height: 300, width: 200, background: 'black', margin: 10}}></div>
@@ -17,7 +17,7 @@ const RelatedCarousel = () => {
 }
 
 export default RelatedCarousel;
-
+// testing
 // Any number of related cards should be in the carousel
 
 // upon load should list all related products
