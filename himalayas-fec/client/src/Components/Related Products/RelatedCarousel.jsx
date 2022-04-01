@@ -5,10 +5,10 @@ import {ArrowBackCircle, ArrowForwardCircle} from 'react-ionicons';
 const RelatedCarousel = () => {
 
   return (
-    <div style={{ position: 'relative'}}>
-      <ArrowBackCircle onClick={()=>{console.log('this')}}/>
+    <div style={{width: '100%', height: 350, background: 'lightgray', padding: 20}}>
+      <ArrowBackCircle style={{position: 'fixed', top: '50%', left: 10}}onClick={()=>{console.log('this')}}/>
       <RelatedCard/>
-      <ArrowForwardCircle onClick={()=>{console.log('that')}}/>
+      <ArrowForwardCircle style={{position: 'fixed', top: '50%', right: 10}}onClick={()=>{console.log('that')}}/>
     </div>
   )
 }

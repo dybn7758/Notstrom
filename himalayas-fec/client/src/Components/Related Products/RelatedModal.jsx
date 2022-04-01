@@ -2,15 +2,15 @@ import React from 'react';
 import RelatedCard from './RelatedCard.jsx';
 import RelatedTable from './RelatedTable.jsx';
 import {show} from '../../App.jsx';
-import {useRecoilValue} from 'recoil';
+import {useRecoilState} from 'recoil';
 
 const RelatedModal = () => {
 
-  const [showValue, setShow] = useRecoilValue(show);
-  console.log(showValue, 'show value');
+  const [showValue, setShow] = useRecoilState(show);
+
   return (
     <div style={{
-      display: showValue,
+      display: showValue[0],
       background: 'gray',
       height: 300,
       width: 300,
@@ -21,9 +21,7 @@ const RelatedModal = () => {
         position: 'absolute',
         bottom: 0,
         left: '50%',
-      }}onClick={() => {
-        console.log('something');
-      }}>Close</button>
+      }} onClick={() => {setShow(['none'])}}>Close</button>
     </div>
   )
 }

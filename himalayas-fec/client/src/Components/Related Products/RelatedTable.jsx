@@ -13,7 +13,6 @@ const RelatedTable = () => {
         <th>Category</th>
         <th>Product 2</th>
       </tr>
-      Add Mapping Function Here
       </thead>
     </table>
     </div>

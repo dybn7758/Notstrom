@@ -9,15 +9,8 @@ import {RecoilRoot, atom, selector, useRecoilState, userRecoilValue} from 'recoi
 
 export const show = atom({
   key: 'show',
-  default: 'none',
+  default: ['none'],
 })
-// this.state = {
-//   category: 'Category',
-//   product: 'product name',
-//   price: 100,
-//   image: 'skyblue',
-//   show: 'none',
-// }
 
 var App = () => {
 
