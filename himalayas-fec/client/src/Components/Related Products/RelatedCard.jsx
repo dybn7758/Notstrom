@@ -21,7 +21,7 @@ const Card = () => {
 
   return (
     <div>
-      <div onMouseEnter={() => {console.log('mouse over')}} onMouseLeave={() => {console.log('mouse left')}}
+      <div onMouseEnter={() => {console.log('mouse over!')}} onMouseLeave={() => {console.log('mouse left')}}
       style={{ position: 'relative', backgroundColor: 'blue', width: 200, height: 225, zIndex: 1}} onClick={() => {
       console.log('clicked picture')}}>
       <Star style={{ position: 'absolute', top: 10, right: 10, zIndex: 2}} onClick={ () => {setShow('block')}}/>
