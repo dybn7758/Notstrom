@@ -23,7 +23,7 @@ const getProducts = function () {
 // }
 
 //===api requests===//
-//Overview
+// Overview
 // app.get("/productDetails", function (req, res) {
 //   getProducts()
 //     .then((data) => {

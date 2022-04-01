@@ -5,13 +5,6 @@ import axios from 'axios';
 import {listQuestions, listProducts, listReviews} from './lib/searchAPI.js';
 import {RecoilRoot, atom, selector, useRecoilState, userRecoilValue} from 'recoil';
 
-//========== Atoms ===========
-
-export const show = atom({
-  key: 'show',
-  default: ['none'],
-})
-
 var App = () => {
 
 
