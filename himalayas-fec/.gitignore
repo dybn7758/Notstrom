@@ -25,26 +25,8 @@ yarn-error.log*
 client/dist/bundle.js
 client/dist/bundle.js.map
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-client/src/config/config.js
-
-
-client/src/config/config.js
-=======
->>>>>>> master
-=======
->>>>>>> df5e4d38b05651e6c371a604bd409f2bd7796458
 #API KEY
 client/src/config/config.js
 
 /package-lock.json
-<<<<<<< HEAD
-<<<<<<< HEAD
 /package.json
-=======
-/package.json
->>>>>>> master
-=======
-/package.json
->>>>>>> df5e4d38b05651e6c371a604bd409f2bd7796458

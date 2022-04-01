@@ -1,68 +1,44 @@
 import React from 'react';
 import RelatedModal from './RelatedModal.jsx';
 import {Star} from 'react-ionicons';
+import RelatedThumbs from './RelatedThumbs.jsx';
+import {useRecoilState} from 'recoil';
+import {show} from '../../App.jsx';
 
-export default class Card extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      category: 'Category',
-      price: 100,
-      image: 'skyblue',
-    }
+
+const Card = () => {
+
+  const [showValue, setShow] = useRecoilState(show);
+
+  const closeModal = () => {
+    setShow(['none']);
   }
-
-  render() {
-
-    const background = this.state.image;
-
+  const showThumbs = () => {
+    console.log('hovering');
     return (
-      <div>
-
-      <div style={{
-        position: 'relative',
-        backgroundColor: background,
-        width: 200,
-        height: 225,
-      }} onClick={() => {
-        console.log('clicked');
-      }}>
-
-      <Star style={{
-        position: 'absolute',
-        top: 10,
-        right: 10,
-      }}
-      onClick={() => {
-        console.log('star clicked')
-        }}/>
-
-      </div>
-        <div style={{
-        position: 'relative',
-        bottom: 0,
-        backgroundColor: 'gray',
-        width: 200,
-        height: 100,
-        alignItems: 'bottom',
-      }}>
-      <h1 style={{
-        position: 'absolute',
-        left: 10,
-        fontSize: 14,
-      }}>{this.state.category}</h1>
-      <h1 style={{
-        position: 'absolute',
-        right: 10,
-        bottom: 10,
-        fontSize: 14,
-      }}>{this.state.price}</h1>
-      </div>
-      <RelatedModal/>
-      </div>
+    <div><RelatedThumbs/></div>
     )
   }
+
+  return (
+    <div>
+      <div onMouseEnter={() => {console.log('mouse over!')}} onMouseLeave={() => {console.log('mouse left')}}
+      style={{ position: 'relative', backgroundColor: 'blue', width: 200, height: 225, zIndex: 1}} onClick={() => {
+      console.log('clicked picture')}}>
+      <Star style={{ position: 'absolute', top: 10, right: 10, zIndex: 2}} onClick={ () => {setShow(['block'])}}/>
+      </div>
+        <div style={{ position: 'relative', bottom: 0, backgroundColor: 'gray', width: 200, height: 100, alignItems: 'bottom'}}>
+          <h1 style={{ position: 'absolute', top: 0, left: 10, fontSize: 14}}>Category</h1>
+          <h1 style={{ position: 'absolute', top: 30, left: 10, fontSize: 14}}>$100.00</h1>
+          <h1 style={{ position: 'absolute', top: 15, left: 10, fontSize: 14}}>product</h1>
+      <div style={{ height: 20, width: 100, bottom: 10, left: 10, background: 'yellow', position: 'absolute'}}>Stars</div>
+      <RelatedModal/>
+      </div>
+    </div>
+  )
 }
+
+export default Card;
 
 
 // will be used to assemble individual product cards
