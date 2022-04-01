@@ -1,5 +1,5 @@
-import React from 'react';
-import SearchQA from './searchQA.jsx';
+import React from "react";
+import SearchQA from "./searchQA.jsx";
 
 export default class QA extends React.Component {
   constructor(props) {
@@ -8,9 +8,10 @@ export default class QA extends React.Component {
 
   render() {
     return (
-      <div>Questions  Answers
-        <SearchQA/>
+      <div>
+        Questions & Answers
+        <SearchQA />
       </div>
-    )
+    );
   }
-};
+}
