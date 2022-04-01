@@ -1,6 +1,8 @@
 const express = require("express");
 const path = require("path");
+
 const axios = require("axios");
+
 const morgan = require("morgan");
 
 const app = express();
@@ -15,6 +17,7 @@ app.use(morgan("dev"));
 //Overview
 
 const { Product } = require("../Database/db.js");
+
 
 const getProducts = function () {
   return Product.find();
