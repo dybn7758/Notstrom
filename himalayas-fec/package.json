@@ -19,7 +19,7 @@
     "nodemon": "^2.0.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-ionicons": "^1.5.7",
+    "react-ionicons": "^4.2.0",
     "recoil": "^0.6.1",
     "webpack": "^5.70.0",
     "webpack.config.js": "^0.0.0"
