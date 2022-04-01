@@ -1,19 +1,26 @@
 import React, { useEffect } from 'react';
 import RelatedProducts from './Components/Related Products/RelatedProducts.jsx';
+
+import Overview from './Components/Overview/Overview.jsx';
+
 import QA from './Components/Question_Answers/qa.jsx';
+
+
+ export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 import axios from 'axios';
 import {listQuestions, listProducts, listReviews} from './lib/searchAPI.js';
-import {RecoilRoot, atom, selector, useRecoilState, userRecoilValue} from 'recoil';
-
-//========== Atoms ===========
-
-export const show = atom({
-  key: 'show',
-  default: ['none'],
-})
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  userRecoilValue,
+} from 'recoil';
 
 var App = () => {
-
 
   //do out API calls to retrieve data using useEffect(callback, [])
     //pass the second argument so it doesnt create an infinite loop everytime this component renders
@@ -22,12 +29,13 @@ var App = () => {
   }, []);
 
   return (
+    <RecoilRoot>
       <div> Himalayas For The Win
-        <RecoilRoot>
-          <RelatedProducts/>
-          <QA/>
-        </RecoilRoot>
+        <Overview />
+        <RelatedProducts/>
+        <QA/>
       </div>
+    </RecoilRoot>
   )
 };
 
