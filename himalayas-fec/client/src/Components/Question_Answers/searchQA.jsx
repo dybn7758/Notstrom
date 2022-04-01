@@ -3,6 +3,8 @@ import axios from 'axios';
 import SearchList from './searchList.jsx';
 // import sampleQa from '.../sampleQA.js';
 import sampleQa from './sampleQA.js';
+import {atom, useRecoilState, selector, userRecoilValue} from 'recoil';
+// import {productQ} from ''
 
 export default class SearchQA extends React.Component {
   constructor(props) {
@@ -14,8 +16,10 @@ export default class SearchQA extends React.Component {
   }
 
   onSearch(search) {
-    this.setState({search});
-    console.log(this.state.search)
+    // this.setState({search});
+    // console.log(this.state.search)
+// console.log(useRecoilState({productQ}))
+
   }
 
   render() {
