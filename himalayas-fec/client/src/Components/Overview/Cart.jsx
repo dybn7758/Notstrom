@@ -2,7 +2,9 @@ import React from 'react';
 
 
 const Cart = (props) => {
-  return <div></div>
+  return (
+    <button type="button">ADD TO CART</button>
+  )
 }
 
 

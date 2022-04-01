@@ -16,6 +16,11 @@ const ProductInformation = (props) => {
       <div id="overview">
         <p>Product Overview Here</p>
       </div>
+      <div id="share" >
+        <span>Facebook Icon</span>
+        <span>Twitter Icon</span>
+        <span>Pintrest Icon</span>
+      </div>
     </div>
 
   )
@@ -55,3 +60,4 @@ export default ProductInformation;
 //5.slogan
 //6.description
 //7. overview
+//8. share links

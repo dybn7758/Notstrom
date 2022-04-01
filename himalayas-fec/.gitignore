@@ -24,3 +24,5 @@ yarn-error.log*
 
 client/dist/bundle.js
 client/dist/bundle.js.map
+
+client/src/config/config.js

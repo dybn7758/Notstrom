@@ -17,7 +17,7 @@ import QA from './Components/Question_Answers/qa.jsx';
       <div> Himalayas For The Win
         <Overview />
         <RelatedProducts/>
-        {/*<QA/>*/}
+        <QA/>
       </div>
     )
   }

@@ -5,24 +5,7 @@ import ProductInformation from './ProductInformation.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import Cart from './Cart.jsx';
 
-class Overview extends React.Component(props) {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: null
-    }
-
-  //   const getStyles = (currentProduct) => {
-  //     axios.get(`products/${currentProduct}/styles`)
-  //     .then(stylesData => {
-
-  //     }
-  //   }
-
-   }
-
-
-  render() {
+const Overview = (props) => {
 
     return (
       <div className="overview">
@@ -35,7 +18,6 @@ class Overview extends React.Component(props) {
     )
   }
 
-}
 
 
 export default Overview;
