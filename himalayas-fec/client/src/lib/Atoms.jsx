@@ -30,7 +30,7 @@ export const productResponse = () => {
 export const selectedProductId = atom({
   key: 'selectedProductId',
   default: '',
-})
+});
 
     // Selector function to grab selected product ID questions
 export const productQuestionsSelector = selector({

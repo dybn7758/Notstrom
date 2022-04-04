@@ -11,9 +11,16 @@ var SearchQA = () => {
   //retrieve the current selected product
   const specifiedProductID = useRecoilValue(productQuestionsSelector);
 
-  let onSearch = (search) => {
+
+  const onSearch = (search) => {
     search.preventDefault();
+    //based on the searched
   };
+
+  const displayQuestions = () => {
+
+  };
+
 
   return(
     <div id="search-qa">
@@ -23,7 +30,7 @@ var SearchQA = () => {
       </form>
       <div id="qa">
         {specifiedProductID.map((entry, i) => {
-
+          console.log(entry, i)
           return <SearchList key={i} entries={entry}/>}
         )}
       </div>
