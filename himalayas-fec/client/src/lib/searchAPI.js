@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const serverUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/${CAMPUS_CODE}`
 
+
 var axiosGet = (url) => {
   let options = {
     headers: {'Authorization': API_KEY},
@@ -14,7 +15,8 @@ var axiosGet = (url) => {
   //Can chain more promises to the API call if you want to set state after invocation
   //Don't change the setup here because it will affect other API calls.
   return axios(options)
-    .then((data) => {console.log('Data received', data); return data})
+    .then((data) => {
+      console.log('Data received', data); return data})
     .catch(err => {console.log('Error from API', err)});
 }
 
@@ -45,7 +47,14 @@ var listReviews = (productId, count, page) => {
   return axiosGet(parameterURL);
 }
 
+// ------------- API Related Products ---------------
+var relatedProducts = (product_id) => {
+  let relatedEndpoint = `${serverUrl}/products/${product_id}/related`
+
+  return axiosGet(relatedEndpoint);
+}
+
 //Will need to add CART API get later on...
 
 
-export {listQuestions, listProducts, listReviews};
+export {listQuestions, listProducts, listReviews, relatedProducts};

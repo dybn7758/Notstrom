@@ -1,5 +1,5 @@
 import React from 'react';
-import {atom, selector, useRecoilState, userRecoilValue} from 'recoil';
+import {atom, selector} from 'recoil';
 const apiCalls = require('./searchAPI.js');
 
 //========== Atoms ===========
@@ -10,15 +10,33 @@ export const show = atom({
   default: ['none'],
 })
 
-// ======= Product image ===== getting all data rn
-export const imageUrl = atom({
-  key: 'url',
+// ======= Product Data Object =====
+
+export const dataObj = atom({
+  key: 'dataObj',
   default: apiCalls.listProducts()
-      .then((data) => {
-        console.log(data, 'data in the atom')
-      })
-      .catch((error) => {
-        console.log(error, 'sucks to suck')
+    .then((data) => {
+      console.log(data, 'atom data');
+    })
+    .catch ((error) => {
+      console.log('error');
     })
 })
 // const [imageValue, setImage] = useRecoilState(imageUrl);
+
+export const relatedProductIDs = atom({
+  key: 'related',
+  default: apiCalls.relatedProducts(37311)
+  .then((data) => {
+    console.log(data, 'related data');
+  })
+  .catch ((error) => {
+    console.log('error');
+  })
+})
+
+export const productDataArray = atom({
+  key: 'productDataArray',
+  default: [],
+})
+
