@@ -11,9 +11,9 @@ import {
 
 ReactDOM.render(
   <RecoilRoot>
-    {/* <React.Suspense> */}
+    <React.Suspense fallback={<div>testing</div>}>
       <App />
-    {/* </React.Suspense> */}
+    </React.Suspense>
   </RecoilRoot>,
   document.getElementById('root')
 );

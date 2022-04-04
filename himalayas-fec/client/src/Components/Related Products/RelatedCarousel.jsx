@@ -1,18 +1,19 @@
 import React from 'react';
 import RelatedCard from './RelatedCard.jsx';
 import {ArrowBackCircle, ArrowForwardCircle} from 'react-ionicons';
+import {productQ} from '../../App.jsx';
+import {useRecoilValue, useRecoilState} from 'recoil';
 
 const RelatedCarousel = () => {
+  let [prod, setProd] = useRecoilState(productQ);
 
   return (
     <div style={{width: 1000, height: 350, background: 'lightgray', padding: 5, overflow: 'hidden'}}>
       <ArrowBackCircle style={{position: 'relative', top: '50%', right: '5%', zIndex: 5}}onClick={()=>{console.log('this')}}/>
-        <RelatedCard/>
-        <div style={{float: 'left', position: 'relative', height: 325, width: 200, background: 'black', margin: 10}}></div>
-        <div style={{float: 'left', position: 'relative', height: 325, width: 200, background: 'black', margin: 10}}></div>
-        <div style={{float: 'left', position: 'relative', height: 325, width: 200, background: 'black', margin: 10}}></div>
-        <div style={{float: 'left', position: 'relative', height: 325, width: 200, background: 'black', margin: 10}}></div>
-        <div style={{float: 'left', position: 'relative', height: 325, width: 200, background: 'black', margin: 10}}></div>
+        {prod.map((value, index) => {
+          console.log(value, index, 'inside map');
+          return <RelatedCard key={index} />
+        })}
       <ArrowForwardCircle style={{position: 'relative', top: '50%', right: 10, zIndex: 5}}onClick={()=>{console.log('that')}}/>
     </div>
   )
