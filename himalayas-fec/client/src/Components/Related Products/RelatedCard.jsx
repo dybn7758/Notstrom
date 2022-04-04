@@ -21,7 +21,7 @@ const RelatedCard = () => {
   }
 
   return (
-    <div style={{float: 'left', position: 'relative', height: 325, width: 200, margin: 10}}>
+    <div style={{float: 'left', position: 'relative', height: 325, width: 200, margin: 10}}>{}
       <div onMouseEnter={() => {console.log('mouse over!')}} onMouseLeave={() => {console.log('mouse left')}}
       style={{ position: 'relative', backgroundColor: 'blue', width: 200, height: 225, zIndex: 1}} onClick={() => {
       console.log('clicked picture')}}>
