@@ -97,10 +97,10 @@ console.log(setPageView, page);
       <div>
         {" "}
         Himalayas For The Win
-        <Overview />
-        {/* <RelatedProducts /> */}
-        <QA />
-        <Reviews />
+          <Overview />
+          <RelatedProducts />
+          <QA />
+          <Reviews />
       </div>
   );
 };

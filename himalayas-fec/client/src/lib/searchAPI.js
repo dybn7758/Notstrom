@@ -1,4 +1,4 @@
-import { API_KEY, CAMPUS_CODE } from "../config/config.js";
+import { API_KEY, CAMPUS_CODE } from "../config.js";
 import axios from "axios";
 
 const serverUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/${CAMPUS_CODE}`;
