@@ -80,44 +80,19 @@ console.log(setPageView, page);
     }
   };
 
+  // return (
+  //   <div className='nav'>
+  //     <span className='logo' onClick={() => {changeView('main');}}>Hima-layers
+  //     </span>
+  //     <span className='searchbar'>
+  //       <input type='search' placeholder='Product search...' onChange={() => {console.log('hi')}}></input>
+  //     </span>
+
+  //     <div className='main'>{changeView('main')}</div>
+  //   </div>
+  // )
+
   return (
-    <div className='nav'>
-      <span className='logo' onClick={() => {changeView('main');}}>Hima-layers
-      </span>
-      <span className='searchbar'>
-        <input type='search' placeholder='Product search...' onChange={() => {console.log('hi')}}></input>
-      </span>
-
-      <div className='main'>{changeView('main')}</div>
-    </div>
-  )
-
-
-  // if (pageView === 'main') {
-  //   return (
-  //     <table>
-  //       <tbody>
-  //       {prod.map((product, i) => {
-  //         return (
-  //           <tr key = {i}>
-  //             <td value = {product.id} onClick={(e) => {console.log(e.target.attributes.value.value)}}>{product.name}</td>
-  //             <td>{product.description}</td>
-  //           </tr>
-  //         )
-  //       })}
-  //       </tbody>
-  //     </table>
-  //   )
-  // } else {
-  //   return (
-  //       <div> Himalayas For The Win
-  //         <RelatedProducts/>
-  //         <QA/>
-  //       </div>
-  //   )
-  // }
-  return (
-    <RecoilRoot>
       <div>
         {" "}
         Himalayas For The Win
@@ -126,7 +101,6 @@ console.log(setPageView, page);
         <QA />
         <Reviews />
       </div>
-    </RecoilRoot>
   );
 };
 

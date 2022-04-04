@@ -14,8 +14,8 @@ var SearchQA = () => {
     const product = get(productQ);
     console.log('inside selector', product);
     return product.data;
-  }
-})
+    }
+  })
 
 //retrieve the current selected product
   const specifiedProductID = useRecoilValue(productSelect);
@@ -27,6 +27,7 @@ var SearchQA = () => {
     search.preventDefault();
         // console.log(this.state.search)
     console.log(useRecoilState(productQ))
+  }
 
   return(
     <div id="search-qa">
