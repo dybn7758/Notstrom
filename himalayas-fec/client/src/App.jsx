@@ -42,17 +42,11 @@ var App = () => {
   //Sets the product detail page
   var onClickProduct = (productID) => {
     setPageView(productID);
-    return (
-      <div> Himalayas For The Win
-        <RelatedProducts/>
-        <QA/>
-      </div>
-  )
   };
 
   var changeView = (page) => {
     setPageView(page);
-console.log(setPageView, page);
+
     if (pageView === 'main') {
       return (
         <table>
