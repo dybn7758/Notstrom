@@ -27,8 +27,8 @@ var axiosGet = (url) => {
 var listQuestions = (productId, count, page) => {
   //Might not need the count and page parameters yet...
   //if needed, adjust the parameterURL to include these
-  // let parameterURL = `${serverUrl}/qa/questions?product_id=${productId}`;
-  // return axiosGet(parameterURL);
+  let parameterURL = `${serverUrl}/qa/questions?product_id=${productId}`;
+  return axiosGet(parameterURL);
 };
 
 //--------------- API Products -----------------

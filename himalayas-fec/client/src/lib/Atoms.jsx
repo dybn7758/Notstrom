@@ -1,5 +1,5 @@
 import React from 'react';
-import {atom, selector} from 'recoil';
+import {atom, selector, useRecoilValue} from 'recoil';
 const apiCalls = require('./searchAPI.js');
 
 //========== Atoms ===========
@@ -10,33 +10,35 @@ export const show = atom({
   default: ['none'],
 })
 
-// ======= Product Data Object =====
+// ======= Product Data Object ===================
 
-export const dataObj = atom({
-  key: 'dataObj',
-  default: apiCalls.listProducts()
-    .then((data) => {
-      console.log(data, 'atom data');
-    })
-    .catch ((error) => {
-      console.log('error');
-    })
+export const productSelector = selector({
+  key: 'productSelector',
+  get: async ({get}) => {
+    const response = await apiCalls.listProducts();
+    return response;
+  },
 })
-// const [imageValue, setImage] = useRecoilState(imageUrl);
+ //this can be moved to your componenets page -----------------------------
+export const productResponse = () => {
+  const data = useRecoilValue(productSelector);
+  return data.data;
+}
+// ================================================
 
-export const relatedProductIDs = atom({
-  key: 'related',
-  default: apiCalls.relatedProducts(37311)
-  .then((data) => {
-    console.log(data, 'related data');
-  })
-  .catch ((error) => {
-    console.log('error');
-  })
+// ========= State of current selected value ================
+export const selectedProductId = atom({
+  key: 'selectedProductId',
+  default: '',
 })
 
-export const productDataArray = atom({
-  key: 'productDataArray',
-  default: [],
-})
-
+    // Selector function to grab selected product ID questions
+export const productQuestionsSelector = selector({
+  key: 'productQuestionsSelector',
+  get: async({get}) => {
+    const productID = await get(selectedProductId);
+    const response = await apiCalls.listQuestions(productID);
+    return response.data.results;
+  }
+});
+// ===========================================================
