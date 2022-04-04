@@ -14,7 +14,8 @@ const RelatedModal = () => {
       background: 'gray',
       height: 300,
       width: 300,
-      position: 'fixed', left: '50%', top: '50%'
+      position: 'fixed', left: '50%', top: '50%',
+      zIndex: 10,
     }}>
     <RelatedTable/>
       <button style={{

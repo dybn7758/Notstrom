@@ -1,5 +1,5 @@
 import React from 'react';
-import {atom, selector} from 'recoil';
+import {atom, selector, useRecoilValue} from 'recoil';
 const apiCalls = require('./searchAPI.js');
 
 //========== Atoms ===========
@@ -9,34 +9,19 @@ export const show = atom({
   key: 'show',
   default: ['none'],
 })
-
 // ======= Product Data Object =====
 
-export const dataObj = atom({
-  key: 'dataObj',
-  default: apiCalls.listProducts()
-    .then((data) => {
-      console.log(data, 'atom data');
-    })
-    .catch ((error) => {
-      console.log('error');
-    })
-})
-// const [imageValue, setImage] = useRecoilState(imageUrl);
-
-export const relatedProductIDs = atom({
-  key: 'related',
-  default: apiCalls.relatedProducts(37311)
-  .then((data) => {
-    console.log(data, 'related data');
-  })
-  .catch ((error) => {
-    console.log('error');
-  })
+export const productSelector = selector({
+  key: 'productSelector',
+  get: async ({get}) => {
+    const response = await apiCalls.listProducts()
+    return response;
+  },
 })
 
-export const productDataArray = atom({
-  key: 'productDataArray',
-  default: [],
-})
+export const productResponse = () => {
+  const data = useRecoilValue(productSelector);
+  return data.data;
+}
+
 
