@@ -7,7 +7,7 @@ import sampleQa from './Components/Question_Answers/sampleQA.js';
 import sampleMain from '../src/Components/Question_Answers/sampleMain.js';
 import axios from "axios";
 import { listQuestions, listProducts, listReviews } from "./lib/searchAPI.js";
-import {productResponse} from './lib/Atoms.jsx';
+import {productResponse, selectedProductId} from './lib/Atoms.jsx';
 import {
   atom,
   selector,
@@ -26,13 +26,13 @@ const catalog = atom({
 })
 
 var App = () => {
-  //do out API calls to retrieve data using useEffect(callback, [])
-    //pass the second argument so it doesnt create an infinite loop everytime this component renders
+
   let [prod, setProd] = useRecoilState(productQ);
   let [pageView, setPageView] = useRecoilState(catalog);
 
   const productData = productResponse();
 
+  let [selectedProductID, setCurrentProductId] = useRecoilState(selectedProductId)
   //Retrieves data from the API and sets the products to state to render
   //pass the second argument so it doesnt create an infinite loop everytime this component renders
   useEffect(() => {
@@ -40,12 +40,13 @@ var App = () => {
   }, []);
 
   //Sets the product detail page
-  var onClickProduct = (productID) => {
-    setPageView(productID);
-  };
+  // var onClickProduct = (productID) => {
+  //   setPageView(productID);
+  // };
 
   var changeView = (page) => {
     setPageView(page);
+    setCurrentProductId(page);
 
     if (pageView === 'main') {
       return (
@@ -54,7 +55,7 @@ var App = () => {
           {prod.map((product, i) => {
             return (
               <tr key = {i}>
-                <td value = {product.id} onClick={(e) => {console.log(e.target.attributes.value.value); changeView('product')}}>{product.name}</td>
+                <td value = {product.id} onClick={(e) => {changeView(e.target.attributes.value.value)}}>{product.name}</td>
                 <td>{product.description}</td>
               </tr>
             )
