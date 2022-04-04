@@ -41,7 +41,7 @@ var listProducts = (count, page) => {
 };
 
 //--------------- API Reviews -----------------
-var listReviews = (productId, count, page) => {
+var listReviews = (productId) => {
   //Might not need the count and page parameters yet...
   //if needed, adjust the parameterURL to include these
   let parameterURL = `${serverUrl}/reviews/?product_id=${productId}`;

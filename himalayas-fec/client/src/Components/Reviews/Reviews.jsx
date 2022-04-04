@@ -1,5 +1,6 @@
 import React from "react";
 import Axios from "axios";
+import { listReviews } from "../../lib/searchAPI.js";
 import SingleReview from "./SingleReview.jsx";
 
 class Reviews extends React.Component {
