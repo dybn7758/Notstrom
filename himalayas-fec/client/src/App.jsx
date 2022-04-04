@@ -71,13 +71,13 @@ console.log(setPageView, page);
     } else if (pageView !== 'main') {
       return (
         <div>
-        {" "}
-       Himalayas For The Win
-        <Overview />
+          {" "}
+          Himalayas For The Win
+          <Overview />
           <RelatedProducts />
-                  <QA />
-            <Reviews />
-              </div>
+          <QA />
+          <Reviews />
+        </div>
       )
     }
   };

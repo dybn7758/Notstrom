@@ -56,6 +56,13 @@ var relatedProducts = (product_id) => {
   return axiosGet(relatedEndpoint);
 };
 
+// ----------- API Styles -------------------------
+var productStyles = (product_id) => {
+  let stylesEndpoint = `${serverUrl}/products/${product_id}/styles`;
+
+  return axiosGet(stylesEndpoint);
+}
+
 //Will need to add CART API get later on...
 
-export { listQuestions, listProducts, listReviews, relatedProducts };
+export { listQuestions, listProducts, listReviews, relatedProducts, productStyles };

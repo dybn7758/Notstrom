@@ -6,14 +6,6 @@ import {useRecoilState, useRecoilValue} from 'recoil';
 
 
 const RelatedProducts = () => {
-// const [productsValue, setProducts] = useRecoilValue(dataObj);
-// console.log(productsValue);
-
-// const [relatedValue, setRelated] = useRecoilValue(relatedProductIDs);
-
-// const [productDataArrayValue, setProductDataArray] = useRecoilValue(productDataArray);
-// setProductDataArray(dataObj);
-// console.log('something', productDataArrayValue);
 
   return (
         <div>
