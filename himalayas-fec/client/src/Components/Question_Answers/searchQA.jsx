@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import axios from 'axios';
 import SearchList from './searchList.jsx';
-// import sampleQa from '.../sampleQA.js';
 import sampleQa from './sampleQA.js';
 import {atom, useRecoilState, selector, useRecoilValue} from 'recoil';
 import {productQ} from '../../App.jsx';
@@ -27,7 +26,7 @@ var SearchQA = () => {
     search.preventDefault();
         // console.log(this.state.search)
     console.log(useRecoilState(productQ))
-
+  }
   return(
     <div id="search-qa">
       <form>
