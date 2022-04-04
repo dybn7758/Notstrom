@@ -3,7 +3,7 @@ import RelatedModal from './RelatedModal.jsx';
 import {Star} from 'react-ionicons';
 import RelatedThumbs from './RelatedThumbs.jsx';
 import {useRecoilState} from 'recoil';
-import {show} from '../../App.jsx';
+import {show} from '../../lib/Atoms.jsx';
 
 
 const Card = () => {
@@ -21,7 +21,7 @@ const Card = () => {
   }
 
   return (
-    <div>
+    <div style={{float: 'left', position: 'relative', height: 325, width: 200, margin: 10}}>
       <div onMouseEnter={() => {console.log('mouse over!')}} onMouseLeave={() => {console.log('mouse left')}}
       style={{ position: 'relative', backgroundColor: 'blue', width: 200, height: 225, zIndex: 1}} onClick={() => {
       console.log('clicked picture')}}>
