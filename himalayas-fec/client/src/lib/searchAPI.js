@@ -49,6 +49,13 @@ var listReviews = (productId, count, page) => {
   return axiosGet(parameterURL);
 };
 
+// ------------- API Related Products ---------------
+var relatedProducts = (product_id) => {
+  let relatedEndpoint = `${serverUrl}/products/${product_id}/related`;
+
+  return axiosGet(relatedEndpoint);
+};
+
 //Will need to add CART API get later on...
 
-export { listQuestions, listProducts, listReviews };
+export { listQuestions, listProducts, listReviews, relatedProducts };

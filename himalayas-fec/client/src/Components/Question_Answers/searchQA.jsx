@@ -27,7 +27,6 @@ export default class SearchQA extends React.Component {
         </form>
         <div id="qa">
           {this.state.list.map((entry, i) => {
-
             return <SearchList key={i} entries={entry}/>}
           )}
         </div>

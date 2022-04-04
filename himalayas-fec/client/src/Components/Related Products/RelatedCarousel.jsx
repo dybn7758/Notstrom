@@ -2,19 +2,83 @@
 // import RelatedCard from './RelatedCard.jsx';
 // import {ArrowBackCircle, ArrowForwardCircle} from 'react-ionicons';
 
-// const RelatedCarousel = () => {
-
-//   return (
-//     <div style={{width: '100%', height: 300, background: 'lightgray', padding: 5, overflow: 'hidden'}}>
-//       <ArrowBackCircle style={{position: 'fixed', top: '50%', left: 10}}onClick={()=>{console.log('this')}}/>
-//         <div style={{float: 'left', position: 'relative', height: 300, width: 200, background: 'black', margin: 10}}><RelatedCard/></div>
-//         <div style={{float: 'left', position: 'relative', height: 300, width: 200, background: 'black', margin: 10}}></div>
-//         <div style={{float: 'left', position: 'relative', height: 300, width: 200, background: 'black', margin: 10}}></div>
-//         <div style={{float: 'left', position: 'relative', height: 300, width: 200, background: 'black', margin: 10}}></div>
-//       <ArrowForwardCircle style={{position: 'fixed', top: '50%', right: 10}}onClick={()=>{console.log('that')}}/>
-//     </div>
-//   )
-// }
+const RelatedCarousel = () => {
+  return (
+    <div
+      style={{
+        width: 1000,
+        height: 350,
+        background: "lightgray",
+        padding: 5,
+        overflow: "hidden",
+      }}
+    >
+      <ArrowBackCircle
+        style={{ position: "relative", top: "50%", right: "5%", zIndex: 5 }}
+        onClick={() => {
+          console.log("this");
+        }}
+      />
+      <RelatedCard />
+      <div
+        style={{
+          float: "left",
+          position: "relative",
+          height: 325,
+          width: 200,
+          background: "black",
+          margin: 10,
+        }}
+      ></div>
+      <div
+        style={{
+          float: "left",
+          position: "relative",
+          height: 325,
+          width: 200,
+          background: "black",
+          margin: 10,
+        }}
+      ></div>
+      <div
+        style={{
+          float: "left",
+          position: "relative",
+          height: 325,
+          width: 200,
+          background: "black",
+          margin: 10,
+        }}
+      ></div>
+      <div
+        style={{
+          float: "left",
+          position: "relative",
+          height: 325,
+          width: 200,
+          background: "black",
+          margin: 10,
+        }}
+      ></div>
+      <div
+        style={{
+          float: "left",
+          position: "relative",
+          height: 325,
+          width: 200,
+          background: "black",
+          margin: 10,
+        }}
+      ></div>
+      <ArrowForwardCircle
+        style={{ position: "relative", top: "50%", right: 10, zIndex: 5 }}
+        onClick={() => {
+          console.log("that");
+        }}
+      />
+    </div>
+  );
+};
 
 // export default RelatedCarousel;
 // // testing
