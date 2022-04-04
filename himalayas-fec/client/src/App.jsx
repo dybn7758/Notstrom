@@ -5,12 +5,6 @@ import Overview from './Components/Overview/Overview.jsx';
 
 import QA from './Components/Question_Answers/qa.jsx';
 
-
- export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-import axios from 'axios';
 import {listQuestions, listProducts, listReviews} from './lib/searchAPI.js';
 import {
   RecoilRoot,
@@ -19,6 +13,11 @@ import {
   useRecoilState,
   userRecoilValue,
 } from 'recoil';
+
+export const show = atom({
+  key: 'show',
+  default: ['none'],
+})
 
 var App = () => {
 
