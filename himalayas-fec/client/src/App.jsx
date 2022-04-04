@@ -1,15 +1,7 @@
 import React, { useEffect } from 'react';
 import RelatedProducts from './Components/Related Products/RelatedProducts.jsx';
-
 import Overview from './Components/Overview/Overview.jsx';
-
 import QA from './Components/Question_Answers/qa.jsx';
-
-
- export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 import axios from 'axios';
 import {listQuestions, listProducts, listReviews} from './lib/searchAPI.js';
 import {
