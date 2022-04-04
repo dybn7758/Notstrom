@@ -1,16 +1,21 @@
 import React from 'react';
 import RelatedCarousel from './RelatedCarousel.jsx';
 import RelatedOutfits from './RelatedOutfits.jsx';
-import axios from 'axios';
-import colorString from '../../App.jsx';
-
+import {dataObj, relatedProductIDs, productDataArray} from '../../lib/Atoms.jsx';
+import {useRecoilState, useRecoilValue} from 'recoil';
 
 
 const RelatedProducts = () => {
 
+// const [productsValue, setProducts] = useRecoilValue(dataObj);
+// console.log(productsValue);
 
-    // const [color, setString] = useRecoilState(colorString);
-    // this.getData = this.getData.bind(this);
+// const [relatedValue, setRelated] = useRecoilValue(relatedProductIDs);
+
+// const [productDataArrayValue, setProductDataArray] = useRecoilValue(productDataArray);
+// setProductDataArray(dataObj);
+// console.log('something', productDataArrayValue);
+
   return (
         <div>
           <RelatedCarousel/>
