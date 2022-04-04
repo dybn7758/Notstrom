@@ -45,3 +45,43 @@
 // //Q & A
 
 // //Related Products
+
+// //make a model using your schema
+
+// //Overview
+// const Product = mongoose.model('Product', productSchema);
+
+// //Reviews
+
+// //Q&A
+
+// //Related Products
+// =======
+// //Reviews
+
+// //Q&A
+
+// //Related Products
+
+// //export your model
+
+// //Product Detail
+// module.exports.Product = Product;
+// >>>>>>> master
+
+// //Reviews
+
+// //Q & A
+
+// //export your model
+
+// //Product Detail
+// module.exports.Product = Product;
+
+// //Reviews
+
+// //Q & A
+
+// //Related Products
+
+// //Related Products
