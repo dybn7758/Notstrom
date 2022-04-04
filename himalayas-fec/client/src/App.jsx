@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
-import RelatedProducts from './Components/Related Products/RelatedProducts.jsx';
-import QA from './Components/Question_Answers/qa.jsx';
-import axios from 'axios';
-import {listQuestions, listProducts, listReviews} from './lib/searchAPI.js';
+
+import React, { useEffect } from "react";
+import RelatedProducts from "./Components/Related Products/RelatedProducts.jsx";
+import Overview from "./Components/Overview/Overview.jsx";
+import QA from "./Components/Question_Answers/qa.jsx";
 import sampleQa from './Components/Question_Answers/sampleQA.js';
 import sampleMain from '../src/Components/Question_Answers/sampleMain.js';
+import axios from "axios";
+import { listQuestions, listProducts, listReviews } from "./lib/searchAPI.js";
 import {
   atom,
   selector,
@@ -23,7 +25,6 @@ const catalog = atom({
 })
 
 var App = () => {
-
   //do out API calls to retrieve data using useEffect(callback, [])
     //pass the second argument so it doesnt create an infinite loop everytime this component renders
   let [prod, setProd] = useRecoilState(productQ);
@@ -32,6 +33,7 @@ var App = () => {
   console.log('what is prod?', prod);
 
   //Retrieves data from the API and sets the products to state to render
+  //pass the second argument so it doesnt create an infinite loop everytime this component renders
   useEffect(() => {
     listProducts()
       .then((data) => {setProd(data.data)})
@@ -114,6 +116,18 @@ console.log(setPageView, page);
   //       </div>
   //   )
   // }
+  return (
+    <RecoilRoot>
+      <div>
+        {" "}
+        Himalayas For The Win
+        <Overview />
+        {/* <RelatedProducts /> */}
+        <QA />
+        <Reviews />
+      </div>
+    </RecoilRoot>
+  );
 };
 
 export default App ;

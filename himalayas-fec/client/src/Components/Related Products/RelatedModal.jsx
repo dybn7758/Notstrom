@@ -1,29 +1,45 @@
-// when star icon is clicked on the carousel card
-  // open a modal
-    // title should be 'Comparing'
-    // the modal should compare clicked item to current item in product view
-      // values to compare should be
-import React from 'react';
+import React from "react";
+import RelatedCard from "./RelatedCard.jsx";
+import RelatedTable from "./RelatedTable.jsx";
+import { useRecoilState } from "recoil";
+import { show } from "../../lib/Atoms.jsx";
 
-export default class Modal extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+const RelatedModal = () => {
+  const [showValue, setShow] = useRecoilState(show);
 
-  render() {
   return (
-    <div className='modal'>
-      <div className='modal-content'>
-        <div className='modal-header'>
-          <h4 className='modal-title'>Modal Title</h4>
-        </div>
-        <div className='modal-body'>
-          This is Modal Content
-        </div>
-        <button className='button'>Close</button>
-      </div>
+    <div
+      style={{
+        display: showValue[0],
+        background: "gray",
+        height: 300,
+        width: 300,
+        position: "fixed",
+        left: "50%",
+        top: "50%",
+      }}
+    >
+      <RelatedTable />
+      <button
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: "50%",
+        }}
+        onClick={() => {
+          setShow(["none"]);
+        }}
+      >
+        Close
+      </button>
     </div>
-  )
+  );
+};
 
-}
-}
+export default RelatedModal;
+
+// // when star icon is clicked on the carousel card
+// // open a modal
+// // title should be 'Comparing'
+// // the modal should compare clicked item to current item in product view
+// // values to compare should be

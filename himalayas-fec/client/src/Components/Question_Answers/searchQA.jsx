@@ -27,7 +27,6 @@ var SearchQA = () => {
     search.preventDefault();
         // console.log(this.state.search)
     console.log(useRecoilState(productQ))
-  }
 
   return(
     <div id="search-qa">

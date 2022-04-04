@@ -1,17 +1,29 @@
-import React from 'react';
-import Card from './RelatedCard.jsx';
+import React from "react";
+import RelatedCarousel from "./RelatedCarousel.jsx";
+import RelatedOutfits from "./RelatedOutfits.jsx";
+import {
+  dataObj,
+  relatedProductIDs,
+  productDataArray,
+} from "../../lib/Atoms.jsx";
+import { useRecoilState, useRecoilValue } from "recoil";
 
-export default class RelatedProducts extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+const RelatedProducts = () => {
+  // const [productsValue, setProducts] = useRecoilValue(dataObj);
+  // console.log(productsValue);
 
-  render() {
+  // const [relatedValue, setRelated] = useRecoilValue(relatedProductIDs);
+
+  // const [productDataArrayValue, setProductDataArray] = useRecoilValue(productDataArray);
+  // setProductDataArray(dataObj);
+  // console.log('something', productDataArrayValue);
+
   return (
-      <div>
-        <Card/>
-      </div>
-    )
-  }
-}
+    <div>
+      <RelatedCarousel />
+      <RelatedOutfits />
+    </div>
+  );
+};
 
+export default RelatedProducts;
