@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-import React, { useEffect } from 'react';
-import RelatedProducts from './Components/Related Products/RelatedProducts.jsx';
-
-import Overview from './Components/Overview/Overview.jsx';
-
-import QA from './Components/Question_Answers/qa.jsx';
-
-import {listQuestions, listProducts, listReviews, listStyles} from './lib/searchAPI.js';
-=======
 import React, { useEffect } from "react";
 import RelatedProducts from "./Components/Related Products/RelatedProducts.jsx";
 import Overview from "./Components/Overview/Overview.jsx";
@@ -18,7 +8,6 @@ import sampleMain from '../src/Components/Question_Answers/sampleMain.js';
 import axios from "axios";
 import { listQuestions, listProducts, listReviews } from "./lib/searchAPI.js";
 import {productResponse, selectedProductId} from './lib/Atoms.jsx';
->>>>>>> master
 import {
   atom,
   selector,
@@ -26,11 +15,6 @@ import {
   useRecoilValue,
 } from 'recoil';
 
-<<<<<<< HEAD
-export const show = atom({
-  key: 'show',
-  default: ['none'],
-=======
 export const productQ = atom({
   key: 'productQ',
   default: sampleMain,
@@ -39,7 +23,6 @@ export const productQ = atom({
 const catalog = atom({
   key: 'catalog',
   default: 'main'
->>>>>>> master
 })
 
 var App = () => {

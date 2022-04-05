@@ -1,13 +1,13 @@
 import React from 'react';
+import { productResponse } from '../../lib/Atoms.jsx';
 
 
 const ProductInformation = (props) => {
 
-  var prod = props.products;
-  console.log('prod', prod[0]);
+  const productArray = productResponse();
+  console.log('pa', productArray);
+
   return (
-
-
 
     <div className="ProductInformation">
       <span id="rating">Rating: ***__</span>
