@@ -3,10 +3,10 @@ import RelatedModal from './RelatedModal.jsx';
 import {Star} from 'react-ionicons';
 import RelatedThumbs from './RelatedThumbs.jsx';
 import {useRecoilState} from 'recoil';
-import {show} from '../../App.jsx';
+import {show} from '../../lib/Atoms.jsx';
 
 
-const Card = () => {
+const RelatedCard = () => {
 
   const [showValue, setShow] = useRecoilState(show);
 
@@ -21,8 +21,8 @@ const Card = () => {
   }
 
   return (
-    <div>
-      <div onMouseEnter={() => {console.log('mouse over!')}} onMouseLeave={() => {console.log('mouse left')}}
+    <div style={{float: 'left', position: 'relative', height: 325, width: 200, margin: 10}}>{}
+      <div
       style={{ position: 'relative', backgroundColor: 'blue', width: 200, height: 225, zIndex: 1}} onClick={() => {
       console.log('clicked picture')}}>
       <Star style={{ position: 'absolute', top: 10, right: 10, zIndex: 2}} onClick={ () => {setShow(['block'])}}/>
@@ -38,40 +38,6 @@ const Card = () => {
   )
 }
 
-export default Card;
+export default RelatedCard;
 
-
-// will be used to assemble individual product cards
-
-
-// should include
-
-  // Should be clickable
-    // Should pass off to product detail page
-      // Modal?  Jump to top of page?
-
-  // Image
-    // primary image of the product from overview
-      // upon hover a sub-carousel should load on the bottom of the image
-        // there should be 4 sub-images in the sub-carousel
-          // they should be able to be left/right scrolled with buttons
-          // clicking a thumbnail should change preview image
-            // selected image should persist after hover off
-        // list should disappear on hover-off
-    // Favorite 'Star'
-
-  // Footer with
-    // Category
-    // Product Name
-    // Price
-      // pricing by style?
-      // if on sale, should strikethrough OG price, list new price after
-    // Star Rating System
-      // total rating out of 5
-      // should be reflected by 5 partially filled stars
-        // rating should be rounded to nearest quarter rating point
-      // if there are no reviews, no stars shoul appear
-
-// When a carousel item is 'favorited' it should be added to 'outfit'
-  // same design as the carousel
-    // rendered dynamically by click
+// onMouseEnter={() => {console.log('mouse over!')}} onMouseLeave={() => {console.log()}}

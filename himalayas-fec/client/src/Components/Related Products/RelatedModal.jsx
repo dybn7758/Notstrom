@@ -1,8 +1,8 @@
 import React from 'react';
 import RelatedCard from './RelatedCard.jsx';
 import RelatedTable from './RelatedTable.jsx';
-import {show} from '../../App.jsx';
 import {useRecoilState} from 'recoil';
+import {show} from '../../lib/Atoms.jsx';
 
 const RelatedModal = () => {
 
@@ -14,7 +14,8 @@ const RelatedModal = () => {
       background: 'gray',
       height: 300,
       width: 300,
-      position: 'fixed', left: '50%', top: '50%'
+      position: 'fixed', left: '50%', top: '50%',
+      zIndex: 10,
     }}>
     <RelatedTable/>
       <button style={{
