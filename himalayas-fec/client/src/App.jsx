@@ -52,7 +52,7 @@ var App = () => {
 
   var changeView = (page) => {
     setPageView(page);
-console.log(setPageView, page);
+// console.log(setPageView, page);
     if (pageView === 'main') {
       return (
         <table>
