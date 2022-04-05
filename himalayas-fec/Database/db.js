@@ -61,18 +61,6 @@
 // //Q&A
 
 // //Related Products
-=======
-// //Reviews
-
-// //Q&A
-
-// //Related Products
-
-// //export your model
-
-// //Product Detail
-// module.exports.Product = Product;
->>>>>>> master
 
 // //Reviews
 

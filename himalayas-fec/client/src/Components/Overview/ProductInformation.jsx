@@ -2,16 +2,21 @@ import React from 'react';
 
 
 const ProductInformation = (props) => {
+
+  var prod = props.products;
+  console.log('prod', prod[0]);
   return (
+
+
 
     <div className="ProductInformation">
       <span id="rating">Rating: ***__</span>
-      <h4 id="category">Category</h4>
-      <h3 id="title">Product Name</h3>
-      <p id="price">$10,000</p>
-      <p id="slogan">Product Slogan Here</p>
+      <h4 id="category">{props.products.category}</h4>
+      <h3 id="name">{props.products.name}</h3>
+      <p id="price">{props.products.default_price}</p>
+      <p id="slogan">{props.products.slogan}</p>
       <div id="description">
-        <p><b>description:</b> this will contain a few sentences describing the product</p>
+        <p>{props.products.description}</p>
       </div>
       <div id="overview">
         <p>Product Overview Here</p>

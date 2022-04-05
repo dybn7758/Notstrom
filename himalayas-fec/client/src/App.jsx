@@ -5,7 +5,7 @@ import Overview from './Components/Overview/Overview.jsx';
 
 import QA from './Components/Question_Answers/qa.jsx';
 
-import {listQuestions, listProducts, listReviews} from './lib/searchAPI.js';
+import {listQuestions, listProducts, listReviews, listStyles} from './lib/searchAPI.js';
 import {
   RecoilRoot,
   atom,
