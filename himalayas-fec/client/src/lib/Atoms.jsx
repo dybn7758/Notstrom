@@ -9,13 +9,33 @@ export const show = atom({
   key: 'show',
   default: ['none'],
 })
-// ========== Compare Style ID ============== not in use yet
+
+// =========== Products ==================== all base products
+
+export const products = atom({
+  key: 'products',
+  default: [],
+})
+
+// ========== Compare Style ID ============== all styles by product id
 export const styles = atom({
   key: 'styles',
   default: [],
 })
 
-// =========== Current/Default ID ========= issues with 10, 12, 14
+//================ Related IDs ===============
+export const relatedIDs = atom({
+  key: 'styles',
+  default: [],
+})
+
+// =============== Category =================== individual category name
+export const category = atom({
+  key: 'category',
+  default: '',
+})
+
+// =========== Current/Default ID ========= issues with 10, 12, 14 (no image available)
 export const currentID = atom({
   key: 'currentID',
   default: 37311,
@@ -74,6 +94,26 @@ export const relatedResponse = () => {
   return data.data;
 }
 
+//============= Related Products Selector ========
+
+export const relatedProductsSelector = selector({
+  key: 'relatedProductsSelector',
+  get: async ({get}) => {
+    const [currentIDValue, setCurrentID] = useRecoilState(currentID);
+    const relatedArray = relatedResponse(); // array of related product ids
+    console.log(relatedArray, 'response')
+    // return response;
+  }
+})
+
+export const allRelatedProducts = () => {
+  const data = useRecoilValue(relatedProductsSelector);
+  return data;
+}
+
+
+
+
 //================ Product Styles ============ return product styles by product id
 
 export const productStyles = selector({
@@ -89,4 +129,6 @@ export const stylesResponse = () => {
   const data = useRecoilValue(productStyles);
   return data.data.results;
 }
+
+
 

@@ -70,6 +70,23 @@ var productStyles = (product_id) => {
   return axiosGet(stylesEndpoint);
 }
 
+// ----------- Double Whammy --------------------
+
+// var doubleWhammy = (product_id) => {
+//   const promises = [`${serverUrl}/products/${product_id}/styles`, `${serverUrl}/products/${product_id}`];
+
+//   Promise.all(promises)
+//   .then((responses) => {
+//     const results1 = axiosGet(promises[0]);
+//     const results2 = axiosGet(promises[1]);
+//     console.log(results1, 'waiting ')
+//     return (results1, results2)
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
+// };
+
 
 
 //Will need to add CART API get later on...
