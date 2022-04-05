@@ -7,7 +7,7 @@ import sampleQa from './Components/Question_Answers/sampleQA.js';
 import sampleMain from '../src/Components/Question_Answers/sampleMain.js';
 import axios from "axios";
 import { listQuestions, listProducts, listReviews } from "./lib/searchAPI.js";
-import {productResponse} from './lib/Atoms.jsx';
+import {productResponse, relatedIDs, relatedResponse} from './lib/Atoms.jsx';
 import {
   atom,
   selector,
@@ -30,6 +30,8 @@ var App = () => {
     //pass the second argument so it doesnt create an infinite loop everytime this component renders
   let [prod, setProd] = useRecoilState(productQ);
   let [pageView, setPageView] = useRecoilState(catalog);
+  const [relatedIDArray, setRelatedIDArray] = useRecoilState(relatedIDs);
+  setRelatedIDArray(relatedResponse());
 
   const productData = productResponse();
 
