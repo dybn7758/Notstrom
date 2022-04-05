@@ -22,6 +22,7 @@ export const productSelector = selector({
 //this can be moved to your componenets page -----------------------------
 export const productResponse = () => {
   const data = useRecoilValue(productSelector);
+  console.log("💔", data);
   return data.data;
 };
 // ================================================
@@ -48,9 +49,30 @@ export const productQuestionsSelector = selector({
 export const productReviewsSelector = selector({
   key: "productReviewsSelector",
   get: async ({ get }) => {
-    const productID = await get(selectedProductId);
-    const response = await apiCalls.listReviews(productID);
-    return response.data.results;
+    try {
+      const productID = await get(selectedProductId);
+      let page = 1;
+      let count = 2;
+      const response = await apiCalls.listReviews(productID, page, count);
+      return response.data.results;
+    } catch (err) {
+      console.log("err from Atom all review 🤬", err);
+    }
   },
 });
 
+//==========for meta reviews======================
+export const productMetaReviewsSelector = selector({
+  key: "productMetaReviewsSelector",
+  get: async ({ get }) => {
+    try {
+      const productID = await get(selectedProductId);
+      console.log("🙀in atom current product id:", productID);
+      const response = await apiCalls.metaReviews(productID);
+      console.log("🤲 in atom current meta review:", response);
+      return response.data;
+    } catch (err) {
+      console.log("err from Atom meta review 🤬", err);
+    }
+  },
+});

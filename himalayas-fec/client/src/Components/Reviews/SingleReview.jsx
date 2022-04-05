@@ -1,26 +1,15 @@
 import React from "react";
+import { atom, useRecoilState, selector, useRecoilValue } from "recoil";
+import { listReviews, metaReviews } from "../../lib/searchAPI.js";
+import {
+  productReviewsSelector,
+  productMetaReviewsSelector,
+} from "../../lib/Atoms.jsx";
 
-// class SingleReview extends React.Component {
-//   constructor(props) {
-//     super(props);
-//   }
-//   render() {
-//     const { reviews } = this.props;
-//     return (
-//       <>
-//         {reviews.map((review) => {
-//           return (
-//             <div key={review.review_id}>
-//               <p>{review.rating}</p>
-//               <p>{review.summary}</p>
-//             </div>
-//           );
-//         })}
-//       </>
-//     );
-//   }
-// }
-var SingleReview = ({ specifiedReviewID }) => {
+var SingleReview = () => {
+  const specifiedReviewID = useRecoilValue(productReviewsSelector);
+  console.log("😀 two reviews", specifiedReviewID);
+
   return (
     <>
       {specifiedReviewID.map((review) => {
@@ -31,15 +20,18 @@ var SingleReview = ({ specifiedReviewID }) => {
             <p>summary🙃:{review.summary}</p>
             <p>body👉: {review.body}</p>
             <p>recommend👍:{review.recommend}</p>
+            <p>help: {review.helpfulness}</p>
             <p>
+              photos:
               {review.photos.map((photo) => {
-                <img src={photo.url}></img>;
+                return <img key={photo.id} src={photo.url} width="63"></img>;
               })}
             </p>
             <hr></hr>
           </div>
         );
       })}
+      <button type="submit">MORE REVIEWS</button>
     </>
   );
 };
