@@ -7,7 +7,7 @@ import sampleQa from './Components/Question_Answers/sampleQA.js';
 import sampleMain from '../src/Components/Question_Answers/sampleMain.js';
 import axios from "axios";
 import { listQuestions, listProducts, listReviews } from "./lib/searchAPI.js";
-import {productResponse, selectedProductId} from './lib/Atoms.jsx';
+import { productResponse, selectedProductId } from './lib/Atoms.jsx';
 import {
   atom,
   selector,

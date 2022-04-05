@@ -1,26 +1,31 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import SearchList from './searchList.jsx';
 import sampleQa from './sampleQA.js';
-import {atom, useRecoilState, selector, useRecoilValue} from 'recoil';
-import {productQ} from '../../App.jsx';
-import {productQuestionsSelector} from '../../lib/Atoms.jsx';
+import { atom, useSetRecoilState, useRecoilState, selector, useRecoilValue } from 'recoil';
+import { productQ } from '../../App.jsx';
+import { productQuestionsSelector, limitedQuestions, limitQuestionSelector, searchQa, filterQuestionSelector } from '../../lib/Atoms.jsx';
 
 var SearchQA = () => {
 
   //retrieve the current selected product
   const specifiedProductID = useRecoilValue(productQuestionsSelector);
 
+  let [limitQList, setLimitQList] = useRecoilState(limitedQuestions);
+
+  setLimitQList(specifiedProductID);
+
+  let limitedProductQ = useRecoilValue(limitQuestionSelector);
+
+  let [searchQuestions, setSearchQuestion] = useRecoilState(searchQa);
+
+  let filteredProductQ = useRecoilValue(filterQuestionSelector);
 
   const onSearch = (search) => {
     search.preventDefault();
     //based on the searched
+    setSearchQuestion(search.target.value);
   };
-
-  const displayQuestions = () => {
-
-  };
-
 
   return(
     <div id="search-qa">
@@ -29,8 +34,7 @@ var SearchQA = () => {
         <button type='submit' id='search-qa'>Search</button>
       </form>
       <div id="qa">
-        {specifiedProductID.map((entry, i) => {
-          console.log(entry, i)
+        {filteredProductQ.map((entry, i) => {
           return <SearchList key={i} entries={entry}/>}
         )}
       </div>
