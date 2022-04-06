@@ -11,7 +11,7 @@ const RelatedCarousel = () => {
     <div style={{width: 1000, height: 350, background: 'lightgray', padding: 5, overflow: 'hidden'}}>
       <ArrowBackCircle style={{position: 'relative', top: '50%', right: '5%', zIndex: 5}}onClick={()=>{console.log('this')}}/>
         {prod.map((value, index) => {
-          console.log(value, index, 'inside map');
+          // console.log(value, index, 'inside map');
           return <RelatedCard key={index} />
         })}
       <ArrowForwardCircle style={{position: 'relative', top: '50%', right: 10, zIndex: 5}}onClick={()=>{console.log('that')}}/>

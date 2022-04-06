@@ -20,7 +20,7 @@ class Reviews extends React.Component {
     const config = { headers: { Authorization: key } };
     Axios.get(url, config)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         this.setState({
           count: response.data.count,
           reviews: response.data.results,
