@@ -15,7 +15,7 @@ var axiosGet = (url) => {
   //Don't change the setup here because it will affect other API calls.
   return axios(options)
     .then((data) => {
-      console.log("Data received", data);
+      //console.log("Data received", data);
       return data;
     })
     .catch((err) => {
@@ -42,6 +42,12 @@ var listProducts = (count, page) => {
   return axiosGet(parameterURL);
 };
 
+var selectedProduct = (productId, count, page) => {
+  let parameterURL = `${serverUrl}/products?product_id=${productId}`;
+
+  return axiosGet(parameterURL);
+}
+
 //--------------- API Reviews -----------------
 var listReviews = (productId, page, count) => {
   //Might not need the count and page parameters yet...
@@ -64,12 +70,15 @@ var relatedProducts = (product_id) => {
   return axiosGet(relatedEndpoint);
 };
 
+// ----------- API Product Styles -------------------------
+var productStyles = (product_id) => {
+  let stylesEndpoint = `${serverUrl}/products/${product_id}/styles`;
+  return axiosGet(stylesEndpoint);
+}
+
 //Will need to add CART API get later on...
 
-export {
-  listQuestions,
-  listProducts,
-  listReviews,
-  metaReviews,
-  relatedProducts,
-};
+
+=======
+export { listQuestions, listProducts, listReviews, metaReviews,relatedProducts, productStyles, selectedProduct };
+

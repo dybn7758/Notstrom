@@ -26,8 +26,10 @@ var App = () => {
 
   const productData = productResponse();
 
-  let [selectedProductID, setCurrentProductId] =
-    useRecoilState(selectedProductId);
+
+
+  let [selectedProductID, setCurrentProductId] = useRecoilState(selectedProductId)
+
   //Retrieves data from the API and sets the products to state to render
   //pass the second argument so it doesnt create an infinite loop everytime this component renders
   useEffect(() => {
@@ -68,11 +70,13 @@ var App = () => {
     } else if (pageView !== "main") {
       return (
         <div>
-          {" "}
-          Himalayas For The Win
-          <Overview />
+
+        {" "}
+        Himalayas For The Win
+          <Overview productId={selectedProductID}/>
+
           <RelatedProducts />
-          <QA />
+          {/* <QA /> */}
           <Reviews />
         </div>
       );

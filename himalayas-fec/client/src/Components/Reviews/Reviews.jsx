@@ -5,6 +5,7 @@ import SingleReview from "./SingleReview.jsx";
 import { productReviewsSelector } from "../../lib/Atoms.jsx";
 import Ratings from "./Ratings.jsx";
 
+
 var Reviews = () => {
   return (
     <>
@@ -15,5 +16,8 @@ var Reviews = () => {
     </>
   );
 };
+
+
+     
 
 export default Reviews;
