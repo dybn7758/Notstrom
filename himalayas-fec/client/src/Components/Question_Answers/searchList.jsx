@@ -36,9 +36,8 @@ var SearchList = (props) => {
         </div>
         <br></br>
       </>
-      {relevantAns.map((ans, i) => {
-        console.log(ans, 'answer');
-        if (i < 1) {
+      {relevantAns.map((ans, i, array) => {
+        if (array.length < 3) {
           return (
             <div className="answers" key={ans.id}>
               <div>A: {ans.body}</div>

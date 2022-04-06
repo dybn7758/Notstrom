@@ -13,6 +13,7 @@
     "dotenv": "^10.0.0",
     "eslint-config-airbnb": "^19.0.4",
     "express": "^4.17.1",
+    "jquery": "^3.6.0",
     "moment": "^2.29.1",
     "mongoose": "^6.1.4",
     "morgan": "^1.10.0",

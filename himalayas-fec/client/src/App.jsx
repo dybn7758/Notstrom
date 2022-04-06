@@ -50,18 +50,16 @@ var App = () => {
 
     if (pageView === 'main') {
       return (
-        <table>
-          <tbody>
+        <div>
           {prod.map((product, i) => {
             return (
-              <tr key = {i}>
-                <td value = {product.id} onClick={(e) => {changeView(e.target.attributes.value.value)}}>{product.name}</td>
-                <td>{product.description}</td>
-              </tr>
+              <div key = {i}>
+                <span value = {product.id} onClick={(e) => {changeView(e.target.attributes.value.value)}}>{product.name}</span>
+                <span>{product.description}</span>
+              </div>
             )
           })}
-          </tbody>
-        </table>
+        </div>
       )
     } else if (pageView !== 'main') {
       return (

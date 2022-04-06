@@ -45,6 +45,11 @@ export const productQuestionsSelector = selector({
 // ===========================================================
 
 // ========= State of questions ================
+export const searchQuesCount = atom({
+  key: 'searchQuesCount',
+  default: 2,
+});
+
 export const limitedQuestions = atom({
   key: 'limitedQuestions',
   default: [],
@@ -54,8 +59,9 @@ export const limitQuestionSelector = selector({
   key: 'limitQuestionSelector',
   get: ({get}) => {
     let listQuestions = get(limitedQuestions);
+    let questionCount = get(searchQuesCount);
     let limitedResponse = listQuestions.slice(0, listQuestions.length).sort((a, b) => {return b.question_helpfulness - a.question_helpfulness});
-    return limitedResponse.slice(0, 4);
+    return limitedResponse.slice(0, questionCount);
   }
 });
 
@@ -69,11 +75,12 @@ export const filterQuestionSelector = selector({
   get: ({get}) => {
     let querySearch = get(searchQa);
     let sortedList = get(limitedQuestions);
+    let questionCount = get(searchQuesCount);
     if(querySearch.length > 2) {
       let filtered = sortedList.filter((search) => search.question_body.indexOf(querySearch) !== -1)
       return filtered;
     } else {
-      return sortedList;
+      return sortedList.slice(0, questionCount);
     }
   }
 });
@@ -82,7 +89,8 @@ export const filterQuestionSelector = selector({
 export const searchAnsCount = atom({
   key: 'searchAnsCount',
   default: 2,
-})
+});
+
 export const searchAns = atom({
   key: 'searchAns',
   default: [],
