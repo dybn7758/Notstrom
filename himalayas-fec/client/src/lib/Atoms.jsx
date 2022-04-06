@@ -74,3 +74,44 @@ export const stylesResponse = () => {
   const data = useRecoilValue(productStyles);
   return data.data.results;
 }
+
+//=============Selected Product ID ==============
+export const selectedProductId = atom({
+  key: 'selectedProductId',
+  default: '',
+});
+
+//==============product q selector/===============
+export const productQuestionsSelector = selector({
+  key: 'productQuestionsSelector',
+  get: async({get}) => {
+    const productID = await get(selectedProductId);
+    const response = await apiCalls.listQuestions(productID);
+
+    return response.data.results;
+  }
+});
+
+//==============current product selector==============
+export const currentProductSelector = selector({
+  key: 'currentProductSelector',
+  get: async({get}) => {
+    const productID = await get(selectedProductId);
+
+    const response = await apiCalls.selectedProduct(productID);
+
+    return response.data;
+
+  }
+})
+
+//============current styles selector================
+export const currentStylesSelector = selector({
+  key: 'currentStylesSelector',
+  get: async({get}) => {
+    const productID = await get(selectedProductId);
+    console.log('pi', productID);
+    const response = await apiCalls.productStyles(productID);
+    return response.data;
+  }
+})

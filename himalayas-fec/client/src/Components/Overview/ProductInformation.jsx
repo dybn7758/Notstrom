@@ -1,26 +1,33 @@
 import React from 'react';
-import { productResponse } from '../../lib/Atoms.jsx';
+import { productResponse, categoryResponse } from '../../lib/Atoms.jsx';
+import {productQ} from '../../App.jsx';
+import {
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
 
 
 const ProductInformation = (props) => {
 
-  const productArray = productResponse();
-  console.log('pa', productArray);
+  let prod = props.currentProduct;
+
 
   return (
 
     <div className="ProductInformation">
       <span id="rating">Rating: ***__</span>
-      <h4 id="category">{props.products.category}</h4>
-      <h3 id="name">{props.products.name}</h3>
-      <p id="price">{props.products.default_price}</p>
-      <p id="slogan">{props.products.slogan}</p>
+      <h4 id="category">{prod.category}</h4>
+      <h3 id="name">{prod.name}</h3>
+      <p id="price">${prod.default_price}</p>
+      <p id="slogan">{prod.slogan}</p>
       <div id="description">
-        <p>{props.products.description}</p>
+        <p>{prod.description}</p>
       </div>
-      <div id="overview">
-        <p>Product Overview Here</p>
-      </div>
+      {/* <div id="features">
+        <p><b>Features:</b>{props.styles.features}</p>
+      </div> */}
       <div id="share" >
         <span>Facebook Icon</span>
         <span>Twitter Icon</span>

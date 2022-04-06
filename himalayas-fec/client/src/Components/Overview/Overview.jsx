@@ -1,50 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { render } from "react-dom";
 import axios from 'axios';
 import ImageGallery from './ImageGallery.jsx';
 import ProductInformation from './ProductInformation.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import Cart from './Cart.jsx';
+import {productQ} from '../../App.jsx';
+import { productResponse, categoryResponse, productStyles, stylesResponse,
+  selectedProductId, currentProductSelector, currentStylesSelector } from '../../lib/Atoms.jsx';
+import { selectedProduct } from '../../lib/searchAPI.js';
+import {
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
 
-class Overview extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      products: [],
+
+
+
+
+ const Overview = (props) => {
+
+ //acquire current product
+  const productsArray = useRecoilValue(currentProductSelector);
+
+  var currentId = props.productId;
+
+  var currentProduct;
+
+  productsArray.forEach(product => {
+
+    var stringVersion = JSON.stringify(product.id);
+
+    if (stringVersion === props.productId) {
+      currentProduct = product;
     }
-  }
+  })
 
-  componentDidMount() {
-    this.getAllProducts();
-  }
+ //acquire styles related to current product
+   const stylesArray = useRecoilValue(currentStylesSelector);
+   console.log('sa', stylesArray);
 
-  getAllProducts() {
-    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products`;
-    const key = "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";
-    const config = { headers: { Authorization: key } };
-    axios.get(url, config)
-      .then((response) => {
-        console.log(response);
-        this.setState({
-          products: response.data
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
 
-  render() {
-    return (
-      <div className="overview">
-        <ImageGallery />
-        <ProductInformation products={this.state.products}/>
-        <StyleSelector />
-        <Cart />
-      </div>
 
-    )
-  };
+
+
+
+  return (
+    <div className="overview">
+      <ImageGallery />
+      <ProductInformation currentProduct={currentProduct} />
+      <StyleSelector styles={stylesArray} />
+      <Cart />
+    </div>
+
+  )
 };
 
 

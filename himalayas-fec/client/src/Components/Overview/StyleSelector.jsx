@@ -1,25 +1,31 @@
 import React from 'react';
+import { stylesResponse } from '../../lib/Atoms.jsx';
+import { productStyles } from '../../lib/searchAPI.js';
+import { selectedProduct } from './Overview.jsx';
+import {productQ} from '../../App.jsx';
+import {productResponse, selectedProductId} from '../../lib/Atoms.jsx';
+import {
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
 
 
 const StyleSelector = (props) => {
-  return (
-    <div>
-      <label for="size">SELECT SIZE</label>
-      <select name="size" id="size">
-        <option value="small">Small</option>
-        <option value="medium">Medium</option>
-        <option value="large">Large</option>
-        <option value="extraLarge">Extra Large</option>
-      </select>
 
-      <label for="quantity">SELECT QUANTITY</label>
-      <select name="quantity" id="quantity">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
+  var styles = props.styles.results;
+
+  return (
+    <div id="styles">
+      <h3>Styles</h3>
+        <div id="imageContainer">
+          {styles.map((style, index) => (
+            <div>
+              <img src={style.photos[0].thumbnail_url}></img>
+            </div>
+          ))}
+        </div>
     </div>
   )
 }
