@@ -78,7 +78,5 @@ var productStyles = (product_id) => {
 
 //Will need to add CART API get later on...
 
-
-=======
 export { listQuestions, listProducts, listReviews, metaReviews,relatedProducts, productStyles, selectedProduct };
 

@@ -8,7 +8,7 @@ export default class QA extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="questions-answers">
         Questions & Answers
         <SearchQA />
       </div>

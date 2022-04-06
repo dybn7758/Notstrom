@@ -3,29 +3,8 @@ import React from "react";
 import { atom, selector, useRecoilValue } from "recoil";
 const apiCalls = require("./searchAPI.js");
 
-//========== Atoms ===========
-
-// ====== Modal Toggle State ======
-export const show = atom({
-  key: "show",
-  default: ["none"],
-});
-
-// ======= Product Data Object ===================
-
-export const productSelector = selector({
-  key: "productSelector",
-  get: async ({ get }) => {
-    const response = await apiCalls.listProducts();
-    return response;
-  },
-});
-//this can be moved to your componenets page -----------------------------
-=======
-import React from 'react';
-import {atom, selector, useRecoilValue, useRecoilState} from 'recoil';
-const apiCalls = require('./searchAPI.js');
 //================= ATOMS =================
+
 // ====== Modal Toggle State ============== flips between show/hide for modal
 export const show = atom({
   key: 'show',
@@ -63,8 +42,7 @@ export const productResponse = () => {
 
 };
 // ================================================
-=======
-}
+
 // =========== Current Category =========== return category of current 'main' product
 export const categorySelector = selector({
   key: 'categorySelector',
@@ -113,12 +91,6 @@ export const selectedProductId = atom({
   default: "",
 });
 
-// Selector function to grab selected product ID questions
-=======
-  key: 'selectedProductId',
-  default: '',
-});
-
 //==============product q selector/===============
 
 export const productQuestionsSelector = selector({
@@ -165,8 +137,72 @@ export const productMetaReviewsSelector = selector({
     }
   },
 });
+// ===========================================================
 
-=======
+// ========= State of questions ================
+export const searchQuesCount = atom({
+  key: 'searchQuesCount',
+  default: 2,
+});
+
+export const limitedQuestions = atom({
+  key: 'limitedQuestions',
+  default: [],
+});
+
+export const limitQuestionSelector = selector({
+  key: 'limitQuestionSelector',
+  get: ({get}) => {
+    let listQuestions = get(limitedQuestions);
+    let questionCount = get(searchQuesCount);
+    let limitedResponse = listQuestions.slice(0, listQuestions.length).sort((a, b) => {return b.question_helpfulness - a.question_helpfulness});
+    return limitedResponse.slice(0, questionCount);
+  }
+});
+
+export const searchQa = atom({
+  key: 'searchQa',
+  default: '',
+});
+
+export const filterQuestionSelector = selector({
+  key: 'filterQuestionSelector',
+  get: ({get}) => {
+    let querySearch = get(searchQa);
+    let sortedList = get(limitedQuestions);
+    let questionCount = get(searchQuesCount);
+    if(querySearch.length > 2) {
+      let filtered = sortedList.filter((search) => search.question_body.indexOf(querySearch) !== -1)
+      return filtered;
+    } else {
+      return sortedList.slice(0, questionCount);
+    }
+  }
+});
+
+// ==========================================================
+export const searchAnsCount = atom({
+  key: 'searchAnsCount',
+  default: 2,
+});
+
+export const searchAns = atom({
+  key: 'searchAns',
+  default: [],
+});
+
+export const showMoreAnsSelector = selector({
+  key: 'showMoreAnsSelector',
+  get: ({get}) => {
+    let answerList = get(searchAns);
+    let answerCount = get(searchAnsCount);
+
+    let sorted = answerList.slice(0, answerList.length).sort((a,b) => b.helpfulness - a.helpfulness)
+
+    return sorted.slice(0, answerCount);
+  }
+})
+
 
 //==============current product selector==============
 export const currentProductSelector = selector({
