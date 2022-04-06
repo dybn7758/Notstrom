@@ -1,10 +1,13 @@
 import React from 'react';
-import {pictures, stylesResponse} from '../../lib/Atoms.jsx';
+import {pictures, stylesResponse, currentRelatedID} from '../../lib/Atoms.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
 
-const RelatedPicture = () => {
+const RelatedPicture = (props) => {
+
   const [pictureValue, setPicture] = useRecoilState(pictures);
+  const [currentRelatedIDValue, setCurrentRelatedID] = useRecoilState(currentRelatedID);
   const products = stylesResponse();
+    // setCurrentRelatedID(props.index);
 
   return (
     <div>

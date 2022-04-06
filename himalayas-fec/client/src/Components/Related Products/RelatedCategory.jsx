@@ -3,7 +3,7 @@ import {category, currentProductByID} from '../../lib/Atoms.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
 
 
-const RelatedCategory = () => {
+const RelatedCategory = (props) => {
 const [categoryValue, setCategory] = useRecoilState(category);
 const products = currentProductByID();
 

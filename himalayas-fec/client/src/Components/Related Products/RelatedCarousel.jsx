@@ -11,26 +11,21 @@ const apiCalls = require('../../lib/searchAPI.js');
 
 
 
-const RelatedCarousel = () => {
+const RelatedCarousel = (props) => {
 
   const [showValue, setShow] = useRecoilState(show);
   const [currentRelatedIDValue, setCurrentRelatedID] = useRecoilState(currentRelatedID);
   const [relatedIDArray, setRelatedIDArray] = useRecoilState(relatedIDs);
-  console.log(relatedIDArray, 'this is an array')
-  var counter = 0;
-  const closeModal = () => {
-    setShow(['none']);
-  }
 
   return (
     <div>
-      <h1 style={{position: 'relative', left: '25%'}}>Related Products</h1>
+      <h1 style={{position: 'relative', fontSize: 14}}>Related Products</h1>
       <div style={{width: 1000, height: 350, background: 'lightgray', margin: 5, overflow: 'hidden'}}>
         <ArrowBackCircle style={{position: 'relative', top: '50%', left: '5%', zIndex: 5}} onClick={()=>{console.log('this')}}/>
         {relatedIDArray.map(index => {
           return (
             <div key={index} style={{float: 'left', position: 'relative', height: 325, width: 200, margin: 10}}>
-              <RelatedPicture/>
+              <RelatedPicture index={index}/>
               <StarOutline color={'yellow'} style={{position: 'absolute', top: 10, right: 10, zIndex: 2}} onClick={() => {setShow(['block']); console.log(event, 'star')}}/>
                 <div style={{position: 'relative', bottom: 0, backgroundColor: 'gray', width: 200, height: 100, alignItems: 'bottom'}}>
                   <RelatedCategory/>

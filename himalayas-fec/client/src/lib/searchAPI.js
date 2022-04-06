@@ -1,7 +1,12 @@
 import { API_KEY, CAMPUS_CODE } from "../config.js";
 import axios from "axios";
+import react from 'react';
+import {useRecoilValue, useRecoilState} from 'recoil';
+import {relatedIDs} from './Atoms.jsx';
+
 
 const serverUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/${CAMPUS_CODE}`;
+
 
 var axiosGet = (url) => {
   let options = {
@@ -59,8 +64,15 @@ var productsByID = (product_id) => {
 // ------------- API Related Product IDs (array) --------------- returns array of related product IDs
 var relatedProducts = (product_id) => {
   let relatedEndpoint = `${serverUrl}/products/${product_id}/related`;
+  const [relatedValue, setRelated] = useRecoilState(relatedIDs);
 
-  return axiosGet(relatedEndpoint);
+  return axiosGet(relatedEndpoint)
+  // .then((response) => {
+  //   console.log(response)
+  // })
+  // .catch((error) => {
+  //   console.log(error)
+  // })
 };
 
 // ----------- API Product Styles -------------------------

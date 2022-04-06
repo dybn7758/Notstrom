@@ -1,8 +1,8 @@
 import React from 'react';
-import {name, currentProductByID} from '../../lib/Atoms.jsx';
+import {name, currentProductByID, currentRelatedID} from '../../lib/Atoms.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
 
-const RelatedName = () => {
+const RelatedName = (props) => {
   const [nameValue, setName] = useRecoilState(name);
   const products = currentProductByID();
 

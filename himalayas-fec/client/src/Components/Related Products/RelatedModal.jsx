@@ -11,10 +11,10 @@ export const RelatedModal = () => {
     <div style={{
       display: showValue[0], background: 'gray',height: 300,
       width: 300,position: 'fixed', left: '50%', top: '50%',
-      zIndex: 10,
+      zIndex: 10
     }}>
     <RelatedTable/>
-      <button style={{position: 'absolute', bottom: 0, left: '50%',}}
+      <button style={{position: 'absolute', bottom: 0, left: '50%'}}
       onClick={() => {setShow(['none'])}}>Close</button>
     </div>
   )

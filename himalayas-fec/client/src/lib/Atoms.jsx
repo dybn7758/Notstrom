@@ -5,59 +5,28 @@ const apiCalls = require('./searchAPI.js');
 //================= ATOMS =================
 
 // =========== Current/Default ID ========= issues with 10, 12, 14 (no image available)
-export const currentID = atom({
-  key: 'currentID',
-  default: 37311,
-})
+export const currentID = atom({key: 'currentID', default: 37311})
 
 // ====== Modal Toggle State ============== flips between show/hide for modal
-export const show = atom({
-  key: 'show',
-  default: ['none'],
-})
+export const show = atom({key: 'show', default: ['none']})
 
-//================ Related IDs =============== array of related IDs
-export const relatedIDs = atom({
-  key: 'styles',
-  default: [],
-})
+//================ Related IDs Array =============== array of related IDs
+export const relatedIDs = atom({key: 'styles', default: [37311, 37312, 37313]})
 
 //================= Current Related ID ======== a single related ID value
-export const currentRelatedID = atom({
-  key: 'currentRelatedID',
-  default: [37312],
-})
+export const currentRelatedID = atom({key: 'currentRelatedID', default: [37312]})
 
 // =============== Category =================== individual category name
-export const category = atom({
-  key: 'category',
-  default: '',
-})
+export const category = atom({key: 'category', default: ''})
 
 //==================== Price ================== individual price
-export const price = atom({
-  key: 'price',
-  default: 0.00,
-})
+export const price = atom({key: 'price', default: 0.00})
 
 //================ Name ======================= individual product name
-export const name = atom({
-  key: 'name',
-  default: '',
-})
+export const name = atom({key: 'name', default: ''})
 
 //================ Pictures ===================
-export const pictures = atom({
-  key: 'pictures',
-  default: "https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80",
-
-})
-
-// =========== Click Metadata ============= not in use yet
-export const clickMetadata = atom({
-  key: 'clickMetaData',
-  default: [],
-})
+export const pictures = atom({key: 'pictures', default: ''})
 
 //=============== SELECTORS ===============
 
@@ -89,6 +58,9 @@ export const singleProductSelector = selector({
     setCategory(response.data.category);
     setName(response.data.name);
     setPrice(response.data.default_price);
+
+    console.log(response, 'data in current product')
+
     return response;
   }
 })
@@ -110,6 +82,7 @@ export const relatedSelector = selector({
 
 export const relatedResponse = () => {
   const data = useRecoilValue(relatedSelector);
+  console.log(data.data, 'data')
   return data.data;
 }
 
@@ -138,7 +111,8 @@ export const productStyles = selector({
     const [pictureValue, setPicture] = useRecoilState(pictures);
 
     const response = await apiCalls.productStyles(currentIDValue)
-    setPicture(response.data.results.photos.url)
+    console.log(response, 'pictures')
+    setPicture(response.data.results[0].photos[0].url)
     return response;
   }
 })

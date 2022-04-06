@@ -8,6 +8,8 @@ import sampleMain from '../src/Components/Question_Answers/sampleMain.js';
 import axios from "axios";
 import { listQuestions, listProducts, listReviews } from "./lib/searchAPI.js";
 import {productResponse, relatedIDs, relatedResponse} from './lib/Atoms.jsx';
+const apiCalls = require('./lib/searchAPI.js');
+
 import {
   atom,
   selector,
@@ -30,8 +32,6 @@ var App = () => {
     //pass the second argument so it doesnt create an infinite loop everytime this component renders
   let [prod, setProd] = useRecoilState(productQ);
   let [pageView, setPageView] = useRecoilState(catalog);
-  const [relatedIDArray, setRelatedIDArray] = useRecoilState(relatedIDs);
-  setRelatedIDArray(relatedResponse());
 
   const productData = productResponse();
 
@@ -39,6 +39,7 @@ var App = () => {
   //pass the second argument so it doesnt create an infinite loop everytime this component renders
   useEffect(() => {
       setProd(productData);
+
   }, []);
 
   //Sets the product detail page
@@ -96,16 +97,16 @@ var App = () => {
     </div>
   )
 
-//   return (
-//       <div>
-//         {" "}
-//         Himalayas For The Win
-//           <Overview />
-//           <RelatedProducts />
-//           <QA />
-//           <Reviews />
-//       </div>
-//   );
+  // return (
+  //     <div>
+  //       {" "}
+  //       Himalayas For The Win
+  //         <Overview />
+  //         <RelatedProducts />
+  //         <QA />
+  //         <Reviews />
+  //     </div>
+  // );
 };
 
 export default App ;
