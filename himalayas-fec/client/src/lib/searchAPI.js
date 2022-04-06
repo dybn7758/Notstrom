@@ -21,6 +21,7 @@ var axiosGet = (url) => {
   return axios(options)
     .then((data) => {
       // console.log("Data received", data);
+      //console.log("Data received", data);
       return data;
     })
     .catch((err) => {
@@ -32,24 +33,32 @@ var axiosGet = (url) => {
 var listQuestions = (productId, count, page) => {
   //Might not need the count and page parameters yet...
   //if needed, adjust the parameterURL to include these
-  // let parameterURL = `${serverUrl}/qa/questions?product_id=${productId}`;
-  // return axiosGet(parameterURL);
+  let parameterURL = `${serverUrl}/qa/questions?product_id=${productId}`;
+  return axiosGet(parameterURL);
 };
 
 //--------------- API Products -----------------
 var listProducts = (count, page) => {
   //Might not need the count and page parameters yet...
   //if needed, adjust the parameterURL to include these
+  // ?page=1&count=100 param needs be added
+
   let parameterURL = `${serverUrl}/products`;
 
   return axiosGet(parameterURL);
 };
 
+var selectedProduct = (productId, count, page) => {
+  let parameterURL = `${serverUrl}/products?product_id=${productId}`;
+
+  return axiosGet(parameterURL);
+}
+
 //--------------- API Reviews -----------------
-var listReviews = (productId, count, page) => {
+var listReviews = (productId, page, count) => {
   //Might not need the count and page parameters yet...
   //if needed, adjust the parameterURL to include these
-  let parameterURL = `${serverUrl}/reviews/?product_id=${productId}`;
+  let parameterURL = `${serverUrl}/reviews/?product_id=${productId}&count=${count}&page=${page}`;
 
   return axiosGet(parameterURL);
 };
@@ -62,6 +71,13 @@ var productsByID = (product_id) => {
 }
 
 // ------------- API Related Product IDs (array) --------------- returns array of related product IDs
+//--------------API Reviews Meta Data--------------
+var metaReviews = (productId) => {
+  let parameterURL = `${serverUrl}/reviews/meta?product_id=${productId}`;
+  return axiosGet(parameterURL);
+};
+
+// ------------- API Related Products ---------------
 var relatedProducts = (product_id) => {
   let relatedEndpoint = `${serverUrl}/products/${product_id}/related`;
   const [relatedValue, setRelated] = useRecoilState(relatedIDs);
@@ -84,7 +100,5 @@ var productStyles = (product_id) => {
 
 //Will need to add CART API get later on...
 
-export {
-  listQuestions, listProducts,
-  listReviews, relatedProducts,
-  productStyles, productsByID};
+export { listQuestions, listProducts, listReviews, metaReviews,relatedProducts, productStyles, selectedProduct };
+
