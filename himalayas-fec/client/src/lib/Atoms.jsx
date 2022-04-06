@@ -60,6 +60,16 @@ export const productReviewsSelector = selector({
     }
   },
 });
+// export const productReviewsSelector = selector({
+//   key: "productReviewsSelector",
+//   get: ({ get }) => {
+//     const productID = get(selectedProductId);
+//     return productID
+//   },
+//   set: ({set, get}, page, count) => {
+
+//   }
+// });
 
 //==========for meta reviews======================
 export const productMetaReviewsSelector = selector({

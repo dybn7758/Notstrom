@@ -24,7 +24,14 @@ var SingleReview = () => {
             <p>
               photos:
               {review.photos.map((photo) => {
-                return <img key={photo.id} src={photo.url} width="63"></img>;
+                return (
+                  <img
+                    key={photo.id}
+                    src={photo.url}
+                    width="150px"
+                    height="200px"
+                  ></img>
+                );
               })}
             </p>
             <hr></hr>

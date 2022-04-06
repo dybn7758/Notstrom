@@ -28,16 +28,15 @@ var Ratings = () => {
     })
     .reduce((a, b) => a + b, 0);
 
-  const totalNumberOfRatings = convertRatings.reduce((a, b) => a + b, 0);
+  // const totalNumberOfRatings = convertRatings.reduce((a, b) => a + b, 0);
 
-  console.log(convertRatings, totalRatingScores, totalNumberOfRatings);
+  console.log(convertRatings, totalRatingScores);
 
   return (
     <div>
       <h3>Placeholder for ratings</h3>
       <h1>
-        {(totalRatingScores / totalNumberOfRatings).toFixed(1)}❤️ out of{" "}
-        {totalNumberOfRatings} reviews
+        {(totalRatingScores / sum).toFixed(1)}❤️ out of {sum} reviews
       </h1>
       <>
         {Math.round((recommended / sum) * 100)} % of reviews recommend this

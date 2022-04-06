@@ -37,7 +37,7 @@ var listProducts = (count, page) => {
   //if needed, adjust the parameterURL to include these
   // ?page=1&count=100 param needs be added
 
-  let parameterURL = `${serverUrl}/products?page=1&count=100`;
+  let parameterURL = `${serverUrl}/products`;
 
   return axiosGet(parameterURL);
 };
@@ -46,9 +46,7 @@ var listProducts = (count, page) => {
 var listReviews = (productId, page, count) => {
   //Might not need the count and page parameters yet...
   //if needed, adjust the parameterURL to include these
-  let parameterURL = `${serverUrl}/reviews/?product_id=${productId}&count=${
-    count ? (count += 2) : (count = 2)
-  }&page=${page ? page++ : (page = 1)}`;
+  let parameterURL = `${serverUrl}/reviews/?product_id=${productId}&count=${count}&page=${page}`;
 
   return axiosGet(parameterURL);
 };
