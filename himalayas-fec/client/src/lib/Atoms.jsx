@@ -60,19 +60,7 @@ export const categoryResponse = () => {
   const data = useRecoilValue(categorySelector);
   return data.category;
 }
-//=========== Related Selector ============== returns array of related product IDs
-export const relatedSelector = selector({
-  key: 'relatedSelector',
-  get: async ({get}) => {
-    const [currentIDValue, setCurrentID] = useRecoilState(currentID);
-    const response = await apiCalls.relatedProducts(currentIDValue)
-    return response;
-  }
-})
-export const relatedResponse = () => {
-  const data = useRecoilValue(relatedSelector);
-  return data.data;
-}
+
 //================ Product Styles ============ return product styles by product id
 export const productStyles = selector({
   key: 'productStyles',
@@ -164,26 +152,6 @@ export const relatedProductsSelector = selector({
 export const allRelatedProducts = () => {
   const data = useRecoilValue(relatedProductsSelector);
   return data;
-}
-
-//================ Product Styles ============ return product styles by product id
-
-export const productStyles = selector({
-  key: 'productStyles',
-  get: async ({get}) => {
-    const [currentIDValue, setCurrentID] = useRecoilState(currentID);
-    const [pictureValue, setPicture] = useRecoilState(pictures);
-
-    const response = await apiCalls.productStyles(currentIDValue)
-    console.log(response, 'pictures')
-    setPicture(response.data.results[0].photos[0].url)
-    return response;
-  }
-})
-
-export const stylesResponse = () => {
-  const data = useRecoilValue(productStyles);
-  return data.data.results;
 }
 
 //==========for all reviews========================
