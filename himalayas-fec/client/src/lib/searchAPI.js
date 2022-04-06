@@ -35,6 +35,8 @@ var listQuestions = (productId, count, page) => {
 var listProducts = (count, page) => {
   //Might not need the count and page parameters yet...
   //if needed, adjust the parameterURL to include these
+  // ?page=1&count=100 param needs be added
+
   let parameterURL = `${serverUrl}/products`;
 
   return axiosGet(parameterURL);
@@ -47,11 +49,17 @@ var selectedProduct = (productId, count, page) => {
 }
 
 //--------------- API Reviews -----------------
-var listReviews = (productId, count, page) => {
+var listReviews = (productId, page, count) => {
   //Might not need the count and page parameters yet...
   //if needed, adjust the parameterURL to include these
-  let parameterURL = `${serverUrl}/reviews/?product_id=${productId}`;
+  let parameterURL = `${serverUrl}/reviews/?product_id=${productId}&count=${count}&page=${page}`;
 
+  return axiosGet(parameterURL);
+};
+
+//--------------API Reviews Meta Data--------------
+var metaReviews = (productId) => {
+  let parameterURL = `${serverUrl}/reviews/meta?product_id=${productId}`;
   return axiosGet(parameterURL);
 };
 
@@ -70,4 +78,5 @@ var productStyles = (product_id) => {
 
 //Will need to add CART API get later on...
 
-export { listQuestions, listProducts, listReviews, relatedProducts, productStyles, selectedProduct };
+export { listQuestions, listProducts, listReviews, metaReviews,relatedProducts, productStyles, selectedProduct };
+

@@ -9,7 +9,6 @@ import { productQ } from '../../App.jsx';
 import { productQuestionsSelector, searchQuesCount, limitedQuestions, limitQuestionSelector, searchQa, filterQuestionSelector } from '../../lib/Atoms.jsx';
 
 var SearchQA = () => {
-
   //retrieve the current selected product
   const specifiedProductID = useRecoilValue(productQuestionsSelector);
 
