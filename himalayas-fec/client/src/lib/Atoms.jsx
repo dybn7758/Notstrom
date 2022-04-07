@@ -5,6 +5,18 @@ const apiCalls = require("./searchAPI.js");
 
 //================= ATOMS =================
 
+// ====== Lists all the products from APICall to main catalog page ==============
+export const productQ = atom({
+  key: "productQ",
+  default: [],
+});
+
+// ====== Toggles the main catalog page to a product page =========
+export const catalog = atom({
+  key: "catalog",
+  default: "main",
+});
+
 // ====== Modal Toggle State ============== flips between show/hide for modal
 export const show = atom({
   key: 'show',
@@ -52,6 +64,7 @@ export const categorySelector = selector({
     return response.data;
   }
 })
+
 export const categoryResponse = () => {
   const data = useRecoilValue(categorySelector);
   return data.category;
@@ -61,10 +74,11 @@ export const relatedSelector = selector({
   key: 'relatedSelector',
   get: async ({get}) => {
     const [currentIDValue, setCurrentID] = useRecoilState(currentID);
-    const response = await apiCalls.relatedProducts(currentIDValue)
+    const response = await apiCalls.relatedProducts(currentIDValue);
     return response;
   }
 })
+
 export const relatedResponse = () => {
   const data = useRecoilValue(relatedSelector);
   return data.data;
@@ -74,10 +88,11 @@ export const productStyles = selector({
   key: 'productStyles',
   get: async ({get}) => {
     const [currentIDValue, setCurrentID] = useRecoilState(currentID);
-    const response = await apiCalls.productStyles(currentIDValue)
+    const response = await apiCalls.productStyles(currentIDValue);
     return response;
   }
 })
+
 export const stylesResponse = () => {
   const data = useRecoilValue(productStyles);
   return data.data.results;
@@ -86,7 +101,6 @@ export const stylesResponse = () => {
 
 //=============Selected Product ID ==============
 export const selectedProductId = atom({
-
   key: "selectedProductId",
   default: "",
 });
@@ -98,7 +112,6 @@ export const productQuestionsSelector = selector({
   get: async ({ get }) => {
     const productID = await get(selectedProductId);
     const response = await apiCalls.listQuestions(productID);
-
     return response.data.results;
   },
 });
@@ -150,15 +163,24 @@ export const limitedQuestions = atom({
   default: [],
 });
 
-export const limitQuestionSelector = selector({
-  key: 'limitQuestionSelector',
+// export const limitQuestionSelector = selector({
+//   key: 'limitQuestionSelector',
+//   get: ({get}) => {
+//     let listQuestions = get(limitedQuestions);
+//     let questionCount = get(searchQuesCount);
+//     let limitedResponse = listQuestions.slice(0, listQuestions.length).sort((a, b) => {return b.question_helpfulness - a.question_helpfulness});
+//     return limitedResponse.slice(0, questionCount);
+//   }
+// });
+export const questionModalData = selector({
+  key: 'questionModalData',
   get: ({get}) => {
-    let listQuestions = get(limitedQuestions);
-    let questionCount = get(searchQuesCount);
-    let limitedResponse = listQuestions.slice(0, listQuestions.length).sort((a, b) => {return b.question_helpfulness - a.question_helpfulness});
-    return limitedResponse.slice(0, questionCount);
+    let productData = get(productQ);
+    let productId = get(selectedProductId);
+
+    return productData.filter((id) => id.id.toString() === productId);
   }
-});
+})
 
 export const searchQa = atom({
   key: 'searchQa',
@@ -180,7 +202,6 @@ export const filterQuestionSelector = selector({
   }
 });
 
-// ==========================================================
 export const searchAnsCount = atom({
   key: 'searchAnsCount',
   default: 2,
@@ -203,6 +224,19 @@ export const showMoreAnsSelector = selector({
   }
 })
 
+export const showQuestionModal = atom({
+  key: 'showQuestionModal',
+  default: false,
+})
+
+export const questionModalSelector = selector({
+  key: 'questionModalSelector',
+  get: ({get}) => {
+
+  }
+})
+
+// ==========================================================
 
 //==============current product selector==============
 export const currentProductSelector = selector({

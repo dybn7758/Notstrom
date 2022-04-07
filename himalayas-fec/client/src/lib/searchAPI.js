@@ -8,7 +8,7 @@ var axiosGet = (url) => {
     headers: { Authorization: API_KEY },
     method: "GET",
     url: url,
-    data: "json",
+    contentType: "json",
   };
 
   //Can chain more promises to the API call if you want to set state after invocation
@@ -16,6 +16,26 @@ var axiosGet = (url) => {
   return axios(options)
     .then((data) => {
       //console.log("Data received", data);
+      return data;
+    })
+    .catch((err) => {
+      console.log("Error from API", err);
+    });
+};
+
+var axiosPost = (url, data) => {
+  let options = {
+    headers: { Authorization: API_KEY },
+    method: "POST",
+    url: url,
+    data: JSON.stringify(data),
+  };
+
+  //Can chain more promises to the API call if you want to set state after invocation
+  //Don't change the setup here because it will affect other API calls.
+  return axios(options)
+    .then((data) => {
+      console.log("Data posted", data);
       return data;
     })
     .catch((err) => {
@@ -46,6 +66,12 @@ var selectedProduct = (productId, count, page) => {
   let parameterURL = `${serverUrl}/products?product_id=${productId}`;
 
   return axiosGet(parameterURL);
+}
+
+var postQuestions = () => {
+  let parameterURL = `${serverUrl}/products?product_id=${productId}`;
+
+  return axiosPost(parameterURL);
 }
 
 //--------------- API Reviews -----------------
