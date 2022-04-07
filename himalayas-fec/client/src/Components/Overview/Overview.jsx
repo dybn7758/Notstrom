@@ -40,16 +40,9 @@ import {
 
  //acquire styles related to current product
    const stylesArray = useRecoilValue(currentStylesSelector);
-   console.log('sa', stylesArray);
-
-
-
-
-
 
   return (
     <div className="overview">
-      <ImageGallery />
       <ProductInformation currentProduct={currentProduct} />
       <StyleSelector styles={stylesArray} />
       <Cart />

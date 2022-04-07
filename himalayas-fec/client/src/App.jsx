@@ -71,7 +71,7 @@ var App = () => {
         Himalayas For The Win
           <Overview productId={selectedProductID}/>
           <RelatedProducts />
-          {/* <QA /> */}
+          <QA />
           <Reviews />
         </div>
       )
@@ -90,16 +90,6 @@ var App = () => {
     </div>
   )
 
-//   return (
-//       <div>
-//         {" "}
-//         Himalayas For The Win
-//           <Overview />
-//           <RelatedProducts />
-//           <QA />
-//           <Reviews />
-//       </div>
-//   );
 };
 
 export default App ;
