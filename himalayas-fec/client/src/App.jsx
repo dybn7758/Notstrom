@@ -97,10 +97,6 @@ var App = () => {
       <div className="main">{changeView(pageView)}</div>
     </div>
   );
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 };
 
 export default App;

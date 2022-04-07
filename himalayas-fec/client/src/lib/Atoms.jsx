@@ -4,7 +4,6 @@ const apiCalls = require('./searchAPI.js');
 
 //================= ATOMS =================
 
-<<<<<<< HEAD
 // ====== Lists all the products from APICall to main catalog page ==============
 export const productQ = atom({
   key: "productQ",
@@ -16,10 +15,8 @@ export const catalog = atom({
   key: "catalog",
   default: "main",
 });
-=======
 // =========== Current/Default ID ========= issues with 10, 12, 14 (no image available)
 export const currentID = atom({key: 'currentID', default: 37311})
->>>>>>> master
 
 // ====== Modal Toggle State ============== flips between show/hide for modal
 export const show = atom({key: 'show', default: ['none']})
