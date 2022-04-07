@@ -1,13 +1,15 @@
 import React, {useEffect} from 'react';
 import { atom, useSetRecoilState, useRecoilState, selector, useRecoilValue } from 'recoil';
-import { showQuestionModal, limitedQuestions, productQuestionsSelector, productQ, questionModalData, selectedProductId } from '../../lib/Atoms.jsx';
-import { postQuestions } from '../../lib/searchAPI.js';
+import { showAnswerModal, limitedQuestions, productQuestionsSelector, productQ, questionModalData, selectedProductId, answerModalSelector, specifiedQuestion } from '../../lib/Atoms.jsx';
+import { postAnswers } from '../../lib/searchAPI.js';
 
-var QuestionModal = () => {
+var AnswerModal = () => {
 
-  let [useQuestionModal, setQuestionModal] = useRecoilState(showQuestionModal);
+  let [useAnswerModal, setAnswerModal] = useRecoilState(showAnswerModal);
   let [useProductId, setProductId] = useRecoilState(selectedProductId);
   let productName = useRecoilValue(questionModalData);
+  let questionBody = useRecoilValue(answerModalSelector);
+  let [useQuestionId, setQuestionId] = useRecoilState(specifiedQuestion)
 
   let bodyForm = React.useRef(null);
   let nameForm = React.useRef(null);
@@ -27,33 +29,33 @@ var QuestionModal = () => {
       body: bodyForm.current,
       name: nameForm.current,
       email: emailForm.current,
-      product_id: parseInt(useProductId),
+      photos: [],
     };
 
-    postQuestions(postBody);
-    setQuestionModal(false);
+    postAnswers(postBody, parseInt(useQuestionId));
+    setAnswerModal(false);
   };
 
   const onCancel = () => {
-    setQuestionModal(false);
+    setAnswerModal(false);
   };
 
-  if (useQuestionModal === true) {
+  if (useAnswerModal === true) {
     return(
       <div className="modal">
         <div className="modal-content">
           <div className="modal-header">
-            <h4 className="modal-title">Ask Your Question</h4>
+            <h4 className="modal-title">Submit your Answer</h4>
           </div>
-          <div className="modal-body">About the {productName[0].name}
+          <div className="modal-body">{productName[0].name}: {questionBody.question_body}
             <><br></br>
               <textarea rows='10' cols='60' wrap='soft' ref={bodyForm} required placeholder='*Your question...'></textarea>
               <>
                 <div>*Nickname <br></br>
-                  <input className="body-username" type="text" placeholder="Example: jackson11!" ref={nameForm} maxlength='1000' size='30' required></input>
-                </div>
+                  <input className="body-username" type="text" placeholder="Example: jack543!" ref={nameForm} maxlength='1000' size='30' required></input>
+                </div> -For privacy reasons, do not use your full name or email address”
                 <div>*Email <br></br>
-                  <input className="body-email" type="email" pattern="email" placeholder="Why did you like the product or not?" ref={emailForm} maxlength='1000' size='30' required></input> <br></br> -For authentication reasons, you will not be emailed.
+                  <input className="body-email" type="email" pattern="email" placeholder="Example: jack@email.com" ref={emailForm} maxlength='1000' size='30' required></input> <br></br> -For authentication reasons, you will not be emailed.
                 </div>
               </>
             </>
@@ -69,4 +71,4 @@ var QuestionModal = () => {
   }
 };
 
-export default QuestionModal;
+export default AnswerModal;

@@ -28,16 +28,11 @@ var SearchQA = () => {
 
   const onSearch = (search) => {
     search.preventDefault();
-    //based on the searched
     setSearchQuestion(search.target.value);
   };
 
   const showMoreQues = () => {
-    // if (quesCount + 2 > filteredProductQ.length) {
-    //   setQuesCount(filteredProductQ.length);
-    // } else {
     setQuesCount(quesCount + 2);
-    // }
   };
 
   const showLessQues = () => {
@@ -53,49 +48,47 @@ var SearchQA = () => {
     setUseModal(true);
   };
 
-  if (filteredProductQ.length === 0) {
-    return (
-      <div><button id='add-ques' onClick={addMoreQuestions}>Add a Question +</button>
-        <QuestionModal/>
-     </div>
-    )
-  } else {
-    return (
-      <div id="search-qa">
-        <form>
-          <input type='search' placeholder='Have a question? Search for answers…' onChange={(e) => {onSearch(e)}} size="75"></input>
-          <button type='submit' id='search-qa'>Search</button>
-        </form>
-        <div id="qa">
-          {filteredProductQ.map((entry, i, array) => {
-            console.log(entry);
-            if (array.length < 2) {
-              return (
-                <>
-                  <SearchList key={i} entries={entry}/>
-                  <QuestionModal productName={entry}/>
-                </>
-              );
-            } else if (i === array.length - 1) {
-              return (
-                <>
-                  <SearchList key={i} entries={entry}/>
-                  <button key={i + 1} id='more-ans' onClick={() => {showMoreQues();}}>More Answered Questions</button><button key={i + 2} id='less-ans' onClick={() => {showLessQues();}}>Less Answered Questions</button><button key={i + 3} id='add-ques' onClick={() => {addMoreQuestions()}}>Add a Question +</button>
-                  <QuestionModal/>
-                </>
-              );
-            } else {
-              return (
-                <>
-                  <SearchList key={i} entries={entry}/>
-                  <QuestionModal/>
-                </>
-              );
-            }
-          })}
-        </div>
+  const addSearchFeat = (i) => {
+    if (filteredProductQ.length !== 0) {
+      return (
+      <form>
+        <input type='search' placeholder='Have a question? Search for answers…' onChange={(e) => {onSearch(e)}} size="75"></input>
+        <button type='submit' id='search-qa'>Search</button>
+      </form>
+      );
+    }
+  };
+
+  const addMoreAnsQuesFeat = (i) => {
+    if (limitQList.length > 2) {
+      return (
+        <>
+          <button id='more-ans' onClick={() => {showMoreQues()}}>More Answered Questions</button><button id='less-ans' onClick={() => {showLessQues()}}>Less Answered Questions</button>
+        </>
+      );
+    }
+  };
+
+  return (
+    <div id="search-qa">
+      {addSearchFeat()}
+      <div id="qa">
+        {filteredProductQ.map((entry, i, array) => {
+          console.log('questions', entry);
+            return (
+              <>
+                <SearchList key={i} entries={entry}/>
+              </>
+            )
+        })}
       </div>
-    )}
+      <div>
+        {addMoreAnsQuesFeat()}
+        <button id='add-ques' onClick={addMoreQuestions}>Add a Question +</button>
+        <QuestionModal/>
+      </div>
+    </div>
+  )
 };
 
 export default SearchQA;

@@ -227,7 +227,7 @@ export const questionModalData = selector({
 
     return productData.filter((id) => id.id.toString() === productId);
   }
-})
+});
 
 export const searchQa = atom({
   key: 'searchQa',
@@ -269,19 +269,35 @@ export const showMoreAnsSelector = selector({
 
     return sorted.slice(0, answerCount);
   }
-})
+});
 
 export const showQuestionModal = atom({
   key: 'showQuestionModal',
   default: false,
-})
+});
 
-export const questionModalSelector = selector({
-  key: 'questionModalSelector',
+export const showAnswerModal = atom({
+  key: 'showAnswerModal',
+  default: false,
+});
+
+export const specifiedQuestion = atom({
+  key: 'specifiedQuestion',
+  default: ""
+});
+
+export const answerModalSelector = selector({
+  key: 'answerModalSelector',
   get: ({get}) => {
+    let productQuestion = get(limitedQuestions);
+    let specifiedQuestionId = get(specifiedQuestion)
+    let filteredQuestion = productQuestion.filter((question) => {
+      return question.question_id === parseInt(specifiedQuestionId);
+    })
 
+    return filteredQuestion[0];
   }
-})
+});
 
 // ==========================================================
 
