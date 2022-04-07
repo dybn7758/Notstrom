@@ -3,7 +3,6 @@ import {Checkmark} from 'react-ionicons';
 
 const RelatedTable = () => {
 
-
   return (
     <div>Comparing
       <table>

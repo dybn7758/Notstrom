@@ -63,15 +63,14 @@ var App = () => {
     } else if (pageView !== "main") {
       return (
         <div>
-
-        {" "}
-        Himalayas For The Win
+          {" "}
+          Himalayas For The Win
           <Overview productId={selectedProductID}/>
-          {/* <RelatedProducts /> */}
+          <RelatedProducts />
           <QA />
           <Reviews />
         </div>
-      );
+      )
     }
   };
 
@@ -98,7 +97,10 @@ var App = () => {
       <div className="main">{changeView(pageView)}</div>
     </div>
   );
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 };
 
 export default App;

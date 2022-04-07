@@ -1,34 +1,47 @@
 import React from 'react';
-import RelatedCard from './RelatedCard.jsx';
-import {ArrowBackCircle, ArrowForwardCircle} from 'react-ionicons';
-import {productQ} from '../../App.jsx';
+import {RelatedModal} from './RelatedModal.jsx';
+import RelatedCategory from './RelatedCategory.jsx';
+import RelatedPicture from './RelatedPicture.jsx';
+import RelatedPrice from './RelatedPrice.jsx';
+import RelatedName from './RelatedName.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
+import {ArrowBackCircle, ArrowForwardCircle, StarOutline} from 'react-ionicons';
+import {show, relatedIDs, currentRelatedID} from '../../lib/Atoms.jsx';
+const apiCalls = require('../../lib/searchAPI.js');
 
-const RelatedCarousel = () => {
-  let [prod, setProd] = useRecoilState(productQ);
+
+
+const RelatedCarousel = (props) => {
+
+  const [showValue, setShow] = useRecoilState(show);
+  const [currentRelatedIDValue, setCurrentRelatedID] = useRecoilState(currentRelatedID);
+  const [relatedIDArray, setRelatedIDArray] = useRecoilState(relatedIDs);
 
   return (
-    <div style={{width: 1000, height: 350, background: 'lightgray', padding: 5, overflow: 'hidden'}}>
-      <ArrowBackCircle style={{position: 'relative', top: '50%', right: '5%', zIndex: 5}}onClick={()=>{console.log('this')}}/>
-        {prod.map((value, index) => {
-          // console.log(value, index, 'inside map');
-          return <RelatedCard key={index} />
-        })}
-      <ArrowForwardCircle style={{position: 'relative', top: '50%', right: 10, zIndex: 5}}onClick={()=>{console.log('that')}}/>
+    <div>
+      <h1 style={{position: 'relative', fontSize: 14}}>Related Products</h1>
+      <div style={{width: 1000, height: 350, background: 'lightgray', margin: 5, overflow: 'hidden'}}>
+        <ArrowBackCircle style={{position: 'relative', top: '50%', left: '5%', zIndex: 5}} onClick={()=>{console.log('this')}}/>
+        {relatedIDArray.map(index => {
+          return (
+            <div key={index} style={{float: 'left', position: 'relative', height: 325, width: 200, margin: 10}}>
+              <RelatedPicture index={index}/>
+              <StarOutline color={'yellow'} style={{position: 'absolute', top: 10, right: 10, zIndex: 2}} onClick={() => {setShow(['block']); console.log(event, 'star')}}/>
+                <div style={{position: 'relative', bottom: 0, backgroundColor: 'gray', width: 200, height: 100, alignItems: 'bottom'}}>
+                  <RelatedCategory/>
+                  <RelatedName/>
+                  <RelatedPrice/>
+                <div style={{ height: 20, width: 100, bottom: 10, left: 10, background: 'yellow', position: 'absolute'}}>Stars</div>
+                  <RelatedModal/>
+              </div>
+            </div>
+          )})}
+      <ArrowForwardCircle style={{position: 'relative', top: '50%', right: 10, zIndex: 5}} onClick={()=>{console.log('that')}}/>
     </div>
+  </div>
   )
 }
 
 export default RelatedCarousel;
-// testing
-// Any number of related cards should be in the carousel
 
-// upon load should list all related products
-  // initial load should always be a default
-  // products which do not fit should go off screen
-  // list should be centered so that the first item is in the left-most position
-// arrows should be available to scroll through the list
-  // should only scroll one item at time
-  // when the left most card is in it's starting position
-    // the left arrow should disappear
-    // likewise for right-most image
+// onMouseEnter={() => {console.log('mouse over!')}} onMouseLeave={() => {console.log()}}
