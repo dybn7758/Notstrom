@@ -315,7 +315,12 @@ export const answerModalSelector = selector({
 
 export const photoModal = atom({
   key: 'photoModal',
-  default: [0, 1]
+  default: []
+});
+
+export const toggleUpload = atom({
+  key: 'toggleUpload',
+  default: false
 });
 // ==========================================================
 

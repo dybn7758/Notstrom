@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
+import $ from 'jquery';
 import { atom, useSetRecoilState, useRecoilState, selector, useRecoilValue } from 'recoil';
-import { showAnswerModal, limitedQuestions, productQuestionsSelector, productQ, questionModalData, selectedProductId, answerModalSelector, specifiedQuestion, photoModal } from '../../lib/Atoms.jsx';
+import { showAnswerModal, limitedQuestions, productQuestionsSelector, productQ, questionModalData, selectedProductId, answerModalSelector, specifiedQuestion, photoModal, toggleUpload } from '../../lib/Atoms.jsx';
 import { postAnswers } from '../../lib/searchAPI.js';
 
 var AnswerModal = () => {
@@ -11,6 +12,7 @@ var AnswerModal = () => {
   let questionBody = useRecoilValue(answerModalSelector);
   let [useQuestionId, setQuestionId] = useRecoilState(specifiedQuestion);
   let [usephotoUpload, setPhotoUpload] = useRecoilState(photoModal);
+  let [toggleUploads, setToggleUpload] = useRecoilState(toggleUpload);
 
   let bodyForm = React.useRef(null);
   let nameForm = React.useRef(null);
@@ -41,17 +43,23 @@ var AnswerModal = () => {
     setAnswerModal(false);
   };
 
-  const photoUpload = () => {
-    console.log(document.getElementsByClassName('body=images')[0].files)
-    let photos = document.getElementsByClassName('body=images')[0].files;
-    if (document.getElementsByClassName('body=images')[0].files.length >= 5) {
-      console.log(document.getElementsByClassName('body=images')[0].disabled);
-      document.getElementsByClassName('body=images')[0].disabled = true;
-    }
-    // for(let photo in photos) {
+  const photoUpload = (e) => {
 
-    // }
-    // setPhotoUpload() //set the photos to this state to be rendered below
+    let photoUpload = Array.from(e.target.files);
+
+    photoUpload.forEach((photo) => {
+      let reader = new FileReader();
+      reader.onloadend = () => {
+        setPhotoUpload([...usephotoUpload, reader.result]);
+      };
+
+      reader.readAsDataURL(photo);
+    })
+
+    if (usephotoUpload.length > 3) {
+      console.log('disabling')
+      setToggleUpload(true);
+    }
   };
 
   if (useAnswerModal === true) {
@@ -73,10 +81,10 @@ var AnswerModal = () => {
                 </div>
                 <div>
                   <label>Add up to 5 photos
-                  <input className="body=images" type="file" multiple onChange={() => {photoUpload()}} accept="image/*" disabled={false}></input></label>
-                  {usephotoUpload.map((photo, photoId) => {
+                  <input className="body-images" type="file" multiple onChange={(e) => {photoUpload(e)}} accept="image/*" alt="Image preview..." disabled={toggleUploads}></input></label>
+                  {usephotoUpload.map((photo, i) => {
                     return (
-                      <img key={photoId}></img>
+                      <img key={i} id={'preview' + i} src={photo} width="150" height="125"></img>
                     )
                   })}
                 </div>
