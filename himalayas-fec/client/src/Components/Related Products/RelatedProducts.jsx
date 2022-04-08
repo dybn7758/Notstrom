@@ -1,7 +1,7 @@
-import React from 'react';
+import {useRecoilState, useRecoilValue} from 'recoil';
 import RelatedCarousel from './RelatedCarousel.jsx';
 import {RelatedOutfits} from './RelatedOutfits.jsx';
-import {useRecoilState, useRecoilValue} from 'recoil';
+import React from 'react';
 
 
 const RelatedProducts = () => {
