@@ -1,7 +1,7 @@
-import React from 'react';
-import {Checkmark} from 'react-ionicons';
 import {stylesAndProducts} from '../../lib/Atoms.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
+import {Checkmark} from 'react-ionicons';
+import React from 'react';
 
 const TableSales = (props) => {
   const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);

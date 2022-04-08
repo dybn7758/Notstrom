@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
 import {stylesResponse, stylesAndProducts} from '../../lib/Atoms.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
+import React, {useEffect} from 'react';
 
 const RelatedPicture = (props) => {
   const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);

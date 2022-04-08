@@ -1,6 +1,6 @@
-import React from 'react';
 import {stylesAndProducts} from '../../lib/Atoms.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
+import React from 'react';
 
 const TableStyles = (props) => {
   const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);

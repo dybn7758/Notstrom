@@ -12,6 +12,9 @@ export const relatedIDs = atom({key: 'relatedIDs', default: []})
 //================= Current Related ID ======== a single related ID value
 export const currentRelatedID = atom({key: 'currentRelatedID', default: []})
 
+//================ currentFeatures ============
+export const currentFeatures = atom({key: 'currentFeatures', default: []})
+
 // ================= All Related Styles/Products Combined ====
 export const stylesAndProducts = atom({key: 'stylesAndProducts', default: []})
 

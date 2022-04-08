@@ -1,7 +1,7 @@
-import React from 'react';
 import RelatedTable from './RelatedTable.jsx';
-import {useRecoilState} from 'recoil';
 import {show} from '../../lib/Atoms.jsx';
+import {useRecoilState} from 'recoil';
+import React from 'react';
 
 export const RelatedModal = (props) => {
 

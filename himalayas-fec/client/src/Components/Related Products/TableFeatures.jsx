@@ -1,15 +1,20 @@
-import React from 'react';
-import {Checkmark} from 'react-ionicons';
-
-import {stylesAndProducts} from '../../lib/Atoms.jsx';
+import {stylesAndProducts, currentFeatures} from '../../lib/Atoms.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
+import {Checkmark} from 'react-ionicons';
+import React, {useEffect} from 'react';
 
 const TableFeatures = (props) => {
+
+  useEffect(() => {
+    setCurrentFeatures(theseFeatures);
+  }, []);
+
   const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);
-  const currentFeatures = stylesAndProductsValue[props.props1].data.features;
+  const [currentFeaturesValue, setCurrentFeatures] = useRecoilState(currentFeatures);
+  const theseFeatures = stylesAndProductsValue[props.props1].data.features;
 
   return (
-    currentFeatures.map((value, index) => {
+    currentFeaturesValue.map((value, index) => {
       // console.log(value, index, 'mapping')
       return(
         <tr key={index}>

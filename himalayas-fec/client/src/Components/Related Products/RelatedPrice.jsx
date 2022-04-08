@@ -1,6 +1,6 @@
-import React from 'react';
 import {currentProductByID, stylesAndProducts} from '../../lib/Atoms.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
+import React from 'react';
 
 const RelatedPrice = (props) => {
   const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);
