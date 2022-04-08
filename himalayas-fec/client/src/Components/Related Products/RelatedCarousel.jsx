@@ -55,13 +55,13 @@ const RelatedCarousel = (props) => {
           return (
             <div key={index} style={{float: 'left', position: 'relative', height: 325, width: 200, margin: 10}}>
               <RelatedPicture props1={index}/>
-              <StarOutline color={'yellow'} style={{position: 'absolute', top: 10, right: 10, zIndex: 2}} onClick={() => {setShow(['block']); console.log(event, 'star')}}/>
+              <StarOutline color={'yellow'} style={{position: 'absolute', top: 10, right: 10, zIndex: 2}} onClick={() => {setShow(['block']); console.log(event, stylesAndProductsValue[index].data.id)}}/>
                 <div style={{position: 'relative', bottom: 0, backgroundColor: 'gray', width: 200, height: 100, alignItems: 'bottom'}}>
                   <RelatedCategory props1={index}/>
                   <RelatedName props1={index}/>
                   <RelatedPrice props1={index}/>
                 <div style={{ height: 20, width: 100, bottom: 10, left: 10, background: 'yellow', position: 'absolute'}}>Stars</div>
-                  <RelatedModal/>
+                  <RelatedModal props1={index}/>
               </div>
             </div>
           )}})}

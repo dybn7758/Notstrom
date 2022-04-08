@@ -3,17 +3,17 @@ import RelatedTable from './RelatedTable.jsx';
 import {useRecoilState} from 'recoil';
 import {show} from '../../lib/Atoms.jsx';
 
-export const RelatedModal = () => {
+export const RelatedModal = (props) => {
 
   const [showValue, setShow] = useRecoilState(show);
 
   return (
     <div style={{
-      display: showValue[0], background: 'gray',height: 300,
-      width: 300,position: 'fixed', left: '50%', top: '50%',
+      display: showValue[0], background: 'gray',height: 500,
+      width: 500,position: 'fixed', left: '25%', top: '25%',
       zIndex: 10
     }}>
-    <RelatedTable/>
+    <RelatedTable props1={props.props1}/>
       <button style={{position: 'absolute', bottom: 0, left: '50%'}}
       onClick={() => {setShow(['none'])}}>Close</button>
     </div>
