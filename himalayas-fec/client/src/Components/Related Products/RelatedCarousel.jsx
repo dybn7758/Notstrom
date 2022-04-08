@@ -1,4 +1,4 @@
-import {show, relatedIDs, relatedSelector, stylesAndProducts} from '../../lib/Atoms.jsx';
+import {show, relatedIDs, relatedSelector, stylesAndProducts, sliderState} from '../../lib/Atoms.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
 import RelatedCategory from './RelatedCategory.jsx';
 const apiCalls = require('../../lib/searchAPI.js');
@@ -10,16 +10,19 @@ import {StarOutline} from 'react-ionicons';
 import RightArrow from './RightArrow.jsx';
 import LeftArrow from './LeftArrow.jsx';
 import React, {useEffect} from 'react';
-import '../../App.css';
+// import './carousel.css';
+
 
 
 
 const RelatedCarousel = (props) => {
   const [relatedArrayValue, setRelatedArray] = useRecoilState(relatedIDs);
   const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);
+  const [sliderStateValue, setSliderState] = useRecoilState(sliderState);
   const [showValue, setShow] = useRecoilState(show);
   const array = useRecoilValue(relatedSelector)
 
+  const {children} = props;
 
   useEffect(() => {
     setRelatedArray(array)
@@ -48,25 +51,25 @@ const RelatedCarousel = (props) => {
 
 
   return (
-    <div>
+    <div className='carousel-conatiner'>
       <h1 style={{position: 'relative', fontSize: 14}}>Related Products</h1>
       <div style={{width: 1000, height: 350, background: 'lightgray', margin: 5, overflow: 'hidden'}}>
         <LeftArrow/>
-        {stylesAndProductsValue.map((value, index) => {
-          if (index % 2 === 0) {
-          return (
-            <div key={index} style={{float: 'left', position: 'relative', height: 325, width: 200, margin: 10}}>
-              <RelatedPicture props1={index}/>
-              <StarOutline color={'yellow'} style={{position: 'absolute', top: 10, right: 10, zIndex: 2}} onClick={() => {setShow(['block']); console.log(stylesAndProductsValue[index].data.id)}}/>
-                <div style={{position: 'relative', bottom: 0, backgroundColor: 'gray', width: 200, height: 100, alignItems: 'bottom'}}>
-                  <RelatedCategory props1={index}/>
-                  <RelatedName props1={index}/>
-                  <RelatedPrice props1={index}/>
-                <div style={{ height: 20, width: 100, bottom: 10, left: 10, background: 'yellow', position: 'absolute'}}>Stars</div>
-                  <RelatedModal props1={index}/>
+          {stylesAndProductsValue.map((value, index) => {
+            if (index % 2 === 0) {
+            return (
+              <div key={index} style={{float: 'left', position: 'relative', height: 325, width: 200, margin: 10}}>
+                <RelatedPicture props1={index}/>
+                <StarOutline color={'yellow'} style={{position: 'absolute', top: 10, right: 10, zIndex: 2}} onClick={() => {setShow(['block']); console.log(stylesAndProductsValue[index].data.id)}}/>
+                  <div style={{position: 'relative', bottom: 0, backgroundColor: 'gray', width: 200, height: 100, alignItems: 'bottom'}}>
+                    <RelatedCategory props1={index}/>
+                    <RelatedName props1={index}/>
+                    <RelatedPrice props1={index}/>
+                  <div style={{ height: 20, width: 100, bottom: 10, left: 10, background: 'yellow', position: 'absolute'}}>Stars</div>
+                    <RelatedModal props1={index}/>
+                </div>
               </div>
-            </div>
-          )}})}
+            )}})}
       <RightArrow/>
     </div>
   </div>

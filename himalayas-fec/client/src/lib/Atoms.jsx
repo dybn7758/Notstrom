@@ -9,6 +9,12 @@ export const show = atom({key: 'show', default: ['none']})
 //================ Related IDs Array =============== array of related IDs
 export const relatedIDs = atom({key: 'relatedIDs', default: []})
 
+// ================= Slider State ==================
+export const sliderState = atom({key: 'sliderState', default: 0})
+
+//=================== Slider Length ==============
+export const sliderLength = atom({key: 'sliderLength', default: 0})
+
 //================= Current Related ID ======== a single related ID value
 export const currentRelatedID = atom({key: 'currentRelatedID', default: []})
 
@@ -220,4 +226,11 @@ export const currentStylesSelector = selector({
   }
 })
 
+export const sliderSelector = selector({
+  key: 'sliderSelector',
+  get: async ({get}) => {
+    const currentSliderValue = await get(sliderState);
+    return currentSliderValue;
+  }
+})
 

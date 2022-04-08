@@ -9,6 +9,7 @@ import axios from "axios";
 import { listQuestions, listProducts, listReviews } from "./lib/searchAPI.js";
 import { productResponse, selectedProductId, relatedSelector, relatedIDs } from "./lib/Atoms.jsx";
 import { atom, selector, useRecoilState, useRecoilValue } from "recoil";
+import CarouselContainer from './Components/Related Products/CarouselContainer.jsx';
 
 export const productQ = atom({
   key: "productQ",
@@ -70,7 +71,7 @@ var App = () => {
           {" "}
           Himalayas For The Win
           <Overview productId={selectedProductID}/>
-          <RelatedProducts />
+          <CarouselContainer />
           <QA />
           <Reviews />
         </div>
