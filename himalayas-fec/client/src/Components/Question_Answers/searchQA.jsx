@@ -74,7 +74,6 @@ var SearchQA = () => {
       {addSearchFeat()}
       <div id="qa">
         {filteredProductQ.map((entry, i, array) => {
-          console.log('questions', entry);
             return (
               <>
                 <SearchList key={i} entries={entry}/>

@@ -108,11 +108,11 @@ var putQuesHelpful = (questionId) => {
   return axiosPut(parameterURL);
 };
 
-var putQuesReport = (body, questionId) => {
-  let parameterURL = `${serverUrl}/qa/questions/${questionId}/report`;
+// var putQuesReport = (body, questionId) => {
+//   let parameterURL = `${serverUrl}/qa/questions/${questionId}/report`;
 
-  return axiosPut(parameterURL, body);
-};
+//   return axiosPut(parameterURL, body);
+// };
 
 var putAnsHelpful = (answerId) => {
   let parameterURL = `${serverUrl}/qa/answers/${answerId}/helpful`;
@@ -123,7 +123,7 @@ var putAnsHelpful = (answerId) => {
 var putAnsReport = (answerId) => {
   let parameterURL = `${serverUrl}/qa/answers/${answerId}/report`;
 
-  return axiosPut(parameterURL, body);
+  return axiosPut(parameterURL);
 };
 
 //--------------- API Reviews -----------------
@@ -172,5 +172,5 @@ var productStyles = (product_id) => {
 
 //Will need to add CART API get later on...
 
-export { listQuestions, listProducts, listReviews, metaReviews, relatedProducts, productStyles, selectedProduct, productsByID, postQuestions, postAnswers, putQuesHelpful, putQuesReport, putAnsHelpful, putAnsReport };
+export { listQuestions, listProducts, listReviews, metaReviews, relatedProducts, productStyles, selectedProduct, productsByID, postQuestions, postAnswers, putQuesHelpful, putAnsHelpful, putAnsReport };
 

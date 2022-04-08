@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import { atom, useSetRecoilState, useRecoilState, selector, useRecoilValue } from 'recoil';
-import { showAnswerModal, limitedQuestions, productQuestionsSelector, productQ, questionModalData, selectedProductId, answerModalSelector, specifiedQuestion } from '../../lib/Atoms.jsx';
+import { showAnswerModal, limitedQuestions, productQuestionsSelector, productQ, questionModalData, selectedProductId, answerModalSelector, specifiedQuestion, photoModal } from '../../lib/Atoms.jsx';
 import { postAnswers } from '../../lib/searchAPI.js';
 
 var AnswerModal = () => {
@@ -9,7 +9,8 @@ var AnswerModal = () => {
   let [useProductId, setProductId] = useRecoilState(selectedProductId);
   let productName = useRecoilValue(questionModalData);
   let questionBody = useRecoilValue(answerModalSelector);
-  let [useQuestionId, setQuestionId] = useRecoilState(specifiedQuestion)
+  let [useQuestionId, setQuestionId] = useRecoilState(specifiedQuestion);
+  let [usephotoUpload, setPhotoUpload] = useRecoilState(photoModal);
 
   let bodyForm = React.useRef(null);
   let nameForm = React.useRef(null);
@@ -40,6 +41,19 @@ var AnswerModal = () => {
     setAnswerModal(false);
   };
 
+  const photoUpload = () => {
+    console.log(document.getElementsByClassName('body=images')[0].files)
+    let photos = document.getElementsByClassName('body=images')[0].files;
+    if (document.getElementsByClassName('body=images')[0].files.length >= 5) {
+      console.log(document.getElementsByClassName('body=images')[0].disabled);
+      document.getElementsByClassName('body=images')[0].disabled = true;
+    }
+    // for(let photo in photos) {
+
+    // }
+    // setPhotoUpload() //set the photos to this state to be rendered below
+  };
+
   if (useAnswerModal === true) {
     return(
       <div className="modal">
@@ -52,12 +66,21 @@ var AnswerModal = () => {
               <textarea rows='10' cols='60' wrap='soft' ref={bodyForm} required placeholder='*Your question...'></textarea>
               <>
                 <div>*Nickname <br></br>
-                  <input className="body-username" type="text" placeholder="Example: jack543!" ref={nameForm} maxlength='1000' size='30' required></input>
+                  <input className="body-username" type="text" placeholder="Example: jack543!" ref={nameForm} maxLength='1000' size='30' required></input>
                 </div> -For privacy reasons, do not use your full name or email address”
                 <div>*Email <br></br>
-                  <input className="body-email" type="email" pattern="email" placeholder="Example: jack@email.com" ref={emailForm} maxlength='1000' size='30' required></input> <br></br> -For authentication reasons, you will not be emailed.
+                  <input className="body-email" type="email" pattern="email" placeholder="Example: jack@email.com" ref={emailForm} maxLength='1000' size='30' required></input> <br></br> -For authentication reasons, you will not be emailed.
                 </div>
-              </>
+                <div>
+                  <label>Add up to 5 photos
+                  <input className="body=images" type="file" multiple onChange={() => {photoUpload()}} accept="image/*" disabled={false}></input></label>
+                  {usephotoUpload.map((photo, photoId) => {
+                    return (
+                      <img key={photoId}></img>
+                    )
+                  })}
+                </div>
+                </>
             </>
           </div>
           <div className="modal-footer">

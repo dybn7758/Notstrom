@@ -50,10 +50,10 @@ var QuestionModal = () => {
               <textarea rows='10' cols='60' wrap='soft' ref={bodyForm} required placeholder='*Your question...'></textarea>
               <>
                 <div>*Nickname <br></br>
-                  <input className="body-username" type="text" placeholder="Example: jackson11!" ref={nameForm} maxlength='1000' size='30' required></input>
+                  <input className="body-username" type="text" placeholder="Example: jackson11!" ref={nameForm} maxLength='1000' size='30' required></input>
                 </div>
                 <div>*Email <br></br>
-                  <input className="body-email" type="email" pattern="email" placeholder="Why did you like the product or not?" ref={emailForm} maxlength='1000' size='30' required></input> <br></br> -For authentication reasons, you will not be emailed.
+                  <input className="body-email" type="email" pattern="email" placeholder="Why did you like the product or not?" ref={emailForm} maxLength='1000' size='30' required></input> <br></br> -For authentication reasons, you will not be emailed.
                 </div>
               </>
             </>

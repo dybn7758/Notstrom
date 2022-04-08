@@ -265,10 +265,24 @@ export const showMoreAnsSelector = selector({
     let answerList = get(searchAns);
     let answerCount = get(searchAnsCount);
 
-    let sorted = answerList.slice(0, answerList.length).sort((a,b) => b.helpfulness - a.helpfulness)
+    let sorted = answerList.slice(0, answerList.length).sort((a,b) => b.helpfulness - a.helpfulness);
 
-    return sorted.slice(0, answerCount);
+    let sortedBySeller = sorted.filter((name) => {
+      return name.answerer_name === 'Seller';
+    });
+    let sortedByOthers = sorted.filter((name) => {
+      return name.answerer_name !== 'Seller';
+    });
+
+    let answerers = [...sortedBySeller, ...sortedByOthers]
+
+    return answerers.slice(0, answerCount);
   }
+});
+
+export const reportedAnswer = atom({
+  key: 'reportedAnswer',
+  default: 'report',
 });
 
 export const showQuestionModal = atom({
@@ -299,6 +313,10 @@ export const answerModalSelector = selector({
   }
 });
 
+export const photoModal = atom({
+  key: 'photoModal',
+  default: [0, 1]
+});
 // ==========================================================
 
 //==============current product selector==============
