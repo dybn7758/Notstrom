@@ -7,9 +7,13 @@ import sampleQa from "./Components/Question_Answers/sampleQA.js";
 import sampleMain from "../src/Components/Question_Answers/sampleMain.js";
 import axios from "axios";
 import { listQuestions, listProducts, listReviews } from "./lib/searchAPI.js";
-import { productResponse, selectedProductId, relatedSelector, relatedIDs } from "./lib/Atoms.jsx";
+import {
+  productResponse,
+  selectedProductId,
+  relatedSelector,
+  relatedIDs,
+} from "./lib/Atoms.jsx";
 import { atom, selector, useRecoilState, useRecoilValue } from "recoil";
-import CarouselContainer from './Components/Related Products/CarouselContainer.jsx';
 
 export const productQ = atom({
   key: "productQ",
@@ -26,12 +30,13 @@ var App = () => {
   let [pageView, setPageView] = useRecoilState(catalog);
   const productData = productResponse();
 
-  let [selectedProductID, setCurrentProductId] = useRecoilState(selectedProductId)
+  let [selectedProductID, setCurrentProductId] =
+    useRecoilState(selectedProductId);
 
   //Retrieves data from the API and sets the products to state to render
   //pass the second argument so it doesnt create an infinite loop everytime this component renders
   useEffect(() => {
-    setProd(productData)
+    setProd(productData);
   }, []);
 
   //Sets the product detail page
@@ -70,12 +75,12 @@ var App = () => {
         <div>
           {" "}
           Himalayas For The Win
-          <Overview productId={selectedProductID}/>
-          <CarouselContainer />
+          <Overview productId={selectedProductID} />
+          <RelatedProducts/>
           <QA />
           <Reviews />
         </div>
-      )
+      );
     }
   };
 

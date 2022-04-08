@@ -1,4 +1,4 @@
-import {show, relatedIDs, relatedSelector, stylesAndProducts, sliderState} from '../../lib/Atoms.jsx';
+import {show, relatedIDs, relatedSelector, stylesAndProducts, sliderState, sliderLength, sliderSelector} from '../../lib/Atoms.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
 import RelatedCategory from './RelatedCategory.jsx';
 const apiCalls = require('../../lib/searchAPI.js');
@@ -7,27 +7,29 @@ import {RelatedModal} from './RelatedModal.jsx';
 import RelatedPrice from './RelatedPrice.jsx';
 import RelatedName from './RelatedName.jsx';
 import {StarOutline} from 'react-ionicons';
-import RightArrow from './RightArrow.jsx';
-import LeftArrow from './LeftArrow.jsx';
 import React, {useEffect} from 'react';
-// import './carousel.css';
-
 
 
 
 const RelatedCarousel = (props) => {
   const [relatedArrayValue, setRelatedArray] = useRecoilState(relatedIDs);
   const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);
-  const [sliderStateValue, setSliderState] = useRecoilState(sliderState);
+  const [sliderValue, setSlider] = useRecoilState(sliderState);
   const [showValue, setShow] = useRecoilState(show);
-  const array = useRecoilValue(relatedSelector)
+  const array = useRecoilValue(relatedSelector);
+  const [lengthValue, setLength] = useRecoilState(sliderLength);
+  const currentSliderValue = useRecoilValue(sliderSelector)
 
-  const {children} = props;
+
 
   useEffect(() => {
     setRelatedArray(array)
     callWrapper()
   }, []);
+
+  useEffect(() => {
+    setLength(stylesAndProductsValue.length / 2)
+  }, [stylesAndProductsValue]);
 
   const callWrapper = () => {
     const allResponse = [];
@@ -46,36 +48,63 @@ const RelatedCarousel = (props) => {
     })
   }
 
+  const closeModal = () => {
+    setShow(['none']);
+  }
+
+  const next = () => {
+    if (sliderValue < (lengthValue - 1)) {
+        setSlider(sliderValue + 1)
+    }
+  };
+
+  const prev = () => {
+    if (sliderValue > 0) {
+        setSlider(sliderValue - 1)
+    }
+  };
+
 
 
 
 
   return (
     <div className='carousel-conatiner'>
-      <h1 style={{position: 'relative', fontSize: 14}}>Related Products</h1>
-      <div style={{width: 1000, height: 350, background: 'lightgray', margin: 5, overflow: 'hidden'}}>
-        <LeftArrow/>
-          {stylesAndProductsValue.map((value, index) => {
-            if (index % 2 === 0) {
-            return (
-              <div key={index} style={{float: 'left', position: 'relative', height: 325, width: 200, margin: 10}}>
-                <RelatedPicture props1={index}/>
-                <StarOutline color={'yellow'} style={{position: 'absolute', top: 10, right: 10, zIndex: 2}} onClick={() => {setShow(['block']); console.log(stylesAndProductsValue[index].data.id)}}/>
-                  <div style={{position: 'relative', bottom: 0, backgroundColor: 'gray', width: 200, height: 100, alignItems: 'bottom'}}>
+      <div className="carousel-wrapper">
+        <button onClick={() => {prev(), console.log(sliderValue)}} className='left-arrow'>Left</button>
+          <div className="carousel-content-wrapper">
+              {stylesAndProductsValue.map((value, index) => {
+                if (index % 2 === 0) {
+                  return (
+                  <div key={index} className='carousel-content' itemsToShow={1} style={{float: 'left', transform: `translateX(-${sliderValue * 100}%)`}}>
+                  <div key={index} style={{ position: 'relative', height: 325, width: 200, margin: 10}}>
+                    <RelatedPicture props1={index}/>
+                    <StarOutline color={'yellow'} style={{position: 'absolute', top: 10, right: 10, zIndex: 2}} onClick={() => {setShow(['block']); console.log(stylesAndProductsValue[index].data.id)}}/>
+                    <div style={{position: 'relative', bottom: 0, backgroundColor: 'gray', width: 200, height: 100, alignItems: 'bottom'}}>
                     <RelatedCategory props1={index}/>
                     <RelatedName props1={index}/>
                     <RelatedPrice props1={index}/>
-                  <div style={{ height: 20, width: 100, bottom: 10, left: 10, background: 'yellow', position: 'absolute'}}>Stars</div>
+                    <div style={{ height: 20, width: 100, bottom: 10, left: 10, background: 'yellow', position: 'absolute'}}>Stars</div>
                     <RelatedModal props1={index}/>
+                  </div>
                 </div>
               </div>
-            )}})}
-      <RightArrow/>
+              )}})}
+            </div>
+        <button onClick={() => {next(), console.log(sliderValue)}} className='right-arrow'>Right</button>
+      </div>
     </div>
-  </div>
   )
 }
 
 export default RelatedCarousel;
 
-// onMouseEnter={() => {console.log('mouse over!')}} onMouseLeave={() => {console.log()}}
+
+
+
+
+
+
+
+
+
