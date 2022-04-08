@@ -56,11 +56,11 @@ var SearchList = (props) => {
   return(
     <div id="questions">
       <>
-        <h3>Q: {props.entries.question_body}</h3>
+        <div><strong>Q: </strong><span className="by-ques">{props.entries.question_body}</span></div>
         <div id="question-span">
           <span className="asker-name">by {props.entries.asker_name}, </span>
           <span className="q-date" margin="10px"> {moment(props.entries.question_date).format("MMM Do, YY")} </span> | <span id={props.entries.question_id} className="helpfulness" onClick={(e) => {helpFulQuesClick(e)}}>helpful?</span>
-          <span className="yes-no"> yes( {props.entries.question_helpfulness} ) </span> |
+          <span className="yes-no"> yes ( {props.entries.question_helpfulness} ) </span> |
           <span id={props.entries.question_id} className="add-ans" onClick={(e) => {addAnswer(e)}}>Add Answer </span>
         </div>
         <AnswerModal/>
@@ -69,7 +69,7 @@ var SearchList = (props) => {
       {relevantAns.map((ans, i, array) => {
           return (
             <div className="answers" key={ans.id}>
-              <div><strong>A:</strong> {ans.body}</div>
+              <div><strong>A: </strong> <span className="by-ans">{ans.body}</span></div>
               <div id="ans-photos">
                 {ans.photos.map((photo, i) => {
                   return <img key={i} src={photo}></img>}
@@ -79,7 +79,7 @@ var SearchList = (props) => {
                 <span className="ans-name"> by {ans.answerer_name}, </span>
                 <span className="a-date"> {moment(ans.date).format("MMM Do, YY")} </span> |
                 <span id={ans.id} className="helpfulness" onClick={(e) => {helpFulAnsClick(e)}}>helpful?</span>
-                <span className='yes-no'> yes( {ans.helpfulness} ) </span> |
+                <span className='yes-no'> yes ( {ans.helpfulness} ) </span> |
                 <span id={ans.id} className="report" onClick={(e) => {reportAnsClick(e)}}>report </span>
               </div><br></br>
             </div>

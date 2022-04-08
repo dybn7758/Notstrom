@@ -19,11 +19,11 @@
   align-items: left;
   justify-content: left;
   font-family: sans-serif;
+  margin-left: 15px;
 }
 
 .helpfulness {
   text-decoration: underline;
-  // margin: 10px;
   margin-left: 15px;
   margin-right: 7px;
 }
@@ -35,13 +35,11 @@
 
 .report {
   text-decoration: underline;
-  // margin: 10px;
   margin-left: 10px;
   margin-right: 10px;
 }
 
 .yes-no {
-  // margin: 10px;
   margin-left: 7px;
   margin-right: 10px;
 }
@@ -57,5 +55,20 @@
 
 .answerers {
   font-family: sans-serif;
+  margin-left: 15px;
 }
 
+.by-ans {
+  font-family: sans-serif;
+  margin-bottom: 5px;
+}
+
+.by-ques {
+  font-family: sans-serif;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+#ans-photos {
+  margin-left: 15px;
+}
