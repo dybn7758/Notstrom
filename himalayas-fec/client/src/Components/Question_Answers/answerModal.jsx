@@ -3,6 +3,7 @@ import $ from 'jquery';
 import { atom, useSetRecoilState, useRecoilState, selector, useRecoilValue } from 'recoil';
 import { showAnswerModal, limitedQuestions, productQuestionsSelector, productQ, questionModalData, selectedProductId, answerModalSelector, specifiedQuestion, photoModal, toggleUpload } from '../../lib/Atoms.jsx';
 import { postAnswers } from '../../lib/searchAPI.js';
+import './Styling/Modal.scss';
 
 var AnswerModal = () => {
 
@@ -80,7 +81,7 @@ var AnswerModal = () => {
                   <input className="body-email" type="email" pattern="email" placeholder="Example: jack@email.com" ref={emailForm} maxLength='1000' size='30' required></input> <br></br> -For authentication reasons, you will not be emailed.
                 </div>
                 <div>
-                  <label>Add up to 5 photos
+                  <label>Add up to {5 - usephotoUpload.length} photos
                   <input className="body-images" type="file" multiple onChange={(e) => {photoUpload(e)}} accept="image/*" alt="Image preview..." disabled={toggleUploads}></input></label>
                   {usephotoUpload.map((photo, i) => {
                     return (

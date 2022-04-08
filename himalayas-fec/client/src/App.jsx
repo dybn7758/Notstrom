@@ -9,6 +9,7 @@ import axios from "axios";
 import { listQuestions, listProducts, listReviews } from "./lib/searchAPI.js";
 import { productResponse, selectedProductId, productQ, catalog } from "./lib/Atoms.jsx";
 import { atom, selector, useRecoilState, useRecoilValue } from "recoil";
+import './App.scss';
 
 // export const productQ = atom({
 //   key: "productQ",
@@ -63,38 +64,24 @@ var App = () => {
     } else if (pageView !== "main") {
       return (
         <div>
-          {" "}
-          Himalayas For The Win
-          <Overview productId={selectedProductID}/>
-          <RelatedProducts />
+          {/* <Overview productId={selectedProductID}/>
+          <RelatedProducts /> */}
           <QA />
-          <Reviews />
+          {/* <Reviews /> */}
         </div>
       )
     }
   };
 
   return (
-    <div className="nav">
-      <span
-        className="logo"
-        onClick={() => {
-          changeView("main");
-        }}
-      >
-        Hima-layers
-      </span>
-      <span className="searchbar">
-        <input
-          type="search"
-          placeholder="Product search..."
-          onChange={() => {
-            console.log("hi");
-          }}
-        ></input>
-      </span>
-
-      <div className="main">{changeView(pageView)}</div>
+    <div id="App">
+      <div id="logo" onClick={() => {changeView("main");}}>Hima-layers</div>
+      <div>
+        <input className="searchbar" type="search" placeholder="Product search..." onChange={() => {console.log("hi");}}>
+        </input>
+      </div>
+      <div className="main">{changeView(pageView)}
+      </div>
     </div>
   );
 };

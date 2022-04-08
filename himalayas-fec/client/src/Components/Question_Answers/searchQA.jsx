@@ -7,6 +7,7 @@ import sampleQa from './sampleQA.js';
 import { atom, useSetRecoilState, useRecoilState, selector, useRecoilValue } from 'recoil';
 import { productQ } from '../../App.jsx';
 import { productQuestionsSelector, searchQuesCount, limitedQuestions, limitQuestionSelector, searchQa, filterQuestionSelector, showQuestionModal } from '../../lib/Atoms.jsx';
+import './Styling/searchQA.scss';
 
 var SearchQA = () => {
   //retrieve the current selected product
@@ -52,12 +53,13 @@ var SearchQA = () => {
     if (filteredProductQ.length !== 0) {
       return (
       <form>
-        <input type='search' placeholder='Have a question? Search for answers…' onChange={(e) => {onSearch(e)}} size="75"></input>
-        <button type='submit' id='search-qa'>Search</button>
+        <input id="search-bar" type='search' placeholder='Have a question? Search for answers…' onChange={(e) => {onSearch(e)}}></input>
+        {/* <button id='search-but' type='submit'>Search</button> */}
       </form>
       );
     }
   };
+
 
   const addMoreAnsQuesFeat = (i) => {
     if (limitQList.length > 2) {

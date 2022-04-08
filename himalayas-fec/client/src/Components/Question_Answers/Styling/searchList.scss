@@ -1,0 +1,61 @@
+.add-ans {
+  // display: flex;
+  // flex-direction: column;
+  // align-items: right;
+  font-style: italic;
+  justify-content: right;
+  text-decoration: underline;
+  margin-left: 20px;
+}
+
+.q-date {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#question-span {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: left;
+  font-family: sans-serif;
+}
+
+.helpfulness {
+  text-decoration: underline;
+  // margin: 10px;
+  margin-left: 15px;
+  margin-right: 7px;
+}
+
+.a-date {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.report {
+  text-decoration: underline;
+  // margin: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.yes-no {
+  // margin: 10px;
+  margin-left: 7px;
+  margin-right: 10px;
+}
+
+.asker-name {
+  // margin-top: 2px;
+  // margin-bottom: 20px;
+}
+
+.answers {
+  // margin-top: 10px;
+}
+
+.answerers {
+  font-family: sans-serif;
+}
+

@@ -45,7 +45,7 @@ export const pictures = atom({key: 'pictures', default: ''})
 export const productSelector = selector({
   key: 'productSelector',
   get: async ({get}) => {
-    const response = await apiCalls.listProducts()
+    const response = await apiCalls.listProducts();
     return response;
   },
 })
@@ -202,7 +202,7 @@ export const productMetaReviewsSelector = selector({
 // ========= State of questions ================
 export const searchQuesCount = atom({
   key: 'searchQuesCount',
-  default: 2,
+  default: 3,
 });
 
 export const limitedQuestions = atom({
@@ -241,7 +241,11 @@ export const filterQuestionSelector = selector({
     let sortedList = get(limitedQuestions);
     let questionCount = get(searchQuesCount);
     if(querySearch.length > 2) {
+
       let filtered = sortedList.filter((search) => search.question_body.indexOf(querySearch) !== -1)
+      if (filtered.length === 0) {
+        return sortedList.slice(0, questionCount);
+      }
       return filtered;
     } else {
       return sortedList.slice(0, questionCount);
@@ -264,9 +268,9 @@ export const showMoreAnsSelector = selector({
   get: ({get}) => {
     let answerList = get(searchAns);
     let answerCount = get(searchAnsCount);
-
+    console.log('before', answerList);
     let sorted = answerList.slice(0, answerList.length).sort((a,b) => b.helpfulness - a.helpfulness);
-
+    console.log('after sort', sorted);
     let sortedBySeller = sorted.filter((name) => {
       return name.answerer_name === 'Seller';
     });
@@ -275,7 +279,7 @@ export const showMoreAnsSelector = selector({
     });
 
     let answerers = [...sortedBySeller, ...sortedByOthers]
-
+    console.log(answerers, 'inspect')
     return answerers.slice(0, answerCount);
   }
 });

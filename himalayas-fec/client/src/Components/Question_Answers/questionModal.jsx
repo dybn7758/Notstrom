@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import { atom, useSetRecoilState, useRecoilState, selector, useRecoilValue } from 'recoil';
 import { showQuestionModal, limitedQuestions, productQuestionsSelector, productQ, questionModalData, selectedProductId } from '../../lib/Atoms.jsx';
 import { postQuestions } from '../../lib/searchAPI.js';
+import './Styling/Modal.scss';
 
 var QuestionModal = () => {
 
