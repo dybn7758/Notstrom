@@ -72,16 +72,16 @@ var AnswerModal = () => {
           </div>
           <div className="modal-body">{productName[0].name}: {questionBody.question_body}
             <><br></br>
-              <textarea rows='10' cols='60' wrap='soft' ref={bodyForm} required placeholder='*Your question...'></textarea>
+              <textarea rows='10' cols='60' wrap='soft' ref={bodyForm} required placeholder='*Your answer...'></textarea>
               <>
                 <div>*Nickname <br></br>
                   <input className="body-username" type="text" placeholder="Example: jack543!" ref={nameForm} maxLength='1000' size='30' required></input>
-                </div> -For privacy reasons, do not use your full name or email address”
+                </div> -For privacy reasons, do not use your full name or email address.
                 <div>*Email <br></br>
                   <input className="body-email" type="email" pattern="email" placeholder="Example: jack@email.com" ref={emailForm} maxLength='1000' size='30' required></input> <br></br> -For authentication reasons, you will not be emailed.
                 </div>
                 <div>
-                  <label>Add up to {5 - usephotoUpload.length} photos
+                  <label className="photo-count">Add up to {5 - usephotoUpload.length} photos
                   <input className="body-images" type="file" multiple onChange={(e) => {photoUpload(e)}} accept="image/*" alt="Image preview..." disabled={toggleUploads}></input></label>
                   {usephotoUpload.map((photo, i) => {
                     return (

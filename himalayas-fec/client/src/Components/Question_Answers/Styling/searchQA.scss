@@ -24,6 +24,9 @@
 #qa {
   overflow: auto;
   max-height: 800px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
 }
 
   /* #search-but {

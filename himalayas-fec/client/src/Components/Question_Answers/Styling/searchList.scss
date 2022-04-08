@@ -2,8 +2,6 @@
   // display: flex;
   // flex-direction: column;
   // align-items: right;
-  font-style: italic;
-  justify-content: right;
   text-decoration: underline;
   margin-left: 20px;
 }
@@ -13,9 +11,16 @@
   margin-right: 10px;
 }
 
+#questions {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
 #question-span {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   align-items: left;
   justify-content: left;
   font-family: sans-serif;
@@ -42,6 +47,8 @@
 .yes-no {
   margin-left: 7px;
   margin-right: 10px;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
 .asker-name {
@@ -51,11 +58,15 @@
 
 .answers {
   // margin-top: 10px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
 }
 
 .answerers {
   font-family: sans-serif;
   margin-left: 15px;
+  white-space: nowrap;
 }
 
 .by-ans {
@@ -71,4 +82,6 @@
 
 #ans-photos {
   margin-left: 15px;
+  width: 100%;
+  max-width: fit-content;
 }
