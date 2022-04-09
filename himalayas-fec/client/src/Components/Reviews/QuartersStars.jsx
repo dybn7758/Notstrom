@@ -1,4 +1,5 @@
 import React from "react";
+import "../../../dist/index.scss";
 
 function QuartersStars(props) {
   let rating = props.rating || 0;

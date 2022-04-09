@@ -64,19 +64,6 @@ export const selectedProductId = atom({
   default: "",
 });
 
-// ========= State of questions ================
-export const searchQuesCount = atom({ key: "searchQuesCount", default: 2 });
-
-export const limitedQuestions = atom({ key: "limitedQuestions", default: [] });
-
-// ====== Modal Toggle State ============== flips between show/hide for modal
-export const show = atom({
-  key: "show",
-  default: ["none"],
-});
-
-//=============== SELECTORS ===============
-
 // =========== Product Data ======== returns a list of all 'main' products
 export const productSelector = selector({
   key: "productSelector",
