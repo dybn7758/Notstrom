@@ -7,31 +7,18 @@ import sampleQa from "./Components/Question_Answers/sampleQA.js";
 import sampleMain from "../src/Components/Question_Answers/sampleMain.js";
 import axios from "axios";
 import { listQuestions, listProducts, listReviews } from "./lib/searchAPI.js";
-import {
-  productResponse,
-  selectedProductId,
-  relatedSelector,
-  relatedIDs,
-} from "./lib/Atoms.jsx";
+import { productResponse, selectedProductId, productQ, catalog, showSeachModal, relatedSelector, relatedIDs } from "./lib/Atoms.jsx";
 import { atom, selector, useRecoilState, useRecoilValue } from "recoil";
-
-export const productQ = atom({
-  key: "productQ",
-  default: sampleMain,
-});
-
-const catalog = atom({
-  key: "catalog",
-  default: "main",
-});
+import './App.scss';
+import ProductSearchModal from './Components/productSearchModal.jsx';
 
 var App = () => {
   let [prod, setProd] = useRecoilState(productQ);
   let [pageView, setPageView] = useRecoilState(catalog);
   const productData = productResponse();
 
-  let [selectedProductID, setCurrentProductId] =
-    useRecoilState(selectedProductId);
+  let [selectedProductID, setCurrentProductId] = useRecoilState(selectedProductId);
+  let [searchModal, setSearchModal] = useRecoilState(showSeachModal);
 
   //Retrieves data from the API and sets the products to state to render
   //pass the second argument so it doesnt create an infinite loop everytime this component renders
@@ -39,10 +26,16 @@ var App = () => {
     setProd(productData);
   }, []);
 
-  //Sets the product detail page
-  // var onClickProduct = (productID) => {
-  //   setPageView(productID);
-  // };
+  const searchingModal = (e) => {
+
+    console.log(e.target.value);
+    //set this to state to render all products with category
+  }
+
+  const onSearchClick = () => {
+    console.log('hi');
+    setSearchModal(true);
+  }
 
   var changeView = (page) => {
     setPageView(page);
@@ -73,10 +66,8 @@ var App = () => {
     } else if (pageView !== "main") {
       return (
         <div>
-          {" "}
-          Himalayas For The Win
-          <Overview productId={selectedProductID} />
-          <RelatedProducts/>
+          <Overview productId={selectedProductID}/>
+          <RelatedProducts />
           <QA />
           <Reviews />
         </div>
@@ -85,26 +76,15 @@ var App = () => {
   };
 
   return (
-    <div className="nav">
-      <span
-        className="logo"
-        onClick={() => {
-          changeView("main");
-        }}
-      >
-        Hima-layers
-      </span>
-      <span className="searchbar">
-        <input
-          type="search"
-          placeholder="Product search..."
-          onChange={() => {
-            console.log("hi");
-          }}
-        ></input>
-      </span>
-
-      <div className="main">{changeView(pageView)}</div>
+    <div id="App">
+      <div id="logo" onClick={() => {changeView("main");}}>Hima-layers</div>
+      <div>
+        <input className="searchbar" type="search" placeholder="Product search..." onChange={(e) => {searchingModal(e);}} onClick={onSearchClick}>
+        </input>
+        <ProductSearchModal/>
+      </div>
+      <div className="main">{changeView(pageView)}
+      </div>
     </div>
   );
 };

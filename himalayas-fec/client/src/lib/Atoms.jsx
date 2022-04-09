@@ -3,6 +3,22 @@ import {atom, selector, useRecoilValue, useRecoilState} from 'recoil';
 const apiCalls = require('./searchAPI.js');
 
 //================= ATOMS =================
+
+// ====== Lists all the products from APICall to main catalog page ==============
+export const productQ = atom({
+  key: "productQ",
+  default: [],
+});
+
+// ====== Toggles the main catalog page to a product page =========
+export const catalog = atom({
+  key: "catalog",
+  default: "main",
+});
+// =========== Current/Default ID ========= issues with 10, 12, 14 (no image available)
+export const currentID = atom({key: 'currentID', default: 37311})
+
+// ====== Modal Toggle State ============== flips between show/hide for modal
 // ====== Modal Toggle State ============== working - do not touch
 export const show = atom({key: 'show', default: ['none']})
 
@@ -36,12 +52,6 @@ export const currentRelatedProducts = atom({key: 'currentRelatedProducts', defau
 //=============Selected Product ID ==============
 export const selectedProductId = atom({key: "selectedProductId", default: ""});
 
-// ========= State of questions ================
-export const searchQuesCount = atom({key: 'searchQuesCount', default: 2});
-
-export const limitedQuestions = atom({key: 'limitedQuestions', default: []});
-
-
 
 //=============== SELECTORS ===============
 
@@ -49,7 +59,8 @@ export const limitedQuestions = atom({key: 'limitedQuestions', default: []});
 export const productSelector = selector({
   key: 'productSelector',
   get: async ({get}) => {
-    const response = await apiCalls.listProducts()
+    const response = await apiCalls.listProducts(100);
+    console.log('-------------', response);
     return response;
   },
 })
@@ -60,16 +71,33 @@ export const productResponse = () => {
   return data.data;
 
 };
+// ================================================
+
+// =========== Current Category =========== return category of current 'main' product
+export const categorySelector = selector({
+  key: 'categorySelector',
+  get: async ({get}) => {
+    const [currentIDValue, setCurrentID] = useRecoilState(currentID);
+    const response = await apiCalls.productsByID(currentIDValue)
+    return response.data;
+  }
+})
+
+export const categoryResponse = () => {
+  const data = useRecoilValue(categorySelector);
+  return data.category;
+}
 
 //================ Product Styles ============ return product styles by product id
 export const productStyles = selector({
   key: 'productStyles',
   get: async ({get}) => {
     const [currentIDValue, setCurrentID] = useRecoilState(currentID);
-    const response = await apiCalls.productStyles(currentIDValue)
+    const response = await apiCalls.productStyles(currentIDValue);
     return response;
   }
 })
+
 export const stylesResponse = () => {
   const data = useRecoilValue(productStyles);
   return data.data.results;
@@ -82,7 +110,6 @@ export const productQuestionsSelector = selector({
   get: async ({ get }) => {
     const productID = await get(selectedProductId);
     const response = await apiCalls.listQuestions(productID);
-
     return response.data.results;
   },
 });
@@ -100,6 +127,11 @@ export const relatedSelector = selector({
     return response.data;
   }
 })
+
+export const relatedResponse = () => {
+  const data = useRecoilValue(relatedSelector);
+  return data.data;
+}
 
 //============= Related Products Selector ========
 
@@ -152,13 +184,33 @@ export const productMetaReviewsSelector = selector({
 });
 // ===========================================================
 
-export const limitQuestionSelector = selector({
-  key: 'limitQuestionSelector',
+// ========= State of questions ================
+export const searchQuesCount = atom({
+  key: 'searchQuesCount',
+  default: 3,
+});
+
+export const limitedQuestions = atom({
+  key: 'limitedQuestions',
+  default: [],
+});
+
+// export const limitQuestionSelector = selector({
+//   key: 'limitQuestionSelector',
+//   get: ({get}) => {
+//     let listQuestions = get(limitedQuestions);
+//     let questionCount = get(searchQuesCount);
+//     let limitedResponse = listQuestions.slice(0, listQuestions.length).sort((a, b) => {return b.question_helpfulness - a.question_helpfulness});
+//     return limitedResponse.slice(0, questionCount);
+//   }
+// });
+export const questionModalData = selector({
+  key: 'questionModalData',
   get: ({get}) => {
-    let listQuestions = get(limitedQuestions);
-    let questionCount = get(searchQuesCount);
-    let limitedResponse = listQuestions.slice(0, listQuestions.length).sort((a, b) => {return b.question_helpfulness - a.question_helpfulness});
-    return limitedResponse.slice(0, questionCount);
+    let productData = get(productQ);
+    let productId = get(selectedProductId);
+
+    return productData.filter((id) => id.id.toString() === productId);
   }
 });
 
@@ -174,7 +226,11 @@ export const filterQuestionSelector = selector({
     let sortedList = get(limitedQuestions);
     let questionCount = get(searchQuesCount);
     if(querySearch.length > 2) {
+
       let filtered = sortedList.filter((search) => search.question_body.indexOf(querySearch) !== -1)
+      if (filtered.length === 0) {
+        return sortedList.slice(0, questionCount);
+      }
       return filtered;
     } else {
       return sortedList.slice(0, questionCount);
@@ -182,7 +238,6 @@ export const filterQuestionSelector = selector({
   }
 });
 
-// ==========================================================
 export const searchAnsCount = atom({
   key: 'searchAnsCount',
   default: 2,
@@ -199,12 +254,71 @@ export const showMoreAnsSelector = selector({
     let answerList = get(searchAns);
     let answerCount = get(searchAnsCount);
 
-    let sorted = answerList.slice(0, answerList.length).sort((a,b) => b.helpfulness - a.helpfulness)
+    let sorted = answerList.slice(0, answerList.length).sort((a,b) => b.helpfulness - a.helpfulness);
 
-    return sorted.slice(0, answerCount);
+    let sortedBySeller = sorted.filter((name) => {
+      return name.answerer_name === 'Seller';
+    });
+    let sortedByOthers = sorted.filter((name) => {
+      return name.answerer_name !== 'Seller';
+    });
+
+    let answerers = [...sortedBySeller, ...sortedByOthers]
+
+    return answerers.slice(0, answerCount);
   }
-})
+});
 
+export const reportedAnswer = atom({
+  key: 'reportedAnswer',
+  default: 'report',
+});
+
+export const showQuestionModal = atom({
+  key: 'showQuestionModal',
+  default: false,
+});
+
+export const showAnswerModal = atom({
+  key: 'showAnswerModal',
+  default: false,
+});
+
+export const specifiedQuestion = atom({
+  key: 'specifiedQuestion',
+  default: ""
+});
+
+export const answerModalSelector = selector({
+  key: 'answerModalSelector',
+  get: ({get}) => {
+    let productQuestion = get(limitedQuestions);
+    let specifiedQuestionId = get(specifiedQuestion)
+    let filteredQuestion = productQuestion.filter((question) => {
+      return question.question_id === parseInt(specifiedQuestionId);
+    })
+
+    return filteredQuestion[0];
+  }
+});
+
+export const photoModal = atom({
+  key: 'photoModal',
+  default: []
+});
+
+export const toggleUpload = atom({
+  key: 'toggleUpload',
+  default: false
+});
+
+export const showSeachModal = atom({
+  key: 'showSeachModal',
+  default: false
+});
+
+
+// ==========================================================
 
 //==============current product selector==============
 export const currentProductSelector = selector({

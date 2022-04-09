@@ -23,13 +23,17 @@
     "react-hover": "^3.0.1",
     "react-ionicons": "^4.2.0",
     "recoil": "^0.6.1",
-    "webpack": "^5.70.0",
     "webpack.config.js": "^0.0.0"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/preset-react": "^7.16.7",
     "css-loader": "^6.7.1",
+    "mini-css-extract-plugin": "^2.6.0",
+    "sass": "^1.50.0",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.72.0",
     "jest": "^27.5.1",
     "style-loader": "^3.3.1",
     "webpack-cli": "^4.9.2"
@@ -39,7 +43,8 @@
     "client-dev": "npx webpack --watch",
     "start": "node server/index.js",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start2": "react-scripts start"
   },
   "eslintConfig": {
     "extends": [

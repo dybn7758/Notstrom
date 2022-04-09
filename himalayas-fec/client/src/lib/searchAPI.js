@@ -13,7 +13,7 @@ var axiosGet = (url) => {
     headers: { Authorization: API_KEY },
     method: "GET",
     url: url,
-    data: "json",
+    contentType: "application/json",
   };
 
   //Can chain more promises to the API call if you want to set state after invocation
@@ -22,6 +22,42 @@ var axiosGet = (url) => {
     .then((data) => {
       // console.log("Data received", data);
       //console.log("Data received", data);
+      return data;
+    })
+    .catch((err) => {
+      console.log("Error from API", err);
+    });
+};
+
+var axiosPost = (url, data) => {
+  let options = {
+    headers: { Authorization: API_KEY },
+    method: "POST",
+    url: url,
+    contentType: 'application/json',
+    data: data,
+  };
+
+  return axios(options)
+    .then((data) => {
+      console.log("Data posted", data);
+      return data;
+    })
+    .catch((err) => {
+      console.log("Error from API", err);
+    });
+};
+
+var axiosPut = (url) => {
+  let options = {
+    headers: { Authorization: API_KEY },
+    method: "PUT",
+    url: url,
+  };
+
+  return axios(options)
+    .then((data) => {
+      console.log("Data updated", data.status);
       return data;
     })
     .catch((err) => {
@@ -43,7 +79,7 @@ var listProducts = (count, page) => {
   //if needed, adjust the parameterURL to include these
   // ?page=1&count=100 param needs be added
 
-  let parameterURL = `${serverUrl}/products`;
+  let parameterURL = `${serverUrl}/products?count=${count}`;
 
   return axiosGet(parameterURL);
 };
@@ -52,7 +88,43 @@ var selectedProduct = (productId, count, page) => {
   let parameterURL = `${serverUrl}/products?product_id=${productId}`;
 
   return axiosGet(parameterURL);
-}
+};
+
+var postQuestions = (body) => {
+  let parameterURL = `${serverUrl}/qa/questions`;
+
+  return axiosPost(parameterURL, body);
+};
+
+var postAnswers = (body, questionId) => {
+  let parameterURL = `${serverUrl}/qa/questions/${questionId}/answers`;
+
+  return axiosPost(parameterURL, body);
+};
+
+var putQuesHelpful = (questionId) => {
+  let parameterURL = `${serverUrl}/qa/questions/${questionId}/helpful`;
+
+  return axiosPut(parameterURL);
+};
+
+// var putQuesReport = (body, questionId) => {
+//   let parameterURL = `${serverUrl}/qa/questions/${questionId}/report`;
+
+//   return axiosPut(parameterURL, body);
+// };
+
+var putAnsHelpful = (answerId) => {
+  let parameterURL = `${serverUrl}/qa/answers/${answerId}/helpful`;
+
+  return axiosPut(parameterURL);
+};
+
+var putAnsReport = (answerId) => {
+  let parameterURL = `${serverUrl}/qa/answers/${answerId}/report`;
+
+  return axiosPut(parameterURL);
+};
 
 //--------------- API Reviews -----------------
 var listReviews = (productId, page, count) => {
@@ -93,5 +165,5 @@ var productStyles = (product_id) => {
 
 //Will need to add CART API get later on...
 
-export { listQuestions, listProducts, listReviews, metaReviews, relatedProducts, productStyles, selectedProduct, productsByID};
+export { listQuestions, listProducts, listReviews, metaReviews, relatedProducts, productStyles, selectedProduct, productsByID, postQuestions, postAnswers, putQuesHelpful, putAnsHelpful, putAnsReport };
 
