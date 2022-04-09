@@ -1,7 +1,6 @@
 import {stylesAndProducts} from '../../lib/Atoms.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
 import React from 'react';
-import '../../../dist/'
 const RelatedName = (props) => {
   const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);
   const currentName = stylesAndProductsValue[props.props1].data.name;
