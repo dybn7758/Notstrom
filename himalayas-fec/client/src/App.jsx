@@ -66,8 +66,8 @@ var App = () => {
     } else if (pageView !== "main") {
       return (
         <div>
-          <Overview productId={selectedProductID}/>
-          <RelatedProducts />
+          {/* <Overview productId={selectedProductID}/> */}
+          {/* <RelatedProducts /> */}
           <QA />
           <Reviews />
         </div>
