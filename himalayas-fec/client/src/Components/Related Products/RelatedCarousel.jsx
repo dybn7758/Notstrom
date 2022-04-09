@@ -1,4 +1,4 @@
-import {show, relatedIDs, relatedSelector,
+import {show, relatedIDs, relatedSelector, currentStylesSelector,
   stylesAndProducts, sliderState, sliderLength, currentRelatedName,
   sliderSelector, modalData, relatedIndex, selectedProductId,
   currentFeatures, relatedOnSale, currentProductSelector, currentProduct} from '../../lib/Atoms.jsx';
@@ -29,6 +29,7 @@ const RelatedCarousel = (props) => {
   const currentSliderValue = useRecoilValue(sliderSelector);
   const [showValue, setShow] = useRecoilState(show);
   const array = useRecoilValue(relatedSelector);
+  const currentStyles = useRecoilValue(currentStylesSelector);
   const currentProductVar = useRecoilValue(currentProductSelector);
 
   useEffect(() => {
@@ -63,6 +64,7 @@ const RelatedCarousel = (props) => {
     const name = stylesAndProductsValue[relatedIndexValue - 2].data.name;
     setCurrentName(name);
     setCurrentFeatures(features);
+    console.log(currentStyles, 'current styles')
     if (stylesAndProductsValue[relatedIndexValue -1].data.results[0].sale_price !== null) {
       setRelatedOnSale(true)
     } else {

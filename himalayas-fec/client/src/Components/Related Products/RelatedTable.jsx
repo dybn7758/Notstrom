@@ -12,7 +12,7 @@ const RelatedTable = (props) => {
 
   return (
     <div>Comparing
-      <table >
+      <table style={{maxHeight: '30rem', overflow: 'auto'}}>
         <TableHeaders />
         <TableSales />
         <TableStyles />

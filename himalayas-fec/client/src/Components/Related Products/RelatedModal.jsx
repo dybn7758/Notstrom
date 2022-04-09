@@ -13,7 +13,7 @@ const RelatedModal = (props) => {
 
   return (
     <div style={{
-      display: showValue[0], background: 'gray',height: 250,
+      display: showValue[0], background: 'gray',height: 250, overflow: 'auto', maxHeight: '30rem',
       width: 500, position: 'fixed', left: '25%', top: '25%',
       zIndex: 8
     }}>

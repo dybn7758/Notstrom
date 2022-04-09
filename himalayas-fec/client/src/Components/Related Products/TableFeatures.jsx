@@ -1,4 +1,4 @@
-import {currentProduct, currentFeatures} from '../../lib/Atoms.jsx';
+import {currentProduct, currentFeatures, currentStylesSelector} from '../../lib/Atoms.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
 import {AiOutlineCheck, AiOutlineClose} from 'react-icons/ai';
 import React, {useEffect} from 'react';
@@ -6,6 +6,8 @@ import React, {useEffect} from 'react';
 const TableFeatures = () => {
   const [currentFeaturesValue, setCurrentFeatures] = useRecoilState(currentFeatures);
   const [currentProductValue, setCurrentProduct] = useRecoilState(currentProduct);
+  const currentStyles = useRecoilValue(currentStylesSelector);
+
 
 
 console.log(currentProductValue, 'current product')
