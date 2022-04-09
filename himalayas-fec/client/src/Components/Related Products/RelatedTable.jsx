@@ -14,10 +14,10 @@ const RelatedTable = (props) => {
   return (
     <div>Comparing
       <table >
-        <TableHeaders props1={props.props1}/>
-        <TableSales props1={props.props1}/>
-        <TableStyles props1={props.props1}/>
-        <TableFeatures props1={props.props1}/>
+        <TableHeaders />
+        <TableSales />
+        <TableStyles />
+        <TableFeatures />
     </table>
     </div>
   )

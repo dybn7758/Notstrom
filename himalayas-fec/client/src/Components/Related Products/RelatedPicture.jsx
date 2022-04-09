@@ -9,10 +9,11 @@ const RelatedPicture = (props) => {
 
   return (
     <div>
-      <div style={{ position: 'relative', width: 200, height: 225, backgroundImage: `url(${currentPicture})`}} onClick={() => {console.log('picture')}}></div>
+      <div style={{backgroundSize: 'cover', position: 'relative', width: 200, height: 225, backgroundImage: `url(${currentPicture})`}} onClick={() => {console.log('picture')}}></div>
     </div>
   )
 }
 
 export default RelatedPicture;
 
+// onMouseEnter={() => {console.log('mouse over!')}} onMouseLeave={() => {console.log()}}
