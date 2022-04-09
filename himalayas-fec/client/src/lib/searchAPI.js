@@ -1,12 +1,10 @@
 import { API_KEY, CAMPUS_CODE } from "../config.js";
 import axios from "axios";
-import react from 'react';
-import {useRecoilValue, useRecoilState} from 'recoil';
-import {relatedIDs} from './Atoms.jsx';
-
+import react from "react";
+import { useRecoilValue, useRecoilState } from "recoil";
+import { relatedIDs } from "./Atoms.jsx";
 
 const serverUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/${CAMPUS_CODE}`;
-
 
 var axiosGet = (url) => {
   let options = {
@@ -34,7 +32,7 @@ var axiosPost = (url, data) => {
     headers: { Authorization: API_KEY },
     method: "POST",
     url: url,
-    contentType: 'application/json',
+    contentType: "application/json",
     data: data,
   };
 
@@ -140,7 +138,7 @@ var productsByID = (product_id) => {
   let parameterURL = `${serverUrl}/products/${product_id}`;
 
   return axiosGet(parameterURL);
-}
+};
 
 // ------------- API Related Product IDs (array) --------------- returns array of related product IDs
 //--------------API Reviews Meta Data--------------
@@ -153,7 +151,7 @@ var metaReviews = (productId) => {
 var relatedProducts = (product_id) => {
   let relatedEndpoint = `${serverUrl}/products/${product_id}/related`;
 
-  return axiosGet(relatedEndpoint)
+  return axiosGet(relatedEndpoint);
 };
 
 // ----------- API Product Styles -------------------------
@@ -161,9 +159,22 @@ var productStyles = (product_id) => {
   let stylesEndpoint = `${serverUrl}/products/${product_id}/styles`;
 
   return axiosGet(stylesEndpoint);
-}
+};
 
 //Will need to add CART API get later on...
 
-export { listQuestions, listProducts, listReviews, metaReviews, relatedProducts, productStyles, selectedProduct, productsByID, postQuestions, postAnswers, putQuesHelpful, putAnsHelpful, putAnsReport };
-
+export {
+  listQuestions,
+  listProducts,
+  listReviews,
+  metaReviews,
+  relatedProducts,
+  productStyles,
+  selectedProduct,
+  productsByID,
+  postQuestions,
+  postAnswers,
+  putQuesHelpful,
+  putAnsHelpful,
+  putAnsReport,
+};

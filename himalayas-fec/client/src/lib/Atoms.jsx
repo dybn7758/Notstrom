@@ -1,6 +1,6 @@
-import React from 'react';
-import {atom, selector, useRecoilValue, useRecoilState} from 'recoil';
-const apiCalls = require('./searchAPI.js');
+import React from "react";
+import { atom, selector, useRecoilValue, useRecoilState } from "recoil";
+const apiCalls = require("./searchAPI.js");
 
 //================= ATOMS =================
 
@@ -16,92 +16,99 @@ export const catalog = atom({
   default: "main",
 });
 // =========== Current/Default ID ========= issues with 10, 12, 14 (no image available)
-export const currentID = atom({key: 'currentID', default: 37311})
+export const currentID = atom({ key: "currentID", default: 37311 });
 
 // ====== Modal Toggle State ============== flips between show/hide for modal
 // ====== Modal Toggle State ============== working - do not touch
-export const show = atom({key: 'show', default: ['none']})
+export const show = atom({ key: "show", default: ["none"] });
 
 //================ Related IDs Array =============== array of related IDs
-export const relatedIDs = atom({key: 'relatedIDs', default: []})
+export const relatedIDs = atom({ key: "relatedIDs", default: [] });
 
 // ================= Slider State ==================
-export const sliderState = atom({key: 'sliderState', default: 0})
+export const sliderState = atom({ key: "sliderState", default: 0 });
 
 // ================== Modal Data =====================
-export const modalData = atom({key: 'modalData', default: 37311})
+export const modalData = atom({ key: "modalData", default: 37311 });
 
 //=================== Slider Length ==============
-export const sliderLength = atom({key: 'sliderLength', default: 0})
+export const sliderLength = atom({ key: "sliderLength", default: 0 });
 
 //================= Current Related ID ======== a single related ID value
-export const currentRelatedID = atom({key: 'currentRelatedID', default: []})
+export const currentRelatedID = atom({ key: "currentRelatedID", default: [] });
 
 //================ currentFeatures ============
-export const currentFeatures = atom({key: 'currentFeatures', default: []})
+export const currentFeatures = atom({ key: "currentFeatures", default: [] });
 
 // ================= All Related Styles/Products Combined ====
-export const stylesAndProducts = atom({key: 'stylesAndProducts', default: []})
+export const stylesAndProducts = atom({
+  key: "stylesAndProducts",
+  default: [],
+});
 
 //================= Current Related Styles ====
-export const currentRelatedStyles = atom({key: 'currentRelatedStyles', default:[]})
+export const currentRelatedStyles = atom({
+  key: "currentRelatedStyles",
+  default: [],
+});
 
 //================= Current Related Products ===
-export const currentRelatedProducts = atom({key: 'currentRelatedProducts', default: []})
+export const currentRelatedProducts = atom({
+  key: "currentRelatedProducts",
+  default: [],
+});
 
 //=============Selected Product ID ==============
-export const selectedProductId = atom({key: "selectedProductId", default: ""});
-
-
-//=============== SELECTORS ===============
+export const selectedProductId = atom({
+  key: "selectedProductId",
+  default: "",
+});
 
 // =========== Product Data ======== returns a list of all 'main' products
 export const productSelector = selector({
-  key: 'productSelector',
-  get: async ({get}) => {
+  key: "productSelector",
+  get: async ({ get }) => {
     const response = await apiCalls.listProducts(100);
-    console.log('-------------', response);
+    console.log("-------------", response);
     return response;
   },
-})
+});
 
 export const productResponse = () => {
   const data = useRecoilValue(productSelector);
   // console.log("💔", data);
   return data.data;
-
 };
 // ================================================
 
 // =========== Current Category =========== return category of current 'main' product
 export const categorySelector = selector({
-  key: 'categorySelector',
-  get: async ({get}) => {
+  key: "categorySelector",
+  get: async ({ get }) => {
     const [currentIDValue, setCurrentID] = useRecoilState(currentID);
-    const response = await apiCalls.productsByID(currentIDValue)
+    const response = await apiCalls.productsByID(currentIDValue);
     return response.data;
-  }
-})
+  },
+});
 
 export const categoryResponse = () => {
   const data = useRecoilValue(categorySelector);
   return data.category;
-}
+};
 
 //================ Product Styles ============ return product styles by product id
 export const productStyles = selector({
-  key: 'productStyles',
-  get: async ({get}) => {
+  key: "productStyles",
+  get: async ({ get }) => {
     const [currentIDValue, setCurrentID] = useRecoilState(currentID);
     const response = await apiCalls.productStyles(currentIDValue);
     return response;
-  }
-})
-
+  },
+});
 export const stylesResponse = () => {
   const data = useRecoilValue(productStyles);
   return data.data.results;
-}
+};
 
 //==============product q selector/===============
 
@@ -118,38 +125,42 @@ export const productQuestionsSelector = selector({
 
 //=========== Related ID Selector ============== in use confirmed
 export const relatedSelector = selector({
-  key: 'relatedSelector',
-  get: async ({get}) => {
-    const [relatedArrayValue, setRelatedArray] = useRecoilState(relatedIDs)
-    const productID = await get(selectedProductId)
-    const response = await apiCalls.relatedProducts(productID)
+  key: "relatedSelector",
+  get: async ({ get }) => {
+    const [relatedArrayValue, setRelatedArray] = useRecoilState(relatedIDs);
+    const productID = await get(selectedProductId);
+    const response = await apiCalls.relatedProducts(productID);
     setRelatedArray(response.data);
     return response.data;
-  }
-})
+  },
+});
 
 export const relatedResponse = () => {
   const data = useRecoilValue(relatedSelector);
   return data.data;
-}
+};
 
 //============= Related Products Selector ========
 
 export const relatedProductsSelector = selector({
-  key: 'relatedProductsSelector',
-  get: async ({get}) => {
+  key: "relatedProductsSelector",
+  get: async ({ get }) => {
     const [relatedValue, setRelated] = useRecoilState(relatedIDs);
     const relatedArray = await apiCalls.productsByID(relatedValue[0]); // array of related product ids
     return relatedArray.data;
-  }
-})
+  },
+});
 
 export const allRelatedProducts = () => {
   const data = useRecoilValue(relatedProductsSelector);
   return data;
-}
+};
 
 //==========for all reviews========================
+export const twoMore = atom({
+  key: "twoMore",
+  default: 2,
+});
 
 export const productReviewsSelector = selector({
   key: "productReviewsSelector",
@@ -157,7 +168,7 @@ export const productReviewsSelector = selector({
     try {
       const productID = await get(selectedProductId);
       let page = 1;
-      let count = 2;
+      let count = get(twoMore);
       const response = await apiCalls.listReviews(productID, page, count);
       return response.data.results;
     } catch (err) {
@@ -165,7 +176,6 @@ export const productReviewsSelector = selector({
     }
   },
 });
-
 
 //==========for meta reviews======================
 export const productMetaReviewsSelector = selector({
@@ -186,12 +196,12 @@ export const productMetaReviewsSelector = selector({
 
 // ========= State of questions ================
 export const searchQuesCount = atom({
-  key: 'searchQuesCount',
+  key: "searchQuesCount",
   default: 3,
 });
 
 export const limitedQuestions = atom({
-  key: 'limitedQuestions',
+  key: "limitedQuestions",
   default: [],
 });
 
@@ -205,29 +215,30 @@ export const limitedQuestions = atom({
 //   }
 // });
 export const questionModalData = selector({
-  key: 'questionModalData',
-  get: ({get}) => {
+  key: "questionModalData",
+  get: ({ get }) => {
     let productData = get(productQ);
     let productId = get(selectedProductId);
 
     return productData.filter((id) => id.id.toString() === productId);
-  }
+  },
 });
 
 export const searchQa = atom({
-  key: 'searchQa',
-  default: '',
+  key: "searchQa",
+  default: "",
 });
 
 export const filterQuestionSelector = selector({
-  key: 'filterQuestionSelector',
-  get: ({get}) => {
+  key: "filterQuestionSelector",
+  get: ({ get }) => {
     let querySearch = get(searchQa);
     let sortedList = get(limitedQuestions);
     let questionCount = get(searchQuesCount);
-    if(querySearch.length > 2) {
-
-      let filtered = sortedList.filter((search) => search.question_body.indexOf(querySearch) !== -1)
+    if (querySearch.length > 2) {
+      let filtered = sortedList.filter(
+        (search) => search.question_body.indexOf(querySearch) !== -1
+      );
       if (filtered.length === 0) {
         return sortedList.slice(0, questionCount);
       }
@@ -235,118 +246,118 @@ export const filterQuestionSelector = selector({
     } else {
       return sortedList.slice(0, questionCount);
     }
-  }
+  },
 });
 
 export const searchAnsCount = atom({
-  key: 'searchAnsCount',
+  key: "searchAnsCount",
   default: 2,
 });
 
 export const searchAns = atom({
-  key: 'searchAns',
+  key: "searchAns",
   default: [],
 });
 
 export const showMoreAnsSelector = selector({
-  key: 'showMoreAnsSelector',
-  get: ({get}) => {
+  key: "showMoreAnsSelector",
+  get: ({ get }) => {
     let answerList = get(searchAns);
     let answerCount = get(searchAnsCount);
 
-    let sorted = answerList.slice(0, answerList.length).sort((a,b) => b.helpfulness - a.helpfulness);
+    let sorted = answerList
+      .slice(0, answerList.length)
+      .sort((a, b) => b.helpfulness - a.helpfulness);
 
     let sortedBySeller = sorted.filter((name) => {
-      return name.answerer_name === 'Seller';
+      return name.answerer_name === "Seller";
     });
     let sortedByOthers = sorted.filter((name) => {
-      return name.answerer_name !== 'Seller';
+      return name.answerer_name !== "Seller";
     });
 
-    let answerers = [...sortedBySeller, ...sortedByOthers]
+    let answerers = [...sortedBySeller, ...sortedByOthers];
 
     return answerers.slice(0, answerCount);
-  }
+  },
 });
 
 export const reportedAnswer = atom({
-  key: 'reportedAnswer',
-  default: 'report',
+  key: "reportedAnswer",
+  default: "report",
 });
 
 export const showQuestionModal = atom({
-  key: 'showQuestionModal',
+  key: "showQuestionModal",
   default: false,
 });
 
 export const showAnswerModal = atom({
-  key: 'showAnswerModal',
+  key: "showAnswerModal",
   default: false,
 });
 
 export const specifiedQuestion = atom({
-  key: 'specifiedQuestion',
-  default: ""
+  key: "specifiedQuestion",
+  default: "",
 });
 
 export const answerModalSelector = selector({
-  key: 'answerModalSelector',
-  get: ({get}) => {
+  key: "answerModalSelector",
+  get: ({ get }) => {
     let productQuestion = get(limitedQuestions);
-    let specifiedQuestionId = get(specifiedQuestion)
+    let specifiedQuestionId = get(specifiedQuestion);
     let filteredQuestion = productQuestion.filter((question) => {
       return question.question_id === parseInt(specifiedQuestionId);
-    })
+    });
 
     return filteredQuestion[0];
-  }
+  },
 });
 
 export const photoModal = atom({
-  key: 'photoModal',
-  default: []
+  key: "photoModal",
+  default: [],
 });
 
 export const toggleUpload = atom({
-  key: 'toggleUpload',
-  default: false
+  key: "toggleUpload",
+  default: false,
 });
 
 export const showSeachModal = atom({
-  key: 'showSeachModal',
-  default: false
+  key: "showSeachModal",
+  default: false,
 });
-
 
 // ==========================================================
 
 //==============current product selector==============
 export const currentProductSelector = selector({
-  key: 'currentProductSelector',
-  get: async({get}) => {
+  key: "currentProductSelector",
+  get: async ({ get }) => {
     const productID = await get(selectedProductId);
 
     const response = await apiCalls.selectedProduct(productID);
 
     return response.data;
-  }
-})
+  },
+});
 
 //============current styles selector================
 export const currentStylesSelector = selector({
-  key: 'currentStylesSelector',
-  get: async({get}) => {
+  key: "currentStylesSelector",
+  get: async ({ get }) => {
     const productID = await get(selectedProductId);
     const response = await apiCalls.productStyles(productID);
     return response.data;
-  }
-})
+  },
+});
 
 export const sliderSelector = selector({
-  key: 'sliderSelector',
-  get: async ({get}) => {
+  key: "sliderSelector",
+  get: async ({ get }) => {
     const currentSliderValue = await get(sliderState);
     return currentSliderValue;
-  }
-})
-
+  },
+});
