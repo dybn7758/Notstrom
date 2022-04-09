@@ -223,7 +223,6 @@ export const currentStylesSelector = selector({
   key: 'currentStylesSelector',
   get: async({get}) => {
     const productID = await get(selectedProductId);
-    console.log('pi', productID);
     const response = await apiCalls.productStyles(productID);
     return response.data;
   }
