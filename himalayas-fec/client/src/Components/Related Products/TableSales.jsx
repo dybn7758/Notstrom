@@ -10,9 +10,9 @@ const TableSales = (props) => {
 
   return (
     <tr>
-      <td>{saleData.salePrice}</td>
-      <td>{saleData.onSale}</td>
-      <td>{saleData.salePrice2}</td>
+      <td>price</td>
+      <td>onsale</td>
+      <td>price</td>
     </tr>
   )
 }

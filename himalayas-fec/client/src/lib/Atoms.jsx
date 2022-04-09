@@ -12,6 +12,9 @@ export const relatedIDs = atom({key: 'relatedIDs', default: []})
 // ================= Slider State ==================
 export const sliderState = atom({key: 'sliderState', default: 0})
 
+// ================== Modal Data =====================
+export const modalData = atom({key: 'modalData', default: 37311})
+
 //=================== Slider Length ==============
 export const sliderLength = atom({key: 'sliderLength', default: 0})
 
