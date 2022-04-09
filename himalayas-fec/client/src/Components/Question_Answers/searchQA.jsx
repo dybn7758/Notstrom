@@ -6,7 +6,8 @@ import QuestionModal from './questionModal.jsx';
 import sampleQa from './sampleQA.js';
 import { atom, useSetRecoilState, useRecoilState, selector, useRecoilValue } from 'recoil';
 import { productQ } from '../../App.jsx';
-import { productQuestionsSelector, searchQuesCount, limitedQuestions, limitQuestionSelector, searchQa, filterQuestionSelector } from '../../lib/Atoms.jsx';
+import { productQuestionsSelector, searchQuesCount, limitedQuestions, limitQuestionSelector, searchQa, filterQuestionSelector, showQuestionModal } from '../../lib/Atoms.jsx';
+import './Styling/searchQA.scss';
 
 var SearchQA = () => {
   //retrieve the current selected product
@@ -16,7 +17,7 @@ var SearchQA = () => {
 
   setLimitQList(specifiedProductID);
 
-  let limitedProductQ = useRecoilValue(limitQuestionSelector);
+  // let limitedProductQ = useRecoilValue(limitQuestionSelector);
 
   let [searchQuestions, setSearchQuestion] = useRecoilState(searchQa);
 
@@ -24,63 +25,71 @@ var SearchQA = () => {
 
   let [quesCount, setQuesCount] = useRecoilState(searchQuesCount);
 
+  let [useModal, setUseModal] = useRecoilState(showQuestionModal);
+
   const onSearch = (search) => {
     search.preventDefault();
-    //based on the searched
     setSearchQuestion(search.target.value);
   };
 
   const showMoreQues = () => {
-    // if (quesCount + 2 > filteredProductQ.length) {
-    //   setQuesCount(filteredProductQ.length);
-    // } else {
-      setQuesCount(quesCount + 2);
-    // }
+    setQuesCount(quesCount + 2);
   };
 
   const showLessQues = () => {
-    if(quesCount - 2 < 2) {
-      setQuesCount(2);
-    } else {
-      setQuesCount(quesCount - 2);
-    }
+    // if(quesCount - 2 < 2) {
+      setQuesCount(3);
+    // } else {
+    //   setQuesCount(quesCount - 2);
+    // }
   };
 
   const addMoreQuestions = () => {
-
+    //set state to show the modal to add a question
+    setUseModal(true);
   };
 
-  if (filteredProductQ.length === 0) {
-    return (
-      <div><button id='add-ques'>Add a Question +</button>
-        <QuestionModal/>
-     </div>
-    )
-  } else {
-    return (
-      <div id="search-qa">
-        <form>
-          <input type='search' placeholder='Have a question? Search for answers…' onChange={(e) => {onSearch(e)}}></input>
-          <button type='submit' id='search-qa'>Search</button>
-        </form>
-        <div id="qa">
-          {filteredProductQ.map((entry, i, array) => {
-            if (array.length < 2) {
-              return <SearchList key={i} entries={entry}/>;
-            } else if (array.length >= 2 && i === array.length - 1) {
-              return (
-                <>
-                  <SearchList key={i} entries={entry}/>
-                  <button key={i + 1} id='more-ans' onClick={() => {showMoreQues();}}>More Answered Questions</button><button key={i + 2} id='less-ans' onClick={() => {showLessQues();}}>Less Answered Questions</button><button key={i + 3} id='add-ques'>Add a Question +</button>
-                </>
-            );
-            } else {
-              return <SearchList key={i} entries={entry}/>;
-            }
-          })}
-        </div>
+  const addSearchFeat = (i) => {
+    if (filteredProductQ.length !== 0) {
+      return (
+      <form>
+        <input id="search-bar" type='search' placeholder='Have a question? Search for answers…' onChange={(e) => {onSearch(e)}}></input>
+        {/* <button id='search-but' type='submit'>Search</button> */}
+      </form>
+      );
+    }
+  };
+
+
+  const addMoreAnsQuesFeat = (i) => {
+    if (limitQList.length > 2) {
+      return (
+        <>
+          <button id='more-ans' onClick={() => {showMoreQues()}}>More Answered Questions</button><button id='less-ans' onClick={() => {showLessQues()}}>Less Answered Questions</button>
+        </>
+      );
+    }
+  };
+
+  return (
+    <div id="search-qa">
+      {addSearchFeat()}
+      <div id="qa">
+        {filteredProductQ.map((entry, i, array) => {
+            return (
+              <>
+                <SearchList key={i} entries={entry}/>
+              </>
+            )
+        })}
       </div>
-    )}
+      <div>
+        {addMoreAnsQuesFeat()}
+        <button id='add-ques' onClick={addMoreQuestions}>Add a Question +</button>
+        <QuestionModal/>
+      </div>
+    </div>
+  )
 };
 
 export default SearchQA;

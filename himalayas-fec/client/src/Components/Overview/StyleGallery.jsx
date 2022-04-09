@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import StyleDisplay from './StyleDisplay.jsx';
 
-
-
-
 class StyleGallery extends React.Component {
   constructor(props) {
     super(props);

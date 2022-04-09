@@ -1,17 +1,14 @@
 import React from "react";
 import SearchQA from "./searchQA.jsx";
 
-export default class QA extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+var QA = () => {
 
-  render() {
-    return (
-      <div className="questions-answers">
-        Questions & Answers
-        <SearchQA />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="questions-answers">
+      <div id="comp-title">Questions & Answers</div>
+      <SearchQA />
+    </div>
+  );
+};
+
+export default QA;
