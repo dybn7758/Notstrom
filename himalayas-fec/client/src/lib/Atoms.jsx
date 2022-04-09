@@ -52,12 +52,6 @@ export const currentRelatedProducts = atom({key: 'currentRelatedProducts', defau
 //=============Selected Product ID ==============
 export const selectedProductId = atom({key: "selectedProductId", default: ""});
 
-// ========= State of questions ================
-export const searchQuesCount = atom({key: 'searchQuesCount', default: 2});
-
-export const limitedQuestions = atom({key: 'limitedQuestions', default: []});
-
-
 
 //=============== SELECTORS ===============
 
@@ -108,13 +102,6 @@ export const stylesResponse = () => {
   const data = useRecoilValue(productStyles);
   return data.data.results;
 }
-
-
-//=============Selected Product ID ==============
-export const selectedProductId = atom({
-  key: "selectedProductId",
-  default: "",
-});
 
 //==============product q selector/===============
 
