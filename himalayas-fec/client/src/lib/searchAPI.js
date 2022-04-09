@@ -152,15 +152,8 @@ var metaReviews = (productId) => {
 // ------------- API Related Products ---------------
 var relatedProducts = (product_id) => {
   let relatedEndpoint = `${serverUrl}/products/${product_id}/related`;
-  const [relatedValue, setRelated] = useRecoilState(relatedIDs);
 
   return axiosGet(relatedEndpoint)
-  // .then((response) => {
-  //   console.log(response)
-  // })
-  // .catch((error) => {
-  //   console.log(error)
-  // })
 };
 
 // ----------- API Product Styles -------------------------

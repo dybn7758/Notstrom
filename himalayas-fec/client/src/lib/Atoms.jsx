@@ -19,25 +19,45 @@ export const catalog = atom({
 export const currentID = atom({key: 'currentID', default: 37311})
 
 // ====== Modal Toggle State ============== flips between show/hide for modal
+// ====== Modal Toggle State ============== working - do not touch
 export const show = atom({key: 'show', default: ['none']})
 
 //================ Related IDs Array =============== array of related IDs
-export const relatedIDs = atom({key: 'styles', default: [37311, 37312, 37313]})
+export const relatedIDs = atom({key: 'relatedIDs', default: []})
+
+// ================= Slider State ==================
+export const sliderState = atom({key: 'sliderState', default: 0})
+
+// ================== Modal Data =====================
+export const modalData = atom({key: 'modalData', default: 37311})
+
+//=================== Slider Length ==============
+export const sliderLength = atom({key: 'sliderLength', default: 0})
 
 //================= Current Related ID ======== a single related ID value
-export const currentRelatedID = atom({key: 'currentRelatedID', default: [37312]})
+export const currentRelatedID = atom({key: 'currentRelatedID', default: []})
 
-// =============== Category =================== individual category name
-export const category = atom({key: 'category', default: ''})
+//================ currentFeatures ============
+export const currentFeatures = atom({key: 'currentFeatures', default: []})
 
-//==================== Price ================== individual price
-export const price = atom({key: 'price', default: 0.00})
+// ================= All Related Styles/Products Combined ====
+export const stylesAndProducts = atom({key: 'stylesAndProducts', default: []})
 
-//================ Name ======================= individual product name
-export const name = atom({key: 'name', default: ''})
+//================= Current Related Styles ====
+export const currentRelatedStyles = atom({key: 'currentRelatedStyles', default:[]})
 
-//================ Pictures ===================
-export const pictures = atom({key: 'pictures', default: ''})
+//================= Current Related Products ===
+export const currentRelatedProducts = atom({key: 'currentRelatedProducts', default: []})
+
+//=============Selected Product ID ==============
+export const selectedProductId = atom({key: "selectedProductId", default: ""});
+
+// ========= State of questions ================
+export const searchQuesCount = atom({key: 'searchQuesCount', default: 2});
+
+export const limitedQuestions = atom({key: 'limitedQuestions', default: []});
+
+
 
 //=============== SELECTORS ===============
 
@@ -53,7 +73,7 @@ export const productSelector = selector({
 
 export const productResponse = () => {
   const data = useRecoilValue(productSelector);
-  console.log("💔", data);
+  // console.log("💔", data);
   return data.data;
 
 };
@@ -73,6 +93,7 @@ export const categoryResponse = () => {
   const data = useRecoilValue(categorySelector);
   return data.category;
 }
+
 //================ Product Styles ============ return product styles by product id
 export const productStyles = selector({
   key: 'productStyles',
@@ -105,39 +126,18 @@ export const productQuestionsSelector = selector({
     return response.data.results;
   },
 });
+
 // ===========================================================
 
-// ============ Single Product By ID ======= returns single product by id
-export const singleProductSelector = selector({
-  key: 'singleProductSelector',
-  get: async ({get}) => {
-    const [currentRelatedIDValue, setCurrentRelatedID] = useRecoilState(currentRelatedID);
-    const [categoryValue, setCategory] = useRecoilState(category);
-    const [nameValue, setName] = useRecoilState(name);
-    const [priceValue, setPrice] = useRecoilState(price);
-
-    const response = await apiCalls.productsByID(currentRelatedIDValue);
-
-    setCategory(response.data.category);
-    setName(response.data.name);
-    setPrice(response.data.default_price);
-
-    return response;
-  }
-})
-
-export const currentProductByID = () => {
-  const data = useRecoilValue(singleProductSelector);
-  return data;
-}
-
-//=========== Related ID Selector ============== returns array of related product IDs
+//=========== Related ID Selector ============== in use confirmed
 export const relatedSelector = selector({
   key: 'relatedSelector',
   get: async ({get}) => {
-    const [currentIDValue, setCurrentID] = useRecoilState(currentID);
-    const response = await apiCalls.relatedProducts(currentIDValue)
-    return response;
+    const [relatedArrayValue, setRelatedArray] = useRecoilState(relatedIDs)
+    const productID = await get(selectedProductId)
+    const response = await apiCalls.relatedProducts(productID)
+    setRelatedArray(response.data);
+    return response.data;
   }
 })
 
@@ -342,7 +342,6 @@ export const currentProductSelector = selector({
     const response = await apiCalls.selectedProduct(productID);
 
     return response.data;
-
   }
 })
 
@@ -351,9 +350,16 @@ export const currentStylesSelector = selector({
   key: 'currentStylesSelector',
   get: async({get}) => {
     const productID = await get(selectedProductId);
-    console.log('pi', productID);
     const response = await apiCalls.productStyles(productID);
     return response.data;
+  }
+})
+
+export const sliderSelector = selector({
+  key: 'sliderSelector',
+  get: async ({get}) => {
+    const currentSliderValue = await get(sliderState);
+    return currentSliderValue;
   }
 })
 

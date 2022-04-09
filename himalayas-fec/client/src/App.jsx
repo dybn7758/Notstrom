@@ -7,7 +7,7 @@ import sampleQa from "./Components/Question_Answers/sampleQA.js";
 import sampleMain from "../src/Components/Question_Answers/sampleMain.js";
 import axios from "axios";
 import { listQuestions, listProducts, listReviews } from "./lib/searchAPI.js";
-import { productResponse, selectedProductId, productQ, catalog, showSeachModal } from "./lib/Atoms.jsx";
+import { productResponse, selectedProductId, productQ, catalog, showSeachModal, relatedSelector, relatedIDs } from "./lib/Atoms.jsx";
 import { atom, selector, useRecoilState, useRecoilValue } from "recoil";
 import './App.scss';
 import ProductSearchModal from './Components/productSearchModal.jsx';
@@ -15,7 +15,6 @@ import ProductSearchModal from './Components/productSearchModal.jsx';
 var App = () => {
   let [prod, setProd] = useRecoilState(productQ);
   let [pageView, setPageView] = useRecoilState(catalog);
-
   const productData = productResponse();
 
   let [selectedProductID, setCurrentProductId] = useRecoilState(selectedProductId);
@@ -67,12 +66,12 @@ var App = () => {
     } else if (pageView !== "main") {
       return (
         <div>
-          {/* <Overview productId={selectedProductID}/> */}
+          <Overview productId={selectedProductID}/>
           <RelatedProducts />
           <QA />
           <Reviews />
         </div>
-      )
+      );
     }
   };
 

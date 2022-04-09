@@ -14,6 +14,52 @@ code {
 
 
 #imageContainer {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
+  position: relative;
+}
+
+.styleThumb {
+  border-radius: 100%;
+}
+
+.styleName {
+  position: relative;
+}
+
+.styleDisplay {
+  height: auto;
+  width: auto;
+}
+/* .ProductInformation {
+  float: right;
+} */
+
+ .cardContainer {
+  position: relative;
+  bottom: 0;
+  background: gray;
+  width: 200;
+  height: 100;
+  align-items: baseline;
+}
+
+body { font-family: sans-serif; }
+
+.gallery {
+  background: transparent;
+}
+
+.gallery-cell {
+  width: 66%;
+  height: 100px;
+  margin-right: 10px;
+  background: #8C8;
+}
+
+
+.gallery-cell:before {
+  display: block;
+  text-align: center;
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
 }

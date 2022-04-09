@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { render } from "react-dom";
 import axios from 'axios';
-import ImageGallery from './ImageGallery.jsx';
+import StyleGallery from './StyleGallery.jsx';
 import ProductInformation from './ProductInformation.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import Cart from './Cart.jsx';
@@ -40,16 +40,9 @@ import {
 
  //acquire styles related to current product
    const stylesArray = useRecoilValue(currentStylesSelector);
-   console.log('sa', stylesArray);
-
-
-
-
-
 
   return (
     <div className="overview">
-      <ImageGallery />
       <ProductInformation currentProduct={currentProduct} />
       <StyleSelector styles={stylesArray} />
       <Cart />
