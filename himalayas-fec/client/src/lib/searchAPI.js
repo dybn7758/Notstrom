@@ -1,5 +1,8 @@
 import { API_KEY, CAMPUS_CODE } from "../config.js";
 import axios from "axios";
+import react from "react";
+import { useRecoilValue, useRecoilState } from "recoil";
+import { relatedIDs } from "./Atoms.jsx";
 
 const serverUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/${CAMPUS_CODE}`;
 
@@ -15,6 +18,7 @@ var axiosGet = (url) => {
   //Don't change the setup here because it will affect other API calls.
   return axios(options)
     .then((data) => {
+      // console.log("Data received", data);
       //console.log("Data received", data);
       return data;
     })
@@ -57,6 +61,14 @@ var listReviews = (productId, page, count) => {
   return axiosGet(parameterURL);
 };
 
+//--------------- API Products By ID ----------------
+var productsByID = (product_id) => {
+  let parameterURL = `${serverUrl}/products/${product_id}`;
+
+  return axiosGet(parameterURL);
+};
+
+// ------------- API Related Product IDs (array) --------------- returns array of related product IDs
 //--------------API Reviews Meta Data--------------
 var metaReviews = (productId) => {
   let parameterURL = `${serverUrl}/reviews/meta?product_id=${productId}`;
@@ -73,6 +85,7 @@ var relatedProducts = (product_id) => {
 // ----------- API Product Styles -------------------------
 var productStyles = (product_id) => {
   let stylesEndpoint = `${serverUrl}/products/${product_id}/styles`;
+
   return axiosGet(stylesEndpoint);
 };
 
@@ -86,4 +99,5 @@ export {
   relatedProducts,
   productStyles,
   selectedProduct,
+  productsByID,
 };

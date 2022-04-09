@@ -1,36 +1,25 @@
-import React from 'react';
-import RelatedCard from './RelatedCard.jsx';
 import RelatedTable from './RelatedTable.jsx';
-import {useRecoilState} from 'recoil';
 import {show} from '../../lib/Atoms.jsx';
+import {useRecoilState} from 'recoil';
+import React from 'react';
 
-const RelatedModal = () => {
+export const RelatedModal = (props) => {
+
+  const closeModal = () => {
+    setShow(['none']);
+  }
 
   const [showValue, setShow] = useRecoilState(show);
 
   return (
     <div style={{
-      display: showValue[0],
-      background: 'gray',
-      height: 300,
-      width: 300,
-      position: 'fixed', left: '50%', top: '50%',
-      zIndex: 10,
+      display: showValue[0], background: 'gray',height: 250,
+      width: 500, position: 'fixed', left: '25%', top: '25%',
+      zIndex: 8
     }}>
-    <RelatedTable/>
-      <button style={{
-        position: 'absolute',
-        bottom: 0,
-        left: '50%',
-      }} onClick={() => {setShow(['none'])}}>Close</button>
+    <RelatedTable props1={props.props1}/>
+      <button style={{position: 'absolute', bottom: 0, left: '50%', zIndex: 20}}
+      onClick={() => {closeModal()}}>Close</button>
     </div>
   )
 }
-
-export default RelatedModal;
-
-// when star icon is clicked on the carousel card
-  // open a modal
-    // title should be 'Comparing'
-    // the modal should compare clicked item to current item in product view
-      // values to compare should be
