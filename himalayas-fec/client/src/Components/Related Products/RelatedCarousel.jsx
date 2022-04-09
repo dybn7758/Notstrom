@@ -12,8 +12,6 @@ import RelatedName from './RelatedName.jsx';
 import {StarOutline} from 'react-ionicons';
 import React, {useEffect} from 'react';
 
-
-
 const RelatedCarousel = (props) => {
   const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);
   const [modalDatavalue, setModalData] = useRecoilState(modalData);
@@ -23,8 +21,6 @@ const RelatedCarousel = (props) => {
   const currentSliderValue = useRecoilValue(sliderSelector);
   const [showValue, setShow] = useRecoilState(show);
   const array = useRecoilValue(relatedSelector);
-
-
 
   useEffect(() => {
     setRelatedArray(array)

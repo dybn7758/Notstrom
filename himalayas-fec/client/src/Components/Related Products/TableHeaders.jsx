@@ -4,6 +4,7 @@ import React from 'react';
 
 const TableHeaders = (props) => {
   const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);
+  // const shortName = stylesAndProductsValue[props.props1 + 1].data.results[0].name;
   // add product short name to header
   return (
     <tr>
