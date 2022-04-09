@@ -45,7 +45,8 @@ export const pictures = atom({key: 'pictures', default: ''})
 export const productSelector = selector({
   key: 'productSelector',
   get: async ({get}) => {
-    const response = await apiCalls.listProducts();
+    const response = await apiCalls.listProducts(100);
+    console.log('-------------', response);
     return response;
   },
 })
@@ -121,8 +122,6 @@ export const singleProductSelector = selector({
     setName(response.data.name);
     setPrice(response.data.default_price);
 
-    console.log(response, 'data in current product')
-
     return response;
   }
 })
@@ -144,7 +143,6 @@ export const relatedSelector = selector({
 
 export const relatedResponse = () => {
   const data = useRecoilValue(relatedSelector);
-  console.log(data.data, 'data')
   return data.data;
 }
 
@@ -268,9 +266,9 @@ export const showMoreAnsSelector = selector({
   get: ({get}) => {
     let answerList = get(searchAns);
     let answerCount = get(searchAnsCount);
-    console.log('before', answerList);
+
     let sorted = answerList.slice(0, answerList.length).sort((a,b) => b.helpfulness - a.helpfulness);
-    console.log('after sort', sorted);
+
     let sortedBySeller = sorted.filter((name) => {
       return name.answerer_name === 'Seller';
     });
@@ -279,7 +277,7 @@ export const showMoreAnsSelector = selector({
     });
 
     let answerers = [...sortedBySeller, ...sortedByOthers]
-    console.log(answerers, 'inspect')
+
     return answerers.slice(0, answerCount);
   }
 });
@@ -326,6 +324,13 @@ export const toggleUpload = atom({
   key: 'toggleUpload',
   default: false
 });
+
+export const showSeachModal = atom({
+  key: 'showSeachModal',
+  default: false
+});
+
+
 // ==========================================================
 
 //==============current product selector==============

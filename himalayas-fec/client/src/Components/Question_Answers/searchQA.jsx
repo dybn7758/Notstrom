@@ -37,11 +37,11 @@ var SearchQA = () => {
   };
 
   const showLessQues = () => {
-    if(quesCount - 2 < 2) {
-      setQuesCount(2);
-    } else {
-      setQuesCount(quesCount - 2);
-    }
+    // if(quesCount - 2 < 2) {
+      setQuesCount(3);
+    // } else {
+    //   setQuesCount(quesCount - 2);
+    // }
   };
 
   const addMoreQuestions = () => {

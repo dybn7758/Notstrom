@@ -56,7 +56,7 @@ var SearchList = (props) => {
   return(
     <div id="questions">
       <>
-        <div><strong>Q: </strong><span className="by-ques">{props.entries.question_body}</span></div>
+        <div id="sub-questions"><strong>Q: </strong><span className="by-ques">{props.entries.question_body}</span></div>
         <div id="question-span">
           <span className="asker-name">by {props.entries.asker_name}, </span>
           <span className="q-date" margin="10px"> {moment(props.entries.question_date).format("MMM Do, YY")} </span> | <span id={props.entries.question_id} className="helpfulness" onClick={(e) => {helpFulQuesClick(e)}}>helpful?</span>
@@ -72,7 +72,7 @@ var SearchList = (props) => {
               <div><strong>A: </strong> <span className="by-ans">{ans.body}</span></div>
               <div id="ans-photos">
                 {ans.photos.map((photo, i) => {
-                  return <img key={i} src={photo}></img>}
+                  return <img key={i} className="ans-photo" src={photo}></img>}
                 )}
               </div>
               <div className="answerers">

@@ -7,19 +7,10 @@ import sampleQa from "./Components/Question_Answers/sampleQA.js";
 import sampleMain from "../src/Components/Question_Answers/sampleMain.js";
 import axios from "axios";
 import { listQuestions, listProducts, listReviews } from "./lib/searchAPI.js";
-import { productResponse, selectedProductId, productQ, catalog } from "./lib/Atoms.jsx";
+import { productResponse, selectedProductId, productQ, catalog, showSeachModal } from "./lib/Atoms.jsx";
 import { atom, selector, useRecoilState, useRecoilValue } from "recoil";
 import './App.scss';
-
-// export const productQ = atom({
-//   key: "productQ",
-//   default: sampleMain,
-// });
-
-// export const catalog = atom({
-//   key: "catalog",
-//   default: "main",
-// });
+import ProductSearchModal from './Components/productSearchModal.jsx';
 
 var App = () => {
   let [prod, setProd] = useRecoilState(productQ);
@@ -27,13 +18,25 @@ var App = () => {
 
   const productData = productResponse();
 
-  let [selectedProductID, setCurrentProductId] = useRecoilState(selectedProductId)
+  let [selectedProductID, setCurrentProductId] = useRecoilState(selectedProductId);
+  let [searchModal, setSearchModal] = useRecoilState(showSeachModal);
 
   //Retrieves data from the API and sets the products to state to render
   //pass the second argument so it doesnt create an infinite loop everytime this component renders
   useEffect(() => {
     setProd(productData);
   }, []);
+
+  const searchingModal = (e) => {
+
+    console.log(e.target.value);
+    //set this to state to render all products with category
+  }
+
+  const onSearchClick = () => {
+    console.log('hi');
+    setSearchModal(true);
+  }
 
   var changeView = (page) => {
     setPageView(page);
@@ -65,9 +68,9 @@ var App = () => {
       return (
         <div>
           {/* <Overview productId={selectedProductID}/> */}
-          {/* <RelatedProducts /> */}
+          <RelatedProducts />
           <QA />
-          {/* <Reviews /> */}
+          <Reviews />
         </div>
       )
     }
@@ -77,8 +80,9 @@ var App = () => {
     <div id="App">
       <div id="logo" onClick={() => {changeView("main");}}>Hima-layers</div>
       <div>
-        <input className="searchbar" type="search" placeholder="Product search..." onChange={() => {console.log("hi");}}>
+        <input className="searchbar" type="search" placeholder="Product search..." onChange={(e) => {searchingModal(e);}} onClick={onSearchClick}>
         </input>
+        <ProductSearchModal/>
       </div>
       <div className="main">{changeView(pageView)}
       </div>

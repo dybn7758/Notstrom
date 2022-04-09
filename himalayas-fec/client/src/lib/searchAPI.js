@@ -79,7 +79,7 @@ var listProducts = (count, page) => {
   //if needed, adjust the parameterURL to include these
   // ?page=1&count=100 param needs be added
 
-  let parameterURL = `${serverUrl}/products`;
+  let parameterURL = `${serverUrl}/products?count=${count}`;
 
   return axiosGet(parameterURL);
 };
