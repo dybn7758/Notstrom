@@ -1,16 +1,18 @@
-import {stylesAndProducts} from '../../lib/Atoms.jsx';
+import {stylesAndProducts, currentProduct, currentRelatedName} from '../../lib/Atoms.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
 import React from 'react';
 
-const TableHeaders = (props) => {
-  const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);
-  // const shortName = stylesAndProductsValue[props.props1 + 1].data.results[0].name;
-  // add product short name to header
+const TableHeaders = () => {
+  const [currentProductValue, setCurrentProduct] = useRecoilState(currentProduct);
+  const [currentNameValue, setCurrentName] = useRecoilState(currentRelatedName)
+
+
+
   return (
     <tr>
-      <th>Product1</th>
+      <th>{currentNameValue}</th>
       <th>Category</th>
-      <th>Product 2</th>
+      <th>{currentProductValue.name}</th>
     </tr>
   )
 }

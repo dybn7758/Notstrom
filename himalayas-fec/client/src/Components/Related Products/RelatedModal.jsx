@@ -3,7 +3,7 @@ import {show} from '../../lib/Atoms.jsx';
 import {useRecoilState} from 'recoil';
 import React from 'react';
 
-export const RelatedModal = (props) => {
+const RelatedModal = (props) => {
 
   const closeModal = () => {
     setShow(['none']);
@@ -23,3 +23,5 @@ export const RelatedModal = (props) => {
     </div>
   )
 }
+
+export default RelatedModal;

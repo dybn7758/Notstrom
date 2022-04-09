@@ -18,7 +18,12 @@ export const catalog = atom({
 // =========== Current/Default ID ========= issues with 10, 12, 14 (no image available)
 export const currentID = atom({ key: "currentID", default: 37311 });
 
-// ====== Modal Toggle State ============== flips between show/hide for modal
+// =========== Related Index ===============
+export const relatedIndex = atom({key: 'relatedIndex', default: 2})
+
+// =========== Related On Sale =============
+export const relatedOnSale = atom({key: 'relatedOnSale', default: false})
+
 // ====== Modal Toggle State ============== working - do not touch
 export const show = atom({ key: "show", default: ["none"] });
 
@@ -30,6 +35,12 @@ export const sliderState = atom({ key: "sliderState", default: 0 });
 
 // ================== Modal Data =====================
 export const modalData = atom({ key: "modalData", default: 37311 });
+
+// =================== Current Product ===============
+export const currentProduct = atom({key: 'currentProduct', default: {}});
+
+//=================== Current Related Name ===================
+export const currentRelatedName = atom({key: 'currentRelatedName', default: ''})
 
 //=================== Slider Length ==============
 export const sliderLength = atom({ key: "sliderLength", default: 0 });
@@ -68,7 +79,7 @@ export const selectedProductId = atom({
 export const productSelector = selector({
   key: "productSelector",
   get: async ({ get }) => {
-    const response = await apiCalls.listProducts(100);
+    const response = await apiCalls.listProducts(25);
     console.log("-------------", response);
     return response;
   },

@@ -4,7 +4,7 @@ import React, {useEffect} from 'react';
 
 const RelatedPicture = (props) => {
   const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);
-  const nextIndex = props.props1 + 1;
+  const nextIndex = props.props1 - 1;
   const currentPicture = stylesAndProductsValue[nextIndex].data.results[0].photos[0].url;
 
   return (
