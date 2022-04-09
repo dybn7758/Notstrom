@@ -1,7 +1,12 @@
 import { API_KEY, CAMPUS_CODE } from "../config.js";
 import axios from "axios";
+import react from 'react';
+import {useRecoilValue, useRecoilState} from 'recoil';
+import {relatedIDs} from './Atoms.jsx';
+
 
 const serverUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/${CAMPUS_CODE}`;
+
 
 var axiosGet = (url) => {
   let options = {
@@ -15,6 +20,7 @@ var axiosGet = (url) => {
   //Don't change the setup here because it will affect other API calls.
   return axios(options)
     .then((data) => {
+      // console.log("Data received", data);
       //console.log("Data received", data);
       return data;
     })
@@ -35,6 +41,8 @@ var listQuestions = (productId, count, page) => {
 var listProducts = (count, page) => {
   //Might not need the count and page parameters yet...
   //if needed, adjust the parameterURL to include these
+  // ?page=1&count=100 param needs be added
+
   let parameterURL = `${serverUrl}/products`;
 
   return axiosGet(parameterURL);
@@ -47,11 +55,25 @@ var selectedProduct = (productId, count, page) => {
 }
 
 //--------------- API Reviews -----------------
-var listReviews = (productId, count, page) => {
+var listReviews = (productId, page, count) => {
   //Might not need the count and page parameters yet...
   //if needed, adjust the parameterURL to include these
-  let parameterURL = `${serverUrl}/reviews/?product_id=${productId}`;
+  let parameterURL = `${serverUrl}/reviews/?product_id=${productId}&count=${count}&page=${page}`;
 
+  return axiosGet(parameterURL);
+};
+
+//--------------- API Products By ID ----------------
+var productsByID = (product_id) => {
+  let parameterURL = `${serverUrl}/products/${product_id}`;
+
+  return axiosGet(parameterURL);
+}
+
+// ------------- API Related Product IDs (array) --------------- returns array of related product IDs
+//--------------API Reviews Meta Data--------------
+var metaReviews = (productId) => {
+  let parameterURL = `${serverUrl}/reviews/meta?product_id=${productId}`;
   return axiosGet(parameterURL);
 };
 
@@ -59,15 +81,17 @@ var listReviews = (productId, count, page) => {
 var relatedProducts = (product_id) => {
   let relatedEndpoint = `${serverUrl}/products/${product_id}/related`;
 
-  return axiosGet(relatedEndpoint);
+  return axiosGet(relatedEndpoint)
 };
 
 // ----------- API Product Styles -------------------------
 var productStyles = (product_id) => {
   let stylesEndpoint = `${serverUrl}/products/${product_id}/styles`;
+
   return axiosGet(stylesEndpoint);
 }
 
 //Will need to add CART API get later on...
 
-export { listQuestions, listProducts, listReviews, relatedProducts, productStyles, selectedProduct };
+export { listQuestions, listProducts, listReviews, metaReviews, relatedProducts, productStyles, selectedProduct, productsByID};
+
