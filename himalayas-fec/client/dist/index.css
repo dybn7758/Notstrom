@@ -25,6 +25,10 @@ code {
   position: relative;
 }
 
+.styleDisplay {
+  height: auto;
+  width: auto;
+}
 /* .ProductInformation {
   float: right;
 } */
@@ -41,7 +45,7 @@ code {
 body { font-family: sans-serif; }
 
 .gallery {
-  background: #EEE;
+  background: transparent;
 }
 
 .gallery-cell {

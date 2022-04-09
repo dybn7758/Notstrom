@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ImageGallery from './ImageGallery.jsx';
+import StyleGallery from './StyleGallery.jsx';
 import { stylesResponse } from '../../lib/Atoms.jsx';
 import { productStyles } from '../../lib/searchAPI.js';
 import { selectedProduct } from './Overview.jsx';
@@ -18,7 +18,6 @@ const StyleSelector = (props) => {
   var styles = props.styles.results;
 
   const [currentStyle, setStyle] = useState(styles[0])
-  // console.log('current', currentStyle)
 
   const photos = styles.map(style => {
     return style.photos;
@@ -26,11 +25,19 @@ const StyleSelector = (props) => {
 
   const thumbnails = styles.map(style => {
     return {
+      styleId: style.style_id,
       name: style.name,
       thumbnail: style.photos[0].thumbnail_url};
   })
 
+  const getStyleById = function (id) {
+    const filteredStyle = styles.filter(style => style.style_id === id);
+    return filteredStyle[0];
+
+  }
+
   return (
+
     <div id="styles">
       <h3>Styles</h3>
         <div id="imageContainer">
@@ -39,12 +46,12 @@ const StyleSelector = (props) => {
               <p className="styleName">{thumbnail.name}</p>
               <img className="styleThumb"
               src={thumbnail.thumbnail} width="75" height="90"
-              // onClick={setStyle(thumbnail.currentStyle)}
+              onClick={event => setStyle(currentStyle => getStyleById(thumbnail.styleId))}
               ></img>
             </div>
           ))}
         </div>
-      <ImageGallery  style={currentStyle}/>
+      <StyleGallery  style={currentStyle}/>
     </div>
   )
 }
