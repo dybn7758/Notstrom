@@ -23,6 +23,7 @@
     "react-hover": "^3.0.1",
     "react-ionicons": "^4.2.0",
     "recoil": "^0.6.1",
+    "simple-rating-stars": "^1.6.0",
     "webpack": "^5.70.0",
     "webpack.config.js": "^0.0.0"
   },
