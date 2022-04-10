@@ -15,6 +15,8 @@ import {
   showSeachModal,
   relatedSelector,
   relatedIDs,
+  searchProductList,
+  categoryProductsMain,
 } from "./lib/Atoms.jsx";
 import { atom, selector, useRecoilState, useRecoilValue } from "recoil";
 import "./App.scss";
@@ -28,7 +30,8 @@ var App = () => {
   let [selectedProductID, setCurrentProductId] =
     useRecoilState(selectedProductId);
   let [searchModal, setSearchModal] = useRecoilState(showSeachModal);
-
+  let [searchedProduct, setSearchedProduct] = useRecoilState(searchProductList);
+  let categoryByProduct = useRecoilValue(categoryProductsMain);
   //Retrieves data from the API and sets the products to state to render
   //pass the second argument so it doesnt create an infinite loop everytime this component renders
   useEffect(() => {
@@ -36,41 +39,71 @@ var App = () => {
   }, []);
 
   const searchingModal = (e) => {
-    console.log(e.target.value);
-    //set this to state to render all products with category
+    setSearchedProduct(e.target.value);
+    if (e.target.value === "") {
+      setSearchModal(false);
+    }
   };
 
   const onSearchClick = () => {
-    console.log("hi");
     setSearchModal(true);
+  };
+
+  const productDisplay = () => {
+    let categories = Object.keys(categoryByProduct);
+    let categoryItems = Object.values(categoryByProduct);
+    return {categories, categoryItems};
   };
 
   var changeView = (page) => {
     setPageView(page);
     setCurrentProductId(page);
 
-    if (pageView === "main") {
+    // if (pageView === "main") {
+    //   return (
+    //     <table>
+    //       <tbody>
+    //         {prod.map((product, i) => {
+    //           return (
+    //             <tr key={i}>
+    //               <td
+    //                 value={product.id}
+    //                 onClick={(e) => {
+    //                   changeView(e.target.attributes.value.value);
+    //                 }}
+    //               >
+    //                 {product.name}
+    //               </td>
+    //               <td>{product.description}</td>
+    //             </tr>
+    //           );
+    //         })}
+    //       </tbody>
+    //     </table>
+    //   );
+    // }
+    if (pageView === 'main') {
       return (
-        <table>
-          <tbody>
-            {prod.map((product, i) => {
-              return (
-                <tr key={i}>
-                  <td
-                    value={product.id}
-                    onClick={(e) => {
-                      changeView(e.target.attributes.value.value);
-                    }}
-                  >
-                    {product.name}
-                  </td>
-                  <td>{product.description}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      );
+        <div id="product-container">
+          {productDisplay().categories.map((category, i) => {
+            return (
+              <label key={i} className="products">
+                <span className="category-name">{category}</span>
+                <div id="product-card" className={category}>
+                <img className="product-img" width="125px" height="150px" src="../dist/img/R.jpg"></img>
+                {productDisplay().categoryItems[i].map((item, j) => {
+                    return (
+                      <label key={j} className="dropdown-product" onClick={(e) => {changeView(item.id)}}>
+                        <div className={item.name}>{item.name}</div>
+                      </label>
+                    )
+                  })}
+                </div>
+              </label>
+            )
+          })}
+        </div>
+      )
     } else if (pageView !== "main") {
       return (
         <div>
@@ -103,7 +136,7 @@ var App = () => {
           }}
           onClick={onSearchClick}
         ></input>
-        <ProductSearchModal />
+        <ProductSearchModal changeView={(page) => {changeView(page)}}/>
       </div>
       <div className="main">{changeView(pageView)}</div>
     </div>

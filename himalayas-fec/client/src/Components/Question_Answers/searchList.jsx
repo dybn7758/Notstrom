@@ -39,7 +39,7 @@ var SearchList = (props) => {
   const reportAnsClick = (e) => {
     //need to change text to reported once clicked
     setReportAnswer('reported');
-    document.getElementsByClassName("report").innerHTML = reportAnswer;
+    document.getElementsByClassName("report").innerText = reportAnswer;
     putAnsReport(e.target.id);
   };
 
@@ -56,7 +56,7 @@ var SearchList = (props) => {
   return(
     <div id="questions">
       <>
-        <div id="sub-questions"><strong>Q: </strong><span className="by-ques">{props.entries.question_body}</span></div>
+        <div id="sub-questions"><strong>Q:</strong><span className="by-ques">{props.entries.question_body}</span></div>
         <div id="question-span">
           <span className="asker-name">by {props.entries.asker_name}, </span>
           <span className="q-date" margin="10px"> {moment(props.entries.question_date).format("MMM Do, YY")} </span> | <span id={props.entries.question_id} className="helpfulness" onClick={(e) => {helpFulQuesClick(e)}}>helpful?</span>

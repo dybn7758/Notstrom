@@ -1,12 +1,13 @@
 .searchModal {
-  position: relative;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
+  position:inherit;
+  z-index: 9998;
+  left: 50;
+  top: 50;
+  right: 50;
+  bottom: 50;
+  background-color: rgb(128,128,128);
+  display: flexbox;
+  align-items: baseline;
   // justify-content: baseline;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   max-height: 200px;
@@ -25,9 +26,16 @@
   display: flex;
   flex-direction: row;
 }
+.listed-category {
+  margin-right: 10px;
+}
 
 .listed-name {
   margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 
 .listed-slogan {

@@ -1,29 +1,33 @@
 import React, {useEffect} from 'react';
-import { atom, useSetRecoilState, useRecoilState, selector, useRecoilValue } from 'recoil';
-import { productQ, selectedProductId, showSeachModal } from '../lib/Atoms.jsx';
+import { atom, useSetRecoilState, useRecoilState, selector, useRecoilValue, } from 'recoil';
+import { productQ, selectedProductId, showSeachModal, filterSearchProductSelector, catalog  } from '../lib/Atoms.jsx';
 import './Styling/searchModal.scss';
+import {changeView} from '../App.jsx';
 
-var ProductSearchModal = () => {
-  let [allProducts, setAllProducts] = useRecoilState(productQ);
+var ProductSearchModal = (props) => {
+  // let [allProducts, setAllProducts] = useRecoilState(productQ);
   let [searchedProduct, setSearchedProduct] = useRecoilState(selectedProductId);
   let [useSearchModal, setUseSearchModal] = useRecoilState(showSeachModal);
-  useEffect(() => {
-    console.log(allProducts);
-  })
+  let filteredSearch = useRecoilValue(filterSearchProductSelector);
+  let [pageView, setPageView] = useRecoilState(catalog);
 
-  //define onProductSelection to disable modal and set state to the current product to render
-  const translateToEng = (phrase) => {
-    
+  // useEffect(() => {
+  //   // console.log(allProducts);
+  // });
+
+  const productSearchClick = (e) => {
+    props.changeView(e.target.id);
+    setUseSearchModal(false);
   }
 
   if (useSearchModal) {
     return (
       <div className="searchModal">
         <div className="search-content">
-          {allProducts.map((item) => {
+          {filteredSearch.map((item, i) => {
             return (
-              <div className="listed-content">
-                <div className="listed-category">{item.category}</div>|<div className="listed-name">{item.name}</div>:<div className="listed-slogan" translate="yes" lang="en">{item.slogan}</div>
+              <div key={i} id={item.id} className="listed-content" onClick={(e) => {productSearchClick(e)}}>
+                <div id={item.id} className="listed-category">{item.category}</div>|<div className="listed-name" id={item.id}>{item.name}</div>:<div id={item.id} className="listed-slogan" translate="yes" lang="en">{item.slogan}</div>
               </div>);
           })}
         </div>
