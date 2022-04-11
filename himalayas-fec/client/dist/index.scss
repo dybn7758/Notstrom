@@ -72,7 +72,7 @@ body { font-family: sans-serif; }
 }
 
 .single-star-fill {
-  position: relative;
+  position: static;
   display: inline-block;
   height: 36px;
   background-color: #f5e042;
@@ -134,7 +134,7 @@ html,body{
   height: 10px;
   width: 100%;
   background: #f0f0f0;
-  position: relative;
+  position:relative;
   transform: scaleX(0);
   transform-origin: left;
   border-radius: 10px;

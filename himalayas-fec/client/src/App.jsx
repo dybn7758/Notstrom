@@ -76,7 +76,7 @@ var App = () => {
         <div>
           {/* <Overview productId={selectedProductID} /> */}
           {/* <RelatedProducts /> */}
-          {/* <QA /> */}
+          <QA />
           <Reviews />
         </div>
       );
