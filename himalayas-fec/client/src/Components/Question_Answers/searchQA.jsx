@@ -15,6 +15,9 @@ var SearchQA = () => {
 
   let [limitQList, setLimitQList] = useRecoilState(limitedQuestions);
 
+  // useEffect(() => {
+  //   setLimitQList(specifiedProductID);
+  // }, [])
   setLimitQList(specifiedProductID);
 
   // let limitedProductQ = useRecoilValue(limitQuestionSelector);
@@ -37,11 +40,7 @@ var SearchQA = () => {
   };
 
   const showLessQues = () => {
-    // if(quesCount - 2 < 2) {
-      setQuesCount(3);
-    // } else {
-    //   setQuesCount(quesCount - 2);
-    // }
+    setQuesCount(3);
   };
 
   const addMoreQuestions = () => {
@@ -75,7 +74,7 @@ var SearchQA = () => {
     <div id="search-qa">
       {addSearchFeat()}
       <div id="qa">
-        {filteredProductQ.map((entry, i, array) => {
+        {filteredProductQ.map((entry, i) => {
             return (
               <>
                 <SearchList key={i} entries={entry}/>
