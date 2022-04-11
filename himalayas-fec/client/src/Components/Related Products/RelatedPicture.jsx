@@ -9,14 +9,14 @@ const RelatedPicture = (props) => {
   const currentPicture = stylesAndProductsValue[nextIndex].data.results[0].photos[0].url;
   const currentId = stylesAndProductsValue[nextIndex].data.id;
 
-  // const setMainID = (id) => {
-  //   setSelectedProductId(`${id}`)
-  // }
-
+  const setMainID = (id) => {
+    setSelectedProductId(id)
+  }
+  console.log(currentId, 'current id', selectedProductIdValue)
   return (
     <div>
       <div style={{backgroundSize: 'cover', position: 'relative', width: 200, height: 225,
-      backgroundImage: `url(${currentPicture})`}} onClick={() => {console.log('picture')}}></div>
+      backgroundImage: `url(${currentPicture})`}} onClick={() => {setMainID(37312)}}></div>
     </div>
   )
 }
