@@ -33,6 +33,9 @@ export const relatedIDs = atom({ key: "relatedIDs", default: [] });
 // ================= Slider State ==================
 export const sliderState = atom({ key: "sliderState", default: 0 });
 
+// ================= Outfit Cards ====================
+export const outfitCards = atom({key: 'outfitCards', default: []});
+
 // ================== Modal Data =====================
 export const modalData = atom({ key: "modalData", default: 37311 });
 
@@ -41,6 +44,9 @@ export const currentProduct = atom({key: 'currentProduct', default: {}});
 
 //=================== Current Related Name ===================
 export const currentRelatedName = atom({key: 'currentRelatedName', default: ''})
+
+//==================== Current Related Styles ================
+export const currentRelatedStyles = atom({key: 'currentRelatedStyles', default: []})
 
 //=================== Slider Length ==============
 export const sliderLength = atom({ key: "sliderLength", default: 0 });
@@ -54,12 +60,6 @@ export const currentFeatures = atom({ key: "currentFeatures", default: [] });
 // ================= All Related Styles/Products Combined ====
 export const stylesAndProducts = atom({
   key: "stylesAndProducts",
-  default: [],
-});
-
-//================= Current Related Styles ====
-export const currentRelatedStyles = atom({
-  key: "currentRelatedStyles",
   default: [],
 });
 
@@ -350,7 +350,7 @@ export const currentProductSelector = selector({
     const productID = await get(selectedProductId);
 
     const response = await apiCalls.selectedProduct(productID);
-
+    console.log(response, 'what is this data')
     return response.data;
   },
 });

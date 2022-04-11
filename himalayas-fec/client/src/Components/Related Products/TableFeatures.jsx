@@ -10,7 +10,7 @@ const TableFeatures = () => {
 
 
 
-console.log(currentProductValue, 'current product')
+// console.log(currentProductValue, 'current product')
 
   return (
     currentFeaturesValue.map((value, index) => {
@@ -19,7 +19,7 @@ console.log(currentProductValue, 'current product')
         <tr key={index}>
           <td>{value.value}</td>
           <td>{value.feature}</td>
-          <td>Add Compare</td>
+          <td>No Features?</td>
         </tr>
       )
     }

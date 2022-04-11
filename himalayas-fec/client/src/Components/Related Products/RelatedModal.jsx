@@ -13,9 +13,9 @@ const RelatedModal = (props) => {
 
   return (
     <div style={{
-      display: showValue[0], background: 'gray',height: 250, overflow: 'auto', maxHeight: '30rem',
+      display: showValue[0], background: 'gray',height: 200, overflow: 'auto', maxHeight: '30rem',
       width: 500, position: 'fixed', left: '25%', top: '25%',
-      zIndex: 8
+      zIndex: 8,
     }}>
     <RelatedTable props1={props.props1}/>
       <button style={{position: 'absolute', bottom: 0, left: '50%', zIndex: 20}}
@@ -25,3 +25,5 @@ const RelatedModal = (props) => {
 }
 
 export default RelatedModal;
+
+// filter: 'blur(8px)',

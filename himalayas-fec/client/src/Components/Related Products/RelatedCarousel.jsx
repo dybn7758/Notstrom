@@ -1,6 +1,6 @@
 import {show, relatedIDs, relatedSelector, currentStylesSelector,
   stylesAndProducts, sliderState, sliderLength, currentRelatedName,
-  sliderSelector, modalData, relatedIndex, selectedProductId,
+  sliderSelector, modalData, relatedIndex, selectedProductId, currentRelatedStyles,
   currentFeatures, relatedOnSale, currentProductSelector, currentProduct} from '../../lib/Atoms.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
 import RelatedCategory from './RelatedCategory.jsx';
@@ -16,6 +16,7 @@ import {AiTwotoneStar} from 'react-icons/ai';
 
 const RelatedCarousel = (props) => {
   const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);
+  const [currentRelatedStylesValue, setCurrentRelatedStyles] = useRecoilState(currentRelatedStyles);
   const [currentNameValue, setCurrentName] = useRecoilState(currentRelatedName)
   const [currentProductValue, setCurrentProduct] = useRecoilState(currentProduct);
   const [currentFeaturesValue, setCurrentFeatures] = useRecoilState(currentFeatures);
@@ -29,8 +30,10 @@ const RelatedCarousel = (props) => {
   const currentSliderValue = useRecoilValue(sliderSelector);
   const [showValue, setShow] = useRecoilState(show);
   const array = useRecoilValue(relatedSelector);
-  const currentStyles = useRecoilValue(currentStylesSelector);
   const currentProductVar = useRecoilValue(currentProductSelector);
+  const currentStyles = useRecoilValue(currentStylesSelector);
+
+  // console.log(currentStyles, 'styles', currentProductVar, 'product')
 
   useEffect(() => {
     setRelatedArray(array)
@@ -43,28 +46,29 @@ const RelatedCarousel = (props) => {
 
   const callWrapper = () => {
     const allResponse = [];
-    const relatedStyles = [];
-    const relatedProducts = [];
+    // const relatedStyles = [];
+    // const relatedProducts = [];
     array.forEach((arrayIndex) => {
       allResponse.push(apiCalls.productsByID(arrayIndex), apiCalls.productStyles(arrayIndex), apiCalls.listReviews(arrayIndex, 1, 10));
     })
 
     const allData = Promise.all(allResponse)
     allData.then((response) => {
-      setStylesAndProducts(response);
+      setStylesAndProducts(response)
     })
     .catch((error) => {
       console.log(error)
     })
   }
 
-  const setIndex = (index) => {
+  const setStates = (index) => {
     setRelatedIndex(index);
     const features = stylesAndProductsValue[relatedIndexValue - 2].data.features;
     const name = stylesAndProductsValue[relatedIndexValue - 2].data.name;
+    const stylesArray = stylesAndProductsValue[relatedIndexValue - 1].data.results.length;
+    setCurrentRelatedStyles(stylesArray);
     setCurrentName(name);
     setCurrentFeatures(features);
-    console.log(currentStyles, 'current styles')
     if (stylesAndProductsValue[relatedIndexValue -1].data.results[0].sale_price !== null) {
       setRelatedOnSale(true)
     } else {
@@ -97,7 +101,7 @@ const RelatedCarousel = (props) => {
   return (
     <div className='carousel-conatiner'>
       <div className="carousel-wrapper">
-        <button onClick={() => {prev(), console.log(sliderValue)}} className='left-arrow'>Left</button>
+        <button onClick={() => {prev()}} className='left-arrow'>Left</button>
           <div className="carousel-content-wrapper">
               {stylesAndProductsValue.map((value, index) => {
                 if ((index + 1) % 3 === 0) {
@@ -108,9 +112,8 @@ const RelatedCarousel = (props) => {
                     <RelatedPicture props1={index}/>
                     <AiTwotoneStar color={'yellow'} style={{height: 30, width: 30, position: 'absolute', top: 10, right: 10, zIndex: 2}}
                       onClick={ () => {
-                        setIndex(index)
+                        setStates(index)
                         getModal(value)
-
                       } }/>
                     <div style={{position: 'relative', bottom: 0, backgroundColor: 'gray', width: 200, height: 100, alignItems: 'bottom'}}>
                       <RelatedCategory props1={index}/>
