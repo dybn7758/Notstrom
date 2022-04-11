@@ -1,5 +1,5 @@
 import {show, relatedIDs, relatedSelector, currentStylesSelector,
-  stylesAndProducts, sliderState, sliderLength, currentRelatedName,
+  stylesAndProducts, sliderState, sliderLength, currentRelatedName, buttonToggle,
   sliderSelector, modalData, relatedIndex, selectedProductId, currentRelatedStyles,
   currentFeatures, relatedOnSale, currentProductSelector, currentProduct} from '../../lib/Atoms.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
@@ -16,6 +16,7 @@ import {AiTwotoneStar} from 'react-icons/ai';
 
 const RelatedCarousel = (props) => {
   const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);
+  const [buttonToggleValue, setButtonToggle] = useRecoilState(buttonToggle);
   const [currentRelatedStylesValue, setCurrentRelatedStyles] = useRecoilState(currentRelatedStyles);
   const [currentNameValue, setCurrentName] = useRecoilState(currentRelatedName)
   const [currentProductValue, setCurrentProduct] = useRecoilState(currentProduct);
@@ -100,14 +101,15 @@ const RelatedCarousel = (props) => {
 
   return (
     <div className='carousel-conatiner'>
+      <div style={{ position: "relative", fontSize: 20, fontWeigt: 'bold'}}>Related Products</div>
       <div className="carousel-wrapper">
-        <button onClick={() => {prev()}} className='left-arrow'>Left</button>
+        <button onClick={() => {prev()}} className='left-arrow' style={{zIndex: 10, position: 'absolute', left: '10%'}}>Left</button>
           <div className="carousel-content-wrapper">
               {stylesAndProductsValue.map((value, index) => {
                 if ((index + 1) % 3 === 0) {
                   return (
                   <div key={index} className='carousel-content' itemsToShow={1}
-                    style={{display: 'flex', flexDirection: 'row', float: 'left', transform: `translateX(-${sliderValue * 100}%)`}}>
+                    style={{float: 'left', transform: `translateX(-${sliderValue * 100}%)`}}>
                   <div key={index} style={{ position: 'relative', height: 325, width: 200, margin: 10}}>
                     <RelatedPicture props1={index}/>
                     <AiTwotoneStar color={'yellow'} style={{height: 30, width: 30, position: 'absolute', top: 10, right: 10, zIndex: 2}}
@@ -128,6 +130,7 @@ const RelatedCarousel = (props) => {
         <button onClick={() => {next(), console.log(sliderValue)}} className='right-arrow'>Right</button>
         <RelatedModal/>
       </div>
+      <div style={{ position: 'relative', width: 300, fontSize: 20, fontWeigth: 'bold'}}>Your Outfit</div>
     </div>
   )
 }

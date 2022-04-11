@@ -5,21 +5,18 @@ import React from 'react';
 
 const RelatedModal = (props) => {
 
-  const closeModal = () => {
-    setShow(['none']);
-  }
-
   const [showValue, setShow] = useRecoilState(show);
 
   return (
-    <div style={{
-      display: showValue[0], background: 'gray',height: 200, overflow: 'auto', maxHeight: '30rem',
-      width: 500, position: 'fixed', left: '25%', top: '25%',
-      zIndex: 8,
-    }}>
-    <RelatedTable props1={props.props1}/>
-      <button style={{position: 'absolute', bottom: 0, left: '50%', zIndex: 20}}
-      onClick={() => {closeModal()}}>Close</button>
+    <div>
+
+      <div style={{
+        display: showValue[0], background: 'gray',height: 200, overflow: 'auto', maxHeight: '30rem',
+        width: 500, position: 'fixed', left: '25%', top: '25%',
+        zIndex: 8,
+      }}>
+      <RelatedTable props1={props.props1}/>
+      </div>
     </div>
   )
 }

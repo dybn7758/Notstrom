@@ -34,10 +34,16 @@ export const relatedIDs = atom({ key: "relatedIDs", default: [] });
 export const sliderState = atom({ key: "sliderState", default: 0 });
 
 // ================= Outfit Cards ====================
-export const outfitCards = atom({key: 'outfitCards', default: []});
+export const outfitCards = atom({key: 'outfitCards', default: {}});
+
+// ================== All Outfits ===================
+export const allOutfits = atom({key: 'allOutfits', default: []});
 
 // ================== Modal Data =====================
-export const modalData = atom({ key: "modalData", default: 37311 });
+export const modalData = atom({ key: "modalData", default: ''});
+
+// ==================== Button Toggle =============
+export const buttonToggle = atom({key: 'buttonToggle', default: ['none', '']});
 
 // =================== Current Product ===============
 export const currentProduct = atom({key: 'currentProduct', default: {}});
@@ -383,7 +389,6 @@ export const currentProductSelector = selector({
     const productID = await get(selectedProductId);
 
     const response = await apiCalls.selectedProduct(productID);
-    console.log(response, 'what is this data')
     return response.data;
   },
 });
@@ -405,3 +410,22 @@ export const sliderSelector = selector({
     return currentSliderValue;
   },
 });
+
+// export const outfitArray = selector({
+//   key: 'outfitArray',
+//   get: async ({get}) => {
+
+//     // const [outfitCardValue, setOutfitCard] = useRecoilState(outfitCards);
+//     const [allOutfitsValue, setAllOutfits] = useRecoilState(allOutfits);
+//     const otherArray = [];
+//     const tempArray = await get(allOutfits);
+//     const currentValues = await get(outfitCards);
+//     console.log(tempArray, currentValues, 'some stuff')
+
+//     otherArray.push(currentValues);
+
+//     setAllOutfits(otherArray)
+
+//     return allOutfitsValue;
+//   }
+// });

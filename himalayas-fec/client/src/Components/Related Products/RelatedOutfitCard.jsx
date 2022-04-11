@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {RiCloseCircleFill} from 'react-icons/ri';
 import {MdOutlineAddCircle} from 'react-icons/md';
-import {outfitCards, currentStylesSelector, currentProductSelector} from '../../lib/Atoms.jsx';
+import {outfitCards, currentStylesSelector, currentProductSelector, outfitArray} from '../../lib/Atoms.jsx';
 import {useRecoilState, useRecoilValue} from 'recoil';
 
 
@@ -9,20 +9,26 @@ const RelatedOutfitCard = () => {
   const [outfitCardValue, setOutfitCard] = useRecoilState(outfitCards);
   const currentStyles = useRecoilValue(currentStylesSelector);
   const currentProductVar = useRecoilValue(currentProductSelector);
+  // const allOutfits = useRecoilValue(outfitArray);
 
-  // console.log(currentStyles, 'on outfit card')
-  // array of outfit cards
-  const outfitClickHandler = () => {
-    let tempArray = [];
-    let tempObj = {name: '', category: '', price: 0, url: '', stars: ''}
-    tempObj.name = currentStyles.results[0].name;
-    tempObj.category = currentProductVar[0].category;
-    tempObj.price = currentProductVar[0].default_price;
-    tempObj.url = currentStyles.results[0].photos[0].url;
-    tempArray.push(tempObj);
-    setOutfitCard(tempArray);
-    console.log(outfitCardValue, 'outfit card value')
-  }
+  useEffect(() => {
+
+  }, []);
+
+
+    // const outfitClickHandler = () => {
+
+    //   let tempObj = {
+    //     name: currentStyles.results[0].name,
+    //     category: currentProductVar[0].category,
+    //     price: currentProductVar[0].default_price,
+    //     url: currentStyles.results[0].photos[0].url,
+    //     stars: ''}
+
+    //   setOutfitCard(tempObj)
+    //   console.log(outfitCardValue, 'outfit card value', allOutfits)
+    // }
+
   return (
     <div style={{ position: 'relative', height: 325, width: 200, margin: 10}}>
       <MdOutlineAddCircle onClick={() => {
