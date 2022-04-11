@@ -21,6 +21,8 @@ import {
 import { atom, selector, useRecoilState, useRecoilValue } from "recoil";
 import "./App.scss";
 import ProductSearchModal from "./Components/productSearchModal.jsx";
+// import Image from '../dist/img/hima-layers-logo.png';
+// import Image from '../dist/img/R.jpg';
 
 var App = () => {
   let [prod, setProd] = useRecoilState(productQ);
@@ -90,7 +92,7 @@ var App = () => {
               <label key={i} className="products">
                 <span className="category-name">{category}</span>
                 <div id="product-card" className={category}>
-                <img className="product-img" width="125px" height="150px" src="../dist/img/R.jpg"></img>
+                <img className="product-img" max-width="300px" max-height="325px" src="../dist/img/R.jpg"></img>
                 {productDisplay().categoryItems[i].map((item, j) => {
                     return (
                       <label key={j} className="dropdown-product" onClick={(e) => {changeView(item.id.toString())}}>

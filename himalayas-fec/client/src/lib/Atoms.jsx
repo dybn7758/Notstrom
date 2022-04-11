@@ -83,7 +83,7 @@ export const categoryProductsMain = selector({
         sortedProduct[product.category] = [product];
       } else {
         let currentInventory = sortedProduct[product.category];
-        sortedProduct[product.category] = [...currentInventory, product]
+        sortedProduct[product.category] = [...currentInventory, product];
       }
     })
     return sortedProduct;
