@@ -5,7 +5,7 @@ const Cart = (props) => {
   return (
     <div>
       <button type="button">ADD TO CART</button>
-      <label for="size">SELECT SIZE</label>
+      <label for="html">SELECT SIZE</label>
       <select name="size" id="size">
         <option value="small">Small</option>
         <option value="medium">Medium</option>
