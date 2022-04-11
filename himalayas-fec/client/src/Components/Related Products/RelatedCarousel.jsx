@@ -47,8 +47,6 @@ const RelatedCarousel = (props) => {
 
   const callWrapper = () => {
     const allResponse = [];
-    // const relatedStyles = [];
-    // const relatedProducts = [];
     array.forEach((arrayIndex) => {
       allResponse.push(apiCalls.productsByID(arrayIndex), apiCalls.productStyles(arrayIndex), apiCalls.listReviews(arrayIndex, 1, 10));
     })
@@ -96,7 +94,7 @@ const RelatedCarousel = (props) => {
 
   const getModal = (data) => {
     setModalData(data)
-    setShow(['block'])
+    setShow(['flex'])
   }
 
   return (
@@ -117,7 +115,7 @@ const RelatedCarousel = (props) => {
                         setStates(index)
                         getModal(value)
                       } }/>
-                    <div style={{position: 'relative', bottom: 0, backgroundColor: 'gray', width: 200, height: 100, alignItems: 'bottom'}}>
+                    <div style={{position: 'relative', bottom: 0, backgroundColor: 'white', width: 200, height: 100, alignItems: 'bottom'}}>
                       <RelatedCategory props1={index}/>
                       <RelatedName props1={index}/>
                       <RelatedPrice props1={index}/>

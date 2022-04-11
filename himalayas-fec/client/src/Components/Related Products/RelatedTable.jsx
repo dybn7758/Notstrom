@@ -19,7 +19,7 @@ const RelatedTable = (props) => {
   const [showValue, setShow] = useRecoilState(show);
 
   return (
-    <div style={{position: 'absolute', left: '5%', fontWeight: 'bold'}}>Comparing
+    <div style={{position: 'absolute', left: '5%', margin: 2, fontWeight: 'bold', justifyContent: 'center'}}>Comparing
       <RiCloseCircleFill onClick={() => {
         closeModal()
       }}style={{color: 'red', position: 'absolute', right: '5%'}}/>

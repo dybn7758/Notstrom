@@ -9,25 +9,17 @@ const RelatedOutfitCard = () => {
   const [outfitCardValue, setOutfitCard] = useRecoilState(outfitCards);
   const currentStyles = useRecoilValue(currentStylesSelector);
   const currentProductVar = useRecoilValue(currentProductSelector);
-  // const allOutfits = useRecoilValue(outfitArray);
 
-  useEffect(() => {
+  const tempObj = {
+    name: currentStyles.results[0].name,
+    category: currentProductVar[0].category,
+    price: currentProductVar[0].default_price,
+    url: currentStyles.results[0].photos[0].url,
+    stars: ''}
 
-  }, []);
-
-
-    // const outfitClickHandler = () => {
-
-    //   let tempObj = {
-    //     name: currentStyles.results[0].name,
-    //     category: currentProductVar[0].category,
-    //     price: currentProductVar[0].default_price,
-    //     url: currentStyles.results[0].photos[0].url,
-    //     stars: ''}
-
-    //   setOutfitCard(tempObj)
-    //   console.log(outfitCardValue, 'outfit card value', allOutfits)
-    // }
+  const outfitClickHandler = () => {
+    setOutfitCard(outfitCardValue => [...outfitCardValue, tempObj])
+  }
 
   return (
     <div style={{ position: 'relative', height: 325, width: 200, margin: 10}}>
@@ -44,4 +36,3 @@ const RelatedOutfitCard = () => {
 
 export default RelatedOutfitCard;
 
-// RiCloseCircleFill
