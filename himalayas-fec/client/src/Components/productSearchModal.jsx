@@ -27,7 +27,7 @@ var ProductSearchModal = (props) => {
           {filteredSearch.map((item, i) => {
             return (
               <div key={i} id={item.id} className="listed-content" onClick={(e) => {productSearchClick(e)}}>
-                <div id={item.id} className="listed-category">{item.category}</div>|<div className="listed-name" id={item.id}>{item.name}</div>:<div id={item.id} className="listed-slogan" translate="yes" lang="en">{item.slogan}</div>
+                <div id={item.id} className="listed-category">{item.category}</div>|<div className="listed-name" id={item.id}>{item.name}</div>|<div id={item.id} className="listed-slogan" translate="yes" lang="en">{item.slogan}</div>
               </div>);
           })}
         </div>

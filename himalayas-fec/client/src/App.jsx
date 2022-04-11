@@ -93,7 +93,7 @@ var App = () => {
                 <img className="product-img" width="125px" height="150px" src="../dist/img/R.jpg"></img>
                 {productDisplay().categoryItems[i].map((item, j) => {
                     return (
-                      <label key={j} className="dropdown-product" onClick={(e) => {changeView(item.id)}}>
+                      <label key={j} className="dropdown-product" onClick={(e) => {changeView(item.id.toString())}}>
                         <div className={item.name}>{item.name}</div>
                       </label>
                     )
@@ -118,13 +118,13 @@ var App = () => {
 
   return (
     <div id="App">
+      <div className="nav">
       <div
         id="logo"
         onClick={() => {
           changeView("main");
         }}
-      >
-        Hima-layers
+      ><img className="logo-img" src="../dist/img/hima-layers-logo.png" alt="Hima-Layers"></img>
       </div>
       <div>
         <input
@@ -137,6 +137,7 @@ var App = () => {
           onClick={onSearchClick}
         ></input>
         <ProductSearchModal changeView={(page) => {changeView(page)}}/>
+      </div>
       </div>
       <div className="main">{changeView(pageView)}</div>
     </div>

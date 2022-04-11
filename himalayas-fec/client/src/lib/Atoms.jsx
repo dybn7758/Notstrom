@@ -248,7 +248,6 @@ export const questionModalData = selector({
   get: ({ get }) => {
     let productData = get(productQ);
     let productId = get(selectedProductId);
-
     return productData.filter((id) => id.id.toString() === productId);
   },
 });
