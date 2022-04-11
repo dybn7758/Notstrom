@@ -18,7 +18,12 @@ export const catalog = atom({
 // =========== Current/Default ID ========= issues with 10, 12, 14 (no image available)
 export const currentID = atom({ key: "currentID", default: 37311 });
 
-// ====== Modal Toggle State ============== flips between show/hide for modal
+// =========== Related Index ===============
+export const relatedIndex = atom({key: 'relatedIndex', default: 2})
+
+// =========== Related On Sale =============
+export const relatedOnSale = atom({key: 'relatedOnSale', default: false})
+
 // ====== Modal Toggle State ============== working - do not touch
 export const show = atom({ key: "show", default: ["none"] });
 
@@ -28,8 +33,20 @@ export const relatedIDs = atom({ key: "relatedIDs", default: [] });
 // ================= Slider State ==================
 export const sliderState = atom({ key: "sliderState", default: 0 });
 
+// ================= Outfit Cards ====================
+export const outfitCards = atom({key: 'outfitCards', default: []});
+
 // ================== Modal Data =====================
 export const modalData = atom({ key: "modalData", default: 37311 });
+
+// =================== Current Product ===============
+export const currentProduct = atom({key: 'currentProduct', default: {}});
+
+//=================== Current Related Name ===================
+export const currentRelatedName = atom({key: 'currentRelatedName', default: ''})
+
+//==================== Current Related Styles ================
+export const currentRelatedStyles = atom({key: 'currentRelatedStyles', default: []})
 
 //=================== Slider Length ==============
 export const sliderLength = atom({ key: "sliderLength", default: 0 });
@@ -43,12 +60,6 @@ export const currentFeatures = atom({ key: "currentFeatures", default: [] });
 // ================= All Related Styles/Products Combined ====
 export const stylesAndProducts = atom({
   key: "stylesAndProducts",
-  default: [],
-});
-
-//================= Current Related Styles ====
-export const currentRelatedStyles = atom({
-  key: "currentRelatedStyles",
   default: [],
 });
 
@@ -367,7 +378,7 @@ export const currentProductSelector = selector({
     const productID = await get(selectedProductId);
 
     const response = await apiCalls.selectedProduct(productID);
-
+    console.log(response, 'what is this data')
     return response.data;
   },
 });
