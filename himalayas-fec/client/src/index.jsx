@@ -8,12 +8,15 @@ import {
   useRecoilState,
   userRecoilValue,
 } from 'recoil';
+import ErrorBoundary from './ErrorBoundary.jsx';
 
 ReactDOM.render(
   <RecoilRoot>
-    <React.Suspense fallback={<div>testing</div>}>
+    {/* <ErrorBoundary> */}
+    <React.Suspense fallback={<div>Loading...</div>}>
       <App />
     </React.Suspense>
+    {/* </ErrorBoundary> */}
   </RecoilRoot>,
   document.getElementById('root')
 );

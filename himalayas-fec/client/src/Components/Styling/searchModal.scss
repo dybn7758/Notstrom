@@ -1,0 +1,122 @@
+.searchModal {
+  position: absolute;
+  z-index: 9998;
+  // left: 30;
+  // top: 30;
+  // right: 30;
+  // bottom: 30;
+  // background-color: rgb(128,128,128);
+  background-color: rgb(248, 248, 255);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  // align-items: right;
+  // justify-content: baseline;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  max-height: 200px;
+  max-width: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.search-content {
+  width: 400px;
+  background-color: #fff;
+  // border-radius: 10px;
+  display: block;
+  position: relative;
+
+}
+
+.listed-content {
+  margin: 15px;
+  display: flex;
+  flex-direction: row;
+}
+.listed-category {
+  margin-right: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.listed-name {
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.listed-slogan {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-left: 15px;
+}
+// .modal-header{
+//   padding: 10px;
+// }
+
+// .modal-footer{
+//   align-items: center;
+//   padding: 10px;
+// }
+
+// .modal-title {
+//   margin:0;
+// }
+
+// .modal-body {
+//   padding: 10px;
+//   border-top: 1px solid #eee;
+//   border-bottom: 1px solid #eee;
+// }
+
+// .photo-count{
+//   font-family: sans-serif;
+// }
+
+// .body-username{
+//   margin: 10px;
+// }
+
+// .body-email {
+//   margin: 10px;
+// }
+
+// .body-images {
+//   margin: 5px;
+// }
+
+// .post-q {
+//   display: inline-flex;
+//   align-items: center;
+//   justify-content: center;
+//   margin: 5px;
+//   width: 180px;
+//   height: 50px;
+//   border-radius: 0;
+//   border-width: thin;
+//   font-size: small;
+//   font-weight: bold;
+//   background-color: #f2f3f4
+// }
+
+// .cancel-q {
+//   display: inline-flex;
+//   align-items: center;
+//   justify-content: center;
+//   margin: 5px;
+//   width: 180px;
+//   height: 50px;
+//   border-radius: 0;
+//   border-width: thin;
+//   font-size: small;
+//   font-weight: bold;
+//   background-color: #f2f3f4
+// }

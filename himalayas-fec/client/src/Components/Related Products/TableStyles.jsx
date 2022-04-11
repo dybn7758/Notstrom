@@ -1,17 +1,17 @@
-import {stylesAndProducts} from '../../lib/Atoms.jsx';
+import {currentRelatedStyles, currentStylesSelector, relatedIndex} from '../../lib/Atoms.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
 import React from 'react';
 
-const TableStyles = (props) => {
-  const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);
-  // const stylesVar = stylesAndProductsValue[props.props1 + 1].data.results.length;
-  // const styleData =  {stylesAvail: stylesVar, stylesText: 'Styles', stylesAvail2: 0};
+const TableStyles = () => {
+  const [relatedIndexValue, setRelatedIndex] = useRecoilState(relatedIndex);
+  const [currentRelatedStylesValue, setCurrentRelatedStyles] = useRecoilState(currentRelatedStyles);
+  const currentStyles = useRecoilValue(currentStylesSelector);
 
   return (
     <tr>
-      <td>data</td>
-      <td>data</td>
-      <td>data</td>
+      <td>{currentRelatedStylesValue}</td>
+      <td>Styles</td>
+      <td>{currentStyles.results.length}</td>
     </tr>
   )
 }

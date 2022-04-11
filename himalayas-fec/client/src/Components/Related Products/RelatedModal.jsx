@@ -3,7 +3,7 @@ import {show} from '../../lib/Atoms.jsx';
 import {useRecoilState} from 'recoil';
 import React from 'react';
 
-export const RelatedModal = (props) => {
+const RelatedModal = (props) => {
 
   const closeModal = () => {
     setShow(['none']);
@@ -13,9 +13,9 @@ export const RelatedModal = (props) => {
 
   return (
     <div style={{
-      display: showValue[0], background: 'gray',height: 250,
+      display: showValue[0], background: 'gray',height: 200, overflow: 'auto', maxHeight: '30rem',
       width: 500, position: 'fixed', left: '25%', top: '25%',
-      zIndex: 8
+      zIndex: 8,
     }}>
     <RelatedTable props1={props.props1}/>
       <button style={{position: 'absolute', bottom: 0, left: '50%', zIndex: 20}}
@@ -23,3 +23,7 @@ export const RelatedModal = (props) => {
     </div>
   )
 }
+
+export default RelatedModal;
+
+// filter: 'blur(8px)',

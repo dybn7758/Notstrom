@@ -1,0 +1,101 @@
+.add-ans {
+  display: flex;
+  // flex-direction: column;
+  // align-items: right;
+  text-decoration: underline;
+  margin-left: 20px;
+  white-space: nowrap;
+}
+
+.q-date {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#questions {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+#sub-questions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+#question-span {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  // align-items: left;
+  // justify-content: left;
+  font-family: sans-serif;
+  margin-left: 15px;
+  color: rgb(128,128,128);
+  white-space: nowrap;
+}
+
+.helpfulness {
+  text-decoration: underline;
+  margin-left: 15px;
+  margin-right: 7px;
+}
+
+.a-date {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.report {
+  text-decoration: underline;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.yes-no {
+  margin-left: 7px;
+  margin-right: 10px;
+  // flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.asker-name {
+  // margin-top: 2px;
+  // margin-bottom: 20px;
+}
+
+.answers {
+  // margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+}
+
+.answerers {
+  font-family: sans-serif;
+  margin-left: 15px;
+  // white-space: nowrap;
+  color: rgb(128,128,128)
+}
+
+.by-ans {
+  font-family: sans-serif;
+}
+
+.by-ques {
+  font-family: sans-serif;
+  margin-left: 3px;
+  font-weight: 600;
+  text-align: center;
+}
+
+#ans-photos {
+  margin-left: 15px;
+}
+
+.ans-photo {
+  width: 15%;
+  height: 20%;
+}

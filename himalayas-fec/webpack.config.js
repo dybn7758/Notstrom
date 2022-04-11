@@ -17,7 +17,7 @@ module.exports = {
         exclude: /nodeModules/,
         use: {
           loader: "babel-loader"
-        }
+        },
       },
        {
         test: /\.s[ac]ss$/i,

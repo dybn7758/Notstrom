@@ -10,20 +10,19 @@ import { listQuestions, listProducts, listReviews } from "./lib/searchAPI.js";
 import {
   productResponse,
   selectedProductId,
+  productQ,
+  catalog,
+  showSeachModal,
   relatedSelector,
   relatedIDs,
+  searchProductList,
+  categoryProductsMain,
 } from "./lib/Atoms.jsx";
 import { atom, selector, useRecoilState, useRecoilValue } from "recoil";
-
-export const productQ = atom({
-  key: "productQ",
-  default: sampleMain,
-});
-
-const catalog = atom({
-  key: "catalog",
-  default: "main",
-});
+import "./App.scss";
+import ProductSearchModal from "./Components/productSearchModal.jsx";
+// import Image from '../dist/img/hima-layers-logo.png';
+// import Image from '../dist/img/R.jpg';
 
 var App = () => {
   let [prod, setProd] = useRecoilState(productQ);
@@ -32,51 +31,86 @@ var App = () => {
 
   let [selectedProductID, setCurrentProductId] =
     useRecoilState(selectedProductId);
-
+  let [searchModal, setSearchModal] = useRecoilState(showSeachModal);
+  let [searchedProduct, setSearchedProduct] = useRecoilState(searchProductList);
+  let categoryByProduct = useRecoilValue(categoryProductsMain);
   //Retrieves data from the API and sets the products to state to render
   //pass the second argument so it doesnt create an infinite loop everytime this component renders
   useEffect(() => {
     setProd(productData);
   }, []);
 
-  //Sets the product detail page
-  // var onClickProduct = (productID) => {
-  //   setPageView(productID);
-  // };
+  const searchingModal = (e) => {
+    setSearchedProduct(e.target.value);
+    if (e.target.value === "") {
+      setSearchModal(false);
+    }
+  };
+
+  const onSearchClick = () => {
+    setSearchModal(true);
+  };
+
+  const productDisplay = () => {
+    let categories = Object.keys(categoryByProduct);
+    let categoryItems = Object.values(categoryByProduct);
+    return {categories, categoryItems};
+  };
 
   var changeView = (page) => {
     setPageView(page);
     setCurrentProductId(page);
 
-    if (pageView === "main") {
+    // if (pageView === "main") {
+    //   return (
+    //     <table>
+    //       <tbody>
+    //         {prod.map((product, i) => {
+    //           return (
+    //             <tr key={i}>
+    //               <td
+    //                 value={product.id}
+    //                 onClick={(e) => {
+    //                   changeView(e.target.attributes.value.value);
+    //                 }}
+    //               >
+    //                 {product.name}
+    //               </td>
+    //               <td>{product.description}</td>
+    //             </tr>
+    //           );
+    //         })}
+    //       </tbody>
+    //     </table>
+    //   );
+    // }
+    if (pageView === 'main') {
       return (
-        <table>
-          <tbody>
-            {prod.map((product, i) => {
-              return (
-                <tr key={i}>
-                  <td
-                    value={product.id}
-                    onClick={(e) => {
-                      changeView(e.target.attributes.value.value);
-                    }}
-                  >
-                    {product.name}
-                  </td>
-                  <td>{product.description}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      );
+        <div id="product-container">
+          {productDisplay().categories.map((category, i) => {
+            return (
+              <label key={i} className="products">
+                <span className="category-name">{category}</span>
+                <div id="product-card" className={category}>
+                <img className="product-img" max-width="300px" max-height="325px" src="../dist/img/R.jpg"></img>
+                {productDisplay().categoryItems[i].map((item, j) => {
+                    return (
+                      <label key={j} className="dropdown-product" onClick={(e) => {changeView(item.id.toString())}}>
+                        <div className={item.name}>{item.name}</div>
+                      </label>
+                    )
+                  })}
+                </div>
+              </label>
+            )
+          })}
+        </div>
+      )
     } else if (pageView !== "main") {
       return (
         <div>
-          {" "}
-          Himalayas For The Win
-          <Overview productId={selectedProductID} />
-          <RelatedProducts/>
+          {/* <Overview productId={selectedProductID}/> */}
+          {/* <RelatedProducts /> */}
           <QA />
           <Reviews />
         </div>
@@ -85,25 +119,28 @@ var App = () => {
   };
 
   return (
-    <div className="nav">
-      <span
-        className="logo"
+    <div id="App">
+      <div className="nav">
+      <div
+        id="logo"
         onClick={() => {
           changeView("main");
         }}
-      >
-        Hima-layers
-      </span>
-      <span className="searchbar">
+      ><img className="logo-img" src="../dist/img/hima-layers-logo.png" alt="Hima-Layers"></img>
+      </div>
+      <div>
         <input
+          className="searchbar"
           type="search"
           placeholder="Product search..."
-          onChange={() => {
-            console.log("hi");
+          onChange={(e) => {
+            searchingModal(e);
           }}
+          onClick={onSearchClick}
         ></input>
-      </span>
-
+        <ProductSearchModal changeView={(page) => {changeView(page)}}/>
+      </div>
+      </div>
       <div className="main">{changeView(pageView)}</div>
     </div>
   );

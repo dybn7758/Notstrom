@@ -4,8 +4,8 @@ import React from 'react';
 
 const RelatedPrice = (props) => {
   const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);
-  const currentPrice = stylesAndProductsValue[props.props1].data.default_price;
-  const salePricePath = stylesAndProductsValue[props.props1 + 1].data.results[0];
+  const currentPrice = stylesAndProductsValue[props.props1 - 2].data.default_price;
+  const salePricePath = stylesAndProductsValue[props.props1 - 1].data.results[0];
 
   const saleChecker = () => {
     if (salePricePath.sale_price !== null){
@@ -17,7 +17,7 @@ const RelatedPrice = (props) => {
       )
     } else {
       return (
-        <h1 style={{margin: 2, position: 'absolute', top: 40, left: 10, fontSize: 12}}>{currentPrice}</h1>
+        <h1 style={{margin: 2, position: 'absolute', bottom: 5, left: 10, fontSize: 12}}>{currentPrice}</h1>
       )
     }
   }
