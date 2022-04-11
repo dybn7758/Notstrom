@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   z-index: 10;
 }
 
@@ -18,17 +18,17 @@
   border-radius: 10px;
 }
 
-.modal-header{
+.modal-header {
   padding: 10px;
 }
 
-.modal-footer{
+.modal-footer {
   align-items: center;
   padding: 10px;
 }
 
 .modal-title {
-  margin:0;
+  margin: 0;
 }
 
 .modal-body {
@@ -37,11 +37,11 @@
   border-bottom: 1px solid #eee;
 }
 
-.photo-count{
+.photo-count {
   font-family: sans-serif;
 }
 
-.body-username{
+.body-username {
   margin: 10px;
 }
 
@@ -64,7 +64,7 @@
   border-width: thin;
   font-size: small;
   font-weight: bold;
-  background-color: #f2f3f4
+  background-color: #f2f3f4;
 }
 
 .cancel-q {
@@ -78,5 +78,5 @@
   border-width: thin;
   font-size: small;
   font-weight: bold;
-  background-color: #f2f3f4
+  background-color: #f2f3f4;
 }

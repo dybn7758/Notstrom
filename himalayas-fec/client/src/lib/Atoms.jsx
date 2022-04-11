@@ -189,6 +189,11 @@ export const twoMore = atom({
   default: 2,
 });
 
+export const showWriteReviewModal = atom({
+  key: "showwritereviewmodal",
+  default: false,
+});
+
 export const productReviewsSelector = selector({
   key: "productReviewsSelector",
   get: async ({ get }) => {
