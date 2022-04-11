@@ -1,9 +1,10 @@
 .add-ans {
-  // display: flex;
+  display: flex;
   // flex-direction: column;
   // align-items: right;
   text-decoration: underline;
   margin-left: 20px;
+  white-space: nowrap;
 }
 
 .q-date {
@@ -31,7 +32,8 @@
   // justify-content: left;
   font-family: sans-serif;
   margin-left: 15px;
-  color: rgb(128,128,128)
+  color: rgb(128,128,128);
+  white-space: nowrap;
 }
 
 .helpfulness {
