@@ -7,7 +7,7 @@ const RelatedOutfits = () => {
   return (
       <div>
       <div>
-          <div style={{width: 1000, height: 350, background: 'lightblue', margin: 5, overflow: 'hidden'}}>
+          <div style={{width: '100%', height: 350, background: 'lightblue', margin: 5, overflow: 'hidden'}}>
             <div style={{float: 'left', position: 'relative', height: 325, width: 200,
               backgroundColor: 'white', zIndex: 5, margin: 10}}>
                 <RelatedOutfitCard/>

@@ -1,5 +1,6 @@
 import React from 'react';
 import {RiCloseCircleFill} from 'react-icons/ri';
+import {MdOutlineAddCircle} from 'react-icons/md';
 import {outfitCards, currentStylesSelector, currentProductSelector} from '../../lib/Atoms.jsx';
 import {useRecoilState, useRecoilValue} from 'recoil';
 
@@ -22,18 +23,19 @@ const RelatedOutfitCard = () => {
     setOutfitCard(tempArray);
     console.log(outfitCardValue, 'outfit card value')
   }
-
   return (
     <div style={{ position: 'relative', height: 325, width: 200, margin: 10}}>
-      <RiCloseCircleFill onClick={() => {
+      <MdOutlineAddCircle onClick={() => {
         outfitClickHandler()
       }}
-      style={{position: 'relative', color: 'red', height: 30, width: 30, left: '5%', top: '5%', zIndex: 20}}/>
-      <div>
-
+      style={{position: 'relative', color: 'green', height: 100, width: 100, left: '20%', top: '25%', zIndex: 20}}/>
+          <div style={{position: 'absolute', bottom: 40, left: 25, fontSize: 20, fontWeight: 'bolder'}}>Add To Outfit</div>
+        <div>
       </div>
     </div>
   )
 }
 
 export default RelatedOutfitCard;
+
+// RiCloseCircleFill
