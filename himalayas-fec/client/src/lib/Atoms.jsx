@@ -18,7 +18,12 @@ export const catalog = atom({
 // =========== Current/Default ID ========= issues with 10, 12, 14 (no image available)
 export const currentID = atom({ key: "currentID", default: 37311 });
 
-// ====== Modal Toggle State ============== flips between show/hide for modal
+// =========== Related Index ===============
+export const relatedIndex = atom({key: 'relatedIndex', default: 2})
+
+// =========== Related On Sale =============
+export const relatedOnSale = atom({key: 'relatedOnSale', default: false})
+
 // ====== Modal Toggle State ============== working - do not touch
 export const show = atom({ key: "show", default: ["none"] });
 
@@ -28,8 +33,20 @@ export const relatedIDs = atom({ key: "relatedIDs", default: [] });
 // ================= Slider State ==================
 export const sliderState = atom({ key: "sliderState", default: 0 });
 
+// ================= Outfit Cards ====================
+export const outfitCards = atom({key: 'outfitCards', default: []});
+
 // ================== Modal Data =====================
 export const modalData = atom({ key: "modalData", default: 37311 });
+
+// =================== Current Product ===============
+export const currentProduct = atom({key: 'currentProduct', default: {}});
+
+//=================== Current Related Name ===================
+export const currentRelatedName = atom({key: 'currentRelatedName', default: ''})
+
+//==================== Current Related Styles ================
+export const currentRelatedStyles = atom({key: 'currentRelatedStyles', default: []})
 
 //=================== Slider Length ==============
 export const sliderLength = atom({ key: "sliderLength", default: 0 });
@@ -43,12 +60,6 @@ export const currentFeatures = atom({ key: "currentFeatures", default: [] });
 // ================= All Related Styles/Products Combined ====
 export const stylesAndProducts = atom({
   key: "stylesAndProducts",
-  default: [],
-});
-
-//================= Current Related Styles ====
-export const currentRelatedStyles = atom({
-  key: "currentRelatedStyles",
   default: [],
 });
 
@@ -69,10 +80,26 @@ export const productSelector = selector({
   key: "productSelector",
   get: async ({ get }) => {
     const response = await apiCalls.listProducts(100);
-    console.log("-------------", response);
     return response;
   },
 });
+
+export const categoryProductsMain = selector({
+  key: 'categoryProductsMain',
+  get: ({get}) => {
+    let products = get(productQ);
+    let sortedProduct = {};
+    products.forEach((product) => {
+      if (sortedProduct[product.category] === undefined) {
+        sortedProduct[product.category] = [product];
+      } else {
+        let currentInventory = sortedProduct[product.category];
+        sortedProduct[product.category] = [...currentInventory, product];
+      }
+    })
+    return sortedProduct;
+  }
+})
 
 export const productResponse = () => {
   const data = useRecoilValue(productSelector);
@@ -210,21 +237,33 @@ export const limitedQuestions = atom({
   default: [],
 });
 
-// export const limitQuestionSelector = selector({
-//   key: 'limitQuestionSelector',
-//   get: ({get}) => {
-//     let listQuestions = get(limitedQuestions);
-//     let questionCount = get(searchQuesCount);
-//     let limitedResponse = listQuestions.slice(0, listQuestions.length).sort((a, b) => {return b.question_helpfulness - a.question_helpfulness});
-//     return limitedResponse.slice(0, questionCount);
-//   }
-// });
+export const searchProductList = atom({
+  key: "searchProductList",
+  default: ""
+})
+
+export const filterSearchProductSelector = selector({
+  key: 'filterSearchProductSelector',
+  get: ({get}) => {
+    let searchList = get(productQ);
+    let searchParam = get(searchProductList).toLowerCase();
+
+    let filteredSearch = searchList.filter((product) => {
+      let categoryToLowerCase = product.category.toLowerCase();
+      let nameToLowerCase = product.name.toLowerCase();
+      let conditionOne = categoryToLowerCase.indexOf(searchParam) !== -1;
+      let conditionTwo = nameToLowerCase.indexOf(searchParam) !== -1;
+      return conditionOne || conditionTwo;
+    })
+    return filteredSearch;
+  }
+});
+
 export const questionModalData = selector({
   key: "questionModalData",
   get: ({ get }) => {
     let productData = get(productQ);
     let productId = get(selectedProductId);
-
     return productData.filter((id) => id.id.toString() === productId);
   },
 });
@@ -344,7 +383,7 @@ export const currentProductSelector = selector({
     const productID = await get(selectedProductId);
 
     const response = await apiCalls.selectedProduct(productID);
-
+    console.log(response, 'what is this data')
     return response.data;
   },
 });

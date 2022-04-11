@@ -1,17 +1,16 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
 
 #imageContainer {
   position: relative;
@@ -33,7 +32,7 @@ code {
   float: right;
 } */
 
- .cardContainer {
+.cardContainer {
   position: relative;
   bottom: 0;
   background: gray;
@@ -42,7 +41,9 @@ code {
   align-items: baseline;
 }
 
-body { font-family: sans-serif; }
+body {
+  font-family: sans-serif;
+}
 
 .gallery {
   background: transparent;
@@ -52,9 +53,8 @@ body { font-family: sans-serif; }
   width: 66%;
   height: 100px;
   margin-right: 10px;
-  background: #8C8;
+  background: #8c8;
 }
-
 
 .gallery-cell:before {
   display: block;
@@ -63,7 +63,6 @@ body { font-family: sans-serif; }
   font-size: 80px;
   color: white;
 }
-
 
 /* for quarterly star rating */
 .single-star-outline {
@@ -84,77 +83,77 @@ body { font-family: sans-serif; }
   display: inline-block;
 }
 
-
 /* for rating bars */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-*{
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-html,body{
+html,
+body {
   display: grid;
   height: 100%;
   place-items: center;
   /* background: #6665ee; */
 }
-::selection{
+::selection {
   color: #fff;
   background: #6665ee;
 }
-.skill-bars{
+.skill-bars {
   padding: 25px 30px;
   width: 600px;
   background: #fff;
   /* box-shadow: 5px 5px 20px rgba(0,0,0,0.2); */
   border-radius: 10px;
 }
-.skill-bars .bar{
+.skill-bars .bar {
   margin: 20px 0;
 }
-.skill-bars .bar:first-child{
+.skill-bars .bar:first-child {
   margin-top: 0px;
 }
-.skill-bars .bar .info{
+.skill-bars .bar .info {
   margin-bottom: 5px;
 }
-.skill-bars .bar .info span{
+.skill-bars .bar .info span {
   font-weight: 500;
   font-size: 17px;
   opacity: 0;
   animation: showText 0.5s 1s linear forwards;
 }
 @keyframes showText {
-  100%{
+  100% {
     opacity: 1;
   }
 }
-.skill-bars .bar .progress-line{
+.skill-bars .bar .progress-line {
   height: 10px;
   width: 100%;
   background: #f0f0f0;
-  position:relative;
+  position: static;
   transform: scaleX(0);
   transform-origin: left;
   border-radius: 10px;
-  box-shadow: inset 0 1px 1px rgba(0,0,0,0.05),
-              0 1px rgba(255,255,255,0.8);
-  animation: animate 1s cubic-bezier(1,0,0.5,1) forwards;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05),
+    0 1px rgba(255, 255, 255, 0.8);
+  animation: animate 1s cubic-bezier(1, 0, 0.5, 1) forwards;
 }
 @keyframes animate {
-  100%{
+  100% {
     transform: scaleX(1);
   }
 }
-.bar .progress-line span{
+.bar .progress-line span {
   height: 100%;
   position: absolute;
   border-radius: 10px;
   transform: scaleX(0);
   transform-origin: left;
   background: #6665ee;
-  animation: animate 1s 1s cubic-bezier(1,0,0.5,1) forwards;
+  animation: animate 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
 }
 /* .bar .progress-line.html span{
   width: 90%;
@@ -185,7 +184,7 @@ html,body{
   opacity: 0;
   animation: showText2 0.5s 1.5s linear forwards;
 } */
-.progress-line span::after{
+.progress-line span::after {
   position: absolute;
   top: -28px;
   right: 0;
@@ -199,22 +198,21 @@ html,body{
   animation: showText2 0.5s 1.5s linear forwards;
 }
 @keyframes showText2 {
-  100%{
+  100% {
     opacity: 1;
   }
 }
 
-
 /* for characteristics */
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-*{
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-.container{
+.container {
   background: #fff;
   padding: 20px 30px;
   width: 420px;
@@ -222,16 +220,12 @@ html,body{
   box-shadow: 0 0 15px rgba(0,0,0,0.2); */
 }
 
-.container form{
+.container form {
   margin: 20px 5px 10px 5px;
   position: relative;
 }
 
-
-
-
-
-form .indicator{
+form .indicator {
   height: 10px;
   display: flex;
   align-items: center;
@@ -239,12 +233,12 @@ form .indicator{
   margin: 10px 0;
 }
 
-form .indicator span{
-width: 100%;
-height: 100%;
-background: lightgrey;
-border-radius: 5px;
-/* height: 100%;
+form .indicator span {
+  width: 100%;
+  height: 100%;
+  background: lightgrey;
+  border-radius: 5px;
+  /* height: 100%;
   position: absolute;
   border-radius: 10px;
   transform: scaleX(0);
@@ -252,30 +246,28 @@ border-radius: 5px;
   background: #6665ee; */
 }
 
-form .indicator span::before{
+form .indicator span::before {
   position: absolute;
-  content:"";
-  right:0;
+  content: "";
+  right: 0;
   height: 0;
-  width:0;
+  width: 0;
   border: 7px solid transparent;
   border-bottom-width: 0px;
   border-right-width: 0px;
   border-top-color: #000;
 }
 
-form .indicator span::after{
+form .indicator span::after {
   position: absolute;
-  content:"";
-  right:0;
+  content: "";
+  right: 0;
   top: -10px;
-  color:#fff;
+  color: #fff;
   height: 0;
-  width:0;
+  width: 0;
   border: 7px solid transparent;
   border-bottom-width: 0px;
   border-right-width: 0px;
   border-top-color: #000;
 }
-
-

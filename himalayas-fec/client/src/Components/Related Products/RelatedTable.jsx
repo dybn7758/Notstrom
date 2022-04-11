@@ -3,7 +3,6 @@ import {useRecoilValue, useRecoilState} from 'recoil';
 import TableFeatures from './TableFeatures.jsx';
 import TableHeaders from './TableHeaders.jsx';
 import TableStyles from './TableStyles.jsx';
-import {Checkmark} from 'react-ionicons';
 import TableSales from './TableSales.jsx';
 import React from 'react';
 

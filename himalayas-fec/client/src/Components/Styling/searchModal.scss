@@ -1,23 +1,31 @@
 .searchModal {
-  position: relative;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  z-index: 9998;
+  // left: 30;
+  // top: 30;
+  // right: 30;
+  // bottom: 30;
+  // background-color: rgb(128,128,128);
+  background-color: rgb(248, 248, 255);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  // align-items: right;
   // justify-content: baseline;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   max-height: 200px;
-  max-width: 600px;
-  overflow: auto;
+  max-width: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-.modal-content {
-  width: 500px;
+.search-content {
+  width: 400px;
   background-color: #fff;
-  border-radius: 10px;
+  // border-radius: 10px;
+  display: block;
+  position: relative;
+
 }
 
 .listed-content {
@@ -25,9 +33,21 @@
   display: flex;
   flex-direction: row;
 }
+.listed-category {
+  margin-right: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
 
 .listed-name {
   margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 
 .listed-slogan {

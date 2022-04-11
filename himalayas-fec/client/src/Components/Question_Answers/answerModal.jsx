@@ -89,7 +89,7 @@ var AnswerModal = () => {
                     )
                   })}
                 </div>
-                </>
+              </>
             </>
           </div>
           <div className="modal-footer">

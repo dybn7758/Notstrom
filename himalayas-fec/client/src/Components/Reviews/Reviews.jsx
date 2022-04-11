@@ -13,7 +13,7 @@ var Reviews = () => {
   return (
     <>
       <h4>RATINGS & REVIEWS</h4>
-      <label for="sort-review"> sorted by </label>
+      <label htmlFor="sort-review"> sorted by </label>
       <select name="sort-review" id="sort-review">
         <option value="Helpful">Helpful</option>
         <option value="Newest">Newest</option>
