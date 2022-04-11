@@ -2,18 +2,30 @@ import React from "react";
 import Stars from "simple-rating-stars";
 import { atom, useRecoilState, selector, useRecoilValue } from "recoil";
 import { listReviews, metaReviews } from "../../lib/searchAPI.js";
+import WriteReview from "./WriteReview.jsx";
 import {
   productReviewsSelector,
   productMetaReviewsSelector,
   twoMore,
+  showWriteReviewModal,
 } from "../../lib/Atoms.jsx";
 
-var SingleReview = () => {
+var SingleReview = ({ characteristics }) => {
   const specifiedReviewID = useRecoilValue(productReviewsSelector);
   console.log("😀 two reviews", specifiedReviewID);
   const [addTwoMoreReviews, setAddTwoMoreReviews] = useRecoilState(twoMore);
+  const [showWriteReview, setShowWriteReview] =
+    useRecoilState(showWriteReviewModal);
   const addTwoMore = () => {
     setAddTwoMoreReviews(addTwoMoreReviews + 2);
+  };
+
+  const showModal = () => {
+    setShowWriteReview(true);
+  };
+
+  const hideModal = () => {
+    setShowWriteReview(false);
   };
 
   return (
@@ -54,6 +66,12 @@ var SingleReview = () => {
       <button type="submit" onClick={addTwoMore}>
         MORE REVIEWS
       </button>
+      <button type="submit" onClick={showModal}>
+        ADD A REVIEW
+      </button>
+      {showWriteReview && (
+        <WriteReview hideModal={hideModal} characteristics={characteristics} />
+      )}
     </>
   );
 };
