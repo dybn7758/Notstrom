@@ -24,7 +24,7 @@ class StyleGallery extends React.Component {
 
     return (
       <div className="gallery">
-        <h2>Image Gallery</h2>
+        <h2>Fashion Gallery</h2>
         {photos.map((photo, index) => {
           return(
             <div className="gallery-cell"

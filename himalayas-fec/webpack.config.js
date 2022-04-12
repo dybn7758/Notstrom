@@ -14,13 +14,12 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-
         exclude: /nodeModules/,
         use: {
           loader: "babel-loader"
         },
       },
-      {
+       {
         test: /\.s[ac]ss$/i,
         use: [
           // Creates `style` nodes from JS strings
@@ -31,13 +30,6 @@ module.exports = {
           "sass-loader",
         ],
       },
-      // {
-      //   test: /\.s?css$/,
-      //   use: {
-      //     loaders: ['style', 'css', 'sass']
-      //   },
-      // },
     ],
   },
 };
-
