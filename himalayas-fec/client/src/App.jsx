@@ -6,7 +6,7 @@ import QA from "./Components/Question_Answers/qa.jsx";
 import sampleQa from "./Components/Question_Answers/sampleQA.js";
 import sampleMain from "../src/Components/Question_Answers/sampleMain.js";
 import axios from "axios";
-import { listQuestions, listProducts, listReviews } from "./lib/searchAPI.js";
+import { listQuestions, listProducts, listReviews } from "./lib/searchAPI.js"; //this can be removed
 import {
   productSelector,
   selectedProductId,
@@ -37,7 +37,6 @@ var App = (props) => {
   useEffect(() => {
     console.log(props.onClick())
     setProd(productData);
-
   }, []);
 
   const searchingModal = (e) => {
