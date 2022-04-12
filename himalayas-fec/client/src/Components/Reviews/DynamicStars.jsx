@@ -48,7 +48,7 @@ class DynamicStars extends React.Component {
   render() {
     return (
       <div>
-        <h1>Rate out of 5 Stars</h1>
+        <h3>Rate out of 5 Stars</h3>
         {this.state.starsArr.map((item, i) => {
           return (
             <div

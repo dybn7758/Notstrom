@@ -1,8 +1,10 @@
 import React from "react";
 function Bars({ ratings, sum }) {
   return (
-    <div class="skill-bars">
+    <div className="skill-bars">
       {Object.keys(ratings).map((key, i) => {
+        const width = (ratings[key] / sum) * 100;
+        console.log("🤩", width + "%");
         return (
           <div className="bar" key={i}>
             <div className="info">
@@ -11,14 +13,13 @@ function Bars({ ratings, sum }) {
             <div className="progress-line">
               <span
                 style={{
-                  width: ((ratings[key] * 1) / sum) * 1000,
+                  width: width + "%",
                 }}
               ></span>
             </div>
           </div>
         );
       })}
-      <hr></hr>
     </div>
   );
 }
