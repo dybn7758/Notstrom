@@ -23,8 +23,8 @@ import {
  const Overview = (props) => {
  //acquire current product
   const productsArray = useRecoilValue(currentProductSelector);
-
-  var currentId = props.productId;
+  let [selectedProductID, setCurrentProductId] = useRecoilState(selectedProductId);
+  var currentId = selectedProductID;
 
   var currentProduct;
 
@@ -32,7 +32,7 @@ import {
 
     var stringVersion = JSON.stringify(product.id);
 
-    if (stringVersion === props.productId) {
+    if (stringVersion === selectedProductID) {
       currentProduct = product;
     }
   })
