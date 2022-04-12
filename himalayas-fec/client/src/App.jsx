@@ -6,9 +6,9 @@ import QA from "./Components/Question_Answers/qa.jsx";
 import sampleQa from "./Components/Question_Answers/sampleQA.js";
 import sampleMain from "../src/Components/Question_Answers/sampleMain.js";
 import axios from "axios";
-import { listQuestions, listProducts, listReviews } from "./lib/searchAPI.js";
+import { listQuestions, listProducts, listReviews } from "./lib/searchAPI.js"; //this can be removed
 import {
-  productResponse,
+  productSelector,
   selectedProductId,
   productQ,
   catalog,
@@ -17,25 +17,30 @@ import {
   relatedIDs,
   searchProductList,
   categoryProductsMain,
+  clickListenerSelector,
 } from "./lib/Atoms.jsx";
 import { atom, selector, useRecoilState, useRecoilValue } from "recoil";
 import "./App.scss";
 import ProductSearchModal from "./Components/productSearchModal.jsx";
-// import Image from '../dist/img/hima-layers-logo.png';
-// import Image from '../dist/img/R.jpg';
 
-var App = () => {
+var App = (props) => {
   let [prod, setProd] = useRecoilState(productQ);
   let [pageView, setPageView] = useRecoilState(catalog);
+<<<<<<< HEAD
   const productData = productResponse();
 
+=======
+  let productData = useRecoilValue(productSelector);
+>>>>>>> b5cac03575d919771922ed068dd1181353a5c67b
   let [selectedProductID, setCurrentProductId] = useRecoilState(selectedProductId);
   let [searchModal, setSearchModal] = useRecoilState(showSeachModal);
   let [searchedProduct, setSearchedProduct] = useRecoilState(searchProductList);
   let categoryByProduct = useRecoilValue(categoryProductsMain);
+  let clickListener = useRecoilValue(clickListenerSelector);
   //Retrieves data from the API and sets the products to state to render
   //pass the second argument so it doesnt create an infinite loop everytime this component renders
   useEffect(() => {
+    console.log(props.onClick())
     setProd(productData);
   }, []);
 
