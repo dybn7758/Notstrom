@@ -29,8 +29,7 @@ var App = () => {
   let [pageView, setPageView] = useRecoilState(catalog);
   const productData = productResponse();
 
-  let [selectedProductID, setCurrentProductId] =
-    useRecoilState(selectedProductId);
+  let [selectedProductID, setCurrentProductId] = useRecoilState(selectedProductId);
   let [searchModal, setSearchModal] = useRecoilState(showSeachModal);
   let [searchedProduct, setSearchedProduct] = useRecoilState(searchProductList);
   let categoryByProduct = useRecoilValue(categoryProductsMain);
@@ -109,8 +108,8 @@ var App = () => {
     } else if (pageView !== "main") {
       return (
         <div>
-          {/* <Overview productId={selectedProductID}/> */}
-          {/* <RelatedProducts /> */}
+          <Overview />
+          <RelatedProducts />
           <QA />
           <Reviews />
         </div>

@@ -14,7 +14,7 @@ const RelatedTable = (props) => {
     <div>Comparing
       <table >
         <TableHeaders />
-        <TableSales />
+        {/* <TableSales /> */}
         <TableStyles />
         <TableFeatures />
     </table>

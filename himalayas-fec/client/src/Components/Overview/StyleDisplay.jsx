@@ -2,7 +2,6 @@ import React from 'react';
 
 const StyleDisplay = (props) => {
 
-  console.log('sdprops', props)
 
   return(
     <div className="styleDisplay">

@@ -118,7 +118,7 @@ const RelatedCarousel = (props) => {
                     <div style={{position: 'relative', bottom: 0, backgroundColor: 'gray', width: 200, height: 100, alignItems: 'bottom'}}>
                       <RelatedCategory props1={index}/>
                       <RelatedName props1={index}/>
-                      <RelatedPrice props1={index}/>
+                      {/* <RelatedPrice props1={index}/> */}
                       <RelatedStars props1={index}/>
                   </div>
                 </div>
