@@ -2,10 +2,10 @@ import React from "react";
 import RelatedCarousel from "./RelatedCarousel.jsx";
 import RelatedOutfits from "./RelatedOutfits.jsx";
 
-const RelatedProducts = () => {
+const RelatedProducts = (props) => {
   return (
-    <div>
-      <RelatedCarousel />
+    <div id='relatedProducts-module'>
+      <RelatedCarousel props1={props.props1}/>
       <RelatedOutfits/>
     </div>
   );
