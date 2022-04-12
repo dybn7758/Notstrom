@@ -55,7 +55,7 @@ var axiosPut = (url) => {
 
   return axios(options)
     .then((data) => {
-      console.log("Data updated", data.status);
+      console.log("Data updated", data);
       return data;
     })
     .catch((err) => {
@@ -125,14 +125,34 @@ var putAnsReport = (answerId) => {
 };
 
 //--------------- API Reviews -----------------
-var listReviews = (productId, page, count) => {
+var listReviews = (productId, page, count, sort) => {
   //Might not need the count and page parameters yet...
   //if needed, adjust the parameterURL to include these
-  let parameterURL = `${serverUrl}/reviews/?product_id=${productId}&count=${count}&page=${page}`;
+
+  //
+  let parameterURL = `${serverUrl}/reviews/?product_id=${productId}&count=${count}&page=${page}&sort=${sort}`;
 
   return axiosGet(parameterURL);
 };
 
+//--------------API Reviews Meta Data--------------
+var metaReviews = (productId) => {
+  let parameterURL = `${serverUrl}/reviews/meta?product_id=${productId}`;
+  return axiosGet(parameterURL);
+};
+
+// --------------update helpfulness for review------------
+
+var putReviewHelpful = (review_id) => {
+  let parameterURL = `${serverUrl}/reviews/${review_id}/helpful`;
+
+  return axiosPut(parameterURL);
+};
+
+var putReviewReport = (review_id) => {
+  let parameterURL = `${serverUrl}/reviews/${review_id}/report`;
+  return axiosPut(parameterURL);
+};
 //--------------- API Products By ID ----------------
 var productsByID = (product_id) => {
   let parameterURL = `${serverUrl}/products/${product_id}`;
@@ -141,11 +161,6 @@ var productsByID = (product_id) => {
 };
 
 // ------------- API Related Product IDs (array) --------------- returns array of related product IDs
-//--------------API Reviews Meta Data--------------
-var metaReviews = (productId) => {
-  let parameterURL = `${serverUrl}/reviews/meta?product_id=${productId}`;
-  return axiosGet(parameterURL);
-};
 
 // ------------- API Related Products ---------------
 var relatedProducts = (product_id) => {
@@ -168,6 +183,8 @@ export {
   listProducts,
   listReviews,
   metaReviews,
+  putReviewHelpful,
+  putReviewReport,
   relatedProducts,
   productStyles,
   selectedProduct,
