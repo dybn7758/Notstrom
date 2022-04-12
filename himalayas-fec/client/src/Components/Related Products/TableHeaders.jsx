@@ -6,13 +6,11 @@ const TableHeaders = () => {
   const [currentProductValue, setCurrentProduct] = useRecoilState(currentProduct);
   const [currentNameValue, setCurrentName] = useRecoilState(currentRelatedName)
 
-
-
   return (
     <tr>
-      <th>{currentNameValue}</th>
-      <th>Category</th>
-      <th>{currentProductValue.name}</th>
+      <th style={{textAlign: 'center'}}>{currentNameValue}</th>
+      <th style={{textAlign: 'center'}}>Category</th>
+      <th style={{textAlign: 'center'}}>{currentProductValue.name}</th>
     </tr>
   )
 }

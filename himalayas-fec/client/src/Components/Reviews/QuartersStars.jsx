@@ -43,7 +43,7 @@ function QuartersStars(props) {
   return (
     <div>
       {stars.map((item, i) => {
-        console.log(item);
+        // console.log(item);
         return (
           <div className="single-star-container" key={i}>
             <div

@@ -32,7 +32,7 @@ class DynamicStars extends React.Component {
 
   handleStarsClick(event) {
     event.preventDefault();
-    console.log("🤘", Number(event.target.id));
+    // console.log("🤘", Number(event.target.id));
     this.setState({
       oldArr: this.state.starsArr,
     });

@@ -21,7 +21,6 @@ import {
 
 
  const Overview = (props) => {
-
  //acquire current product
   const productsArray = useRecoilValue(currentProductSelector);
 
