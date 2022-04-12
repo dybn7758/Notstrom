@@ -130,7 +130,7 @@ const RelatedCarousel = (props) => {
                     <div className='relatedContentBundler'>
                       <RelatedCategory props1={index}/>
                       <RelatedName props1={index}/>
-                      <RelatedPrice props1={index}/>
+                      {/* <RelatedPrice props1={index}/> */}
                       <RelatedStars props1={index}/>
                   </div>
                 </div>
