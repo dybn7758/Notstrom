@@ -8,7 +8,7 @@ import sampleMain from "../src/Components/Question_Answers/sampleMain.js";
 import axios from "axios";
 import { listQuestions, listProducts, listReviews } from "./lib/searchAPI.js";
 import {
-  productResponse,
+  productSelector,
   selectedProductId,
   productQ,
   catalog,
@@ -26,10 +26,8 @@ import ProductSearchModal from "./Components/productSearchModal.jsx";
 var App = (props) => {
   let [prod, setProd] = useRecoilState(productQ);
   let [pageView, setPageView] = useRecoilState(catalog);
-  const productData = productResponse();
-
-  let [selectedProductID, setCurrentProductId] =
-    useRecoilState(selectedProductId);
+  let productData = useRecoilValue(productSelector);
+  let [selectedProductID, setCurrentProductId] = useRecoilState(selectedProductId);
   let [searchModal, setSearchModal] = useRecoilState(showSeachModal);
   let [searchedProduct, setSearchedProduct] = useRecoilState(searchProductList);
   let categoryByProduct = useRecoilValue(categoryProductsMain);

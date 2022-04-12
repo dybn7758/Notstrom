@@ -80,7 +80,7 @@ export const productSelector = selector({
   key: "productSelector",
   get: async ({ get }) => {
     const response = await apiCalls.listProducts(100);
-    return response;
+    return response.data;
   },
 });
 
