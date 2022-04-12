@@ -38,7 +38,7 @@ import {
   })
 
  //acquire styles related to current product
-   const stylesArray = useRecoilValue(currentStylesSelector);
+  const stylesArray = useRecoilValue(currentStylesSelector);
 
   return (
     <div className="overview">

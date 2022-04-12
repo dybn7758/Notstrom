@@ -10,10 +10,10 @@ const RelatedPrice = (props) => {
   const saleChecker = () => {
     if (salePricePath.sale_price !== null){
       return (
-        <h1 className='relatedPrice'>
+        <div className='relatedPrice'>
           <Text style={{textDecorationLine: 'line-through'}}>{currentPrice}</Text>
           <Text style={{color: 'red'}}>{salePricePath.sale_price}</Text>
-        </h1>
+        </div>
       )
     } else {
       return (
