@@ -119,7 +119,7 @@ const RelatedCarousel = (props) => {
               {stylesAndProductsValue.map((value, index) => {
                 if ((index + 1) % 3 === 0) {
                   return (
-                  <div key={index} className='carousel-content' itemsToShow={1}
+                  <div key={index} className='carousel-content'
                     style={{float: 'left', transform: `translateX(-${sliderValue * 100}%)`}}>
                   <div key={index} className='relatedCarouselMap'>
                     <RelatedPicture props1={index} props2={props.props1}/>

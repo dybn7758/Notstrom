@@ -23,14 +23,14 @@ const RelatedTable = (props) => {
       <RiCloseCircleFill onClick={() => {
         closeModal()
       }}style={{color: 'red', position: 'absolute', right: '5%'}}/>
-      <tbody>
-        <table style={{border: "3px solid rgb(0, 0, 0)"}}>
+      <table style={{border: "3px solid rgb(0, 0, 0)"}}>
+        <tbody>
           <TableHeaders />
           <TableSales />
           <TableStyles />
           <TableFeatures />
-        </table>
-      </tbody>
+        </tbody>
+      </table>
     </div>
   )
 }
