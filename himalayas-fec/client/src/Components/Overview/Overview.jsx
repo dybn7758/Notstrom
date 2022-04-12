@@ -5,9 +5,8 @@ import StyleGallery from './StyleGallery.jsx';
 import ProductInformation from './ProductInformation.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import Cart from './Cart.jsx';
-import {productQ} from '../../App.jsx';
 import { productResponse, categoryResponse, productStyles, stylesResponse,
-  selectedProductId, currentProductSelector, currentStylesSelector } from '../../lib/Atoms.jsx';
+  selectedProductId, currentProductSelector, currentStylesSelector, productQ } from '../../lib/Atoms.jsx';
 import { selectedProduct } from '../../lib/searchAPI.js';
 import {
   atom,
@@ -21,30 +20,36 @@ import {
 
 
  const Overview = (props) => {
- //acquire current product
-  const productsArray = useRecoilValue(currentProductSelector);
 
-  var currentId = props.productId;
+  const [productsArray, setProducts] = useRecoilState(productQ);
+  let [selectedProductID, setCurrentProductId] = useRecoilState(selectedProductId);
 
+  var currentId = selectedProductID;
   var currentProduct;
 
   productsArray.forEach(product => {
-
     var stringVersion = JSON.stringify(product.id);
-
-    if (stringVersion === props.productId) {
+    if (stringVersion === selectedProductID) {
       currentProduct = product;
     }
   })
 
+<<<<<<< HEAD
  //acquire styles related to current product
   const stylesArray = useRecoilValue(currentStylesSelector);
+=======
+  let stylesArray = useRecoilValue(currentStylesSelector);
+
+  if (stylesArray.results.length === 0) {
+    stylesArray = null;
+  }
+>>>>>>> master
 
   return (
-    <div className="overview">
-      <ProductInformation currentProduct={currentProduct} />
+    <div className="overview" id="overview-module">
+      <ProductInformation currentProduct={currentProduct}
+        styles={stylesArray} />
       <StyleSelector styles={stylesArray} />
-      <Cart />
     </div>
 
   )

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { productResponse, categoryResponse } from '../../lib/Atoms.jsx';
 import {productQ} from '../../App.jsx';
+import Cart from './Cart.jsx'
 import {
   atom,
   selector,
@@ -12,15 +13,62 @@ import {
 const ProductInformation = (props) => {
 
   let prod = props.currentProduct;
+  // console.log('prod', prod)
 
+
+  console.log(props.styles);
+  if (props.styles) {
+    let styles = props.styles;
+    // console.log('styles', styles)
+    let defaultStyle = styles.results[0];
+
+
+    const findDefault = () => {
+      styles.results.map(style => {
+        if (style['default?']) {
+          defaultStyle = style;
+        }
+      })
+    };
+
+    findDefault();
+
+    const [currentStyle, selectStyle] = useState(defaultStyle);
+    // console.log('currentStyle', currentStyle);
+    var price;
+
+    const priceCheck = (product) => {
+      if (!product.sale_price) {
+        price = product.original_price;
+      } else {
+        price = product.sale_price;
+      }
+    };
+
+    priceCheck(currentStyle);
+
+  } else {
+    var price = prod.default_price;
+    var currentStyle = null;
+  }
+
+    let prodSelect = () => {
+      if (!currentStyle) {
+        var currentStyle = prod;
+        return currentStyle;
+      } else {
+      return currentStyle;
+      }
+    }
+
+  // console.log('cs', [currentStyle]);
 
   return (
 
     <div className="ProductInformation">
-      <span id="rating">Rating: ***__</span>
       <h4 id="category">{prod.category}</h4>
       <h3 id="name">{prod.name}</h3>
-      <p id="price">${prod.default_price}</p>
+      <p id="price">${price}</p>
       <p id="slogan">{prod.slogan}</p>
       <div id="description">
         <p>{prod.description}</p>
@@ -28,6 +76,10 @@ const ProductInformation = (props) => {
       {/* <div id="features">
         <p><b>Features:</b>{props.styles.features}</p>
       </div> */}
+      <div className="cart">
+        {}
+        <Cart style={prodSelect()}/>
+      </div>
       <div id="share" >
         <span>Facebook Icon</span>
         <span>Twitter Icon</span>
@@ -43,33 +95,3 @@ const ProductInformation = (props) => {
 export default ProductInformation;
 
 
-
-// {
-//   "id": 11,
-//   "name": "Air Minis 250",
-//   "slogan": "Full court support",
-//   "description": "This optimized air cushion pocket reduces impact but keeps a perfect balance underfoot.",
-//   "category": "Basketball Shoes",
-//   "default_price": "0",
-//   "features": [
-//   {
-//           "feature": "Sole",
-//           "value": "Rubber"
-//       },
-//   {
-//           "feature": "Material",
-//           "value": "FullControlSkin"
-//       },
-//   // ...
-//   ],
-// }
-
-//layout
-//1.star rating
-//2.category
-//3.title
-//4.price
-//5.slogan
-//6.description
-//7. overview
-//8. share links
