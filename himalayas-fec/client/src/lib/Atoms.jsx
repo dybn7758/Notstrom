@@ -407,21 +407,6 @@ export const sliderSelector = selector({
 });
 
 //========== Global Click Handler ==================
-export const clickState = atom({
-  key: 'clickState',
-  default: {time: "", widget: "", element: ""}
-});
-
-export const clickStateSelector = selector({
-  key: 'clickStateSelector',
-  get: ({get}) => {
-    let currentClick = get(clickState);
-    //do api call to post to the server this state object
-    apiCalls.applicationClick(currentClick);
-    console.log('completed API for interactions ---------------');
-  }
-});
-
 export const clickListenerSelector = selector({
   key: 'clickListenerSelector',
   get: ({get}) => {
@@ -446,16 +431,3 @@ export const clickListenerSelector = selector({
     })
   }
 });
-
-// export const clickListenerActionSelector = selector({
-//   key: 'clickListenerActionSelector',
-//   get: ({get}) => {
-//     // define a function that will handle the clicked data
-//     // return this function to be used as a argument to the clickListenerSelector
-//   }
-// });
-
-// Parameter	Type	Description
-// element	string	Required. Selector for the element which was clicked
-// widget	string	Required. Name of the module/widget in which the click occured
-// time	string	Required. Time the interaction occurred
