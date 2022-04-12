@@ -17,14 +17,13 @@ import {
   relatedIDs,
   searchProductList,
   categoryProductsMain,
+  clickListenerSelector,
 } from "./lib/Atoms.jsx";
 import { atom, selector, useRecoilState, useRecoilValue } from "recoil";
 import "./App.scss";
 import ProductSearchModal from "./Components/productSearchModal.jsx";
-// import Image from '../dist/img/hima-layers-logo.png';
-// import Image from '../dist/img/R.jpg';
 
-var App = () => {
+var App = (props) => {
   let [prod, setProd] = useRecoilState(productQ);
   let [pageView, setPageView] = useRecoilState(catalog);
   const productData = productResponse();
@@ -34,10 +33,13 @@ var App = () => {
   let [searchModal, setSearchModal] = useRecoilState(showSeachModal);
   let [searchedProduct, setSearchedProduct] = useRecoilState(searchProductList);
   let categoryByProduct = useRecoilValue(categoryProductsMain);
+  let clickListener = useRecoilValue(clickListenerSelector);
   //Retrieves data from the API and sets the products to state to render
   //pass the second argument so it doesnt create an infinite loop everytime this component renders
   useEffect(() => {
+    console.log(props.onClick())
     setProd(productData);
+
   }, []);
 
   const searchingModal = (e) => {
