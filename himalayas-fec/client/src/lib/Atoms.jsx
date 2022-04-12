@@ -80,7 +80,7 @@ export const productSelector = selector({
   key: "productSelector",
   get: async ({ get }) => {
     const response = await apiCalls.listProducts(100);
-    return response;
+    return response.data;
   },
 });
 
@@ -404,4 +404,30 @@ export const sliderSelector = selector({
     const currentSliderValue = await get(sliderState);
     return currentSliderValue;
   },
+});
+
+//========== Global Click Handler ==================
+export const clickListenerSelector = selector({
+  key: 'clickListenerSelector',
+  get: ({get}) => {
+    return document.addEventListener('click', (event) => {
+      console.log('element', event.target.nodeName);
+      console.log('time', new Date(event.timeStamp));
+
+      let element = event.target.nodeName;
+      let widget = null;
+      let time = new Date(event.timeStamp);
+
+      event.path.forEach((module) => {
+        if (module.id !== undefined && module.id.indexOf('-module') !== -1) {
+          widget = module.id.split('-module')[0];
+          console.log('widget', widget);
+        }
+      });
+
+      if (element && widget && time) {
+        apiCalls.applicationClick({time, widget, element});
+      }
+    })
+  }
 });

@@ -161,6 +161,12 @@ var productStyles = (product_id) => {
   return axiosGet(stylesEndpoint);
 };
 
+// -------------- API ClickEvent ---------------------
+var applicationClick = (body) => {
+  let parameterURL = `${serverUrl}/interactions`;
+
+  return axiosPost(parameterURL, body);
+}
 //Will need to add CART API get later on...
 
 export {
@@ -177,4 +183,5 @@ export {
   putQuesHelpful,
   putAnsHelpful,
   putAnsReport,
+  applicationClick,
 };
