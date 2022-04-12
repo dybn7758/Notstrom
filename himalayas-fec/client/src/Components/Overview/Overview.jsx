@@ -24,7 +24,7 @@ import {
   const [productsArray, setProducts] = useRecoilState(productQ);
   let [selectedProductID, setCurrentProductId] = useRecoilState(selectedProductId);
 
-  var currentId = selectedProductID;
+  // var currentId = selectedProductID;
   var currentProduct;
 
   productsArray.forEach(product => {

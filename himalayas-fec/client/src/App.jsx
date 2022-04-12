@@ -35,10 +35,6 @@ var App = (props) => {
   //Retrieves data from the API and sets the products to state to render
   //pass the second argument so it doesnt create an infinite loop everytime this component renders
   useEffect(() => {
-<<<<<<< HEAD
-=======
-    console.log(props.onClick())
->>>>>>> master
     setProd(productData);
   }, []);
 
@@ -90,7 +86,7 @@ var App = (props) => {
       return (
         <div>
           <Overview />
-          {/* <RelatedProducts /> */}
+          <RelatedProducts props1={changeView}/>
           <QA />
           <Reviews />
         </div>

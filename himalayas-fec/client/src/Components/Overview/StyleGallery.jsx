@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import StyleDisplay from './StyleDisplay.jsx';
+// import StyleDisplay from './StyleDisplay.jsx';
 
 class StyleGallery extends React.Component {
   constructor(props) {
@@ -35,7 +35,7 @@ class StyleGallery extends React.Component {
             </div>
           )
         })}
-        <StyleDisplay image={this.state.image} />
+        {/* <StyleDisplay image={this.state.image} /> */}
       </div>
     )
   }
