@@ -20,9 +20,16 @@ import {
 
 
  const Overview = (props) => {
+<<<<<<< HEAD
 
   const [productsArray, setProducts] = useRecoilState(productQ);
   let [selectedProductID, setCurrentProductId] = useRecoilState(selectedProductId);
+=======
+ //acquire current product
+  const productsArray = useRecoilValue(currentProductSelector);
+
+  var currentId = props.productId;
+>>>>>>> e769114c697b8ae3bc0b2875706663426eb7b554
 
   var currentId = selectedProductID;
   var currentProduct;
