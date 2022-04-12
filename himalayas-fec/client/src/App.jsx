@@ -35,7 +35,6 @@ var App = (props) => {
   //Retrieves data from the API and sets the products to state to render
   //pass the second argument so it doesnt create an infinite loop everytime this component renders
   useEffect(() => {
-    // console.log(props.onClick())
     setProd(productData);
   }, []);
 
@@ -58,32 +57,9 @@ var App = (props) => {
 
   var changeView = (page) => {
     setPageView(page);
-    console.log(page, 'this is page')
+
     setCurrentProductId(page);
-    console.log(selectedProductID, 'product id')
-    // if (pageView === "main") {
-    //   return (
-    //     <table>
-    //       <tbody>
-    //         {prod.map((product, i) => {
-    //           return (
-    //             <tr key={i}>
-    //               <td
-    //                 value={product.id}
-    //                 onClick={(e) => {
-    //                   changeView(e.target.attributes.value.value);
-    //                 }}
-    //               >
-    //                 {product.name}
-    //               </td>
-    //               <td>{product.description}</td>
-    //             </tr>
-    //           );
-    //         })}
-    //       </tbody>
-    //     </table>
-    //   );
-    // }
+
     if (pageView === 'main') {
       return (
         <div id="product-container">
