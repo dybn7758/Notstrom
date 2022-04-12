@@ -35,7 +35,7 @@ var App = (props) => {
   //Retrieves data from the API and sets the products to state to render
   //pass the second argument so it doesnt create an infinite loop everytime this component renders
   useEffect(() => {
-    console.log(props.onClick())
+    // console.log(props.onClick())
     setProd(productData);
   }, []);
 
@@ -58,8 +58,9 @@ var App = (props) => {
 
   var changeView = (page) => {
     setPageView(page);
+    console.log(page, 'this is page')
     setCurrentProductId(page);
-
+    console.log(selectedProductID, 'product id')
     // if (pageView === "main") {
     //   return (
     //     <table>
@@ -108,7 +109,7 @@ var App = (props) => {
     } else if (pageView !== "main") {
       return (
         <div>
-          {/* <Overview productId={selectedProductID}/> */}
+          <Overview productId={selectedProductID}/>
           <RelatedProducts props1={changeView}/>
           <QA />
           <Reviews />

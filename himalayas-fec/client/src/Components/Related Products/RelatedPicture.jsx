@@ -8,15 +8,12 @@ const RelatedPicture = (props) => {
   const nextIndex = props.props1 - 1;
   const currentPicture = stylesAndProductsValue[nextIndex].data.results[0].photos[0].url;
   const currentId = stylesAndProductsValue[nextIndex].data.id;
-  // const setMainID = (id) => {
-  //   setSelectedProductId(id)
-  // }
-
+  console.log(stylesAndProductsValue, 'styles and product values')
   return (
     <div>
       <div className='relatedPicture' style={{backgroundSize: 'cover', backgroundImage: `url(${currentPicture})`}}
       onClick={() => {
-        console.log(typeof(stylesAndProductsValue[props.props1 - 1].data.product_id), 'product id')
+        console.log(stylesAndProductsValue[props.props1 - 1].data.product_id, 'clicked id')
         props.props2(stylesAndProductsValue[props.props1 - 1].data.product_id);
       }}>
       </div>
@@ -27,3 +24,5 @@ const RelatedPicture = (props) => {
 export default RelatedPicture;
 
 // onMouseEnter={() => {console.log('mouse over!')}} onMouseLeave={() => {console.log()}}
+
+// console.log(stylesAndProductsValue[props.props1 - 1], 'current data')

@@ -7,11 +7,10 @@ import WriteReview from "./WriteReview.jsx";
 import { showWriteReviewModal, reviewsCount } from "../../lib/Atoms.jsx";
 
 var SingleReview = ({ characteristics, specifiedReviewID, product_id }) => {
-  console.log("👺", specifiedReviewID, product_id);
+  // console.log("👺", specifiedReviewID, product_id);
   const [showWriteReview, setShowWriteReview] =
     useRecoilState(showWriteReviewModal);
   const [initReview, setReviewsCount] = useRecoilState(reviewsCount);
-
   const showMoreReviews = () => {
     setReviewsCount(initReview + 2);
   };

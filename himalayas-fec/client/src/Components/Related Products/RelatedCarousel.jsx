@@ -18,7 +18,6 @@ import './relatedsass.scss';
 
 const RelatedCarousel = (props) => {
   const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);
-  const [buttonToggleValue, setButtonToggle] = useRecoilState(buttonToggle);
   const [currentRelatedStylesValue, setCurrentRelatedStyles] = useRecoilState(currentRelatedStyles);
   const [currentNameValue, setCurrentName] = useRecoilState(currentRelatedName)
   const [currentProductValue, setCurrentProduct] = useRecoilState(currentProduct);
@@ -32,11 +31,17 @@ const RelatedCarousel = (props) => {
   const [sliderValue, setSlider] = useRecoilState(sliderState);
   const currentSliderValue = useRecoilValue(sliderSelector);
   const [showValue, setShow] = useRecoilState(show);
-  const array = useRecoilValue(relatedSelector);
   const currentProductVar = useRecoilValue(currentProductSelector);
   const currentStyles = useRecoilValue(currentStylesSelector);
 
-  // console.log(currentStyles, 'styles', currentProductVar, 'product')
+
+  const array = apiCalls.relatedProducts(selectedIdValue)
+  .then((response) => {
+    return response;
+  })
+  .catch((error) => {
+    console.log(error);
+  })
 
   useEffect(() => {
     setRelatedArray(array)
@@ -44,18 +49,20 @@ const RelatedCarousel = (props) => {
   }, []);
 
   useEffect(() => {
-    setLength(stylesAndProductsValue.length / 2)
+    setLength(stylesAndProductsValue.length / 3) // might need to change this
   }, [stylesAndProductsValue]);
 
   const callWrapper = () => {
+
     const allResponse = [];
-    array.forEach((arrayIndex) => {
-      allResponse.push(apiCalls.productsByID(arrayIndex), apiCalls.productStyles(arrayIndex), apiCalls.listReviews(arrayIndex, 1, 10));
+    relatedArrayValue.forEach(async (arrayIndex) => {
+      await allResponse.push(apiCalls.productsByID(arrayIndex), apiCalls.productStyles(arrayIndex), apiCalls.listReviews(arrayIndex, 1, 10));
     })
 
     const allData = Promise.all(allResponse)
-    allData.then((response) => {
-      setStylesAndProducts(response)
+    allData.then( async (response) => {
+      console.log(response, 'response before and after')
+      await setStylesAndProducts(response)
     })
     .catch((error) => {
       console.log(error)
@@ -64,11 +71,14 @@ const RelatedCarousel = (props) => {
 
   const setStates = (index) => {
     setRelatedIndex(index);
+
     const features = stylesAndProductsValue[relatedIndexValue - 2].data.features;
     const name = stylesAndProductsValue[relatedIndexValue - 2].data.name;
     const stylesArray = stylesAndProductsValue[relatedIndexValue - 1].data.results.length;
+
     setCurrentRelatedStyles(stylesArray);
     setCurrentName(name);
+
     setCurrentFeatures(features);
     if (stylesAndProductsValue[relatedIndexValue -1].data.results[0].sale_price !== null) {
       setRelatedOnSale(true)
@@ -98,6 +108,7 @@ const RelatedCarousel = (props) => {
     setModalData(data)
     setShow(['flex'])
   }
+
 
   return (
     <div className='carousel-conatiner'>

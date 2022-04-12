@@ -28,7 +28,7 @@ export const relatedOnSale = atom({ key: "relatedOnSale", default: false });
 export const show = atom({ key: "show", default: ["none"] });
 
 //================ Related IDs Array =============== array of related IDs
-export const relatedIDs = atom({ key: "relatedIDs", default: [] });
+export const relatedIDs = atom({ key: "relatedIDs", default: [37312, 37313, 37314, 37315] });
 
 // ================= Slider State ==================
 export const sliderState = atom({ key: "sliderState", default: 0 });
@@ -165,6 +165,7 @@ export const relatedSelector = selector({
   get: async ({ get }) => {
     const [relatedArrayValue, setRelatedArray] = useRecoilState(relatedIDs);
     const productID = await get(selectedProductId);
+    console.log(productID, 'this is product ID')
     const response = await apiCalls.relatedProducts(productID);
     setRelatedArray(response.data);
     return response.data;
@@ -234,9 +235,9 @@ export const productMetaReviewsSelector = selector({
   get: async ({ get }) => {
     try {
       const productID = await get(selectedProductId);
-      console.log("🙀in atom current product id:", productID);
+      // console.log("🙀in atom current product id:", productID);
       const response = await apiCalls.metaReviews(productID);
-      console.log("🤲 in atom current meta review:", response);
+      // console.log("🤲 in atom current meta review:", response);
       return response.data;
     } catch (err) {
       console.log("err from Atom meta review 🤬", err);
@@ -402,10 +403,6 @@ export const currentProductSelector = selector({
     const productID = await get(selectedProductId);
 
     const response = await apiCalls.selectedProduct(productID);
-<<<<<<< HEAD
-=======
-    console.log(response, "what is this data");
->>>>>>> master
     return response.data;
   },
 });
@@ -428,15 +425,13 @@ export const sliderSelector = selector({
   },
 });
 
-<<<<<<< HEAD
-=======
 //========== Global Click Handler ==================
 export const clickListenerSelector = selector({
   key: 'clickListenerSelector',
   get: ({get}) => {
     return document.addEventListener('click', (event) => {
-      console.log('element', event.target.nodeName);
-      console.log('time', new Date(event.timeStamp));
+      // console.log('element', event.target.nodeName);
+      // console.log('time', new Date(event.timeStamp));
 
       let element = event.target.nodeName;
       let widget = null;
@@ -455,4 +450,3 @@ export const clickListenerSelector = selector({
     })
   }
 });
->>>>>>> master
