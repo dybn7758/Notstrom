@@ -1,5 +1,5 @@
 import {show, relatedIDs, relatedSelector, currentStylesSelector,
-  stylesAndProducts, sliderState, sliderLength, currentRelatedName,
+  stylesAndProducts, sliderState, sliderLength, currentRelatedName, buttonToggle,
   sliderSelector, modalData, relatedIndex, selectedProductId, currentRelatedStyles,
   currentFeatures, relatedOnSale, currentProductSelector, currentProduct} from '../../lib/Atoms.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
@@ -12,6 +12,8 @@ import RelatedPrice from './RelatedPrice.jsx';
 import RelatedName from './RelatedName.jsx';
 import React, {useEffect} from 'react';
 import {AiTwotoneStar} from 'react-icons/ai';
+import './relatedsass.scss';
+
 
 
 const RelatedCarousel = (props) => {
@@ -29,11 +31,17 @@ const RelatedCarousel = (props) => {
   const [sliderValue, setSlider] = useRecoilState(sliderState);
   const currentSliderValue = useRecoilValue(sliderSelector);
   const [showValue, setShow] = useRecoilState(show);
-  const array = useRecoilValue(relatedSelector);
   const currentProductVar = useRecoilValue(currentProductSelector);
   const currentStyles = useRecoilValue(currentStylesSelector);
 
-  // console.log(currentStyles, 'styles', currentProductVar, 'product')
+
+  const array = apiCalls.relatedProducts(selectedIdValue)
+  .then((response) => {
+    return response;
+  })
+  .catch((error) => {
+    console.log(error);
+  })
 
   useEffect(() => {
     setRelatedArray(array)
@@ -41,20 +49,20 @@ const RelatedCarousel = (props) => {
   }, []);
 
   useEffect(() => {
-    setLength(stylesAndProductsValue.length / 2)
+    setLength(stylesAndProductsValue.length / 3) // might need to change this
   }, [stylesAndProductsValue]);
 
   const callWrapper = () => {
+
     const allResponse = [];
-    // const relatedStyles = [];
-    // const relatedProducts = [];
-    array.forEach((arrayIndex) => {
-      allResponse.push(apiCalls.productsByID(arrayIndex), apiCalls.productStyles(arrayIndex), apiCalls.listReviews(arrayIndex, 1, 10));
+    relatedArrayValue.forEach(async (arrayIndex) => {
+      await allResponse.push(apiCalls.productsByID(arrayIndex), apiCalls.productStyles(arrayIndex), apiCalls.listReviews(arrayIndex, 1, 10));
     })
 
     const allData = Promise.all(allResponse)
-    allData.then((response) => {
-      setStylesAndProducts(response)
+    allData.then( async (response) => {
+      console.log(response, 'response before and after')
+      await setStylesAndProducts(response)
     })
     .catch((error) => {
       console.log(error)
@@ -63,11 +71,14 @@ const RelatedCarousel = (props) => {
 
   const setStates = (index) => {
     setRelatedIndex(index);
+
     const features = stylesAndProductsValue[relatedIndexValue - 2].data.features;
     const name = stylesAndProductsValue[relatedIndexValue - 2].data.name;
     const stylesArray = stylesAndProductsValue[relatedIndexValue - 1].data.results.length;
+
     setCurrentRelatedStyles(stylesArray);
     setCurrentName(name);
+
     setCurrentFeatures(features);
     if (stylesAndProductsValue[relatedIndexValue -1].data.results[0].sale_price !== null) {
       setRelatedOnSale(true)
@@ -95,39 +106,41 @@ const RelatedCarousel = (props) => {
 
   const getModal = (data) => {
     setModalData(data)
-    setShow(['block'])
+    setShow(['flex'])
   }
+
 
   return (
     <div className='carousel-conatiner'>
+      <div className='relatedCarouselHeader'>Related Products</div>
       <div className="carousel-wrapper">
-        <button onClick={() => {prev()}} className='left-arrow'>Left</button>
           <div className="carousel-content-wrapper">
+            <button onClick={() => {prev()}} className='left-arrow leftArrow'>Left</button>
               {stylesAndProductsValue.map((value, index) => {
                 if ((index + 1) % 3 === 0) {
                   return (
                   <div key={index} className='carousel-content' itemsToShow={1}
-                    style={{display: 'flex', flexDirection: 'row', float: 'left', transform: `translateX(-${sliderValue * 100}%)`}}>
-                  <div key={index} style={{ position: 'relative', height: 325, width: 200, margin: 10}}>
-                    <RelatedPicture props1={index}/>
-                    <AiTwotoneStar color={'yellow'} style={{height: 30, width: 30, position: 'absolute', top: 10, right: 10, zIndex: 2}}
-                      onClick={ () => {
+                    style={{float: 'left', transform: `translateX(-${sliderValue * 100}%)`}}>
+                  <div key={index} className='relatedCarouselMap'>
+                    <RelatedPicture props1={index} props2={props.props1}/>
+                    <AiTwotoneStar color={'green'} className='relatedStar' onClick={ () => {
                         setStates(index)
                         getModal(value)
                       } }/>
-                    <div style={{position: 'relative', bottom: 0, backgroundColor: 'gray', width: 200, height: 100, alignItems: 'bottom'}}>
+                    <div className='relatedContentBundler'>
                       <RelatedCategory props1={index}/>
                       <RelatedName props1={index}/>
-                      <RelatedPrice props1={index}/>
+                      {/* <RelatedPrice props1={index}/> */}
                       <RelatedStars props1={index}/>
                   </div>
                 </div>
               </div>
               )}})}
+              <button onClick={() => {next()}} className='right-arrow'>Right</button>
             </div>
-        <button onClick={() => {next(), console.log(sliderValue)}} className='right-arrow'>Right</button>
         <RelatedModal/>
       </div>
+      <div className='outfitHeader'>Your Outfit</div>
     </div>
   )
 }

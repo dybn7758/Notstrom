@@ -15,30 +15,31 @@ import {
 
 const StyleSelector = (props) => {
 
-  var styles = props.styles.results;
+  if (props.styles) {
 
-  const [currentStyle, setStyle] = useState(styles[0])
+    var styles = props.styles.results;
 
-  const photos = styles.map(style => {
-    return style.photos;
-  })
+    const [currentStyle, setStyle] = useState(styles[0])
 
-  const thumbnails = styles.map(style => {
-    return {
-      styleId: style.style_id,
-      name: style.name,
-      thumbnail: style.photos[0].thumbnail_url};
-  })
+    const photos = styles.map(style => {
+      return style.photos;
+    });
 
-  const getStyleById = function (id) {
-    const filteredStyle = styles.filter(style => style.style_id === id);
-    return filteredStyle[0];
+    const thumbnails = styles.map(style => {
+      return {
+        styleId: style.style_id,
+        name: style.name,
+        thumbnail: style.photos[0].thumbnail_url};
+    });
 
-  }
+    const getStyleById = function (id) {
+      const filteredStyle = styles.filter(style => style.style_id === id);
+      return filteredStyle[0];
+    };
 
-  return (
+    return (
 
-    <div id="styles">
+      <div id="styles">
       <h3>Styles</h3>
         <div id="imageContainer">
           {thumbnails.map((thumbnail, index) => (
@@ -54,9 +55,21 @@ const StyleSelector = (props) => {
       <StyleGallery  style={currentStyle}/>
     </div>
   )
-}
 
+  } else {
 
+    return (
+      <div id="styles">
+        <h3>Styles</h3>
+        <h4><i>No Alternate Styles Available</i></h4>
+        <div id="imageContainer">
+          <img className="no-image" src="https://ouikar.com/pub/media/catalog/product/placeholder/default/image_not_available.png"
+            height="300px" width="300px"></img>
+        </div>
+      </div>
+    )
+  }
+};
 
 
 

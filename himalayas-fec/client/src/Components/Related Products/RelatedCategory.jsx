@@ -1,6 +1,7 @@
 import {currentProductByID, stylesAndProducts} from '../../lib/Atoms.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
 import React from 'react';
+import './relatedData.scss';
 
 
 const RelatedCategory = (props) => {
@@ -9,7 +10,7 @@ const RelatedCategory = (props) => {
 
   return (
     <div>
-      <h1 style={{margin: 2, position: 'absolute', bottom: 35, left: 10, fontSize: 14}}>{currentCategory}</h1>
+      <h1 class='relatedCategory'>{currentCategory}</h1>
     </div>
   )
 }

@@ -20,14 +20,11 @@ const TableSales = (props) => {
     checker2 = <AiOutlineClose style={{color: 'red'}}/>;
   }
 
-
-
-
   return (
     <tr>
-      <td>{checker}</td>
-      <td>On Sale?</td>
-      <td>{checker2}</td>
+      <td style={{textAlign: 'center', border: "3px solid rgb(0, 0, 0)"}}>{checker}</td>
+      <td style={{textAlign: 'center', border: "3px solid rgb(0, 0, 0)"}}>On Sale?</td>
+      <td style={{textAlign: 'center', border: "3px solid rgb(0, 0, 0)"}}>{checker2}</td>
     </tr>
   )
 }
