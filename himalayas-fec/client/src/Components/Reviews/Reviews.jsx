@@ -41,11 +41,8 @@ var Reviews = () => {
 
   // -------------for single review--------------
   const specifiedReviewID = useRecoilValue(productReviewsSelector);
-  // console.log("😀 two reviews", specifiedReviewID);
-
   const [initSortParam, setInitSortParam] = useRecoilState(sortParam);
   const handleDropdown = (e) => {
-    // console.log("dropdown 🥶", e.target.value);
     setInitSortParam(e.target.value);
   };
 
@@ -61,12 +58,14 @@ var Reviews = () => {
         />
       </div>
       <div className="grid-child reviews">
-        <label htmlFor="sort-review"> sorted by </label>
-        <select name="sort-review" id="sort-review" onChange={handleDropdown}>
-          <option value="helpful">Helpful</option>
-          <option value="newest">Newest</option>
-          <option value="relevant">Relevant</option>
-        </select>
+        <div className="sort-review">
+          <label htmlFor="sort-review"> sorted by </label>
+          <select name="sort-review" id="sort-review" onChange={handleDropdown}>
+            <option value="helpful">Helpful</option>
+            <option value="newest">Newest</option>
+            <option value="relevant">Relevant</option>
+          </select>
+        </div>
         <SingleReview
           characteristics={Object.keys(specifiedRatings.characteristics)}
           specifiedReviewID={specifiedReviewID}
