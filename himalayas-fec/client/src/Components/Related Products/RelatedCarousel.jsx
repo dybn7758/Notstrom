@@ -11,7 +11,7 @@ import RelatedStars from './RelatedStars.jsx';
 import RelatedPrice from './RelatedPrice.jsx';
 import {AiTwotoneStar} from 'react-icons/ai';
 import RelatedName from './RelatedName.jsx';
-import React, {useEffect} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import './relatedSass.scss';
 
 const RelatedCarousel = (props) => {
@@ -32,25 +32,15 @@ const RelatedCarousel = (props) => {
   const currentSliderValue = useRecoilValue(sliderSelector);
   const [showValue, setShow] = useRecoilState(show);
 
-  const array = apiCalls.relatedProducts(selectedIdValue)
-  .then((response) => {
-    return response;
-  })
-  .catch((error) => {
-    console.log(error);
-  })
-
   useEffect(() => {
-    setRelatedArray(array)
     callWrapper()
-  }, []);
+  },[]);
 
   useEffect(() => {
     setLength(stylesAndProductsValue.length / 3) // might need to change this
   }, [stylesAndProductsValue]);
 
   const callWrapper = () => {
-
     const allResponse = [];
     relatedArrayValue.forEach(async (arrayIndex) => {
       await allResponse.push(apiCalls.productsByID(arrayIndex), apiCalls.productStyles(arrayIndex), apiCalls.listReviews(arrayIndex, 1, 10));
@@ -58,10 +48,6 @@ const RelatedCarousel = (props) => {
 
     const allData = Promise.all(allResponse)
     allData.then( async (response) => {
-<<<<<<< HEAD
-=======
-      // console.log(response, 'response before and after')
->>>>>>> master
       await setStylesAndProducts(response)
     })
     .catch((error) => {

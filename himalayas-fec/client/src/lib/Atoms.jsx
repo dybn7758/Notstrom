@@ -28,7 +28,7 @@ export const relatedOnSale = atom({ key: "relatedOnSale", default: false });
 export const show = atom({ key: "show", default: ["none"] });
 
 //================ Related IDs Array =============== array of related IDs
-export const relatedIDs = atom({ key: "relatedIDs", default: [37312, 37313, 37314, 37315] });
+export const relatedIDs = atom({ key: "relatedIDs", default: []});
 
 // ================= Slider State ==================
 export const sliderState = atom({ key: "sliderState", default: 0 });
@@ -81,7 +81,7 @@ export const currentRelatedProducts = atom({
 //=============Selected Product ID ==============
 export const selectedProductId = atom({
   key: "selectedProductId",
-  default: "",
+  default: '37311',
 });
 
 // =========== Product Data ======== returns a list of all 'main' products
@@ -166,9 +166,12 @@ export const relatedSelector = selector({
     const [relatedArrayValue, setRelatedArray] = useRecoilState(relatedIDs);
     const productID = await get(selectedProductId);
     console.log(productID, 'this is product ID')
-    const response = await apiCalls.relatedProducts(productID);
-    setRelatedArray(response.data);
-    return response.data;
+    // const response = await apiCalls.relatedProducts(productID)
+    // .then((response) => {
+    //   console.log(response, 'this is response')
+    // })
+    // setRelatedArray(response.data);
+    // return response.data;
   },
 });
 
@@ -450,3 +453,4 @@ export const clickListenerSelector = selector({
     })
   }
 });
+
