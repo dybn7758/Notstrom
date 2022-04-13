@@ -7,16 +7,12 @@ import {useRecoilValue, useRecoilState} from 'recoil';
 const RelatedStars = (props) => {
   const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);
 
-
-
   const reviews = stylesAndProductsValue[props.props1].data.results;
   let totalScore = 0;
 
   for (var x = 0; x < reviews.length; x++) {
     totalScore += reviews[x].rating;
   }
-
-
 
   let rating = (totalScore / reviews.length) || 0;
   let stars = [];

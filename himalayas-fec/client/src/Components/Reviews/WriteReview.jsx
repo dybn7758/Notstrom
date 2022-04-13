@@ -46,11 +46,11 @@ function WriteReview({ hideModal, characteristics, product_id }) {
   };
 
   const handleSelectionId = (e) => {
-    console.log(e.target);
+    // console.log(e.target);
     setRecommend(e.target.id);
   };
   const handleSelectionValue = (e) => {
-    console.log(e.target);
+    // console.log(e.target);
     if (e.target.id.includes("size")) {
       console.log("😵‍💫", e.target.id.includes("size"));
       specificCharacteristics["Size"] = e.target.value;
@@ -100,7 +100,7 @@ function WriteReview({ hideModal, characteristics, product_id }) {
   };
 
   const uploadImg = (files) => {
-    console.log("🚶🏼", files);
+    // console.log("🚶🏼", files);
   };
 
   const handlePost = () => {
@@ -156,7 +156,7 @@ function WriteReview({ hideModal, characteristics, product_id }) {
 
               {characteristics.map((characteristic, i) => {
                 if (characteristic === "Size") {
-                  console.log(characteristic);
+                  // console.log(characteristic);
                   return (
                     <div key={characteristic} onChange={handleSelectionValue}>
                       <b>Size: </b>
@@ -173,7 +173,7 @@ function WriteReview({ hideModal, characteristics, product_id }) {
                     </div>
                   );
                 } else if (characteristic === "Width") {
-                  console.log(characteristic);
+                  // console.log(characteristic);
                   return (
                     <div key={characteristic} onChange={handleSelectionValue}>
                       <b>Width: </b>
@@ -190,7 +190,7 @@ function WriteReview({ hideModal, characteristics, product_id }) {
                     </div>
                   );
                 } else if (characteristic === "Comfort") {
-                  console.log(characteristic);
+                  // console.log(characteristic);
                   return (
                     <div key={characteristic} onChange={handleSelectionValue}>
                       <b>Comfort: </b>
@@ -207,7 +207,7 @@ function WriteReview({ hideModal, characteristics, product_id }) {
                     </div>
                   );
                 } else if (characteristic === "Quality") {
-                  console.log(characteristic);
+                  // console.log(characteristic);
                   return (
                     <div key={characteristic} onChange={handleSelectionValue}>
                       <b>Quality: </b>
@@ -224,7 +224,7 @@ function WriteReview({ hideModal, characteristics, product_id }) {
                     </div>
                   );
                 } else if (characteristic === "Length") {
-                  console.log(characteristic);
+                  // console.log(characteristic);
                   return (
                     <div key={characteristic} onChange={handleSelectionValue}>
                       <b>Length: </b>
@@ -241,7 +241,7 @@ function WriteReview({ hideModal, characteristics, product_id }) {
                     </div>
                   );
                 } else if (characteristic === "Fit") {
-                  console.log(characteristic);
+                  // console.log(characteristic);
                   return (
                     <div key={characteristic} onChange={handleSelectionValue}>
                       <b>Fit: </b>

@@ -10,7 +10,6 @@ var SingleReview = ({ characteristics, specifiedReviewID, product_id }) => {
   const [showWriteReview, setShowWriteReview] =
     useRecoilState(showWriteReviewModal);
   const [initReview, setReviewsCount] = useRecoilState(reviewsCount);
-
   const showMoreReviews = () => {
     setReviewsCount(initReview + 2);
   };

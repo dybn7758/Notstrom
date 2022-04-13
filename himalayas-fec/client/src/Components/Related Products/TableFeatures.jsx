@@ -8,18 +8,14 @@ const TableFeatures = () => {
   const [currentProductValue, setCurrentProduct] = useRecoilState(currentProduct);
   const currentStyles = useRecoilValue(currentStylesSelector);
 
-
-
-// console.log(currentProductValue, 'current product')
-
   return (
     currentFeaturesValue.map((value, index) => {
-      // const currentProductFeatures = currentProductValue.features
+      const currentProductFeatures = currentProductValue.features || '---------';
       return (
         <tr key={index}>
-          <td>{value.value}</td>
-          <td>{value.feature}</td>
-          <td>No Features?</td>
+          <td style={{textAlign: 'center', border: "3px solid rgb(0, 0, 0)"}}>{value.value}</td>
+          <td style={{textAlign: 'center', border: "3px solid rgb(0, 0, 0)"}}>{value.feature}</td>
+          <td style={{textAlign: 'center', border: "3px solid rgb(0, 0, 0)"}}>{currentProductFeatures}</td>
         </tr>
       )
     }

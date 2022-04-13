@@ -8,15 +8,14 @@ const RelatedPicture = (props) => {
   const nextIndex = props.props1 - 1;
   const currentPicture = stylesAndProductsValue[nextIndex].data.results[0].photos[0].url;
   const currentId = stylesAndProductsValue[nextIndex].data.id;
-
-  // const setMainID = (id) => {
-  //   setSelectedProductId(`${id}`)
-  // }
-
   return (
     <div>
-      <div style={{backgroundSize: 'cover', position: 'relative', width: 200, height: 225,
-      backgroundImage: `url(${currentPicture})`}} onClick={() => {console.log('picture')}}></div>
+      <div className='relatedPicture' style={{backgroundSize: 'cover', backgroundImage: `url(${currentPicture})`}}
+      onClick={() => {
+        console.log(stylesAndProductsValue[props.props1 - 1].data.product_id, 'clicked id')
+        props.props2(stylesAndProductsValue[props.props1 - 1].data.product_id);
+      }}>
+      </div>
     </div>
   )
 }
@@ -24,3 +23,5 @@ const RelatedPicture = (props) => {
 export default RelatedPicture;
 
 // onMouseEnter={() => {console.log('mouse over!')}} onMouseLeave={() => {console.log()}}
+
+// console.log(stylesAndProductsValue[props.props1 - 1], 'current data')

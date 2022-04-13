@@ -28,7 +28,10 @@ export const relatedOnSale = atom({ key: "relatedOnSale", default: false });
 export const show = atom({ key: "show", default: ["none"] });
 
 //================ Related IDs Array =============== array of related IDs
-export const relatedIDs = atom({ key: "relatedIDs", default: [] });
+export const relatedIDs = atom({
+  key: "relatedIDs",
+  default: [37312, 37313, 37314, 37315],
+});
 
 // ================= Slider State ==================
 export const sliderState = atom({ key: "sliderState", default: 0 });
@@ -37,7 +40,13 @@ export const sliderState = atom({ key: "sliderState", default: 0 });
 export const outfitCards = atom({ key: "outfitCards", default: [] });
 
 // ================== Modal Data =====================
-export const modalData = atom({ key: "modalData", default: 37311 });
+export const modalData = atom({ key: "modalData", default: "" });
+
+// ==================== Button Toggle =============
+export const buttonToggle = atom({
+  key: "buttonToggle",
+  default: ["none", ""],
+});
 
 // =================== Current Product ===============
 export const currentProduct = atom({ key: "currentProduct", default: {} });
@@ -162,6 +171,7 @@ export const relatedSelector = selector({
   get: async ({ get }) => {
     const [relatedArrayValue, setRelatedArray] = useRecoilState(relatedIDs);
     const productID = await get(selectedProductId);
+    console.log(productID, "this is product ID");
     const response = await apiCalls.relatedProducts(productID);
     setRelatedArray(response.data);
     return response.data;
@@ -248,9 +258,9 @@ export const productMetaReviewsSelector = selector({
   get: async ({ get }) => {
     try {
       const productID = await get(selectedProductId);
-      console.log("🙀in atom current product id:", productID);
+      // console.log("🙀in atom current product id:", productID);
       const response = await apiCalls.metaReviews(productID);
-      console.log("🤲 in atom current meta review:", response);
+      // console.log("🤲 in atom current meta review:", response);
       return response.data;
     } catch (err) {
       console.log("err from Atom meta review 🤬", err);
@@ -416,7 +426,6 @@ export const currentProductSelector = selector({
     const productID = await get(selectedProductId);
 
     const response = await apiCalls.selectedProduct(productID);
-    console.log(response, "what is this data");
     return response.data;
   },
 });

@@ -108,7 +108,7 @@ var App = (props) => {
     } else if (pageView !== "main") {
       return (
         <div>
-          {/* <Overview productId={selectedProductID}/> */}
+          <Overview />
           {/* <RelatedProducts /> */}
           <QA />
           <Reviews />

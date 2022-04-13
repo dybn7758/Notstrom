@@ -16,15 +16,15 @@ import Ratings from "./Ratings.jsx";
 var Reviews = () => {
   //----------------------for ratings-----------------
   const specifiedRatings = useRecoilValue(productMetaReviewsSelector);
-  console.log("🎃", specifiedRatings);
-  console.log("🤩", specifiedRatings.ratings);
-  console.log(Object.keys(specifiedRatings.characteristics));
-  console.log(Object.values(specifiedRatings.characteristics));
+  // console.log("🎃", specifiedRatings);
+  // console.log("🤩", specifiedRatings.ratings);
+  // console.log(Object.keys(specifiedRatings.characteristics));
+  // console.log(Object.values(specifiedRatings.characteristics));
   const recommended = Number(specifiedRatings.recommended.true || 0);
   // recommend part
   const notRecommended = Number(specifiedRatings.recommended.false || 0);
   const sum = recommended + notRecommended;
-  console.log(recommended, notRecommended, sum);
+  // console.log(recommended, notRecommended, sum);
   // total rating part
   const convertRatings = Object.values(specifiedRatings.ratings).map(
     (rating) => {
@@ -37,7 +37,7 @@ var Reviews = () => {
     })
     .reduce((a, b) => a + b, 0);
 
-  console.log(convertRatings, totalRatingScores);
+  // console.log(convertRatings, totalRatingScores);
 
   // -------------for single review--------------
   const specifiedReviewID = useRecoilValue(productReviewsSelector);
