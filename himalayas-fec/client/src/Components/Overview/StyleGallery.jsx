@@ -1,5 +1,10 @@
+<<<<<<< HEAD
+import React, { useState } from 'react';
+// import StyleDisplay from './StyleDisplay.jsx';
+=======
 import React, { useState, useEffect } from 'react';
 import StyleDisplay from './StyleDisplay.jsx';
+>>>>>>> master
 
 const StyleGallery = (props) => {
 
@@ -42,6 +47,18 @@ const StyleGallery = (props) => {
 
     return (
       <div className="gallery">
+        <h2>Fashion Gallery</h2>
+        {photos.map((photo, index) => {
+          return(
+            <div className="gallery-cell"
+            key={index}>
+              <img src={photo.thumbnail_url} width="75" height="90"
+                url={photo.url}
+                onClick={this.selectImage}></img>
+            </div>
+          )
+        })}
+        {/* <StyleDisplay image={this.state.image} /> */}
         <img src="https://i.redd.it/xke2yxfzofu71.jpg" alt="Hang In There!" width="300" height="300"></img>
       </div>
     )
@@ -50,5 +67,4 @@ const StyleGallery = (props) => {
 
 
 export default StyleGallery;
-
 

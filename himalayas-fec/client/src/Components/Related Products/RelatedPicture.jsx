@@ -15,10 +15,7 @@ const RelatedPicture = (props) => {
   return (
     <div>
       <div className='relatedPicture' style={{backgroundSize: 'cover', backgroundImage: `url(${currentPicture})`}}
-      onClick={() => {
-        console.log(stylesAndProductsValue[props.props1 - 1].data.product_id, 'clicked id')
-        props.props2(stylesAndProductsValue[props.props1 - 1].data.product_id);
-      }}>
+      onClick={() => {props.props2(stylesAndProductsValue[props.props1 - 1].data.product_id);}}>
       </div>
     </div>
   )

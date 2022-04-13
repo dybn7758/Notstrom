@@ -9,7 +9,7 @@ const RelatedCategory = (props) => {
 
   return (
     <div>
-      <h1 class='relatedCategory'>{currentCategory}</h1>
+      <h1 className='relatedCategory'>{currentCategory}</h1>
     </div>
   )
 }
