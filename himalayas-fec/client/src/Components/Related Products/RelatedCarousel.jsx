@@ -14,8 +14,6 @@ import React, {useEffect} from 'react';
 import {AiTwotoneStar} from 'react-icons/ai';
 import './relatedsass.scss';
 
-
-
 const RelatedCarousel = (props) => {
   const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);
   const [currentRelatedStylesValue, setCurrentRelatedStyles] = useRecoilState(currentRelatedStyles);
@@ -33,7 +31,6 @@ const RelatedCarousel = (props) => {
   const [showValue, setShow] = useRecoilState(show);
   const currentProductVar = useRecoilValue(currentProductSelector);
   const currentStyles = useRecoilValue(currentStylesSelector);
-
 
   const array = apiCalls.relatedProducts(selectedIdValue)
   .then((response) => {
@@ -61,7 +58,7 @@ const RelatedCarousel = (props) => {
 
     const allData = Promise.all(allResponse)
     allData.then( async (response) => {
-      console.log(response, 'response before and after')
+      // console.log(response, 'response before and after')
       await setStylesAndProducts(response)
     })
     .catch((error) => {

@@ -15,10 +15,12 @@ code {
 #imageContainer {
   position: relative;
   justify-content: center;
+  float: right;
+  overflow: hidden;
 }
 
 .styleThumb {
-  border-radius: 100%;
+  border-radius: 50%;
   border-style: solid;
   border-width: 3px;
 }
@@ -73,6 +75,21 @@ body {
   color: white;
 }
 
+.galleryThumbs {
+  float: left;
+  overflow: hidden;
+}
+
+.styles {
+  // float: right;
+  // overflow: hidden;
+}
+
+.display {
+  float: right;
+  overflow: hideen;
+}
+
 /* for quarterly star rating */
 .single-star-outline {
   height: 36px;
@@ -92,6 +109,16 @@ body {
   display: inline-block;
 }
 
+// for dynamic star
+input[name="rating"] {
+  display: none;
+}
+
+.star {
+  cursor: pointer;
+  transition: color 500ms;
+}
+
 /* for rating bars */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 * {
@@ -106,15 +133,10 @@ body {
   height: 100%;
   place-items: center;
 }
-// ::selection {
-//   color: #fff;
-//   background: #6665ee;
-// }
+
 .skill-bars {
-  padding-right: 10px;
   width: 350px;
-  background: rgb(255, 250, 240);
-  /* box-shadow: 5px 5px 20px rgba(0,0,0,0.2); */
+
   border-radius: 10px;
 }
 .skill-bars .bar {
@@ -140,7 +162,7 @@ body {
 .skill-bars .bar .progress-line {
   height: 10px;
   width: 100%;
-  background: #f0f0f0;
+  background: darkgray;
   position: static;
   transform: scaleX(0);
   transform-origin: left;
@@ -158,7 +180,7 @@ body {
   border-radius: 10px;
   transform: scaleX(0);
   transform-origin: left;
-  background: rgb(211, 161, 24);
+  background: rgb(14, 5, 5);
   animation: animate 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
 }
 /* .bar .progress-line.html span{
@@ -219,15 +241,13 @@ body {
 }
 
 .container {
-  background: #fff;
-  padding: 20px 30px;
-  width: 420px;
-  /* border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2); */
+  padding: 0;
+  width: 350px;
+  margin-top: 30px;
 }
 
 .container form {
-  margin: 20px 5px 10px 5px;
+  margin: 0;
   position: relative;
 }
 
@@ -242,7 +262,8 @@ form .indicator {
 form .indicator span {
   width: 100%;
   height: 100%;
-  background: lightgrey;
+
+  background: darkgray;
   border-radius: 5px;
   /* height: 100%;
   position: absolute;
@@ -252,30 +273,14 @@ form .indicator span {
   background: #6665ee; */
 }
 
-form .indicator span::before {
+.arrow {
   position: absolute;
   content: "";
-  right: 0;
   height: 0;
   width: 0;
-  border: 7px solid transparent;
-  border-bottom-width: 0px;
-  border-right-width: 0px;
-  border-top-color: #000;
-}
-
-form .indicator span::after {
-  position: absolute;
-  content: "";
-  right: 0;
-  top: -10px;
-  color: #fff;
-  height: 0;
-  width: 0;
-  border: 7px solid transparent;
-  border-bottom-width: 0px;
-  border-right-width: 0px;
-  border-top-color: #000;
+  border-style: solid;
+  border-width: 10px 10px 0 10px;
+  border-color: #0f0f10 transparent transparent transparent;
 }
 
 // for ratings and reviews
@@ -288,8 +293,165 @@ form .indicator span::after {
 // for scrollable
 
 .scrollable-div {
-  height: 600px;
+  height: 650px;
   overflow: auto;
-
   text-align: justify;
 }
+
+// for review photos
+.reviewphoto {
+  height: 10vh;
+  width: 10vw;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+// for review sort dropdown
+#sort-review {
+  border-radius: 5px;
+}
+
+.sort-review {
+  margin-bottom: 2vh;
+  font-weight: 500;
+  font-size: 17px;
+}
+
+// for text in characteristc bars
+.text {
+  font-weight: 500;
+  font-size: 17px;
+}
+
+// for mode selector--------------
+
+@import "./functions.scss";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* COLORS */
+$main-color: #0e0c0b;
+$main-bg: #f4f6fc;
+$main-purple: #8744f0;
+
+$colors: (
+  bg: rgb(255, 250, 240),
+  nav: #212731,
+  base: #343d4b,
+  primary: #ffffff,
+  secondary: #212731,
+  text: black,
+  chill: #c7d9ec,
+  chillest: hsl(216, 26%, 7%),
+  purple: #8744f0,
+  gradit: linear-gradient(135deg, #72edf2 10%, #5151e5 100%),
+);
+
+$colors-dark: (
+  bg: map-get($colors, secondary),
+  nav: map-get($colors, primary),
+  base: map-get($colors, bg),
+  primary: map-get($colors, base),
+  secondary: map-get($colors, primary),
+  chill: map-get($colors, secondary),
+  chillest: map-get($colors, chillest),
+  purple: map-get($colors, base),
+  gradit: map-get($colors, gradit),
+);
+
+/* For light mode */
+:root {
+  @each $name, $color in $colors {
+    --color-#{$name}: #{$color};
+  }
+}
+
+/* For dark mode */
+body.dark {
+  @each $name, $color in $colors-dark {
+    --color-#{$name}: #{$color};
+  }
+}
+
+/* Body */
+
+body {
+  background: getColor(primary);
+  color: getColor(primary);
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+
+  > ul {
+    list-style-type: none;
+    margin-block-start: 0em !important;
+    margin-block-end: 0em !important;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  div,
+  span {
+    color: getColor(text);
+  }
+}
+
+// @mixin center {
+//   position: relative;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+// }
+
+// @mixin transition {
+//   transition: all 0.3s linear;
+// }
+
+// @mixin flex {
+//   display: flex;
+// }
+
+// @mixin space {
+//   flex: auto;
+// }
+
+// @mixin flex-center {
+//   justify-content: center;
+//   flex-direction: column;
+//   align-items: center;
+// }
+
+// @mixin capitalize {
+//   text-transform: capitalize;
+// }
+
+// .flex {
+//   @include flex;
+//   flex-direction: column;
+// }
+
+// .active-symbol {
+//   background: transparent;
+//   color: #8744f0 !important;
+//   font-weight: 600;
+// }
+
+// .fill-remaining-space {
+//   @include space;
+// }

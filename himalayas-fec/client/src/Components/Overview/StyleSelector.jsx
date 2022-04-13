@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import StyleGallery from './StyleGallery.jsx';
 import { stylesResponse } from '../../lib/Atoms.jsx';
 import { productStyles } from '../../lib/searchAPI.js';
@@ -21,6 +21,14 @@ const StyleSelector = (props) => {
 
     const [currentStyle, setStyle] = useState(styles[0])
 
+
+    useEffect(() => {
+
+      setStyle(props.styles.results[0])
+
+    }, [props.styles]);
+
+
     const photos = styles.map(style => {
       return style.photos;
     });
@@ -32,21 +40,30 @@ const StyleSelector = (props) => {
         thumbnail: style.photos[0].thumbnail_url};
     });
 
-    const getStyleById = function (id) {
+    const getStyleById = (id) => {
       const filteredStyle = styles.filter(style => style.style_id === id);
+
       return filteredStyle[0];
     };
 
+    const placeHolder = (url) => {
+      var imgPath = url;
+      if (!url) {
+        imgPath ="https://ouikar.com/pub/media/catalog/product/placeholder/default/image_not_available.png";
+      }
+      return imgPath;
+    }
+
     return (
 
-      <div id="styles">
+      <div className="styles">
       <h3>Styles</h3>
         <div id="imageContainer">
           {thumbnails.map((thumbnail, index) => (
             <div key={index}>
               <p className="styleName">{thumbnail.name}</p>
               <img className="styleThumb"
-              src={thumbnail.thumbnail} width="75" height="90"
+              src={placeHolder(thumbnail.thumbnail)} width="75" height="90"
               onClick={event => setStyle(currentStyle => getStyleById(thumbnail.styleId))}
               ></img>
             </div>

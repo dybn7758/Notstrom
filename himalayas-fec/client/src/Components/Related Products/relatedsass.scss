@@ -58,3 +58,53 @@
   font-size: 20px;
   font-weight: bold;
 }
+
+//================= Outfit CSS
+.relatedOutfitCard {
+  position: absolute;
+  bottom: 40px;
+  left: 25px;
+  font-size: 20;
+  font-weight: bolder;
+}
+
+.relatedOutfitButton {
+  position: relative;
+  color: green;
+  height: 100px;
+  width: 100px;
+  left: 20%;
+  top: 25%;
+  z-index: 20;
+}
+.relatedCardContainer {
+  position: relative;
+  height: 325px;
+  width: 200px;
+  margin: 10;
+}
+
+.outfitMainOuter {
+  width: 100%;
+  height: 340px;
+  margin: 5px;
+  overflow: hidden;
+}
+
+.outfitMainInner {
+  display: inline-flex;
+  float: left;
+  position: relative;
+  height: 325px;
+  width: 200px;
+  z-index: 5px;
+  margin: 10px;
+}
+// float: 'left', height: 325, width: 200, margin: 5, zIndex: 10
+.outfitPicture {
+  float: left;
+  height: 325px;
+  width: 200px;
+  margin: 5px;
+  z-index: 10;
+}
