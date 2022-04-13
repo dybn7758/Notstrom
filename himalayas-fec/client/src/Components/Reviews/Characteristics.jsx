@@ -2,14 +2,14 @@ import React from "react";
 
 function Characteristics() {
   return (
-    <div class="container">
+    <div className="container">
       <form action="#">
-        <div class="indicator">
-          <span class="weak"></span>
-          <span class="medium"></span>
-          <span class="strong"></span>
+        <div className="indicator">
+          <span className="weak"></span>
+          <span className="medium"></span>
+          <span className="strong"></span>
         </div>
-        <div class="text"></div>
+        <div className="text"></div>
       </form>
     </div>
   );
