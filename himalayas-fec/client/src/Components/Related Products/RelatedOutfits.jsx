@@ -23,16 +23,13 @@ const deleteCard = async (index) => {
   return (
       <div>
       <div>
-          <div style={{width: '100%', height: 340, margin: 5, overflow: 'hidden'}}>
-            <div style={{display: 'inline-flex', float: 'left', position: 'relative', height: 325, width: 200,
-              zIndex: 5, margin: 10}}>
+          <div className='outfitMainOuter'>
+            <div className='outfitMainInner'>
                 <RelatedOutfitCard/>
-              <MdOutlineAddCircle style={{color: 'black', height: 50, width: 50, width: '50%',
-                marginLeft: '25%', marginRight: '25%', marginTop: '50%', zIndex: 15}} />
             </div>
                 {outfitArrayValue.map((value, index) => {
                   return (
-                    <div key={index} style={{backgroundSize: 'cover', backgroundImage: `url(${value.url})`, float: 'left', height: 325, width: 200, margin: 5, zIndex: 10}}>
+                    <div key={index} className='outfitPicture' style={{backgroundSize: 'cover', backgroundImage: `url(${value.url})`}}>
                       <RiCloseCircleFill style={{color: 'red', position: 'relative', left: 5, top: 5, zIndex: 16}} onClick={() => {
                         deleteCard(index)
                       }}/>
