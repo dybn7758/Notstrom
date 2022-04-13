@@ -14,11 +14,11 @@ import {
 
 
 const StyleSelector = (props) => {
-  // console.log('ssprops', props);
+
   if (props.styles) {
 
     var styles = props.styles.results;
-    // console.log('stylesVar', styles);
+
     const [currentStyle, setStyle] = useState(styles[0])
 
 
@@ -40,22 +40,30 @@ const StyleSelector = (props) => {
         thumbnail: style.photos[0].thumbnail_url};
     });
 
-    const getStyleById = function (id) {
+    const getStyleById = (id) => {
       const filteredStyle = styles.filter(style => style.style_id === id);
-      console.log('fs', filteredStyle);
+
       return filteredStyle[0];
     };
 
+    const placeHolder = (url) => {
+      var imgPath = url;
+      if (!url) {
+        imgPath ="https://ouikar.com/pub/media/catalog/product/placeholder/default/image_not_available.png";
+      }
+      return imgPath;
+    }
+
     return (
 
-      <div id="styles">
+      <div className="styles">
       <h3>Styles</h3>
         <div id="imageContainer">
           {thumbnails.map((thumbnail, index) => (
             <div key={index}>
               <p className="styleName">{thumbnail.name}</p>
               <img className="styleThumb"
-              src={thumbnail.thumbnail} width="75" height="90"
+              src={placeHolder(thumbnail.thumbnail)} width="75" height="90"
               onClick={event => setStyle(currentStyle => getStyleById(thumbnail.styleId))}
               ></img>
             </div>

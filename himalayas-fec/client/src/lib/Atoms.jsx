@@ -488,3 +488,11 @@ export const clickListenerSelector = selector({
   },
 });
 
+<<<<<<< HEAD
+=======
+// =====for theme switching ======================
+export const theme = atom({
+  key: "ThemeMode",
+  default: false,
+});
+>>>>>>> master
