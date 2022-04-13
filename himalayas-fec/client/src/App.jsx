@@ -85,7 +85,11 @@ var App = (props) => {
     } else if (pageView !== "main") {
       return (
         <div>
+<<<<<<< HEAD
           {/* <Overview /> */}
+=======
+          <Overview />
+>>>>>>> master
           <RelatedProducts props1={changeView}/>
           <QA />
           <Reviews />

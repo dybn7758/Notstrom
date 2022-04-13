@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import StyleGallery from './StyleGallery.jsx';
 import { stylesResponse } from '../../lib/Atoms.jsx';
 import { productStyles } from '../../lib/searchAPI.js';
@@ -14,12 +14,20 @@ import {
 
 
 const StyleSelector = (props) => {
-
+  // console.log('ssprops', props);
   if (props.styles) {
 
     var styles = props.styles.results;
-
+    // console.log('stylesVar', styles);
     const [currentStyle, setStyle] = useState(styles[0])
+
+
+    useEffect(() => {
+
+      setStyle(props.styles.results[0])
+
+    }, [props.styles]);
+
 
     const photos = styles.map(style => {
       return style.photos;
@@ -34,6 +42,7 @@ const StyleSelector = (props) => {
 
     const getStyleById = function (id) {
       const filteredStyle = styles.filter(style => style.style_id === id);
+      console.log('fs', filteredStyle);
       return filteredStyle[0];
     };
 
