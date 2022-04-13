@@ -109,7 +109,7 @@ var App = (props) => {
       return (
         <div>
           <Overview />
-          {/* <RelatedProducts /> */}
+          <RelatedProducts props1={changeView}/>
           <QA />
           <Reviews />
         </div>
