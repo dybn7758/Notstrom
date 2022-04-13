@@ -7,4 +7,7 @@ test('renders learn react link', () => {
   expect(linkElement).toBeInTheDocument();
 });
 
+test('Sanity check', () => {
+  expect(true).toBe(true);
+})
 

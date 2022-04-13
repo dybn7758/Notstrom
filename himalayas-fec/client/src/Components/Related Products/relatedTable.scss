@@ -1,0 +1,28 @@
+.relatedTableMain {
+  position: absolute;
+  margin: 2px;
+  font-weight: bold;
+  // justify-content: center;
+  top: 5%;
+  right: 5%;
+  left: 5%;
+  bottom: 5%;
+  z-index: 100;
+}
+
+.tableCloseButton {
+  color: red;
+  position: absolute;
+  height: 20;
+  size: large;
+  right: 5%;
+}
+
+.tableInner {
+  border: 3px solid black;
+}
+
+.tableRowValue {
+  text-align: center;
+  border: 3px solid black;
+}

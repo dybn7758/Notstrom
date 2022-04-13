@@ -22,9 +22,9 @@ const TableSales = (props) => {
 
   return (
     <tr>
-      <td style={{textAlign: 'center', border: "3px solid rgb(0, 0, 0)"}}>{checker}</td>
-      <td style={{textAlign: 'center', border: "3px solid rgb(0, 0, 0)"}}>On Sale?</td>
-      <td style={{textAlign: 'center', border: "3px solid rgb(0, 0, 0)"}}>{checker2}</td>
+      <td className='tableRowValue'>{checker}</td>
+      <td className='tableRowValue'>On Sale?</td>
+      <td className='tableRowValue'>{checker2}</td>
     </tr>
   )
 }

@@ -11,5 +11,4 @@ const StyleDisplay = (props) => {
   )
 };
 
-
 export default StyleDisplay;

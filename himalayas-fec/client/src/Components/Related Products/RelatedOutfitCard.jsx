@@ -3,7 +3,7 @@ import {RiCloseCircleFill} from 'react-icons/ri';
 import {MdOutlineAddCircle} from 'react-icons/md';
 import {outfitCards, currentStylesSelector, currentProductSelector, outfitArray} from '../../lib/Atoms.jsx';
 import {useRecoilState, useRecoilValue} from 'recoil';
-import './relatedsass.scss';
+import './relatedSass.scss';
 
 
 const RelatedOutfitCard = () => {
@@ -28,7 +28,7 @@ const RelatedOutfitCard = () => {
         outfitClickHandler()
       }}/>
           <div className='relatedOutfitCard'>Add To Outfit</div>
-        <div>
+        <div >
       </div>
     </div>
   )
