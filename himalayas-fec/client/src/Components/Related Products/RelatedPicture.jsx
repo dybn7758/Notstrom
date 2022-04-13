@@ -8,6 +8,9 @@ const RelatedPicture = (props) => {
   const nextIndex = props.props1 - 1;
   const currentPicture = stylesAndProductsValue[nextIndex].data.results[0].photos[0].url;
   const currentId = stylesAndProductsValue[nextIndex].data.id;
+
+  // console.log(stylesAndProductsValue, 'styles and product values')
+
   return (
     <div>
       <div className='relatedPicture' style={{backgroundSize: 'cover', backgroundImage: `url(${currentPicture})`}}

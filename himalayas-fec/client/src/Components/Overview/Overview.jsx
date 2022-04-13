@@ -23,7 +23,6 @@ const Overview = (props) => {
   let [selectedProductID, setCurrentProductId] =
     useRecoilState(selectedProductId);
 
-  var currentId = selectedProductID;
   var currentProduct;
 
   productsArray.forEach((product) => {
@@ -34,7 +33,7 @@ const Overview = (props) => {
   });
 
   let stylesArray = useRecoilValue(currentStylesSelector);
-
+  // console.log('stylesArray', stylesArray);
   if (stylesArray.results.length === 0) {
     stylesArray = null;
   }

@@ -1,26 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import StyleDisplay from './StyleDisplay.jsx';
 
-class StyleGallery extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      image: this.props.style.photos[0].url
-    }
+const StyleGallery = (props) => {
 
-  this.selectImage = this.selectImage.bind(this);
+  const [imageSelection, selectImage] = useState(props.style.photos[0].url)
 
+  useEffect(() => {
+    selectImage(props.style.photos[0].url);
+  }, [props.style])
+
+  const imageSelector = (targetUrl) => {
+    selectImage(targetUrl)
   }
 
-   selectImage() {
-    // console.log(event.target.attributes.url.nodeValue)
-    this.setState({ image: event.target.attributes.url.nodeValue })
-
-  }
-
-  render () {
-
-    const photos = this.props.style.photos;
+    const photos = props.style.photos;
 
     return (
       <div className="gallery">
@@ -31,15 +24,14 @@ class StyleGallery extends React.Component {
             key={index}>
               <img src={photo.thumbnail_url} width="75" height="90"
                 url={photo.url}
-                onClick={this.selectImage}></img>
+                onClick={event => imageSelector(event.target.attributes.url.nodeValue)}></img>
             </div>
           )
         })}
-        <StyleDisplay image={this.state.image} />
+        <StyleDisplay image={imageSelection} />
       </div>
     )
   }
-}
 
 
 export default StyleGallery;
