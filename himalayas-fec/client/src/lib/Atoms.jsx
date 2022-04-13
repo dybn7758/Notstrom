@@ -473,3 +473,9 @@ export const clickListenerSelector = selector({
     });
   },
 });
+
+// =====for theme switching ======================
+export const theme = atom({
+  key: "ThemeMode",
+  default: false,
+});
