@@ -116,14 +116,10 @@ body {
   height: 100%;
   place-items: center;
 }
-// ::selection {
-//   color: #fff;
-//   background: #6665ee;
-// }
+
 .skill-bars {
   width: 350px;
-  background: rgb(255, 250, 240);
-  /* box-shadow: 5px 5px 20px rgba(0,0,0,0.2); */
+
   border-radius: 10px;
 }
 .skill-bars .bar {
@@ -228,7 +224,6 @@ body {
 }
 
 .container {
-  background: rgb(255, 250, 240);
   padding: 0;
   width: 350px;
   margin-top: 30px;
@@ -310,3 +305,136 @@ form .indicator span {
   font-weight: 500;
   font-size: 17px;
 }
+
+// for mode selector--------------
+
+@import "./functions.scss";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* COLORS */
+$main-color: #0e0c0b;
+$main-bg: #f4f6fc;
+$main-purple: #8744f0;
+
+$colors: (
+  bg: rgb(255, 250, 240),
+  nav: #212731,
+  base: #343d4b,
+  primary: #ffffff,
+  secondary: #212731,
+  text: black,
+  chill: #c7d9ec,
+  chillest: hsl(216, 26%, 7%),
+  purple: #8744f0,
+  gradit: linear-gradient(135deg, #72edf2 10%, #5151e5 100%),
+);
+
+$colors-dark: (
+  bg: map-get($colors, secondary),
+  nav: map-get($colors, primary),
+  base: map-get($colors, bg),
+  primary: map-get($colors, base),
+  secondary: map-get($colors, primary),
+  chill: map-get($colors, secondary),
+  chillest: map-get($colors, chillest),
+  purple: map-get($colors, base),
+  gradit: map-get($colors, gradit),
+);
+
+/* For light mode */
+:root {
+  @each $name, $color in $colors {
+    --color-#{$name}: #{$color};
+  }
+}
+
+/* For dark mode */
+body.dark {
+  @each $name, $color in $colors-dark {
+    --color-#{$name}: #{$color};
+  }
+}
+
+/* Body */
+
+body {
+  background: getColor(primary);
+  color: getColor(primary);
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+
+  > ul {
+    list-style-type: none;
+    margin-block-start: 0em !important;
+    margin-block-end: 0em !important;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  div,
+  span {
+    color: getColor(text);
+  }
+}
+
+// @mixin center {
+//   position: relative;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+// }
+
+// @mixin transition {
+//   transition: all 0.3s linear;
+// }
+
+// @mixin flex {
+//   display: flex;
+// }
+
+// @mixin space {
+//   flex: auto;
+// }
+
+// @mixin flex-center {
+//   justify-content: center;
+//   flex-direction: column;
+//   align-items: center;
+// }
+
+// @mixin capitalize {
+//   text-transform: capitalize;
+// }
+
+// .flex {
+//   @include flex;
+//   flex-direction: column;
+// }
+
+// .active-symbol {
+//   background: transparent;
+//   color: #8744f0 !important;
+//   font-weight: 600;
+// }
+
+// .fill-remaining-space {
+//   @include space;
+// }
