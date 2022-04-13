@@ -58,7 +58,7 @@ const RelatedCarousel = (props) => {
 
     const allData = Promise.all(allResponse)
     allData.then( async (response) => {
-      console.log(response, 'response before and after')
+      // console.log(response, 'response before and after')
       await setStylesAndProducts(response)
     })
     .catch((error) => {
