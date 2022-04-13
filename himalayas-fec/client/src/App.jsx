@@ -31,13 +31,8 @@ var App = (props) => {
   let [prod, setProd] = useRecoilState(productQ);
   let [pageView, setPageView] = useRecoilState(catalog);
   let productData = useRecoilValue(productSelector);
-<<<<<<< HEAD
-  const [relatedArrayValue, setRelatedArray] = useRecoilState(relatedIDs);
-  let [selectedProductID, setCurrentProductId] = useRecoilState(selectedProductId);
-=======
   let [selectedProductID, setCurrentProductId] =
     useRecoilState(selectedProductId);
->>>>>>> master
   let [searchModal, setSearchModal] = useRecoilState(showSeachModal);
   let [searchedProduct, setSearchedProduct] = useRecoilState(searchProductList);
   let categoryByProduct = useRecoilValue(categoryProductsMain);
@@ -78,36 +73,8 @@ var App = (props) => {
     setPageView(page);
     setCurrentProductId(page);
 
-<<<<<<< HEAD
 
     if (pageView === 'main') {
-=======
-    // if (pageView === "main") {
-    //   return (
-    //     <table>
-    //       <tbody>
-    //         {prod.map((product, i) => {
-    //           return (
-    //             <tr key={i}>
-    //               <td
-    //                 value={product.id}
-    //                 onClick={(e) => {
-    //                   changeView(e.target.attributes.value.value);
-    //                 }}
-    //               >
-    //                 {product.name}
-    //               </td>
-    //               <td>{product.description}</td>
-    //             </tr>
-    //           );
-    //         })}
-    //       </tbody>
-    //     </table>
-    //   );
-    // }
-
-    if (pageView === "main") {
->>>>>>> master
       return (
         <div id="product-container">
           {productDisplay().categories.map((category, i) => {
