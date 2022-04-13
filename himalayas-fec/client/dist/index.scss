@@ -92,6 +92,16 @@ body {
   display: inline-block;
 }
 
+// for dynamic star
+input[name="rating"] {
+  display: none;
+}
+
+.star {
+  cursor: pointer;
+  transition: color 500ms;
+}
+
 /* for rating bars */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 * {
@@ -111,7 +121,6 @@ body {
 //   background: #6665ee;
 // }
 .skill-bars {
-  padding-right: 10px;
   width: 350px;
   background: rgb(255, 250, 240);
   /* box-shadow: 5px 5px 20px rgba(0,0,0,0.2); */
@@ -140,7 +149,7 @@ body {
 .skill-bars .bar .progress-line {
   height: 10px;
   width: 100%;
-  background: #f0f0f0;
+  background: darkgray;
   position: static;
   transform: scaleX(0);
   transform-origin: left;
@@ -158,7 +167,7 @@ body {
   border-radius: 10px;
   transform: scaleX(0);
   transform-origin: left;
-  background: rgb(211, 161, 24);
+  background: rgb(14, 5, 5);
   animation: animate 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
 }
 /* .bar .progress-line.html span{
@@ -219,15 +228,14 @@ body {
 }
 
 .container {
-  background: #fff;
-  padding: 20px 30px;
-  width: 420px;
-  /* border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2); */
+  background: rgb(255, 250, 240);
+  padding: 0;
+  width: 350px;
+  margin-top: 30px;
 }
 
 .container form {
-  margin: 20px 5px 10px 5px;
+  margin: 0;
   position: relative;
 }
 
@@ -242,7 +250,8 @@ form .indicator {
 form .indicator span {
   width: 100%;
   height: 100%;
-  background: lightgrey;
+
+  background: darkgray;
   border-radius: 5px;
   /* height: 100%;
   position: absolute;
@@ -252,30 +261,14 @@ form .indicator span {
   background: #6665ee; */
 }
 
-form .indicator span::before {
+.arrow {
   position: absolute;
   content: "";
-  right: 0;
   height: 0;
   width: 0;
-  border: 7px solid transparent;
-  border-bottom-width: 0px;
-  border-right-width: 0px;
-  border-top-color: #000;
-}
-
-form .indicator span::after {
-  position: absolute;
-  content: "";
-  right: 0;
-  top: -10px;
-  color: #fff;
-  height: 0;
-  width: 0;
-  border: 7px solid transparent;
-  border-bottom-width: 0px;
-  border-right-width: 0px;
-  border-top-color: #000;
+  border-style: solid;
+  border-width: 10px 10px 0 10px;
+  border-color: #0f0f10 transparent transparent transparent;
 }
 
 // for ratings and reviews
@@ -288,8 +281,32 @@ form .indicator span::after {
 // for scrollable
 
 .scrollable-div {
-  height: 600px;
+  height: 650px;
   overflow: auto;
-
   text-align: justify;
+}
+
+// for review photos
+.reviewphoto {
+  height: 10vh;
+  width: 10vw;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+// for review sort dropdown
+#sort-review {
+  border-radius: 5px;
+}
+
+.sort-review {
+  margin-bottom: 2vh;
+  font-weight: 500;
+  font-size: 17px;
+}
+
+// for text in characteristc bars
+.text {
+  font-weight: 500;
+  font-size: 17px;
 }

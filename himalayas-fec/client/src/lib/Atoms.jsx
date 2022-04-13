@@ -28,7 +28,14 @@ export const relatedOnSale = atom({ key: "relatedOnSale", default: false });
 export const show = atom({ key: "show", default: ["none"] });
 
 //================ Related IDs Array =============== array of related IDs
+<<<<<<< HEAD
 export const relatedIDs = atom({ key: "relatedIDs", default: []});
+=======
+export const relatedIDs = atom({
+  key: "relatedIDs",
+  default: [37312, 37313, 37314, 37315],
+});
+>>>>>>> master
 
 // ================= Slider State ==================
 export const sliderState = atom({ key: "sliderState", default: 0 });
@@ -37,10 +44,13 @@ export const sliderState = atom({ key: "sliderState", default: 0 });
 export const outfitCards = atom({ key: "outfitCards", default: [] });
 
 // ================== Modal Data =====================
-export const modalData = atom({ key: "modalData", default: ''});
+export const modalData = atom({ key: "modalData", default: "" });
 
 // ==================== Button Toggle =============
-export const buttonToggle = atom({key: 'buttonToggle', default: ['none', '']});
+export const buttonToggle = atom({
+  key: "buttonToggle",
+  default: ["none", ""],
+});
 
 // =================== Current Product ===============
 export const currentProduct = atom({ key: "currentProduct", default: {} });
@@ -165,6 +175,7 @@ export const relatedSelector = selector({
   get: async ({ get }) => {
     const [relatedArrayValue, setRelatedArray] = useRecoilState(relatedIDs);
     const productID = await get(selectedProductId);
+<<<<<<< HEAD
     console.log(productID, 'this is product ID')
     // const response = await apiCalls.relatedProducts(productID)
     // .then((response) => {
@@ -172,6 +183,12 @@ export const relatedSelector = selector({
     // })
     // setRelatedArray(response.data);
     // return response.data;
+=======
+    console.log(productID, "this is product ID");
+    const response = await apiCalls.relatedProducts(productID);
+    setRelatedArray(response.data);
+    return response.data;
+>>>>>>> master
   },
 });
 
@@ -230,6 +247,23 @@ export const productReviewsSelector = selector({
 export const reviewsCount = atom({
   key: "reviewsCount",
   default: 2,
+});
+
+// ===================for review photo upload===============================
+export const reviewPhotoes = atom({
+  key: "reviewPhotoes",
+  default: [],
+});
+
+export const toggleReview = atom({
+  key: "toggleReview",
+  default: false,
+});
+
+// =============for write reviews =================
+export const specificCharacteristics = atom({
+  key: "specificCharacteristics",
+  default: {},
 });
 
 //==========for meta reviews======================
@@ -430,27 +464,27 @@ export const sliderSelector = selector({
 
 //========== Global Click Handler ==================
 export const clickListenerSelector = selector({
-  key: 'clickListenerSelector',
-  get: ({get}) => {
-    return document.addEventListener('click', (event) => {
-      // console.log('element', event.target.nodeName);
-      // console.log('time', new Date(event.timeStamp));
+  key: "clickListenerSelector",
+  get: ({ get }) => {
+    return document.addEventListener("click", (event) => {
+      console.log("element", event.target.nodeName);
+      console.log("time", new Date(event.timeStamp));
 
       let element = event.target.nodeName;
       let widget = null;
       let time = new Date(event.timeStamp);
 
       event.path.forEach((module) => {
-        if (module.id !== undefined && module.id.indexOf('-module') !== -1) {
-          widget = module.id.split('-module')[0];
-          console.log('widget', widget);
+        if (module.id !== undefined && module.id.indexOf("-module") !== -1) {
+          widget = module.id.split("-module")[0];
+          console.log("widget", widget);
         }
       });
 
       if (element && widget && time) {
-        apiCalls.applicationClick({time, widget, element});
+        apiCalls.applicationClick({ time, widget, element });
       }
-    })
-  }
+    });
+  },
 });
 

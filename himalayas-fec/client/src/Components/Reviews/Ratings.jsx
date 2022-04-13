@@ -13,9 +13,9 @@ var Ratings = ({
 }) => {
   return (
     <div>
-      <h4>RATINGS & REVIEWS</h4>
+      <h3>RATINGS & REVIEWS</h3>
       <h1>
-        {(totalRatingScores / sum).toFixed(1)} out of {sum} reviews
+        {(totalRatingScores / sum).toFixed(1)} / 5
         <QuartersStars rating={(totalRatingScores / sum).toFixed(1)} />
       </h1>
       <>
@@ -23,24 +23,10 @@ var Ratings = ({
         product
       </>
       <>
-        {/* {Object.keys(specifiedRatings.ratings).map((key, i) => {
-          return (
-            <p key={i}>
-              {key} stars ⭐︎: {specifiedRatings.ratings[key]}
-            </p>
-          );
-        })} */}
         <Bars ratings={specifiedRatings.ratings} sum={sum} />
       </>
       <>
-        {Object.keys(specifiedRatings.characteristics).map((key) => {
-          return (
-            <p key={specifiedRatings.characteristics[key].id}>
-              {key}:{specifiedRatings.characteristics[key].value}
-            </p>
-          );
-        })}
-        <Characteristics />
+        <Characteristics characteristics={specifiedRatings.characteristics} />
       </>
     </div>
   );
