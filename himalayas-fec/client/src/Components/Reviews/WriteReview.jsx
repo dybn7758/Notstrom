@@ -1,18 +1,49 @@
 import React, { useState } from "react";
-import DynamicStars from "./DynamicStars.jsx";
+import { atom, useRecoilState, selector, useRecoilValue } from "recoil";
+import { FaStar } from "react-icons/fa";
+
+import {
+  reviewPhotoes,
+  toggleReview,
+  specificCharacteristics,
+} from "../../lib/Atoms.jsx";
 
 function WriteReview({ hideModal, characteristics, product_id }) {
-  const [recommend, setRecommend] = useState("");
-  const [size, setSize] = useState("");
-  const [width, setWidth] = useState("");
-  const [comfort, setComfort] = useState("");
-  const [quality, setQuality] = useState("");
-  const [length, setLength] = useState("");
-  const [fit, setFit] = useState("");
-  const [reviewSum, setReviewSum] = useState("");
-  const [review, setReview] = useState("");
-  const [nickname, setNickName] = useState("");
-  const [email, setEmail] = useState("");
+  const [rating, setRating] = useState(null);
+  const [hover, setHover] = useState(null);
+  const [recommend, setRecommend] = useState(null);
+  const [size, setSize] = useState(null);
+  const [width, setWidth] = useState(null);
+  const [comfort, setComfort] = useState(null);
+  const [quality, setQuality] = useState(null);
+  const [length, setLength] = useState(null);
+  const [fit, setFit] = useState(null);
+  const [reviewSum, setReviewSum] = useState(null);
+  const [review, setReview] = useState(null);
+  const [nickname, setNickName] = useState(null);
+  const [email, setEmail] = useState(null);
+
+  let [usephotoUpload, setPhotoUpload] = useRecoilState(reviewPhotoes);
+  let [toggleUploads, setToggleUpload] = useRecoilState(toggleReview);
+  let [allFactor, setAllFactor] = useRecoilState(specificCharacteristics);
+
+  const photoUpload = (e) => {
+    let photoUpload = Array.from(e.target.files);
+
+    photoUpload.forEach((photo) => {
+      let reader = new FileReader();
+      reader.onloadend = () => {
+        setPhotoUpload([...usephotoUpload, reader.result]);
+      };
+
+      reader.readAsDataURL(photo);
+    });
+
+    if (usephotoUpload.length > 3) {
+      console.log("disabling");
+      setToggleUpload(true);
+    }
+  };
 
   const handleSelectionId = (e) => {
     console.log(e.target);
@@ -22,24 +53,30 @@ function WriteReview({ hideModal, characteristics, product_id }) {
     console.log(e.target);
     if (e.target.id.includes("size")) {
       console.log("😵‍💫", e.target.id.includes("size"));
+      specificCharacteristics["Size"] = e.target.value;
       setSize(e.target.value);
     }
     if (e.target.id.includes("width")) {
+      specificCharacteristics["Width"] = e.target.value;
       setWidth(e.target.value);
     }
     if (e.target.id.includes("comfort")) {
+      specificCharacteristics["Comfort"] = e.target.value;
       setComfort(e.target.value);
     }
 
     if (e.target.id.includes("quality")) {
+      specificCharacteristics["Quality"] = e.target.value;
       setQuality(e.target.value);
     }
 
     if (e.target.id.includes("fit")) {
+      specificCharacteristics["Fit"] = e.target.value;
       setFit(e.target.vlaue);
     }
 
     if (e.target.id.includes("length")) {
+      specificCharacteristics["Length"] = e.target.value;
       setLength(e.target.value);
     }
   };
@@ -66,6 +103,17 @@ function WriteReview({ hideModal, characteristics, product_id }) {
     console.log("🚶🏼", files);
   };
 
+  const handlePost = () => {
+    // const test1 = Object.keys(characteristics).map((characteristic)=>{
+    //   return characteristic: characteristics[characteristic];
+    // })
+    // const reviewDetails = {
+    //   rating: rating,
+    //   recommend: recommend,
+    // };
+    console.log(specificCharacteristics);
+  };
+
   return (
     <div className="modal">
       <div className="modal-content">
@@ -74,7 +122,28 @@ function WriteReview({ hideModal, characteristics, product_id }) {
         </div>
         <div className="modal-body">
           <form className="scrollable-div">
-            <DynamicStars />
+            {[...Array(5)].map((star, i) => {
+              const ratingValue = i + 1;
+              return (
+                <label>
+                  <input
+                    type="radio"
+                    name="rating"
+                    value={ratingValue}
+                    onClick={() => setRating(ratingValue)}
+                  ></input>
+                  <FaStar
+                    className="star"
+                    size={30}
+                    color={
+                      ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"
+                    }
+                    onMouseEnter={() => setHover(ratingValue)}
+                    onMouseLeave={() => setHover(null)}
+                  />
+                </label>
+              );
+            })}
             <div onChange={handleSelectionId} required>
               <h3>Do you recommend this product?</h3>
               <input type="radio" id="Yes"></input>
@@ -84,6 +153,7 @@ function WriteReview({ hideModal, characteristics, product_id }) {
             </div>
             <div required>
               <h3>How do they fit?</h3>
+
               {characteristics.map((characteristic, i) => {
                 if (characteristic === "Size") {
                   console.log(characteristic);
@@ -218,15 +288,33 @@ function WriteReview({ hideModal, characteristics, product_id }) {
               placeholder="Why did you like the product or not?"
               onChange={handleInput}
             ></textarea>
-            <input
-              type="file"
-              id="myFile"
-              name="filename"
-              multiple
-              onChange={(e) => {
-                uploadImg(e.target.files);
-              }}
-            ></input>
+            <div>
+              <label className="photo-count">
+                Add up to {5 - usephotoUpload.length} photos
+                <input
+                  className="body-images"
+                  type="file"
+                  multiple
+                  onChange={(e) => {
+                    photoUpload(e);
+                  }}
+                  accept="image/*"
+                  alt="Image preview..."
+                  disabled={toggleUploads}
+                ></input>
+              </label>
+              {usephotoUpload.map((photo, i) => {
+                return (
+                  <img
+                    key={i}
+                    id={"preview" + i}
+                    src={photo}
+                    width="150"
+                    height="125"
+                  ></img>
+                );
+              })}
+            </div>
             <div>
               <b>Nickname:</b>
               <br></br>
@@ -260,7 +348,14 @@ function WriteReview({ hideModal, characteristics, product_id }) {
           </form>
         </div>
         <div>
-          <button className="post-q">submit</button>
+          <button
+            className="post-q"
+            onClick={() => {
+              handlePost();
+            }}
+          >
+            submit
+          </button>
           <button className="post-q" onClick={hideModal}>
             close
           </button>

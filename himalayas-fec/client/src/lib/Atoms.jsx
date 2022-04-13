@@ -225,6 +225,23 @@ export const reviewsCount = atom({
   default: 2,
 });
 
+// ===================for review photo upload===============================
+export const reviewPhotoes = atom({
+  key: "reviewPhotoes",
+  default: [],
+});
+
+export const toggleReview = atom({
+  key: "toggleReview",
+  default: false,
+});
+
+// =============for write reviews =================
+export const specificCharacteristics = atom({
+  key: "specificCharacteristics",
+  default: {},
+});
+
 //==========for meta reviews======================
 export const productMetaReviewsSelector = selector({
   key: "productMetaReviewsSelector",
@@ -424,26 +441,26 @@ export const sliderSelector = selector({
 
 //========== Global Click Handler ==================
 export const clickListenerSelector = selector({
-  key: 'clickListenerSelector',
-  get: ({get}) => {
-    return document.addEventListener('click', (event) => {
-      console.log('element', event.target.nodeName);
-      console.log('time', new Date(event.timeStamp));
+  key: "clickListenerSelector",
+  get: ({ get }) => {
+    return document.addEventListener("click", (event) => {
+      console.log("element", event.target.nodeName);
+      console.log("time", new Date(event.timeStamp));
 
       let element = event.target.nodeName;
       let widget = null;
       let time = new Date(event.timeStamp);
 
       event.path.forEach((module) => {
-        if (module.id !== undefined && module.id.indexOf('-module') !== -1) {
-          widget = module.id.split('-module')[0];
-          console.log('widget', widget);
+        if (module.id !== undefined && module.id.indexOf("-module") !== -1) {
+          widget = module.id.split("-module")[0];
+          console.log("widget", widget);
         }
       });
 
       if (element && widget && time) {
-        apiCalls.applicationClick({time, widget, element});
+        apiCalls.applicationClick({ time, widget, element });
       }
-    })
-  }
+    });
+  },
 });

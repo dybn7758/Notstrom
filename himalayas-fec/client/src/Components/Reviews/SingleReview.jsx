@@ -7,7 +7,6 @@ import WriteReview from "./WriteReview.jsx";
 import { showWriteReviewModal, reviewsCount } from "../../lib/Atoms.jsx";
 
 var SingleReview = ({ characteristics, specifiedReviewID, product_id }) => {
-  console.log("👺", specifiedReviewID, product_id);
   const [showWriteReview, setShowWriteReview] =
     useRecoilState(showWriteReviewModal);
   const [initReview, setReviewsCount] = useRecoilState(reviewsCount);
@@ -72,10 +71,9 @@ var SingleReview = ({ characteristics, specifiedReviewID, product_id }) => {
               {review.photos.map((photo) => {
                 return (
                   <img
+                    className="reviewphoto"
                     key={photo.id}
                     src={photo.url}
-                    width="150px"
-                    height="200px"
                   ></img>
                 );
               })}
