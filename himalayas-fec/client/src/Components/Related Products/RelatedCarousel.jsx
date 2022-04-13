@@ -14,8 +14,6 @@ import React, {useEffect} from 'react';
 import {AiTwotoneStar} from 'react-icons/ai';
 import './relatedsass.scss';
 
-
-
 const RelatedCarousel = (props) => {
   const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);
   const [currentRelatedStylesValue, setCurrentRelatedStyles] = useRecoilState(currentRelatedStyles);
@@ -33,7 +31,6 @@ const RelatedCarousel = (props) => {
   const [showValue, setShow] = useRecoilState(show);
   const currentProductVar = useRecoilValue(currentProductSelector);
   const currentStyles = useRecoilValue(currentStylesSelector);
-
 
   const array = apiCalls.relatedProducts(selectedIdValue)
   .then((response) => {
@@ -119,7 +116,7 @@ const RelatedCarousel = (props) => {
               {stylesAndProductsValue.map((value, index) => {
                 if ((index + 1) % 3 === 0) {
                   return (
-                  <div key={index} className='carousel-content' itemsToShow={1}
+                  <div key={index} className='carousel-content'
                     style={{float: 'left', transform: `translateX(-${sliderValue * 100}%)`}}>
                   <div key={index} className='relatedCarouselMap'>
                     <RelatedPicture props1={index} props2={props.props1}/>
