@@ -9,9 +9,9 @@ const TableStyles = () => {
 
   return (
     <tr>
-      <td style={{textAlign: 'center', border: "3px solid rgb(0, 0, 0)"}}>{currentRelatedStylesValue}</td>
-      <td style={{textAlign: 'center', border: "3px solid rgb(0, 0, 0)"}}>Styles</td>
-      <td style={{textAlign: 'center', border: "3px solid rgb(0, 0, 0)"}}>{currentStyles.results.length}</td>
+      <td className='tableRowValue'>{currentRelatedStylesValue}</td>
+      <td className='tableRowValue'>Styles</td>
+      <td className='tableRowValue'>{currentStyles.results.length}</td>
     </tr>
   )
 }

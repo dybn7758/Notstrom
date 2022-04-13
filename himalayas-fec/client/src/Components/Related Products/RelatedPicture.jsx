@@ -1,6 +1,7 @@
 import {stylesResponse, stylesAndProducts, selectedProductId} from '../../lib/Atoms.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
 import React, {useEffect} from 'react';
+import './relatedData.scss';
 
 const RelatedPicture = (props) => {
   const [selectedProductIdValue, setSelectedProductId] = useRecoilState(selectedProductId);

@@ -64,7 +64,7 @@ const StyleSelector = (props) => {
         <h4><i>No Alternate Styles Available</i></h4>
         <div id="imageContainer">
           <img className="no-image" src="https://ouikar.com/pub/media/catalog/product/placeholder/default/image_not_available.png"
-            height="300px" width="300px"></img>
+            height="300px" width="300px" style={{background: 'cover'}}></img>
         </div>
       </div>
     )

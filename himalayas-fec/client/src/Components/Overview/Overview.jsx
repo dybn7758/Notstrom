@@ -34,16 +34,11 @@ import {
     }
   })
 
-<<<<<<< HEAD
- //acquire styles related to current product
-  const stylesArray = useRecoilValue(currentStylesSelector);
-=======
   let stylesArray = useRecoilValue(currentStylesSelector);
 
   if (stylesArray.results.length === 0) {
     stylesArray = null;
   }
->>>>>>> master
 
   return (
     <div className="overview" id="overview-module">

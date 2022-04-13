@@ -13,9 +13,9 @@ const TableFeatures = () => {
       const currentProductFeatures = currentProductValue.features || '---------';
       return (
         <tr key={index}>
-          <td style={{textAlign: 'center', border: "3px solid rgb(0, 0, 0)"}}>{value.value}</td>
-          <td style={{textAlign: 'center', border: "3px solid rgb(0, 0, 0)"}}>{value.feature}</td>
-          <td style={{textAlign: 'center', border: "3px solid rgb(0, 0, 0)"}}>{currentProductFeatures}</td>
+          <td className='tableRowValue'>{value.value}</td>
+          <td className='tableRowValue'>{value.feature}</td>
+          <td className='tableRowValue'>{currentProductFeatures}</td>
         </tr>
       )
     }

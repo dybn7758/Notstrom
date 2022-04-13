@@ -4,6 +4,8 @@ import {useRecoilState, useRecoilValue} from 'recoil';
 import RelatedOutfitCard from './RelatedOutfitCard.jsx';
 import {RiCloseCircleFill} from 'react-icons/ri';
 import {outfitCards} from '../../lib/Atoms.jsx';
+import RelatedStars from './RelatedStars.jsx';
+import './relatedSass.scss';
 
 
 const RelatedOutfits = () => {
@@ -23,23 +25,29 @@ const deleteCard = async (index) => {
   return (
       <div>
       <div>
-          <div className='outfitMainOuter'>
-            <div className='outfitMainInner'>
-                <RelatedOutfitCard/>
-            </div>
-                {outfitArrayValue.map((value, index) => {
-                  return (
-                    <div key={index} className='outfitPicture' style={{backgroundSize: 'cover', backgroundImage: `url(${value.url})`}}>
-                      <RiCloseCircleFill style={{color: 'red', position: 'relative', left: 5, top: 5, zIndex: 16}} onClick={() => {
-                        deleteCard(index)
-                      }}/>
-                      <div>{value.name}</div>
-                      <div>{value.category}</div>
-                      <div>{value.price}</div>
-                    </div>
-                  )
-                })}
+        <div className='outfitMainOuter'>
+          <div className='outfitMainInner'>
+            <RelatedOutfitCard/>
           </div>
+            {outfitArrayValue.map((value, index) => {
+              console.log(index, 'stars index')
+              return (
+                <div key={index} className='outfitPicture' style={{backgroundSize: 'cover', backgroundImage: `url(${value.url})`}}>
+                  <RiCloseCircleFill className='outfitCloseCircle' onClick={() => {
+                    deleteCard(index)
+                  }}/>
+                  <div className='outfitCardFooter'>
+                    {/* <RelatedStars /> */}
+                    <div>{value.category}</div>
+                    <div>{value.name}</div>
+                    <div>{value.price}</div>
+                  </div>
+                </div>
+                )
+              }
+            )
+          }
+        </div>
       </div>
   </div>
   )

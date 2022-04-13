@@ -60,29 +60,6 @@ var App = (props) => {
     setPageView(page);
     setCurrentProductId(page);
 
-    // if (pageView === "main") {
-    //   return (
-    //     <table>
-    //       <tbody>
-    //         {prod.map((product, i) => {
-    //           return (
-    //             <tr key={i}>
-    //               <td
-    //                 value={product.id}
-    //                 onClick={(e) => {
-    //                   changeView(e.target.attributes.value.value);
-    //                 }}
-    //               >
-    //                 {product.name}
-    //               </td>
-    //               <td>{product.description}</td>
-    //             </tr>
-    //           );
-    //         })}
-    //       </tbody>
-    //     </table>
-    //   );
-    // }
     if (pageView === 'main') {
       return (
         <div id="product-container">
@@ -108,8 +85,8 @@ var App = (props) => {
     } else if (pageView !== "main") {
       return (
         <div>
-          <Overview />
-          {/* <RelatedProducts /> */}
+          {/* <Overview /> */}
+          <RelatedProducts props1={changeView}/>
           <QA />
           <Reviews />
         </div>
