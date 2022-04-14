@@ -284,3 +284,13 @@
   right: 53%;
   border-bottom: 2px solid black;
 }
+
+.outfitName, .outfitPrice, .outfitCategory {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+@keyframes testing {
+  from {height: 225; width: 200}
+  to {height: 450; width: 400}
+}

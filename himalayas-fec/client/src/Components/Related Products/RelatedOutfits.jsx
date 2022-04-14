@@ -23,8 +23,8 @@ const deleteCard = async (index) => {
 }
 
   return (
-      <div>
-      <div>
+      <div className='cloudContainer'>
+      <div id='cloud-intro'>
         <div className='outfitMainOuter'>
           <div className='outfitMainInner'>
             <RelatedOutfitCard/>
@@ -38,9 +38,9 @@ const deleteCard = async (index) => {
                   }}/>
                   <div className='outfitCardFooter'>
                     {/* <RelatedStars /> */}
-                    <div>{value.category}</div>
-                    <div>{value.name}</div>
-                    <div>${value.price}</div>
+                    <div className='outfitCategory'>{value.category}</div>
+                    <div className='outfitName'>{value.name}</div>
+                    <div className='outfitPrice'>${value.price}</div>
                   </div>
                 </div>
                 )

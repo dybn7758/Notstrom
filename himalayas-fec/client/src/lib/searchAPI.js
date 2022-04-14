@@ -4,6 +4,7 @@ import react from "react";
 import { useRecoilValue, useRecoilState } from "recoil";
 import { relatedIDs } from "./Atoms.jsx";
 
+
 const serverUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/${CAMPUS_CODE}`;
 
 var axiosGet = (url) => {
