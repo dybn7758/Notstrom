@@ -97,10 +97,10 @@ const RelatedCarousel = (props) => {
 
   return (
     <div className='carousel-conatiner'>
-      <div className='relatedCarouselHeader'>Related Products</div>
       <div className="carousel-wrapper">
+        <div className='relatedCarouselHeader'>Related Products</div>
+            <button id='leftArrow' onClick={() => {prev()}}>Left</button>
           <div className="carousel-content-wrapper">
-            <button id='leftArrow' onClick={() => {prev()}} className='left-arrow'>Left</button>
               {stylesAndProductsValue.map((value, index) => {
                 if ((index + 1) % 3 === 0) {
                   return (
@@ -115,14 +115,14 @@ const RelatedCarousel = (props) => {
                     <div className='relatedContentBundler'>
                       <RelatedCategory props1={index}/>
                       <RelatedName props1={index}/>
-                      {/* <RelatedPrice props1={index}/> */}
+                      <RelatedPrice props1={index}/>
                       <RelatedStars props1={index}/>
                   </div>
                 </div>
               </div>
               )}})}
-              <button id='rightArrow' onClick={() => {next()}} className='right-arrow'>Right</button>
             </div>
+              <button id='rightArrow' onClick={() => {next()}}>Right</button>
       </div>
       <div className='outfitHeader'>Your Outfit</div>
     </div>

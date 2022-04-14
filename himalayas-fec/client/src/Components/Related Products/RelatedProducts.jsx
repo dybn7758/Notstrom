@@ -10,7 +10,6 @@ const RelatedProducts = (props) => {
   const [selectedIdValue, setSelectedId] = useRecoilState(selectedProductId);
   const [relatedArrayValue, setRelatedArray] = useRecoilState(relatedIDs);
 
-
   useEffect(() => {
     const numValue = Number(selectedIdValue)
     const array = apiCalls.relatedProducts(numValue)
@@ -22,12 +21,10 @@ const RelatedProducts = (props) => {
     })
   },[selectedProductId]);
 
-
-
   return (
     <div id='relatedProducts-module'>
       <RelatedCarousel props1={props.props1}/>
-          <RelatedModal/>
+        <RelatedModal/>
       <RelatedOutfits/>
     </div>
   );

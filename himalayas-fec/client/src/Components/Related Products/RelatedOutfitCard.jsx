@@ -5,7 +5,6 @@ import {outfitCards, currentStylesSelector, currentProductSelector, outfitArray}
 import {useRecoilState, useRecoilValue} from 'recoil';
 import './relatedSass.scss';
 
-
 const RelatedOutfitCard = () => {
   const [outfitCardValue, setOutfitCard] = useRecoilState(outfitCards);
   const currentStyles = useRecoilValue(currentStylesSelector);

@@ -471,3 +471,7 @@ export const clickListenerSelector = selector({
   },
 });
 
+export const theme = atom({
+  key: "ThemeMode",
+  default: false,
+});

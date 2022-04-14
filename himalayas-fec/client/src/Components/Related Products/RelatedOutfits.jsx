@@ -40,7 +40,7 @@ const deleteCard = async (index) => {
                     {/* <RelatedStars /> */}
                     <div>{value.category}</div>
                     <div>{value.name}</div>
-                    <div>{value.price}</div>
+                    <div>${value.price}</div>
                   </div>
                 </div>
                 )
