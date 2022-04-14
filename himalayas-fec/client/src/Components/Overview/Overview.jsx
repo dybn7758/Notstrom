@@ -17,6 +17,7 @@ import {
 } from "../../lib/Atoms.jsx";
 import { selectedProduct } from "../../lib/searchAPI.js";
 import { atom, selector, useRecoilState, useRecoilValue } from "recoil";
+import './Styling/overview.scss';
 
 const Overview = (props) => {
   const [productsArray, setProducts] = useRecoilState(productQ);
@@ -40,11 +41,12 @@ const Overview = (props) => {
 
   return (
     <div className="overview" id="overview-module">
+      <StyleSelector styles={stylesArray} />
       <ProductInformation
         currentProduct={currentProduct}
         styles={stylesArray}
       />
-      <StyleSelector styles={stylesArray} />
+      {/* <StyleSelector styles={stylesArray} /> */}
     </div>
   );
 };

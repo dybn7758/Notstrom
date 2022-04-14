@@ -5,6 +5,7 @@ import RelatedModal from './RelatedModal.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
 import {selectedProductId, relatedIDs} from '../../lib/Atoms.jsx';
 const apiCalls = require('../../lib/searchAPI.js')
+import './relatedSass.scss';
 
 const RelatedProducts = (props) => {
   const [selectedIdValue, setSelectedId] = useRecoilState(selectedProductId);

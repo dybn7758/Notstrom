@@ -4,11 +4,10 @@ const StyleDisplay = (props) => {
 
   // console.log('sdprops', props);
 
-  return(
-    <div className="styleDisplay">
-      <img src={props.image} hight="300" width="300"></img>
-    </div>
-  )
+  return null;
+    // <div className="styleDisplay">
+      // <img src={props.image} height="600" width="900"></img>
+    // </div>
 };
 
-export default StyleDisplay;
+// export default StyleDisplay;
