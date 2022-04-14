@@ -72,39 +72,7 @@ var App = (props) => {
 
     setCurrentProductId(page);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> master
-    if (pageView === 'main') {
-=======
-    // if (pageView === "main") {
-    //   return (
-    //     <table>
-    //       <tbody>
-    //         {prod.map((product, i) => {
-    //           return (
-    //             <tr key={i}>
-    //               <td
-    //                 value={product.id}
-    //                 onClick={(e) => {
-    //                   changeView(e.target.attributes.value.value);
-    //                 }}
-    //               >
-    //                 {product.name}
-    //               </td>
-    //               <td>{product.description}</td>
-    //             </tr>
-    //           );
-    //         })}
-    //       </tbody>
-    //     </table>
-    //   );
-    // }
-
     if (pageView === "main") {
->>>>>>> master
       return (
         <div id="product-container">
           {productDisplay().categories.map((category, i) => {
@@ -142,11 +110,7 @@ var App = (props) => {
       return (
         <div>
           <Overview />
-<<<<<<< HEAD
-          <RelatedProducts props1={changeView}/>
-=======
           <RelatedProducts props1={changeView} />
->>>>>>> master
           <QA />
           <Reviews />
         </div>
@@ -171,7 +135,7 @@ var App = (props) => {
           ></img>
         </div>
 
-        <div>
+        <div className="searchbar">
           <input
             className="searchbar"
             type="search"
