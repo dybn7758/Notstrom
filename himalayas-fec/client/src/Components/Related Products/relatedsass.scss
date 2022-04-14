@@ -38,10 +38,11 @@
 }
 
 .outfitHeader {
+  font-family: monospace;
   position: relative;
   font-size: 20px;
   font-weight: bolder;
-  width: 120px;
+  width: 150px;
   top: 70px;
   text-align: center;
   color: white;
@@ -115,6 +116,8 @@
 }
 
 #leftArrow, #rightArrow {
+  font-family: monospace;
+  font-weight: bolder;
   border-radius: 50%;
   height: 50px;
   width: 50px;
@@ -123,6 +126,9 @@
 }
 
 .relatedModalClose {
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: bolder;
   position: absolute;
   z-index: 60;
   left: 48%;
@@ -179,6 +185,7 @@
 }
 
 .relatedCarouselHeader {
+  font-family: monospace;
   position: absolute;
   top: 55px;
   left: -10px;
@@ -269,6 +276,7 @@
 }
 
 .comparingText {
+  font-family: monospace;
   position: fixed;
   font-size: 20px;
   font-weight: bolder;

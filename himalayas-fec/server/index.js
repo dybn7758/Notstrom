@@ -1,14 +1,13 @@
 const express = require("express");
 const path = require("path");
 const axios = require("axios");
-const morgan = require("morgan");
+const compression = require('compression');
 
 const app = express();
 
-// middleware
 app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use(express.json());
-app.use(morgan("dev"));
+app.use(compression())
 
 const getProducts = function () {
   return Product.find();
