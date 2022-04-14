@@ -18,7 +18,15 @@ const RelatedOutfitCard = () => {
     stars: ''}
 
   const outfitClickHandler = () => {
-    setOutfitCard(outfitCardValue => [...outfitCardValue, tempObj])
+    let checker = false;
+    outfitCardValue.forEach((value) => {
+      if (value.name === tempObj.name) {
+        checker = true;
+      }
+    })
+    if (checker === false) {
+      setOutfitCard(outfitCardValue => [...outfitCardValue, tempObj])
+    }
   }
 
   return (
