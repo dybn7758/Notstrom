@@ -1,4 +1,4 @@
-import {show, relatedIDs, relatedSelector, currentStylesSelector,
+import {show, relatedIDs, relatedSelector, currentStylesSelector, modalButtonShowHide,
   stylesAndProducts, sliderState, sliderLength, currentRelatedName, buttonToggle,
   sliderSelector, modalData, relatedIndex, selectedProductId, currentRelatedStyles,
   currentFeatures, relatedOnSale, currentProductSelector, currentProduct} from '../../lib/Atoms.jsx';
@@ -19,6 +19,7 @@ const RelatedCarousel = (props) => {
   const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);
   const [currentFeaturesValue, setCurrentFeatures] = useRecoilState(currentFeatures);
   const [currentProductValue, setCurrentProduct] = useRecoilState(currentProduct);
+  const [modalButtonValue, setModalButton] = useRecoilState(modalButtonShowHide);
   const [currentNameValue, setCurrentName] = useRecoilState(currentRelatedName);
   const [relatedOnSaleValue, setRelatedOnSale] = useRecoilState(relatedOnSale);
   const [selectedIdValue, setSelectedId] = useRecoilState(selectedProductId);
@@ -77,7 +78,16 @@ const RelatedCarousel = (props) => {
       }
     })
   }
-
+  const showHide = () => {
+    console.log(lengthValue, 'some datas', sliderValue)
+    if (sliderValue === 1) {
+      setModalButton(['none', 'block'])
+    } else if (sliderValue === lengthValue - 2) {
+      setModalButton(['block', 'none'])
+    } else {
+      setModalButton(['block', 'block'])
+    }
+  }
   const next = () => {
     if (sliderValue < (lengthValue - 1)) {
         setSlider(sliderValue + 1);
@@ -99,8 +109,8 @@ const RelatedCarousel = (props) => {
     <div className='carousel-conatiner'>
       <div className="carousel-wrapper">
         <div className='relatedCarouselHeader'>Related Products</div>
-            <button id='leftArrow' onClick={() => {prev()}}>Left</button>
-          <div className="carousel-content-wrapper">
+            <button id='leftArrow' style={{display: `${modalButtonValue[0]}`}} onClick={() => {showHide(), prev()}}>Left</button>
+              <div className="carousel-content-wrapper">
               {stylesAndProductsValue.map((value, index) => {
                 if ((index + 1) % 3 === 0) {
                   return (
@@ -122,7 +132,7 @@ const RelatedCarousel = (props) => {
               </div>
               )}})}
             </div>
-              <button id='rightArrow' onClick={() => {next()}}>Right</button>
+              <button id='rightArrow' style={{display: `${modalButtonValue[1]}`}} onClick={() => {showHide(), next()}}>Right</button>
       </div>
       <div className='outfitHeader'>Your Outfit</div>
     </div>
