@@ -1,24 +1,29 @@
-// #App {
+#App {
 //   display: flex;
 //   flex-direction: column;
 //   align-items: center;
 //   justify-content: center;
 //   background-color: rgb(255, 250, 240); //can be changed based on theme of team
-//   max-width: 1200px;
-//   width: 1200px;
-// }
+  max-width: 1500px;
+  width: 1500px;
+}
+
+#root {
+  width: 1500px;
+}
 
 .main {
   margin: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1080px;
+  width: 1500px;
 }
 
 .nav {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   // justify-content: end;
   align-items: center;
   margin: 30px;
@@ -55,8 +60,8 @@
   line-height: 30px;
   width: 400px;
   height: 40px;
-
   position: relative;
+  left: 200px;
 }
 
 .searchbar:hover {
@@ -71,7 +76,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  width: 1200px;
+  width: 1400px;
 }
 
 .category-name {
@@ -128,65 +133,5 @@
   flex-direction: column;
 }
 
-// ----------------------------------------
-/* .cardContainer {
-  position: relative;
-  bottom: 0;
-  background: gray;
-  width: 200;
-  height: 100;
-  align-items: baseline;
-}
-
-<p><code>wrapAround: true</code></p>
-
-<!-- Flickity HTML init -->
-<div class="gallery js-flickity"
-  data-flickity-options='{ "wrapAround": true }'>
-  <div class="gallery-cell"></div>
-  <div class="gallery-cell"></div>
-  <div class="gallery-cell"></div>
-  <div class="gallery-cell"></div>
-  <div class="gallery-cell"></div>
-</div>
-
-external css: flickity.css
-
-* {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-body { font-family: sans-serif; }
-
-.gallery {
-  background: #EEE;
-}
-
-.gallery-cell {
-  width: 66%;
-  height: 200px;
-  margin-right: 10px;
-  background: #8C8;
-  counter-increment: gallery-cell;
-}
 
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* cell number */
-/* .gallery-cell:before {
-  display: block;
-  text-align: center;
-  content: counter(gallery-cell);
-  line-height: 200px;
-  font-size: 80px;
-  color: white;
-} */

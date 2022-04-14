@@ -1,4 +1,4 @@
-import { API_KEY, CAMPUS_CODE } from "../config.js";
+import { API_KEY, CAMPUS_CODE } from "../config/config.js";
 import axios from "axios";
 import react from "react";
 import { useRecoilValue, useRecoilState } from "recoil";

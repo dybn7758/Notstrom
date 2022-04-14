@@ -1,0 +1,159 @@
+.overview {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;// moves productinformation to the right with style
+  z-index: -2;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  position: static;
+  height: 800px;
+}
+
+#test {
+  display:flex;
+  flex-direction: row-reverse;
+  flex-wrap: nowrap;
+  float: left;
+  object-fit: fill;
+  max-width: 100%;
+}
+.galleryThumbs {
+  max-width: fit-content;
+  max-height: fit-content;
+  float: left;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  position: relative;
+  // top: 0px;
+  left: 20px;
+  overflow-y: hidden;
+  height: 600px;
+  padding: 2px;
+  z-index: 5;
+  // align-items: baseline;
+  align-items: center;
+}
+
+.galleryThumbs:hover {
+  direction: rtl;
+  overflow-y: auto;
+  overflow-x: hidden;
+  float:inline-start;
+  text-align: justify;
+  // background-color:bisque;
+
+}
+
+.images {
+  display: relative;
+  text-size-adjust: 12px;
+  width: 600px;
+  float: inline-end;
+}
+
+.thumbs {
+  position: relative;
+  left: 350px;
+  bottom: 300px;
+  width: 500px;
+  margin: 10px;
+  height: 300px;
+  // display: flex;
+  flex-direction: column;
+
+  // flex-wrap: wrap;
+  z-index: 5;
+}
+
+.style-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 500px;
+}
+
+.ProductInformation {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 960px;
+  bottom: 920px;
+  z-index: 5;
+}
+
+.styles {
+  width: 600px;
+  height: 500px;
+}
+
+.style-selection {
+  display: flex;
+  flex-direction: column;
+  // flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 125px;
+  margin: 6px;
+}
+
+.style-list {
+  height:30px;
+}
+
+.styleName {
+  display: none;
+}
+
+.style-selection:hover .styleName {
+  display:inline-block;
+  font-size:small;
+  white-space: nowrap;
+  margin: 10px;
+
+}
+
+.gallery-cell {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  // z-index: 10;
+  // float: right;
+}
+
+.space {
+  width: 20px;
+}
+
+.display {
+  display: flex;
+  flex-direction: row;
+  // max-width: 820px;
+  // max-height: 600px;
+  max-width: 99%;
+  height: 600px;
+  // position: absolute;
+  // bottom: 500px;
+  // right: 500px;
+  // object-fit:scale-down;
+}
+
+.main-gal {
+//   display: flex;
+//   position: absolute;
+//   bottom: 0px;
+//   right: 700px;
+//   // width: 600px;
+  max-width: 99%;
+//   height: 500px;
+//   object-fit: fill;
+}
+
+#category {
+  font-size: x-large;
+}

@@ -56,21 +56,32 @@ const StyleSelector = (props) => {
 
     return (
 
-      <div className="styles">
-      <h3>Styles</h3>
-        <div id="imageContainer">
+      // <div className="styles">
+      // {/* <h3>Styles</h3> */}
+      //   {/* <div id="imageContainer"><span><strong>STYLE</strong> > SELECTED STYLE</span> */}
+      <>
+        <StyleGallery  style={currentStyle}/>
+        <div className="images">
+          {/* <div><strong>STYLE</strong> > SELECTED STYLE</div> */}
+        </div>
+        <div className="thumbs">
+        <span className="style-list"><strong>STYLE</strong> > SELECTED STYLE</span>
+        <div className="style-container">
           {thumbnails.map((thumbnail, index) => (
-            <div key={index}>
+            <div className="style-selection" key={index}>
               <p className="styleName">{thumbnail.name}</p>
               <img className="styleThumb"
-              src={placeHolder(thumbnail.thumbnail)} width="75" height="90"
+              src={placeHolder(thumbnail.thumbnail)} width="90" height="90"
               onClick={event => setStyle(currentStyle => getStyleById(thumbnail.styleId))}
               ></img>
             </div>
           ))}
-        </div>
-      <StyleGallery  style={currentStyle}/>
-    </div>
+          </div>
+          </div>
+      </>
+      //   {/* </div> */}
+      // {/* <StyleGallery  style={currentStyle}/> */}
+    // </div>
   )
 
   } else {

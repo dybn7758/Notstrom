@@ -28,7 +28,14 @@ export const relatedOnSale = atom({ key: "relatedOnSale", default: false });
 export const show = atom({ key: "show", default: ["none"] });
 
 //================ Related IDs Array =============== array of related IDs
+<<<<<<< HEAD
 export const relatedIDs = atom({ key: "relatedIDs", default: []});
+=======
+export const relatedIDs = atom({
+  key: "relatedIDs",
+  default: [37312, 37313, 37314, 37315],
+});
+>>>>>>> master
 
 // ================= Slider State ==================
 export const sliderState = atom({ key: "sliderState", default: 0 });
@@ -476,6 +483,7 @@ export const clickListenerSelector = selector({
   },
 });
 
+// =====for theme switching ======================
 export const theme = atom({
   key: "ThemeMode",
   default: false,
