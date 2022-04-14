@@ -124,6 +124,7 @@
 
 .relatedModalClose {
   position: absolute;
+  z-index: 60;
   left: 48%;
   top: 36%;
   height: 200px;
@@ -216,9 +217,9 @@
 
 .relatedPicture {
   margin: 2px;
-  position: absolute;
-  top: 35px;
-  left: 10px;
+  position: relative;
+  height: 225px;
+  width: 200px;
   font-size: 16px;
 }
 
@@ -257,6 +258,7 @@
 //       top: '50%', height: 300, width: 400, backgroundColor: 'gray',
 .relatedModalInner {
   overflow: auto;
+  -ms-overflow-style: none;
   position: fixed;
   left: 44%;
   top: 87%;
@@ -265,3 +267,11 @@
   width: 500px;
 }
 
+.comparingText {
+  position: fixed;
+  font-size: 20px;
+  font-weight: bolder;
+  top: 70%;
+  right: 53%;
+  border-bottom: 2px solid black;
+}
