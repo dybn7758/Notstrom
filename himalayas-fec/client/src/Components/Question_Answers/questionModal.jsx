@@ -21,7 +21,6 @@ var QuestionModal = () => {
   let [useQuestionModal, setQuestionModal] = useRecoilState(showQuestionModal);
   let [useProductId, setProductId] = useRecoilState(selectedProductId);
   let productName = useRecoilValue(questionModalData);
-
   let bodyForm = React.useRef(null);
   let nameForm = React.useRef(null);
   let emailForm = React.useRef(null);

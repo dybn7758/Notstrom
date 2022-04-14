@@ -12,22 +12,14 @@ import './Styling/searchQA.scss';
 var SearchQA = () => {
   //retrieve the current selected product
   const specifiedProductID = useRecoilValue(productQuestionsSelector);
-
   let [limitQList, setLimitQList] = useRecoilState(limitedQuestions);
-
   // useEffect(() => {
-  //   setLimitQList(specifiedProductID);
+  //   // setLimitQList(specifiedProductID);
   // }, [])
   setLimitQList(specifiedProductID);
-
-  // let limitedProductQ = useRecoilValue(limitQuestionSelector);
-
   let [searchQuestions, setSearchQuestion] = useRecoilState(searchQa);
-
   let filteredProductQ = useRecoilValue(filterQuestionSelector);
-
   let [quesCount, setQuesCount] = useRecoilState(searchQuesCount);
-
   let [useModal, setUseModal] = useRecoilState(showQuestionModal);
 
   const onSearch = (search) => {
@@ -53,12 +45,10 @@ var SearchQA = () => {
       return (
       <form>
         <input id="search-bar" type='search' placeholder='Have a question? Search for answers…' onChange={(e) => {onSearch(e)}}></input>
-        {/* <button id='search-but' type='submit'>Search</button> */}
       </form>
       );
     }
   };
-
 
   const addMoreAnsQuesFeat = (i) => {
     if (limitQList.length > 2) {
