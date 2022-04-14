@@ -1,6 +1,6 @@
-// require("dotenv").config();
-
 const path = require("path");
+const TerserPlugin = require("terser-webpack-plugin");
+
 
 module.exports = {
   mode: "development",
@@ -8,6 +8,10 @@ module.exports = {
   output: {
     path: path.join(__dirname, "/client/dist"),
     filename: "bundle.js",
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin(parallel: true)],
   },
   devtool: "source-map",
   module: {
@@ -19,7 +23,7 @@ module.exports = {
           loader: "babel-loader"
         },
       },
-       {
+      {
         test: /\.s[ac]ss$/i,
         use: [
           // Creates `style` nodes from JS strings

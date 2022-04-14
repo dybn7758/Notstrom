@@ -1,7 +1,7 @@
 import {stylesResponse, stylesAndProducts, selectedProductId} from '../../lib/Atoms.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
 import React, {useEffect} from 'react';
-import './relatedData.scss';
+import './relatedSass.scss';
 
 const RelatedPicture = (props) => {
   const [selectedProductIdValue, setSelectedProductId] = useRecoilState(selectedProductId);
@@ -9,8 +9,6 @@ const RelatedPicture = (props) => {
   const nextIndex = props.props1 - 1;
   const currentPicture = stylesAndProductsValue[nextIndex].data.results[0].photos[0].url;
   const currentId = stylesAndProductsValue[nextIndex].data.id;
-
-  // console.log(stylesAndProductsValue, 'styles and product values')
 
   return (
     <div>
@@ -25,4 +23,3 @@ export default RelatedPicture;
 
 // onMouseEnter={() => {console.log('mouse over!')}} onMouseLeave={() => {console.log()}}
 
-// console.log(stylesAndProductsValue[props.props1 - 1], 'current data')

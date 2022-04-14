@@ -15,16 +15,16 @@ let newValue;
 const deleteCard = async (index) => {
 
   newValue = [...outfitArrayValue];
-  let spliced = newValue.splice(index, 1);
-
+  newValue.splice(index, 1);
+  console.log(newValue, 'this is spliced')
   if (index > -1) {
-    setOutfitArray(spliced)
+    setOutfitArray(newValue)
   }
 }
 
   return (
-      <div>
-      <div>
+      <div className='cloudContainer'>
+      <div id='cloud-intro'>
         <div className='outfitMainOuter'>
           <div className='outfitMainInner'>
             <RelatedOutfitCard/>
@@ -38,9 +38,9 @@ const deleteCard = async (index) => {
                   }}/>
                   <div className='outfitCardFooter'>
                     {/* <RelatedStars /> */}
-                    <div>{value.category}</div>
-                    <div>{value.name}</div>
-                    <div>{value.price}</div>
+                    <div className='outfitCategory'>{value.category}</div>
+                    <div className='outfitName'>{value.name}</div>
+                    <div className='outfitPrice'>${value.price}</div>
                   </div>
                 </div>
                 )
