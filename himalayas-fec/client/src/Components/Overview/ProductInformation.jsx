@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import { productResponse, categoryResponse } from '../../lib/Atoms.jsx';
+import { priceVal, productResponse, categoryResponse, productMetaReviewsSelector } from '../../lib/Atoms.jsx';
 import {productQ} from '../../App.jsx';
 import Cart from './Cart.jsx'
+import Rating from './Rating.jsx'
 import {
   atom,
   selector,
@@ -12,14 +13,13 @@ import {
 
 const ProductInformation = (props) => {
 
+  const [priceValue, setPrice] = useRecoilState(priceVal);
+
   let prod = props.currentProduct;
-  // console.log('prod', prod)
 
-
-  console.log(props.styles);
   if (props.styles) {
+
     let styles = props.styles;
-    // console.log('styles', styles)
     let defaultStyle = styles.results[0];
 
 
@@ -36,16 +36,6 @@ const ProductInformation = (props) => {
     const [currentStyle, selectStyle] = useState(defaultStyle);
     // console.log('currentStyle', currentStyle);
     var price;
-
-    const priceCheck = (product) => {
-      if (!product.sale_price) {
-        price = product.original_price;
-      } else {
-        price = product.sale_price;
-      }
-    };
-
-    priceCheck(currentStyle);
 
   } else {
     var price = prod.default_price;
@@ -66,9 +56,10 @@ const ProductInformation = (props) => {
   return (
 
     <div className="ProductInformation">
+      <Rating />
       <h4 id="category">{prod.category}</h4>
       <h3 id="name">{prod.name}</h3>
-      <p id="price">${price}</p>
+      <p id="price">${priceValue}</p>
       <p id="slogan">{prod.slogan}</p>
       <div id="description">
         <p>{prod.description}</p>

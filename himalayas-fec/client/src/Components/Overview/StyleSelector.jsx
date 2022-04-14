@@ -4,7 +4,7 @@ import { stylesResponse } from '../../lib/Atoms.jsx';
 import { productStyles } from '../../lib/searchAPI.js';
 import { selectedProduct } from './Overview.jsx';
 import {productQ} from '../../App.jsx';
-import {productResponse, selectedProductId} from '../../lib/Atoms.jsx';
+import {productResponse, selectedProductId, priceVal} from '../../lib/Atoms.jsx';
 import {
   atom,
   selector,
@@ -20,13 +20,23 @@ const StyleSelector = (props) => {
     var styles = props.styles.results;
 
     const [currentStyle, setStyle] = useState(styles[0])
-
+    const [priceValue, setPrice] = useRecoilState(priceVal);
 
     useEffect(() => {
 
       setStyle(props.styles.results[0])
 
     }, [props.styles]);
+
+    const priceCheck = (product) => {
+      if (!product.sale_price) {
+        setPrice(product.original_price);
+      } else {
+        setPrice(product.sale_price);
+      }
+    };
+
+    priceCheck(currentStyle);
 
 
     const photos = styles.map(style => {
