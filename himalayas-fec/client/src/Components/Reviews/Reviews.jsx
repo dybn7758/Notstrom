@@ -59,7 +59,7 @@ var Reviews = () => {
       </div>
       <div className="grid-child reviews">
         <div className="sort-review">
-          <label htmlFor="sort-review"> sorted by </label>
+          <label htmlFor="sort-review">{sum} reviews, sorted by </label>
           <select name="sort-review" id="sort-review" onChange={handleDropdown}>
             <option value="helpful">Helpful</option>
             <option value="newest">Newest</option>

@@ -28,14 +28,7 @@ export const relatedOnSale = atom({ key: "relatedOnSale", default: false });
 export const show = atom({ key: "show", default: ["none"] });
 
 //================ Related IDs Array =============== array of related IDs
-<<<<<<< HEAD
-export const relatedIDs = atom({ key: "relatedIDs", default: []});
-=======
-export const relatedIDs = atom({
-  key: "relatedIDs",
-  default: [37312, 37313, 37314, 37315],
-});
->>>>>>> master
+export const relatedIDs = atom({ key: "relatedIDs", default: [] });
 
 // ================= Slider State ==================
 export const sliderState = atom({ key: "sliderState", default: 0 });
@@ -91,7 +84,7 @@ export const currentRelatedProducts = atom({
 //=============Selected Product ID ==============
 export const selectedProductId = atom({
   key: "selectedProductId",
-  default: '37311',
+  default: "37311",
 });
 
 // =========== Product Data ======== returns a list of all 'main' products
@@ -175,20 +168,10 @@ export const relatedSelector = selector({
   get: async ({ get }) => {
     const [relatedArrayValue, setRelatedArray] = useRecoilState(relatedIDs);
     const productID = await get(selectedProductId);
-<<<<<<< HEAD
-    console.log(productID, 'this is product ID')
-    // const response = await apiCalls.relatedProducts(productID)
-    // .then((response) => {
-    //   console.log(response, 'this is response')
-    // })
-    // setRelatedArray(response.data);
-    // return response.data;
-=======
     console.log(productID, "this is product ID");
     const response = await apiCalls.relatedProducts(productID);
     setRelatedArray(response.data);
     return response.data;
->>>>>>> master
   },
 });
 
@@ -488,11 +471,8 @@ export const clickListenerSelector = selector({
   },
 });
 
-<<<<<<< HEAD
-=======
 // =====for theme switching ======================
 export const theme = atom({
   key: "ThemeMode",
   default: false,
 });
->>>>>>> master

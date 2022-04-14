@@ -31,17 +31,17 @@ var App = (props) => {
   let [prod, setProd] = useRecoilState(productQ);
   let [pageView, setPageView] = useRecoilState(catalog);
   let productData = useRecoilValue(productSelector);
-  let [selectedProductID, setCurrentProductId] = useRecoilState(selectedProductId);
+  let [selectedProductID, setCurrentProductId] =
+    useRecoilState(selectedProductId);
   let [searchModal, setSearchModal] = useRecoilState(showSeachModal);
   let [searchedProduct, setSearchedProduct] = useRecoilState(searchProductList);
   let categoryByProduct = useRecoilValue(categoryProductsMain);
   let clickListener = useRecoilValue(clickListenerSelector);
-  const apiCalls = require('./lib/searchAPI.js')
+  const apiCalls = require("./lib/searchAPI.js");
   //Retrieves data from the API and sets the products to state to render
   //pass the second argument so it doesnt create an infinite loop everytime this component renders
   useEffect(() => {
     setProd(productData);
-
   }, []);
 
   useEffect(() => {
@@ -72,13 +72,8 @@ var App = (props) => {
 
     setCurrentProductId(page);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+    // if (pageView === 'main') {
 
->>>>>>> master
-    if (pageView === 'main') {
-=======
     // if (pageView === "main") {
     //   return (
     //     <table>
@@ -104,7 +99,6 @@ var App = (props) => {
     // }
 
     if (pageView === "main") {
->>>>>>> master
       return (
         <div id="product-container">
           {productDisplay().categories.map((category, i) => {
@@ -138,15 +132,12 @@ var App = (props) => {
         </div>
       );
     } else if (pageView !== "main") {
-
       return (
         <div>
           <Overview />
-<<<<<<< HEAD
-          <RelatedProducts props1={changeView}/>
-=======
+
           <RelatedProducts props1={changeView} />
->>>>>>> master
+
           <QA />
           <Reviews />
         </div>

@@ -1,4 +1,4 @@
-import { API_KEY, CAMPUS_CODE } from "../config/config.js";
+import { API_KEY, CAMPUS_CODE } from "../config.js";
 import axios from "axios";
 import react from "react";
 import { useRecoilValue, useRecoilState } from "recoil";
@@ -181,7 +181,7 @@ var applicationClick = (body) => {
   let parameterURL = `${serverUrl}/interactions`;
 
   return axiosPost(parameterURL, body);
-}
+};
 //Will need to add CART API get later on...
 
 export {
