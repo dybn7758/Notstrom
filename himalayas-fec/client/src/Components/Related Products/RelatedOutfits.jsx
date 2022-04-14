@@ -15,10 +15,10 @@ let newValue;
 const deleteCard = async (index) => {
 
   newValue = [...outfitArrayValue];
-  let spliced = newValue.splice(index, 1);
-
+  newValue.splice(index, 1);
+  console.log(newValue, 'this is spliced')
   if (index > -1) {
-    setOutfitArray(spliced)
+    setOutfitArray(newValue)
   }
 }
 
