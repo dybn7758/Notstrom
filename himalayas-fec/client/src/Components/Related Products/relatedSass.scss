@@ -237,7 +237,6 @@
 
 .relatedModalOuter1 {
   position: fixed;
-  top: 0;
   right: 20%;
   z-index: 70;
   border-bottom: 750px solid lightgray;
@@ -245,7 +244,6 @@
 
 .relatedModalOuter2 {
   position: fixed;
-  top: 0;
   right: 40%;
   z-index: 80;
   border-bottom: 750px solid gray;
@@ -253,7 +251,6 @@
 
 .relatedModalOuter3 {
   position: fixed;
-  top: 0;
   right: 60%;
   z-index: 90;
   border-bottom: 750px solid darkgray;
@@ -262,6 +259,7 @@
 .relatedModalOuter1, .relatedModalOuter2, .relatedModalOuter3 {
   width: 0;
   height: 0;
+  bottom: 0%;
   border-top: 250px solid transparent;
   border-left: 250px solid transparent;
   border-right: 250px solid transparent;
@@ -271,8 +269,8 @@
   overflow: auto;
   -ms-overflow-style: none;
   position: fixed;
-  left: 44%;
-  top: 87%;
+  left: 50%;
+  top: 90%;
   background-color: transparent;
   height: 200px;
   width: 500px;
