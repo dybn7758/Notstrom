@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import $ from "jquery";
 import {
   atom,
   useSetRecoilState,
