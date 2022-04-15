@@ -1,3 +1,0 @@
-var CAMPUS_CODE = 'hr-rfe';
-const API_KEY = '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'
-export {API_KEY, CAMPUS_CODE};

@@ -14,7 +14,7 @@ const RelatedModal = (props) => {
 
   return (
     <div>
-      <div>
+      <div className='blueSky' style={{display: showValue[0]}}>
         <div className='relatedModalOuter1' style={{display: showValue[0]}}>
           <div className='relatedModalOuter2' style={{display: showValue[0]}}>
             <div className='relatedModalOuter3' style={{display: showValue[0]}}>
