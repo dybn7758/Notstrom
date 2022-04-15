@@ -23,14 +23,9 @@ const Cart = (props) => {
       return countArray;
     }
 
-    const handleChange = (event) => {
-    }
-
-
     return (
       <div className="cart-view">
-        <button type="button">ADD TO CART</button>
-        <label htmlFor="size">SELECT SIZE</label>
+        <label id="sizeLabel" htmlFor="size"><i><b>SELECT SIZE:</b></i></label>
         <select name="size" id="size" onChange={handleChange}>
           {skusArray.map((sku, index) => {
             let skuSelector = Object.keys(sku);
@@ -39,14 +34,15 @@ const Cart = (props) => {
               )
             })};
         </select>
-        <label htmlFor="quantityl">SELECT QUANTITY</label>
+        <label id="quantityLabel" htmlFor="quantityl"><i><b>SELECT QUANTITY:</b></i></label>
         <select name="quantity" id="quantity">
         {counter(skusArray[skuIndex][currentSku].quantity).map((count, index) => {
           return (
             <option value={count} key={index}>{count}</option>
             )
           })};
-        </select>
+        </select><br></br>
+          <button id="btn" type="button">Add To Cart</button>
       </div>
     )
 
