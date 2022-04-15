@@ -28,7 +28,7 @@ export const relatedOnSale = atom({ key: "relatedOnSale", default: false });
 export const show = atom({ key: "show", default: ["none"] });
 
 //================ Related IDs Array =============== array of related IDs
-export const relatedIDs = atom({ key: "relatedIDs", default: []});
+export const relatedIDs = atom({ key: "relatedIDs", default: [] });
 
 // ================= Slider State ==================
 export const sliderState = atom({ key: "sliderState", default: 0 });
@@ -76,9 +76,9 @@ export const stylesAndProducts = atom({
 });
 
 export const modalButtonShowHide = atom({
-  key: 'modalButtonShowHide',
-  default: ['none', 'block'],
-})
+  key: "modalButtonShowHide",
+  default: ["none", "block"],
+});
 
 //================= Current Related Products ===
 export const currentRelatedProducts = atom({
@@ -89,7 +89,7 @@ export const currentRelatedProducts = atom({
 //=============Selected Product ID ==============
 export const selectedProductId = atom({
   key: "selectedProductId",
-  default: '37311',
+  default: "37311",
 });
 
 // =========== Product Data ======== returns a list of all 'main' products
@@ -268,6 +268,18 @@ export const productMetaReviewsSelector = selector({
       console.log("err from Atom meta review 🤬", err);
     }
   },
+});
+
+// ===========for star rating selector ================
+
+export const ratingSelector = atom({
+  key: "ratingSelctor",
+  default: 0,
+});
+
+export const filterReview = atom({
+  key: "filterReview",
+  default: false,
 });
 // ===========================================================
 
