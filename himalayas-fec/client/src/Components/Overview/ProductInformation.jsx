@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import { productResponse, categoryResponse } from '../../lib/Atoms.jsx';
+import { priceVal, productResponse, categoryResponse, productMetaReviewsSelector } from '../../lib/Atoms.jsx';
 import {productQ} from '../../App.jsx';
 import Cart from './Cart.jsx'
+import Rating from './Rating.jsx'
 import {
   atom,
   selector,
@@ -11,15 +12,21 @@ import {
 
 
 const ProductInformation = (props) => {
+  // console.log('piprops', props);
+  const [priceValue, setPrice] = useRecoilState(priceVal);
 
   let prod = props.currentProduct;
-  // console.log('prod', prod)
 
+  // if (!props.styles) {
 
-  console.log(props.styles);
-  if (props.styles) {
+  //   var price = prod.default_price;
+  //   const prodSelect = () => {
+  //     return prod;
+  //   }
+  //   // var currentStyle = null;
+
+  // } else {
     let styles = props.styles;
-    // console.log('styles', styles)
     let defaultStyle = styles.results[0];
 
 
@@ -37,53 +44,33 @@ const ProductInformation = (props) => {
     // console.log('currentStyle', currentStyle);
     var price;
 
-    const priceCheck = (product) => {
-      if (!product.sale_price) {
-        price = product.original_price;
+    const prodSelect = () => {
+      if (!currentStyle) {
+        selectStyle(prod);
+        return currentStyle;
       } else {
-        price = product.sale_price;
+        return currentStyle;
       }
     };
 
-    priceCheck(currentStyle);
+  //
 
-  } else {
-    var price = prod.default_price;
-    var currentStyle = null;
-  }
 
-    let prodSelect = () => {
-      if (!currentStyle) {
-        var currentStyle = prod;
-        return currentStyle;
-      } else {
-      return currentStyle;
-      }
-    }
-
-  // console.log('cs', [currentStyle]);
 
   return (
 
     <div className="ProductInformation">
-      <h4 id="category">{prod.category}</h4>
+      <Rating />
+      <h2 id="category"><i>{prod.category}</i></h2>
       <h3 id="name">{prod.name}</h3>
-      <p id="price">${price}</p>
-      <p id="slogan">{prod.slogan}</p>
+      <p id="price">${priceValue}</p>
+      <p id="slogan"><b>{prod.slogan}</b></p>
       <div id="description">
         <p>{prod.description}</p>
       </div>
-      {/* <div id="features">
-        <p><b>Features:</b>{props.styles.features}</p>
-      </div> */}
       <div className="cart">
         {}
         <Cart style={prodSelect()}/>
-      </div>
-      <div id="share" >
-        <span>Facebook Icon</span>
-        <span>Twitter Icon</span>
-        <span>Pintrest Icon</span>
       </div>
     </div>
 

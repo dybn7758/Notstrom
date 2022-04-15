@@ -60,6 +60,9 @@ export const currentRelatedStyles = atom({
   default: [],
 });
 
+//===================Price Value=================
+export const priceVal = atom({ key: "priceVal", default: 0 });
+
 //=================== Slider Length ==============
 export const sliderLength = atom({ key: "sliderLength", default: 0 });
 

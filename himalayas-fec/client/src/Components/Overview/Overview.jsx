@@ -44,9 +44,7 @@ const Overview = (props) => {
       <StyleSelector styles={stylesArray} />
       <ProductInformation
         currentProduct={currentProduct}
-        styles={stylesArray}
-      />
-      {/* <StyleSelector styles={stylesArray} /> */}
+        styles={stylesArray}/>
     </div>
   );
 };

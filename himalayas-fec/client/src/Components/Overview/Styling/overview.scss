@@ -18,6 +18,84 @@
   object-fit: fill;
   max-width: 100%;
 }
+
+#quantityLabel {
+  margin-right: 30px;
+  margin-left: 30px;
+  font-size: 20px;
+
+}
+
+#sizeLabel {
+  margin-right: 30px;
+  font-size: 20px;
+}
+
+#btn {
+  margin-top: 13px;
+  margin-bottom: 5px;
+  font-size: 25px;
+  margin-left: 220px;
+  padding: 3px;
+  border-radius: 10px;
+}
+
+#category {
+  opacity: 60%
+}
+
+#name {
+  margin-bottom: 10px;
+}
+
+#price {
+  margin-bottom: 5px;
+}
+
+// #facebook {
+//   margin-top: 100px;
+// }
+
+#fbButton {
+  background-image: linear-gradient(royalblue, white);
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+// #pintrest {
+//   margin-top: 40px;
+// }
+
+#pintrestButton {
+  background-image: linear-gradient(red, white);
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+// #twitter {
+//   margin-top: 40px;
+// }
+
+#twitterButton {
+  background-image: linear-gradient(lightblue, white);
+  padding: 5px;
+  border-radius: 10px;
+  margin-left: 20px;
+  font-size: 20px;
+}
+
+.share {
+  margin-bottom: 200px;
+  margin-right: 20px;
+}
+
+
 .galleryThumbs {
   max-width: fit-content;
   max-height: fit-content;
