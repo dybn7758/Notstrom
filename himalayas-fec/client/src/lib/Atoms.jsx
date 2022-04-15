@@ -264,6 +264,18 @@ export const productMetaReviewsSelector = selector({
     }
   },
 });
+
+// ===========for star rating selector ================
+
+export const ratingSelector = atom({
+  key: "ratingSelctor",
+  default: 0,
+});
+
+export const filterReview = atom({
+  key: "filterReview",
+  default: false,
+});
 // ===========================================================
 
 // ========= State of questions ================

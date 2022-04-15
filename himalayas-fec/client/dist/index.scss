@@ -51,45 +51,6 @@ body {
   font-family: sans-serif;
 }
 
-.gallery {
-  background: transparent;
-  justify-content: center;
-  // display: grid;
-  // grid-template-columns: 250px 1fr;
-  // grid-template-rows: 150px 1fr;
-}
-
-.gallery-cell {
-  // grid-area: 1/1/2/2;
-  width: 66%;
-  height: 100px;
-  margin-right: 10px;
-  background: #8c8;
-}
-
-.gallery-cell:before {
-  display: block;
-  text-align: center;
-  line-height: 200px;
-  font-size: 80px;
-  color: white;
-}
-
-.galleryThumbs {
-  float: left;
-  overflow: hidden;
-}
-
-.styles {
-  // float: right;
-  // overflow: hidden;
-}
-
-.display {
-  float: right;
-  overflow: hideen;
-}
-
 /* for quarterly star rating */
 .single-star-outline {
   height: 36px;
@@ -301,7 +262,7 @@ form .indicator span {
 // for review photos
 .reviewphoto {
   height: 10vh;
-  width: 10vw;
+  width: 5vw;
   margin: 1px;
 }
 

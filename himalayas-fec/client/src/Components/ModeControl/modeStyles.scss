@@ -44,8 +44,8 @@ input[type="checkbox"].switch:checked + div {
 
 input[type="checkbox"].switch + div:before {
   content: "🌙";
-  top: 2px;
   right: 8px;
+  bottom: 0.5px;
   position: absolute;
   font-size: 17px;
   font-weight: 600;
@@ -64,7 +64,6 @@ input[type="checkbox"].switch:checked + div {
 
 input[type="checkbox"].switch:checked + div:before {
   content: "☀️";
-  top: 2px;
   left: 8px;
   position: absolute;
   font-size: 17px;

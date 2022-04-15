@@ -39,7 +39,7 @@ const Cart = (props) => {
 
 
     return (
-      <div>
+      <div className="cart-view">
         <button type="button">ADD TO CART</button>
         <label htmlFor="size">SELECT SIZE</label>
         <select name="size" id="size" onChange={handleChange}>

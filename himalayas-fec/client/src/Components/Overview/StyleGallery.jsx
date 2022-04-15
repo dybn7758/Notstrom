@@ -16,12 +16,23 @@ const StyleGallery = (props) => {
     const photos = props.style.photos;
 
     return (
-      <div className="gallery">
+      // <div className="gallery">
+      <div id="test">
+        <div className="display">
+          {/* <div className="space"></div> */}
+          <img
+            className="main-gal"
+            src={imageSelection}
+            height="600"
+            width="800"
+          ></img>
+          {/* <StyleDisplay image={imageSelection} /> */}
+        </div>
         <div className="galleryThumbs">
-          <h2>Fashion Gallery</h2>
+          {/* <h2>Fashion Gallery</h2> */}
           {photos.map((photo, index) => {
             return (
-              <div className="gallery-cell" key={index}>
+              <span className="gallery-cell" key={index}>
                 <img
                   src={photo.thumbnail_url}
                   width="75"
@@ -31,12 +42,9 @@ const StyleGallery = (props) => {
                     imageSelector(event.target.attributes.url.nodeValue)
                   }
                 ></img>
-              </div>
+              </span>
             );
           })}
-          <div className="display">
-            <StyleDisplay image={imageSelection} />
-          </div>
         </div>
       </div>
     );

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { atom, useRecoilState, selector, useRecoilValue } from "recoil";
 import { FaStar } from "react-icons/fa";
-
+import { postReview } from "../../lib/searchAPI.js";
 import {
   reviewPhotoes,
   toggleReview,
@@ -12,20 +12,22 @@ function WriteReview({ hideModal, characteristics, product_id }) {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
   const [recommend, setRecommend] = useState(null);
-  const [size, setSize] = useState(null);
-  const [width, setWidth] = useState(null);
-  const [comfort, setComfort] = useState(null);
-  const [quality, setQuality] = useState(null);
-  const [length, setLength] = useState(null);
-  const [fit, setFit] = useState(null);
+  // const [size, setSize] = useState(null);
+  // const [width, setWidth] = useState(null);
+  // const [comfort, setComfort] = useState(null);
+  // const [quality, setQuality] = useState(null);
+  // const [length, setLength] = useState(null);
+  // const [fit, setFit] = useState(null);
+
+  const [factors, setFactors] = useState(null);
   const [reviewSum, setReviewSum] = useState(null);
   const [review, setReview] = useState(null);
   const [nickname, setNickName] = useState(null);
   const [email, setEmail] = useState(null);
+  const [initCharVal, setInitCharVal] = useState([]);
 
-  let [usephotoUpload, setPhotoUpload] = useRecoilState(reviewPhotoes);
+  let [usephotoUpload, setPhotoUpload] = useState([]);
   let [toggleUploads, setToggleUpload] = useRecoilState(toggleReview);
-  let [allFactor, setAllFactor] = useRecoilState(specificCharacteristics);
 
   const photoUpload = (e) => {
     let photoUpload = Array.from(e.target.files);
@@ -40,44 +42,42 @@ function WriteReview({ hideModal, characteristics, product_id }) {
     });
 
     if (usephotoUpload.length > 3) {
-      console.log("disabling");
       setToggleUpload(true);
     }
   };
 
   const handleSelectionId = (e) => {
-    // console.log(e.target);
-    setRecommend(e.target.id);
-  };
-  const handleSelectionValue = (e) => {
-    // console.log(e.target);
-    if (e.target.id.includes("size")) {
-      console.log("😵‍💫", e.target.id.includes("size"));
-      specificCharacteristics["Size"] = e.target.value;
-      setSize(e.target.value);
+    if (e.target.id === "Yes") {
+      setRecommend(true);
+    } else {
+      setRecommend(false);
     }
-    if (e.target.id.includes("width")) {
-      specificCharacteristics["Width"] = e.target.value;
-      setWidth(e.target.value);
+  };
+
+  const handleSelectionValue = (e) => {
+    if (e.target.id.includes("fit")) {
+      initCharVal.push([19, Number(e.target.value)]);
+      console.log("", initCharVal, typeof e.target.value);
+    }
+    if (e.target.id.includes("length")) {
+      initCharVal.push([18, Number(e.target.value)]);
+      console.log("", initCharVal);
     }
     if (e.target.id.includes("comfort")) {
-      specificCharacteristics["Comfort"] = e.target.value;
-      setComfort(e.target.value);
+      initCharVal.push([16, Number(e.target.value)]);
+      console.log("", initCharVal);
     }
-
     if (e.target.id.includes("quality")) {
-      specificCharacteristics["Quality"] = e.target.value;
-      setQuality(e.target.value);
+      initCharVal.push([17, Number(e.target.value)]);
+      console.log(17, initCharVal);
     }
-
-    if (e.target.id.includes("fit")) {
-      specificCharacteristics["Fit"] = e.target.value;
-      setFit(e.target.vlaue);
+    if (e.target.id.includes("size")) {
+      initCharVal.push([14, Number(e.target.value)]);
+      console.log("", initCharVal);
     }
-
-    if (e.target.id.includes("length")) {
-      specificCharacteristics["Length"] = e.target.value;
-      setLength(e.target.value);
+    if (e.target.id.includes("width")) {
+      initCharVal.push([15, Number(e.target.value)]);
+      console.log("", initCharVal);
     }
   };
 
@@ -99,19 +99,21 @@ function WriteReview({ hideModal, characteristics, product_id }) {
     }
   };
 
-  const uploadImg = (files) => {
-    // console.log("🚶🏼", files);
-  };
-
   const handlePost = () => {
-    // const test1 = Object.keys(characteristics).map((characteristic)=>{
-    //   return characteristic: characteristics[characteristic];
-    // })
-    // const reviewDetails = {
-    //   rating: rating,
-    //   recommend: recommend,
-    // };
-    console.log(specificCharacteristics);
+    const reviewBody = {
+      product_id: Number(product_id),
+      rating: rating,
+      summary: reviewSum,
+      body: review,
+      recommend: recommend,
+      name: nickname,
+      email: email,
+      photos: usephotoUpload,
+      characteristics: Object.fromEntries(initCharVal),
+    };
+
+    console.log(reviewBody);
+    postReview(reviewBody);
   };
 
   return (
@@ -131,6 +133,7 @@ function WriteReview({ hideModal, characteristics, product_id }) {
                     name="rating"
                     value={ratingValue}
                     onClick={() => setRating(ratingValue)}
+                    required
                   ></input>
                   <FaStar
                     className="star"
@@ -144,13 +147,15 @@ function WriteReview({ hideModal, characteristics, product_id }) {
                 </label>
               );
             })}
-            <div onChange={handleSelectionId} required>
-              <h3>Do you recommend this product?</h3>
-              <input type="radio" id="Yes"></input>
-              <label for="Yes"> Yes </label>
-              <input type="radio" id="No"></input>
-              <label for="No"> No </label>
-            </div>
+            <form action="/action_page.php" required>
+              <div onChange={handleSelectionId}>
+                <h3>Do you recommend this product?</h3>
+                <input type="radio" id="Yes"></input>
+                <label for="Yes"> Yes </label>
+                <input type="radio" id="No"></input>
+                <label for="No"> No </label>
+              </div>
+            </form>
             <div required>
               <h3>How do they fit?</h3>
 
@@ -190,7 +195,6 @@ function WriteReview({ hideModal, characteristics, product_id }) {
                     </div>
                   );
                 } else if (characteristic === "Comfort") {
-                  // console.log(characteristic);
                   return (
                     <div key={characteristic} onChange={handleSelectionValue}>
                       <b>Comfort: </b>
@@ -332,7 +336,7 @@ function WriteReview({ hideModal, characteristics, product_id }) {
             -For privacy reasons, do not use your full name or email address.
             <div>
               <h3>Email:</h3>
-              <input
+              <textarea
                 id="email"
                 rows="1"
                 cols="60"
@@ -342,7 +346,7 @@ function WriteReview({ hideModal, characteristics, product_id }) {
                 maxLength="60"
                 required
                 onChange={handleInput}
-              ></input>
+              ></textarea>
               <br></br> -For authentication reasons, you will not be emailed.
             </div>
           </form>

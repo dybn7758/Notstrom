@@ -10,22 +10,30 @@ import {
   productReviewsSelector,
   productMetaReviewsSelector,
   sortParam,
+  ratingSelector,
+  filterReview,
 } from "../../lib/Atoms.jsx";
 import Ratings from "./Ratings.jsx";
 
 var Reviews = () => {
+  // -------------for single review--------------
+  const specifiedReviewID = useRecoilValue(productReviewsSelector);
+
   //----------------------for ratings-----------------
   const specifiedRatings = useRecoilValue(productMetaReviewsSelector);
-  // console.log("🎃", specifiedRatings);
-  // console.log("🤩", specifiedRatings.ratings);
-  // console.log(Object.keys(specifiedRatings.characteristics));
-  // console.log(Object.values(specifiedRatings.characteristics));
+  // ---------------------for filter rating------------------
+  const rating = useRecoilValue(ratingSelector);
+  const filter = useRecoilValue(filterReview);
+
+  const filterReviews = (rating) => {
+    return specifiedReviewID.filter((review) => {
+      return Number(review.rating) === Number(rating);
+    });
+  };
+
   const recommended = Number(specifiedRatings.recommended.true || 0);
-  // recommend part
   const notRecommended = Number(specifiedRatings.recommended.false || 0);
   const sum = recommended + notRecommended;
-  // console.log(recommended, notRecommended, sum);
-  // total rating part
   const convertRatings = Object.values(specifiedRatings.ratings).map(
     (rating) => {
       return Number(rating);
@@ -37,10 +45,6 @@ var Reviews = () => {
     })
     .reduce((a, b) => a + b, 0);
 
-  // console.log(convertRatings, totalRatingScores);
-
-  // -------------for single review--------------
-  const specifiedReviewID = useRecoilValue(productReviewsSelector);
   const [initSortParam, setInitSortParam] = useRecoilState(sortParam);
   const handleDropdown = (e) => {
     setInitSortParam(e.target.value);
@@ -59,7 +63,9 @@ var Reviews = () => {
       </div>
       <div className="grid-child reviews">
         <div className="sort-review">
-          <label htmlFor="sort-review">{sum} reviews, sorted by </label>
+          <label htmlFor="sort-review">
+            {specifiedReviewID.length} reviews, sorted by{" "}
+          </label>
           <select name="sort-review" id="sort-review" onChange={handleDropdown}>
             <option value="helpful">Helpful</option>
             <option value="newest">Newest</option>
@@ -68,7 +74,7 @@ var Reviews = () => {
         </div>
         <SingleReview
           characteristics={Object.keys(specifiedRatings.characteristics)}
-          specifiedReviewID={specifiedReviewID}
+          specifiedReviewID={filter ? filterReviews(rating) : specifiedReviewID}
           product_id={specifiedRatings.product_id}
         />
       </div>

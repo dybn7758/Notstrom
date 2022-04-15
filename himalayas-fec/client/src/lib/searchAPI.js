@@ -1,4 +1,4 @@
-import { API_KEY, CAMPUS_CODE } from "../config.js";
+import { API_KEY, CAMPUS_CODE } from "../config/config.js";
 import axios from "axios";
 import react from "react";
 import { useRecoilValue, useRecoilState } from "recoil";
@@ -106,12 +106,6 @@ var putQuesHelpful = (questionId) => {
   return axiosPut(parameterURL);
 };
 
-// var putQuesReport = (body, questionId) => {
-//   let parameterURL = `${serverUrl}/qa/questions/${questionId}/report`;
-
-//   return axiosPut(parameterURL, body);
-// };
-
 var putAnsHelpful = (answerId) => {
   let parameterURL = `${serverUrl}/qa/answers/${answerId}/helpful`;
 
@@ -153,6 +147,14 @@ var putReviewReport = (review_id) => {
   let parameterURL = `${serverUrl}/reviews/${review_id}/report`;
   return axiosPut(parameterURL);
 };
+
+// ----------------post reviews-----------------
+var postReview = (body) => {
+  let parameterURL = `${serverUrl}/reviews`;
+
+  return axiosPost(parameterURL, body);
+};
+
 //--------------- API Products By ID ----------------
 var productsByID = (product_id) => {
   let parameterURL = `${serverUrl}/products/${product_id}`;
@@ -191,6 +193,7 @@ export {
   metaReviews,
   putReviewHelpful,
   putReviewReport,
+  postReview,
   relatedProducts,
   productStyles,
   selectedProduct,

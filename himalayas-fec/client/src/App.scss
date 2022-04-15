@@ -1,24 +1,29 @@
-// #App {
+#App {
 //   display: flex;
 //   flex-direction: column;
 //   align-items: center;
 //   justify-content: center;
 //   background-color: rgb(255, 250, 240); //can be changed based on theme of team
-//   max-width: 1200px;
-//   width: 1200px;
-// }
+  max-width: 1500px;
+  width: 1500px;
+}
+
+#root {
+  width: 1500px;
+}
 
 .main {
   margin: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1080px;
+  width: 1500px;
 }
 
 .nav {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   // justify-content: end;
   align-items: center;
   margin: 30px;
@@ -55,8 +60,8 @@
   line-height: 30px;
   width: 400px;
   height: 40px;
-
   position: relative;
+  left: 200px;
 }
 
 .searchbar:hover {
@@ -71,7 +76,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  width: 1200px;
+  width: 1400px;
 }
 
 .category-name {
