@@ -4,6 +4,7 @@ import react from "react";
 import { useRecoilValue, useRecoilState } from "recoil";
 import { relatedIDs } from "./Atoms.jsx";
 
+
 const serverUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/${CAMPUS_CODE}`;
 
 var axiosGet = (url) => {
@@ -14,12 +15,8 @@ var axiosGet = (url) => {
     contentType: "application/json",
   };
 
-  //Can chain more promises to the API call if you want to set state after invocation
-  //Don't change the setup here because it will affect other API calls.
   return axios(options)
     .then((data) => {
-      // console.log("Data received", data);
-      //console.log("Data received", data);
       return data;
     })
     .catch((err) => {
@@ -65,32 +62,23 @@ var axiosPut = (url) => {
 
 //--------------- API Questions -----------------
 var listQuestions = (productId, count, page) => {
-  //Might not need the count and page parameters yet...
-  //if needed, adjust the parameterURL to include these
   let parameterURL = `${serverUrl}/qa/questions?product_id=${productId}`;
   return axiosGet(parameterURL);
 };
 
 //--------------- API Products -----------------
 var listProducts = (count, page) => {
-  //Might not need the count and page parameters yet...
-  //if needed, adjust the parameterURL to include these
-  // ?page=1&count=100 param needs be added
-
   let parameterURL = `${serverUrl}/products?count=${count}`;
-
   return axiosGet(parameterURL);
 };
 
 var selectedProduct = (productId, count, page) => {
   let parameterURL = `${serverUrl}/products?product_id=${productId}`;
-
   return axiosGet(parameterURL);
 };
 
 var postQuestions = (body) => {
   let parameterURL = `${serverUrl}/qa/questions`;
-
   return axiosPost(parameterURL, body);
 };
 
@@ -120,10 +108,6 @@ var putAnsReport = (answerId) => {
 
 //--------------- API Reviews -----------------
 var listReviews = (productId, page, count, sort) => {
-  //Might not need the count and page parameters yet...
-  //if needed, adjust the parameterURL to include these
-
-  //
   let parameterURL = `${serverUrl}/reviews/?product_id=${productId}&count=${count}&page=${page}&sort=${sort}`;
 
   return axiosGet(parameterURL);

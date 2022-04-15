@@ -1,7 +1,7 @@
 import {currentProductByID, stylesAndProducts} from '../../lib/Atoms.jsx';
 import {useRecoilValue, useRecoilState} from 'recoil';
 import React from 'react';
-import './relatedData.scss';
+import './relatedSass.scss';
 
 const RelatedPrice = (props) => {
   const [stylesAndProductsValue, setStylesAndProducts] = useRecoilState(stylesAndProducts);
@@ -12,8 +12,8 @@ const RelatedPrice = (props) => {
     if (salePricePath.sale_price !== null){
       return (
         <div className='relatedPrice'>
-          <Text style={{textDecorationLine: 'line-through'}}>{currentPrice}</Text>
-          <Text style={{color: 'red'}}>{salePricePath.sale_price}</Text>
+          <text className='relatedPriceText' style={{textDecorationLine: 'line-through'}}>${currentPrice}</text>
+          <text className='relatedPriceText' style={{color: 'red'}}>     ${salePricePath.sale_price}</text>
         </div>
       )
     } else {

@@ -75,6 +75,11 @@ export const stylesAndProducts = atom({
   default: [],
 });
 
+export const modalButtonShowHide = atom({
+  key: "modalButtonShowHide",
+  default: ["none", "block"],
+});
+
 //================= Current Related Products ===
 export const currentRelatedProducts = atom({
   key: "currentRelatedProducts",
