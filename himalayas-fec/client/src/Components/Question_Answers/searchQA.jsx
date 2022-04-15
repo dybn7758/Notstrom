@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
-import jquey from 'jquery';
 import SearchList from './searchList.jsx';
 import QuestionModal from './questionModal.jsx';
 import sampleQa from './sampleQA.js';

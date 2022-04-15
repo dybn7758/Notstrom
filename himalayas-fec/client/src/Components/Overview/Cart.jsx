@@ -26,7 +26,7 @@ const Cart = (props) => {
     return (
       <div className="cart-view">
         <label id="sizeLabel" htmlFor="size"><i><b>SELECT SIZE:</b></i></label>
-        <select name="size" id="size" onChange={handleChange}>
+        <select name="size" id="size">
           {skusArray.map((sku, index) => {
             let skuSelector = Object.keys(sku);
             return(
