@@ -8,7 +8,7 @@ import './relatedTable.scss'
 const RelatedTable = () => {
 
   return (
-    <div className='relatedTableMain'>Comparing
+    <div className='relatedTableMain'>
         <table className='tableInner'>
           <tbody>
             <TableHeaders />

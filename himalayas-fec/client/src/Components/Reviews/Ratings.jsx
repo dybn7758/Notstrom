@@ -15,7 +15,10 @@ var Ratings = ({
     <div>
       <h3>RATINGS & REVIEWS</h3>
       <h1>
-        {(totalRatingScores / sum).toFixed(1)} / 5
+        {totalRatingScores
+          ? (totalRatingScores / sum).toFixed(1) + "/5"
+          : "No Rating Available"}
+
         <QuartersStars rating={(totalRatingScores / sum).toFixed(1)} />
       </h1>
       <>

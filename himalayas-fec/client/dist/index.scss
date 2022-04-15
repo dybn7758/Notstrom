@@ -248,7 +248,7 @@ form .indicator span {
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  // grid-gap: 5px;
+  justify-content: flex-end;
 }
 
 // for scrollable
@@ -262,9 +262,8 @@ form .indicator span {
 // for review photos
 .reviewphoto {
   height: 10vh;
-  width: 10vw;
-  border-radius: 5px;
-  margin: 5px;
+  width: 5vw;
+  margin: 1px;
 }
 
 // for review sort dropdown
@@ -368,7 +367,8 @@ body {
   h6,
   p,
   div,
-  span {
+  span,
+  label {
     color: getColor(text);
   }
 }

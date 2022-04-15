@@ -4,7 +4,11 @@ import Stars from "simple-rating-stars";
 import { atom, useRecoilState, selector, useRecoilValue } from "recoil";
 import { putReviewHelpful, putReviewReport } from "../../lib/searchAPI.js";
 import WriteReview from "./WriteReview.jsx";
-import { showWriteReviewModal, reviewsCount } from "../../lib/Atoms.jsx";
+import {
+  showWriteReviewModal,
+  reviewsCount,
+  productReviewsSelector,
+} from "../../lib/Atoms.jsx";
 
 var SingleReview = ({ characteristics, specifiedReviewID, product_id }) => {
   const [showWriteReview, setShowWriteReview] =
