@@ -10,7 +10,6 @@ import './relatedSass.scss';
 
 const RelatedOutfits = () => {
 const [outfitArrayValue, setOutfitArray] = useRecoilState(outfitCards)
-// let newValue = outfitArrayValue.splice(0, 1);
 let newValue;
 const deleteCard = async (index) => {
 
@@ -37,7 +36,6 @@ const deleteCard = async (index) => {
                     deleteCard(index)
                   }}/>
                   <div className='outfitCardFooter'>
-                    {/* <RelatedStars /> */}
                     <div className='outfitCategory'>{value.category}</div>
                     <div className='outfitName'>{value.name}</div>
                     <div className='outfitPrice'>${value.price}</div>
