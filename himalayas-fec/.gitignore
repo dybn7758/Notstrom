@@ -30,3 +30,5 @@ client/src/config/config.js
 
 /package-lock.json
 /package.json
+
+/himalayerskey.pem
