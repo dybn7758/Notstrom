@@ -29,9 +29,11 @@ The main strengths of this storefront are a cohesive user experience, clear and 
 
 
 
+
 **Ratings and Reviews**
 
 The Ratings & Reviews module will allow viewing and submission of reviews for the product selected.
+![Recording 2022-05-24 at 21 01 16](https://user-images.githubusercontent.com/94567690/170169189-2d192a5d-8b17-4a98-a219-559f6717c03c.gif)
 
 ## Contributors
 
