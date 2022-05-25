@@ -10,25 +10,11 @@ The main strengths of this storefront are a cohesive user experience, clear and 
 
 ## Demo
 
-![Recording 2022-05-24 at 21 13 26 (1)](https://user-images.githubusercontent.com/94567690/170171098-4f7cb479-05f3-4b66-9488-b4156503bf8e.gif)
 
 **Theme Toggle: Light & Dark Themes**
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![Recording 2022-05-24 at 21 13 26 (1)](https://user-images.githubusercontent.com/94567690/170171098-4f7cb479-05f3-4b66-9488-b4156503bf8e.gif)
 
 
 **Ratings and Reviews**
