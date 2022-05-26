@@ -24,17 +24,18 @@ The Ratings & Reviews module will allow viewing and submission of reviews for th
 
 Ratings and Reviews displays dynamically rendered user reviews for the selected product:
 
-Average Rating represented by number and stars
-Filterable rating breakdown section
-Product breakdown section
-Sort review options by relevant, helpful, or newest
-User can mark helpful or report a review
+* Average Rating represented by number and stars
+* Filterable rating breakdown section
+* Product breakdown section
+* Sort review options by relevant, helpful, or newest
+* User can mark helpful or report a review
 
 User can add new review for the selected product:
 
-Dynamic form subcomponents rendering based on selected product
-Client-side form Input validations
-Upload Image Options
+* Dynamic form subcomponents rendering based on selected product
+* Client-side form Input validations
+* Upload Image Options
+
 ## Contributors
 
 Widget  | Contributor
