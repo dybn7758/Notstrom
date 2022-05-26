@@ -7,6 +7,14 @@ The team operates in an Agile methodology, utilizing project management and tick
 
 The main strengths of this storefront are a cohesive user experience, clear and easy-to-read usability as well as its sleek and modern design. Our team challenged ourselves by learning new technologies, including Recoild and Sass, within a day of the sprint planning session.
 
+## Tech Stacks
+* React
+* Recoil
+* SASS
+* Node.js
+* Express
+* Webpack
+* Babel
 
 ## Demo
 
