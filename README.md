@@ -22,6 +22,19 @@ The main strengths of this storefront are a cohesive user experience, clear and 
 The Ratings & Reviews module will allow viewing and submission of reviews for the product selected.
 ![Recording 2022-05-24 at 21 01 16](https://user-images.githubusercontent.com/94567690/170169189-2d192a5d-8b17-4a98-a219-559f6717c03c.gif)
 
+Ratings and Reviews displays dynamically rendered user reviews for the selected product:
+
+Average Rating represented by number and stars
+Filterable rating breakdown section
+Product breakdown section
+Sort review options by relevant, helpful, or newest
+User can mark helpful or report a review
+
+User can add new review for the selected product:
+
+Dynamic form subcomponents rendering based on selected product
+Client-side form Input validations
+Upload Image Options
 ## Contributors
 
 Widget  | Contributor
